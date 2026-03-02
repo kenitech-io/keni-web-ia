@@ -17,25 +17,6 @@ function lemniscatePoint(
   };
 }
 
-function outwardNormal(t: number, cx: number, cy: number, a: number): { nx: number; ny: number } {
-  const dt = 0.001;
-  const p1 = lemniscatePoint(t - dt, cx, cy, a);
-  const p2 = lemniscatePoint(t + dt, cx, cy, a);
-  const dx = p2.x - p1.x;
-  const dy = p2.y - p1.y;
-  const len = Math.sqrt(dx * dx + dy * dy);
-  let nx = -dy / len;
-  let ny = dx / len;
-  const p = lemniscatePoint(t, cx, cy, a);
-  const toCenterX = cx - p.x;
-  const toCenterY = cy - p.y;
-  if (nx * toCenterX + ny * toCenterY > 0) {
-    nx = -nx;
-    ny = -ny;
-  }
-  return { nx, ny };
-}
-
 // Angular distance on a circle (0..2π), always positive
 function angularDist(a: number, b: number): number {
   const TWO_PI = Math.PI * 2;
@@ -47,19 +28,20 @@ function angularDist(a: number, b: number): number {
 interface LabelDef {
   text: string;
   angle: number;
-  dist: number;
+  x: number;
+  y: number;
   description: string;
 }
 
 const LABELS: LabelDef[] = [
-  { text: "PLAN", angle: Math.PI * 0.72, dist: 36, description: "Define goals, priorities, and timelines. Align engineering with business needs." },
-  { text: "CODE", angle: Math.PI * 0.97, dist: 42, description: "Write, review, and version control. Clean code, clear standards." },
-  { text: "BUILD", angle: Math.PI * 1.18, dist: 31, description: "Compile, package, and prepare artifacts. Automated and reproducible." },
-  { text: "TEST", angle: Math.PI * 1.38, dist: 39, description: "Validate quality, security, and performance before anything ships." },
-  { text: "RELEASE", angle: Math.PI * 1.62, dist: 48, description: "Package and prepare for production. Controlled, versioned, ready to go." },
-  { text: "DEPLOY", angle: Math.PI * 1.82, dist: 32, description: "Ship to production with confidence. Zero downtime, every time." },
-  { text: "OPERATE", angle: Math.PI * 0.03, dist: 56, description: "Manage infrastructure, scale resources, keep everything running smoothly." },
-  { text: "MONITOR", angle: Math.PI * 0.28, dist: 41, description: "Observe, alert, and respond. Know what's happening before anyone else." },
+  { text: "PLAN",    angle: Math.PI * 0.72, x: 370, y: 168, description: "Define goals, priorities, and timelines. Align engineering with business needs." },
+  { text: "CODE",    angle: Math.PI * 0.97, x: 138, y: 272, description: "Write, review, and version control. Clean code, clear standards." },
+  { text: "BUILD",   angle: Math.PI * 1.18, x: 290, y: 446, description: "Compile, package, and prepare artifacts. Automated and reproducible." },
+  { text: "TEST",    angle: Math.PI * 1.38, x: 448, y: 400, description: "Validate quality, security, and performance before anything ships." },
+  { text: "RELEASE", angle: Math.PI * 1.62, x: 542, y: 198, description: "Package and prepare for production. Controlled, versioned, ready to go." },
+  { text: "DEPLOY",  angle: Math.PI * 1.82, x: 710, y: 155, description: "Ship to production with confidence. Zero downtime, every time." },
+  { text: "OPERATE", angle: Math.PI * 0.03, x: 870, y: 330, description: "Manage infrastructure, scale resources, keep everything running smoothly." },
+  { text: "MONITOR", angle: Math.PI * 0.28, x: 625, y: 435, description: "Observe, alert, and respond. Know what's happening before anyone else." },
 ];
 
 // How close the light needs to be (in radians) to fully illuminate a label
@@ -70,11 +52,7 @@ const CX = 500;
 const CY = 300;
 const A = 320;
 
-const LABEL_POSITIONS = LABELS.map((label) => {
-  const p = lemniscatePoint(label.angle, CX, CY, A);
-  const { nx, ny } = outwardNormal(label.angle, CX, CY, A);
-  return { x: p.x + nx * label.dist, y: p.y + ny * label.dist };
-});
+const LABEL_POSITIONS = LABELS.map((label) => ({ x: label.x, y: label.y }));
 
 function buildPath(): string {
   const steps = 300;
