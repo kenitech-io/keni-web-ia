@@ -252,10 +252,10 @@ export default function InfinityLoop() {
                 className="infinity-line-draw"
               />
 
-              {/* Dev / Ops watermarks */}
+              {/* Dev / Ops watermarks — centered in each loop */}
               <text
-                x={CX - 160}
-                y={CY}
+                x={340}
+                y={300}
                 textAnchor="middle"
                 dominantBaseline="central"
                 fill="#5CAED4"
@@ -264,13 +264,14 @@ export default function InfinityLoop() {
                 fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
                 fontWeight="300"
                 letterSpacing="0.12em"
+                dx="0.06em"
                 className="select-none pointer-events-none dev-watermark"
               >
                 Dev
               </text>
               <text
-                x={CX + 160}
-                y={CY}
+                x={660}
+                y={300}
                 textAnchor="middle"
                 dominantBaseline="central"
                 fill="#7ECEB3"
@@ -279,6 +280,7 @@ export default function InfinityLoop() {
                 fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
                 fontWeight="300"
                 letterSpacing="0.12em"
+                dx="0.06em"
                 className="select-none pointer-events-none ops-watermark"
               >
                 Ops
