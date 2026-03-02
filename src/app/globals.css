@@ -184,6 +184,22 @@ textarea:-webkit-autofill:focus {
 
 
 
+/* Mobile: boost infinity loop visibility */
+@media (max-width: 767px) {
+  .infinity-line-draw {
+    stroke-width: 2.5;
+    opacity: 1;
+  }
+
+  .dev-watermark {
+    opacity: 0.2 !important;
+  }
+
+  .ops-watermark {
+    opacity: 0.2 !important;
+  }
+}
+
 /* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 5px;

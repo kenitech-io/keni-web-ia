@@ -99,6 +99,7 @@ export default function InfinityLoop() {
   const [reducedMotion, setReducedMotion] = useState(false);
   const [hoveredLabel, setHoveredLabel] = useState<string | null>(null);
   const hoveredRef = useRef<string | null>(null);
+  const isMobileRef = useRef(false);
 
   // Keep hoveredRef in sync so we can read it in rAF without stale closures
   useEffect(() => {
@@ -109,6 +110,14 @@ export default function InfinityLoop() {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
     setReducedMotion(mq.matches);
     const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    isMobileRef.current = mq.matches;
+    const handler = (e: MediaQueryListEvent) => { isMobileRef.current = e.matches; };
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
   }, []);
@@ -134,7 +143,19 @@ export default function InfinityLoop() {
       setPos(lightRef.current, point.x, point.y);
       setPos(glowRef.current, point.x, point.y);
 
+      // Adapt glow/light intensity for mobile
+      const mobile = isMobileRef.current;
+      if (glowRef.current) {
+        glowRef.current.setAttribute("r", mobile ? "30" : "22");
+        glowRef.current.setAttribute("opacity", mobile ? "0.45" : "0.25");
+      }
+      if (lightRef.current) {
+        lightRef.current.setAttribute("r", mobile ? "12" : "8");
+        lightRef.current.setAttribute("opacity", mobile ? "0.8" : "0.5");
+      }
+
       // Update label brightness based on proximity to light
+      const baseOpacity = mobile ? 0.7 : 0.4;
       for (let i = 0; i < LABELS.length; i++) {
         const el = labelRefs.current[i];
         if (!el) continue;
@@ -149,10 +170,10 @@ export default function InfinityLoop() {
             textEl.setAttribute("fill", "#7ECEB3");
             textEl.setAttribute("filter", "drop-shadow(0 0 10px rgba(126,206,179,0.5))");
           } else if (lit) {
-            textEl.setAttribute("fill", `rgba(250,250,250,${0.4 + intensity * 0.6})`);
-            textEl.setAttribute("filter", `drop-shadow(0 0 ${intensity * 12}px rgba(126,206,179,${intensity * 0.5}))`);
+            textEl.setAttribute("fill", `rgba(250,250,250,${baseOpacity + intensity * 0.6})`);
+            textEl.setAttribute("filter", `drop-shadow(0 0 ${intensity * (mobile ? 18 : 12)}px rgba(126,206,179,${intensity * (mobile ? 0.7 : 0.5)}))`);
           } else {
-            textEl.setAttribute("fill", "rgba(250,250,250,0.4)");
+            textEl.setAttribute("fill", `rgba(250,250,250,${baseOpacity})`);
             textEl.setAttribute("filter", "none");
           }
         }
@@ -170,9 +191,9 @@ export default function InfinityLoop() {
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden py-10">
 
-      <div className="relative z-10 w-full px-4">
+      <div className="relative z-10 w-full px-0 md:px-4">
         <div className="flex justify-center">
-          <div className="relative w-full max-w-[1100px]">
+          <div className="relative w-full max-w-[1100px] scale-[1.15] md:scale-100">
             <svg
               viewBox="0 0 1000 600"
               fill="none"
@@ -226,31 +247,31 @@ export default function InfinityLoop() {
               {/* Dev / Ops watermarks */}
               <text
                 x={CX - 160}
-                y={CY + 6}
+                y={CY}
                 textAnchor="middle"
-                dominantBaseline="middle"
+                dominantBaseline="central"
                 fill="#5CAED4"
                 opacity="0.1"
                 fontSize="68"
                 fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
                 fontWeight="300"
                 letterSpacing="0.12em"
-                className="select-none pointer-events-none"
+                className="select-none pointer-events-none dev-watermark"
               >
                 Dev
               </text>
               <text
                 x={CX + 160}
-                y={CY + 6}
+                y={CY}
                 textAnchor="middle"
-                dominantBaseline="middle"
+                dominantBaseline="central"
                 fill="#7ECEB3"
                 opacity="0.1"
                 fontSize="68"
                 fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
                 fontWeight="300"
                 letterSpacing="0.12em"
-                className="select-none pointer-events-none"
+                className="select-none pointer-events-none ops-watermark"
               >
                 Ops
               </text>
