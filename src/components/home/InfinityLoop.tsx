@@ -246,7 +246,7 @@ export default function InfinityLoop() {
                 Dev
               </text>
               <text
-                x={660}
+                x={680}
                 y={300}
                 textAnchor="middle"
                 dominantBaseline="central"
