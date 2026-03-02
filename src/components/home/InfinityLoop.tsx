@@ -52,14 +52,14 @@ interface LabelDef {
 }
 
 const LABELS: LabelDef[] = [
-  { text: "PLAN", angle: Math.PI * 0.72, dist: 38, description: "Define goals, priorities, and timelines. Align engineering with business needs." },
-  { text: "CODE", angle: Math.PI * 0.97, dist: 38, description: "Write, review, and version control. Clean code, clear standards." },
-  { text: "BUILD", angle: Math.PI * 1.18, dist: 38, description: "Compile, package, and prepare artifacts. Automated and reproducible." },
-  { text: "TEST", angle: Math.PI * 1.38, dist: 38, description: "Validate quality, security, and performance before anything ships." },
-  { text: "RELEASE", angle: Math.PI * 1.62, dist: 38, description: "Package and prepare for production. Controlled, versioned, ready to go." },
-  { text: "DEPLOY", angle: Math.PI * 1.82, dist: 38, description: "Ship to production with confidence. Zero downtime, every time." },
-  { text: "OPERATE", angle: Math.PI * 0.03, dist: 38, description: "Manage infrastructure, scale resources, keep everything running smoothly." },
-  { text: "MONITOR", angle: Math.PI * 0.28, dist: 38, description: "Observe, alert, and respond. Know what's happening before anyone else." },
+  { text: "PLAN", angle: Math.PI * 0.72, dist: 36, description: "Define goals, priorities, and timelines. Align engineering with business needs." },
+  { text: "CODE", angle: Math.PI * 0.97, dist: 42, description: "Write, review, and version control. Clean code, clear standards." },
+  { text: "BUILD", angle: Math.PI * 1.18, dist: 31, description: "Compile, package, and prepare artifacts. Automated and reproducible." },
+  { text: "TEST", angle: Math.PI * 1.38, dist: 39, description: "Validate quality, security, and performance before anything ships." },
+  { text: "RELEASE", angle: Math.PI * 1.62, dist: 48, description: "Package and prepare for production. Controlled, versioned, ready to go." },
+  { text: "DEPLOY", angle: Math.PI * 1.82, dist: 32, description: "Ship to production with confidence. Zero downtime, every time." },
+  { text: "OPERATE", angle: Math.PI * 0.03, dist: 56, description: "Manage infrastructure, scale resources, keep everything running smoothly." },
+  { text: "MONITOR", angle: Math.PI * 0.28, dist: 41, description: "Observe, alert, and respond. Know what's happening before anyone else." },
 ];
 
 // How close the light needs to be (in radians) to fully illuminate a label
