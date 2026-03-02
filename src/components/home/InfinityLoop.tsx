@@ -185,7 +185,7 @@ export default function InfinityLoop() {
   const hoveredData = hoveredIndex >= 0 ? LABELS[hoveredIndex] : null;
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden py-10">
+    <section className="flex items-center justify-center relative overflow-hidden py-10" style={{ minHeight: "100svh" }}>
 
       <div className="relative z-10 w-full px-0 md:px-4">
         <div className="flex justify-center">
