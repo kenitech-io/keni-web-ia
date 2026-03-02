@@ -189,7 +189,7 @@ export default function InfinityLoop() {
 
       <div className="relative z-10 w-full px-0 md:px-4">
         <div className="flex justify-center">
-          <div className="relative w-full max-w-[1100px]">
+          <div className="relative w-full max-w-[950px]">
             <svg
               viewBox={isMobile ? "50 80 900 440" : "0 0 1000 600"}
               fill="none"
