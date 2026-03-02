@@ -71,6 +71,8 @@ const INFINITY_PATH = buildPath();
 export default function InfinityLoop() {
   const lightRef = useRef<SVGCircleElement>(null);
   const glowRef = useRef<SVGCircleElement>(null);
+  const devRef = useRef<SVGTextElement>(null);
+  const opsRef = useRef<SVGTextElement>(null);
   const labelRefs = useRef<(SVGGElement | null)[]>([]);
   const animationRef = useRef<number>(0);
   const startTimeRef = useRef<number>(0);
@@ -103,6 +105,23 @@ export default function InfinityLoop() {
     };
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  // Center Dev/Ops by measuring actual rendered text bounding box
+  useEffect(() => {
+    const centerText = (el: SVGTextElement | null, targetX: number, targetY: number) => {
+      if (!el) return;
+      // Remove any previous transform so getBBox measures raw text
+      el.removeAttribute("transform");
+      const bbox = el.getBBox();
+      // Translate so the bbox center lands exactly on (targetX, targetY)
+      const dx = targetX - (bbox.x + bbox.width / 2);
+      const dy = targetY - (bbox.y + bbox.height / 2);
+      el.setAttribute("transform", `translate(${dx}, ${dy})`);
+    };
+    // Left loop center: (340, 300), Right loop center: (660, 300)
+    centerText(devRef.current, 340, 300);
+    centerText(opsRef.current, 660, 300);
   }, []);
 
   const setPos = useCallback(
@@ -230,12 +249,11 @@ export default function InfinityLoop() {
                 className="infinity-line-draw"
               />
 
-              {/* Dev / Ops watermarks — centered in each loop */}
+              {/* Dev / Ops watermarks — centered via getBBox measurement */}
               <text
-                x={340}
-                y={300}
-                textAnchor="middle"
-                dominantBaseline="central"
+                ref={devRef}
+                x={0}
+                y={0}
                 fill="#5CAED4"
                 opacity="0.1"
                 fontSize="68"
@@ -246,10 +264,9 @@ export default function InfinityLoop() {
                 Dev
               </text>
               <text
-                x={660}
-                y={300}
-                textAnchor="middle"
-                dominantBaseline="central"
+                ref={opsRef}
+                x={0}
+                y={0}
                 fill="#7ECEB3"
                 opacity="0.1"
                 fontSize="68"
