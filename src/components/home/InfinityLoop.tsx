@@ -232,7 +232,7 @@ export default function InfinityLoop() {
 
               {/* Dev / Ops watermarks — centered in each loop */}
               <text
-                x={325}
+                x={340}
                 y={300}
                 textAnchor="middle"
                 dominantBaseline="central"
@@ -246,7 +246,7 @@ export default function InfinityLoop() {
                 Dev
               </text>
               <text
-                x={680}
+                x={660}
                 y={300}
                 textAnchor="middle"
                 dominantBaseline="central"
