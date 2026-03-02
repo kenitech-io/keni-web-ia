@@ -218,11 +218,11 @@ export default function InfinityLoop() {
                 </radialGradient>
 
                 <filter id="light-outer" x="-300%" y="-300%" width="700%" height="700%">
-                  <feGaussianBlur in="SourceGraphic" stdDeviation={isMobile ? "12" : "28"} />
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="28" />
                 </filter>
 
                 <filter id="light-inner" x="-200%" y="-200%" width="500%" height="500%">
-                  <feGaussianBlur in="SourceGraphic" stdDeviation={isMobile ? "4" : "10"} />
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
                 </filter>
               </defs>
 
@@ -318,18 +318,18 @@ export default function InfinityLoop() {
                     ref={glowRef}
                     cx={CX + A}
                     cy={CY}
-                    r={isMobile ? "30" : "22"}
+                    r="22"
                     fill="#7ECEB3"
-                    opacity={isMobile ? "0.5" : "0.25"}
+                    opacity="0.25"
                     filter="url(#light-outer)"
                   />
                   <circle
                     ref={lightRef}
                     cx={CX + A}
                     cy={CY}
-                    r={isMobile ? "5" : "8"}
-                    fill={isMobile ? "#7ECEB3" : "rgba(255,255,255,0.7)"}
-                    opacity={isMobile ? "0.9" : "0.5"}
+                    r="8"
+                    fill="rgba(255,255,255,0.7)"
+                    opacity="0.5"
                     filter="url(#light-inner)"
                   />
                 </>
