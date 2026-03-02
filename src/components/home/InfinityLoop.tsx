@@ -97,6 +97,7 @@ export default function InfinityLoop() {
   const animationRef = useRef<number>(0);
   const startTimeRef = useRef<number>(0);
   const [reducedMotion, setReducedMotion] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const [hoveredLabel, setHoveredLabel] = useState<string | null>(null);
   const hoveredRef = useRef<string | null>(null);
   const isMobileRef = useRef(false);
@@ -117,7 +118,11 @@ export default function InfinityLoop() {
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 767px)");
     isMobileRef.current = mq.matches;
-    const handler = (e: MediaQueryListEvent) => { isMobileRef.current = e.matches; };
+    setIsMobile(mq.matches);
+    const handler = (e: MediaQueryListEvent) => {
+      isMobileRef.current = e.matches;
+      setIsMobile(e.matches);
+    };
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
   }, []);
@@ -143,16 +148,7 @@ export default function InfinityLoop() {
       setPos(lightRef.current, point.x, point.y);
       setPos(glowRef.current, point.x, point.y);
 
-      // Adapt glow/light intensity for mobile
       const mobile = isMobileRef.current;
-      if (glowRef.current) {
-        glowRef.current.setAttribute("r", mobile ? "30" : "22");
-        glowRef.current.setAttribute("opacity", mobile ? "0.45" : "0.25");
-      }
-      if (lightRef.current) {
-        lightRef.current.setAttribute("r", mobile ? "12" : "8");
-        lightRef.current.setAttribute("opacity", mobile ? "0.8" : "0.5");
-      }
 
       // Update label brightness based on proximity to light
       const baseOpacity = mobile ? 0.7 : 0.4;
@@ -193,9 +189,9 @@ export default function InfinityLoop() {
 
       <div className="relative z-10 w-full px-0 md:px-4">
         <div className="flex justify-center">
-          <div className="relative w-full max-w-[1100px] scale-[1.15] md:scale-100">
+          <div className="relative w-full max-w-[1100px]">
             <svg
-              viewBox="0 0 1000 600"
+              viewBox={isMobile ? "50 80 900 440" : "0 0 1000 600"}
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               className="w-full h-auto"
@@ -222,11 +218,11 @@ export default function InfinityLoop() {
                 </radialGradient>
 
                 <filter id="light-outer" x="-300%" y="-300%" width="700%" height="700%">
-                  <feGaussianBlur in="SourceGraphic" stdDeviation="28" />
+                  <feGaussianBlur in="SourceGraphic" stdDeviation={isMobile ? "12" : "28"} />
                 </filter>
 
                 <filter id="light-inner" x="-200%" y="-200%" width="500%" height="500%">
-                  <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+                  <feGaussianBlur in="SourceGraphic" stdDeviation={isMobile ? "4" : "10"} />
                 </filter>
               </defs>
 
@@ -322,18 +318,18 @@ export default function InfinityLoop() {
                     ref={glowRef}
                     cx={CX + A}
                     cy={CY}
-                    r="22"
+                    r={isMobile ? "30" : "22"}
                     fill="#7ECEB3"
-                    opacity="0.25"
+                    opacity={isMobile ? "0.5" : "0.25"}
                     filter="url(#light-outer)"
                   />
                   <circle
                     ref={lightRef}
                     cx={CX + A}
                     cy={CY}
-                    r="8"
-                    fill="rgba(255,255,255,0.7)"
-                    opacity="0.5"
+                    r={isMobile ? "5" : "8"}
+                    fill={isMobile ? "#7ECEB3" : "rgba(255,255,255,0.7)"}
+                    opacity={isMobile ? "0.9" : "0.5"}
                     filter="url(#light-inner)"
                   />
                 </>
