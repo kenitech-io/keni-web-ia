@@ -263,8 +263,6 @@ export default function InfinityLoop() {
                 fontSize="68"
                 fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
                 fontWeight="300"
-                letterSpacing="0.12em"
-                dx="0.06em"
                 className="select-none pointer-events-none dev-watermark"
               >
                 Dev
@@ -279,8 +277,6 @@ export default function InfinityLoop() {
                 fontSize="68"
                 fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
                 fontWeight="300"
-                letterSpacing="0.12em"
-                dx="0.06em"
                 className="select-none pointer-events-none ops-watermark"
               >
                 Ops
