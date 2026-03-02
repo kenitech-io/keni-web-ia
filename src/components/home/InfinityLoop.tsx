@@ -224,6 +224,18 @@ export default function InfinityLoop() {
                 <filter id="light-inner" x="-200%" y="-200%" width="500%" height="500%">
                   <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
                 </filter>
+
+                {/* Radial gradient glow for mobile (no heavy blur filters) */}
+                <radialGradient id="light-glow-grad" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stopColor="#7ECEB3" stopOpacity="0.6" />
+                  <stop offset="40%" stopColor="#7ECEB3" stopOpacity="0.2" />
+                  <stop offset="100%" stopColor="#7ECEB3" stopOpacity="0" />
+                </radialGradient>
+                <radialGradient id="light-core-grad" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stopColor="#ffffff" stopOpacity="0.7" />
+                  <stop offset="50%" stopColor="#7ECEB3" stopOpacity="0.3" />
+                  <stop offset="100%" stopColor="#7ECEB3" stopOpacity="0" />
+                </radialGradient>
               </defs>
 
               {/* Subtle glow fills */}
@@ -312,7 +324,7 @@ export default function InfinityLoop() {
               })}
 
               {/* Traveling light */}
-              {!reducedMotion && (
+              {!reducedMotion && !isMobile && (
                 <>
                   <circle
                     ref={glowRef}
@@ -331,6 +343,25 @@ export default function InfinityLoop() {
                     fill="rgba(255,255,255,0.7)"
                     opacity="0.5"
                     filter="url(#light-inner)"
+                  />
+                </>
+              )}
+              {/* Mobile: gradient-based glow (no heavy blur filters) */}
+              {!reducedMotion && isMobile && (
+                <>
+                  <circle
+                    ref={glowRef}
+                    cx={CX + A}
+                    cy={CY}
+                    r="60"
+                    fill="url(#light-glow-grad)"
+                  />
+                  <circle
+                    ref={lightRef}
+                    cx={CX + A}
+                    cy={CY}
+                    r="20"
+                    fill="url(#light-core-grad)"
                   />
                 </>
               )}
