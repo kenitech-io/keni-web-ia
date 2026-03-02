@@ -53,6 +53,9 @@ html {
     radial-gradient(ellipse at 75% 15%, rgba(126, 206, 179, 0.4) 0%, transparent 45%),
     radial-gradient(ellipse at 55% 85%, rgba(229, 196, 78, 0.25) 0%, transparent 45%),
     radial-gradient(ellipse at 5% 5%, rgba(107, 192, 163, 0.35) 0%, transparent 35%);
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 /* Noise/grain texture overlay */
@@ -65,6 +68,9 @@ html {
   background-size: 256px 256px;
   pointer-events: none;
   z-index: 1;
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 /* Glow effects */
