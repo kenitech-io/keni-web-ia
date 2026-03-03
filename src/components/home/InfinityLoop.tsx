@@ -385,6 +385,7 @@ export default function InfinityLoop() {
                       className="cursor-pointer"
                       onMouseEnter={() => setHoveredLabel(label.text)}
                       onMouseLeave={() => setHoveredLabel(null)}
+                      onClick={() => setHoveredLabel(hoveredLabel === label.text ? null : label.text)}
                     />
                     <text
                       x={pos.x}
@@ -399,6 +400,7 @@ export default function InfinityLoop() {
                       className="cursor-pointer select-none"
                       onMouseEnter={() => setHoveredLabel(label.text)}
                       onMouseLeave={() => setHoveredLabel(null)}
+                      onClick={() => setHoveredLabel(hoveredLabel === label.text ? null : label.text)}
                     >
                       {label.text}
                     </text>
@@ -452,7 +454,7 @@ export default function InfinityLoop() {
 
             {/* Description below the loop */}
             <div
-              className="h-16 flex items-start justify-center mt-2 md:-mt-4 pointer-events-none"
+              className="h-14 md:h-16 flex items-start justify-center mt-4 md:mt-2 md:-mt-4 pointer-events-none px-6 md:px-0"
               style={{ fontFamily: "-apple-system, BlinkMacSystemFont, system-ui, sans-serif" }}
             >
               <div
@@ -465,9 +467,9 @@ export default function InfinityLoop() {
                 }}
               >
                 <span
-                  className="block mb-1.5"
+                  className="block mb-1 md:mb-1.5"
                   style={{
-                    fontSize: "11px",
+                    fontSize: "10px",
                     fontWeight: 600,
                     letterSpacing: "0.2em",
                     color: "#7ECEB3",
@@ -476,11 +478,11 @@ export default function InfinityLoop() {
                   {hoveredData?.text}
                 </span>
                 <p
+                  className="text-[12px] md:text-[14px]"
                   style={{
-                    fontSize: "14px",
-                    lineHeight: "1.6",
+                    lineHeight: "1.5",
                     color: "rgba(250,250,250,0.45)",
-                    maxWidth: "400px",
+                    maxWidth: "280px",
                     margin: "0 auto",
                   }}
                 >
