@@ -458,7 +458,7 @@ export default function InfinityLoop() {
 
             {/* Description below the loop */}
             <div
-              className="h-14 md:h-16 flex items-start justify-center mt-4 md:mt-2 md:-mt-4 pointer-events-none px-6 md:px-0"
+              className="h-14 md:h-16 flex items-start justify-center mt-8 md:mt-2 md:-mt-4 pointer-events-none px-6 md:px-0"
               style={{ fontFamily: "-apple-system, BlinkMacSystemFont, system-ui, sans-serif" }}
             >
               <div
