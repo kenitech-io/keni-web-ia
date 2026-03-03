@@ -183,7 +183,7 @@ export default function InfinityLoop() {
     if (reducedMotion) return;
 
     // Speeds in radians per millisecond
-    const FAST_SPEED = (Math.PI * 2) / 5000;   // first pass: 5s per loop
+    const FAST_SPEED = (Math.PI * 2) / 3000;   // first pass: 3s per loop
     const NORMAL_SPEED = (Math.PI * 2) / DURATION; // after: 12s per loop
     const EASE_DURATION = 3000; // 3s to ease from fast to normal
 
