@@ -24,23 +24,11 @@ const values = [
   },
 ];
 
-const reasons = [
-  {
-    title: "We've been on your side of the table",
-    text: "We've been the on-call engineer at 3 AM. We've inherited undocumented infra. We build for the people who have to live with it.",
-  },
-  {
-    title: "No vendor lock-in",
-    text: "We use open-source, industry-standard tools. When we're done, everything belongs to you — code, docs, pipelines, all of it.",
-  },
-  {
-    title: "Remote-first, timezone-flexible",
-    text: "We work async by default and overlap with US business hours. Same Slack, same repos, no friction.",
-  },
-  {
-    title: "You keep the knowledge",
-    text: "We don't just deliver and disappear. We pair with your team, write runbooks, and make sure your engineers own the system.",
-  },
+const stats = [
+  { number: "99.9%", label: "Uptime delivered", detail: "across client infrastructure" },
+  { number: "10+", label: "Years of experience", detail: "in DevOps & Platform Engineering" },
+  { number: "40%", label: "Average cost reduction", detail: "on cloud infrastructure" },
+  { number: "0", label: "Vendor lock-in", detail: "open standards, always" },
 ];
 
 export default function AboutPage() {
@@ -95,28 +83,22 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* Why Keni */}
+      {/* Numbers */}
       <section className="py-section">
         <Container>
-          <FadeIn>
-            <h2 className="text-display-sm font-medium text-foreground text-center mb-16">
-              Why Keni
-            </h2>
-          </FadeIn>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-            {reasons.map((item, index) => (
-              <FadeIn key={item.title} delay={index * 0.1}>
-                <div className="relative rounded-2xl border border-white/[0.06] overflow-hidden p-8 md:p-10">
-                  <div className="absolute inset-0 mesh-gradient-strong opacity-40" />
-                  <div className="absolute inset-0 noise" />
-                  <div className="relative">
-                    <h3 className="text-base font-medium text-foreground mb-3">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-foreground-secondary/60">
-                      {item.text}
-                    </p>
-                  </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6 max-w-4xl mx-auto">
+            {stats.map((stat, index) => (
+              <FadeIn key={stat.label} type="up" delay={index * 0.1}>
+                <div className="text-center">
+                  <p className="text-4xl md:text-5xl font-semibold gradient-text mb-2">
+                    {stat.number}
+                  </p>
+                  <p className="text-sm font-medium text-foreground mb-1">
+                    {stat.label}
+                  </p>
+                  <p className="text-xs text-foreground-secondary/50">
+                    {stat.detail}
+                  </p>
                 </div>
               </FadeIn>
             ))}
