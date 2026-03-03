@@ -136,8 +136,8 @@ export default function InfinityLoop() {
         textEl.setAttribute("fill", `rgba(250,250,250,${baseOpacity})`);
       }
     }
-    if (devRef.current) devRef.current.setAttribute("opacity", "0.1");
-    if (opsRef.current) opsRef.current.setAttribute("opacity", "0.1");
+    if (devRef.current) devRef.current.setAttribute("opacity", "0.18");
+    if (opsRef.current) opsRef.current.setAttribute("opacity", "0.18");
   }, [reducedMotion]);
 
   // Fallback: if labels aren't revealed after 8s, show them anyway
@@ -154,10 +154,10 @@ export default function InfinityLoop() {
         if (textEl) textEl.setAttribute("fill", `rgba(250,250,250,${baseOpacity})`);
       }
       if (devRef.current && devRef.current.getAttribute("opacity") === "0") {
-        devRef.current.setAttribute("opacity", "0.1");
+        devRef.current.setAttribute("opacity", "0.18");
       }
       if (opsRef.current && opsRef.current.getAttribute("opacity") === "0") {
-        opsRef.current.setAttribute("opacity", "0.1");
+        opsRef.current.setAttribute("opacity", "0.18");
       }
     }, 8000);
     return () => clearTimeout(timeout);
@@ -207,10 +207,10 @@ export default function InfinityLoop() {
 
       // Fade in Dev/Ops watermarks when light is well into their side
       if (devRef.current && devRef.current.getAttribute("opacity") === "0" && point.x < CX - A * 0.15) {
-        devRef.current.setAttribute("opacity", "0.1");
+        devRef.current.setAttribute("opacity", "0.18");
       }
       if (opsRef.current && opsRef.current.getAttribute("opacity") === "0" && point.x > CX + A * 0.15) {
-        opsRef.current.setAttribute("opacity", "0.1");
+        opsRef.current.setAttribute("opacity", "0.18");
       }
 
       const mobile = isMobileRef.current;
