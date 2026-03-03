@@ -10,8 +10,7 @@ const footerLinks = [
 ];
 
 const socialLinks = [
-  { name: "LinkedIn", href: "#" },
-  { name: "GitHub", href: "#" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/company/keniengineering/" },
 ];
 
 export default function Footer() {

@@ -119,11 +119,8 @@ export default function ContactPageContent() {
                     </p>
                     <p className="text-body text-muted">Remote-first.</p>
                     <div className="flex gap-6">
-                      <a href="#" className="text-foreground-secondary hover:text-accent transition-colors">
+                      <a href="https://www.linkedin.com/company/keniengineering/" target="_blank" rel="noopener noreferrer" className="text-foreground-secondary hover:text-accent transition-colors">
                         LinkedIn
-                      </a>
-                      <a href="#" className="text-foreground-secondary hover:text-accent transition-colors">
-                        GitHub
                       </a>
                     </div>
                   </div>
