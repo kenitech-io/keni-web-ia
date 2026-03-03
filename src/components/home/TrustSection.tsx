@@ -4,15 +4,20 @@ import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
 
 const technologies = [
-  { name: "Cloud", icon: "https://cdn.simpleicons.org/icloud/white" },
-  { name: "Terraform", icon: "https://cdn.simpleicons.org/terraform/white" },
-  { name: "1Password", icon: "https://cdn.simpleicons.org/1password/white" },
+  { name: "AWS", icon: "https://cdn.simpleicons.org/amazonaws/white" },
+  { name: "Google Cloud", icon: "https://cdn.simpleicons.org/googlecloud/white" },
+  { name: "Azure", icon: "https://cdn.simpleicons.org/microsoftazure/white" },
+  { name: "Kubernetes", icon: "https://cdn.simpleicons.org/kubernetes/white" },
   { name: "Docker", icon: "https://cdn.simpleicons.org/docker/white" },
+  { name: "Terraform", icon: "https://cdn.simpleicons.org/terraform/white" },
+  { name: "Ansible", icon: "https://cdn.simpleicons.org/ansible/white" },
   { name: "GitHub Actions", icon: "https://cdn.simpleicons.org/githubactions/white" },
+  { name: "ArgoCD", icon: "https://cdn.simpleicons.org/argo/white" },
   { name: "Prometheus", icon: "https://cdn.simpleicons.org/prometheus/white" },
   { name: "Grafana", icon: "https://cdn.simpleicons.org/grafana/white" },
-  { name: "Ansible", icon: "https://cdn.simpleicons.org/ansible/white" },
-  { name: "On Premise", icon: "https://cdn.simpleicons.org/serverfault/white" },
+  { name: "Datadog", icon: "https://cdn.simpleicons.org/datadog/white" },
+  { name: "Linux", icon: "https://cdn.simpleicons.org/linux/white" },
+  { name: "Pulumi", icon: "https://cdn.simpleicons.org/pulumi/white" },
 ];
 
 export default function TrustSection() {
