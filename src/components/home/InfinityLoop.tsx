@@ -111,22 +111,6 @@ export default function InfinityLoop() {
     return () => mq.removeEventListener("change", handler);
   }, []);
 
-  // Center Dev/Ops by measuring actual rendered text bounding box
-  useEffect(() => {
-    const centerText = (el: SVGTextElement | null, targetX: number, targetY: number) => {
-      if (!el) return;
-      // Remove any previous transform so getBBox measures raw text
-      el.removeAttribute("transform");
-      const bbox = el.getBBox();
-      // Translate so the bbox center lands exactly on (targetX, targetY)
-      const dx = targetX - (bbox.x + bbox.width / 2);
-      const dy = targetY - (bbox.y + bbox.height / 2);
-      el.setAttribute("transform", `translate(${dx}, ${dy})`);
-    };
-    // Left loop center: (340, 300), Right loop center: (660, 300)
-    centerText(devRef.current, 340, 300);
-    centerText(opsRef.current, 660, 300);
-  }, []);
 
   const setPos = useCallback(
     (el: SVGCircleElement | null, x: number, y: number) => {
@@ -349,11 +333,13 @@ export default function InfinityLoop() {
                 className="infinity-line-draw"
               />
 
-              {/* Dev / Ops watermarks — centered via getBBox measurement */}
+              {/* Dev / Ops watermarks — centered in each lobe */}
               <text
                 ref={devRef}
-                x={0}
-                y={0}
+                x={318}
+                y={300}
+                textAnchor="middle"
+                dy="0.35em"
                 fill="#5CAED4"
                 opacity="0"
                 fontSize="68"
@@ -366,8 +352,10 @@ export default function InfinityLoop() {
               </text>
               <text
                 ref={opsRef}
-                x={0}
-                y={0}
+                x={682}
+                y={300}
+                textAnchor="middle"
+                dy="0.35em"
                 fill="#7ECEB3"
                 opacity="0"
                 fontSize="68"
