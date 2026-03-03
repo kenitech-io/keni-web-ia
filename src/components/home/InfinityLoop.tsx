@@ -370,6 +370,10 @@ export default function InfinityLoop() {
               {/* Stage labels — light reveals them, hover keeps them */}
               {LABEL_POSITIONS.map((pos, i) => {
                 const label = LABELS[i];
+                const handleTap = (e: React.MouseEvent | React.TouchEvent) => {
+                  e.preventDefault();
+                  setHoveredLabel(hoveredLabel === label.text ? null : label.text);
+                };
 
                 return (
                   <g
@@ -377,15 +381,15 @@ export default function InfinityLoop() {
                     ref={(el) => { labelRefs.current[i] = el; }}
                   >
                     <rect
-                      x={pos.x - 50}
-                      y={pos.y - 14}
-                      width="100"
-                      height="28"
+                      x={pos.x - 60}
+                      y={pos.y - 22}
+                      width="120"
+                      height="44"
                       fill="transparent"
                       className="cursor-pointer"
-                      onMouseEnter={() => setHoveredLabel(label.text)}
-                      onMouseLeave={() => setHoveredLabel(null)}
-                      onClick={() => setHoveredLabel(hoveredLabel === label.text ? null : label.text)}
+                      onMouseEnter={() => { if (!isMobile) setHoveredLabel(label.text); }}
+                      onMouseLeave={() => { if (!isMobile) setHoveredLabel(null); }}
+                      onTouchEnd={handleTap}
                     />
                     <text
                       x={pos.x}
@@ -398,9 +402,9 @@ export default function InfinityLoop() {
                       fontWeight="500"
                       letterSpacing="0.2em"
                       className="cursor-pointer select-none"
-                      onMouseEnter={() => setHoveredLabel(label.text)}
-                      onMouseLeave={() => setHoveredLabel(null)}
-                      onClick={() => setHoveredLabel(hoveredLabel === label.text ? null : label.text)}
+                      onMouseEnter={() => { if (!isMobile) setHoveredLabel(label.text); }}
+                      onMouseLeave={() => { if (!isMobile) setHoveredLabel(null); }}
+                      onTouchEnd={handleTap}
                     >
                       {label.text}
                     </text>
