@@ -75,7 +75,11 @@ export default function InfinityLoop() {
   const opsRef = useRef<SVGTextElement>(null);
   const labelRefs = useRef<(SVGGElement | null)[]>([]);
   const animationRef = useRef<number>(0);
-  const startTimeRef = useRef<number>(0);
+  const prevTimestampRef = useRef<number>(0);
+  const angleRef = useRef<number>(Math.PI);
+  const revealedRef = useRef<Set<number>>(new Set());
+  const revealDoneAtRef = useRef<number>(0);
+  const currentSpeedRef = useRef<number>(0);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [hoveredLabel, setHoveredLabel] = useState<string | null>(null);
@@ -136,14 +140,53 @@ export default function InfinityLoop() {
 
   useEffect(() => {
     if (reducedMotion) return;
+
+    // Speeds in radians per millisecond
+    const FAST_SPEED = (Math.PI * 2) / 5000;   // first pass: 5s per loop
+    const NORMAL_SPEED = (Math.PI * 2) / DURATION; // after: 12s per loop
+    const EASE_DURATION = 3000; // 3s to ease from fast to normal
+
+    currentSpeedRef.current = FAST_SPEED;
+
     const animate = (timestamp: number) => {
-      if (!startTimeRef.current) startTimeRef.current = timestamp;
-      const elapsed = timestamp - startTimeRef.current;
-      const progress = (elapsed % DURATION) / DURATION;
-      const t = progress * Math.PI * 2;
+      if (!prevTimestampRef.current) prevTimestampRef.current = timestamp;
+      const dt = Math.min(timestamp - prevTimestampRef.current, 50);
+      prevTimestampRef.current = timestamp;
+
+      const allRevealed = revealedRef.current.size >= LABELS.length;
+
+      // Track when all labels were revealed
+      if (allRevealed && !revealDoneAtRef.current) {
+        revealDoneAtRef.current = timestamp;
+      }
+
+      // Smoothly ease from fast to normal speed over EASE_DURATION
+      let targetSpeed: number;
+      if (!allRevealed) {
+        targetSpeed = FAST_SPEED;
+      } else {
+        const sinceDone = timestamp - revealDoneAtRef.current;
+        const easeProgress = Math.min(sinceDone / EASE_DURATION, 1);
+        // Smooth ease-out curve
+        const eased = 1 - Math.pow(1 - easeProgress, 3);
+        targetSpeed = FAST_SPEED + (NORMAL_SPEED - FAST_SPEED) * eased;
+      }
+
+      currentSpeedRef.current = targetSpeed;
+      angleRef.current += currentSpeedRef.current * dt;
+
+      const t = angleRef.current % (Math.PI * 2);
       const point = lemniscatePoint(t, CX, CY, A);
       setPos(lightRef.current, point.x, point.y);
       setPos(glowRef.current, point.x, point.y);
+
+      // Fade in Dev/Ops watermarks when light is on their side
+      if (devRef.current && devRef.current.getAttribute("opacity") === "0" && point.x < CX) {
+        devRef.current.setAttribute("opacity", "0.1");
+      }
+      if (opsRef.current && opsRef.current.getAttribute("opacity") === "0" && point.x > CX) {
+        opsRef.current.setAttribute("opacity", "0.1");
+      }
 
       const mobile = isMobileRef.current;
 
@@ -152,10 +195,26 @@ export default function InfinityLoop() {
       for (let i = 0; i < LABELS.length; i++) {
         const el = labelRefs.current[i];
         if (!el) continue;
-        const isHovered = hoveredRef.current === LABELS[i].text;
+
         const dist = angularDist(t, LABELS[i].angle);
-        // Intensity: 0 when far, 1 when light is right on it
         const intensity = Math.max(0, 1 - dist / LIGHT_RADIUS);
+        const isRevealed = revealedRef.current.has(i);
+
+        // Label not yet revealed: stay hidden until light touches it
+        if (!isRevealed) {
+          if (intensity < 0.3) {
+            const textEl = el.querySelector("text");
+            if (textEl) {
+              textEl.setAttribute("fill", "rgba(250,250,250,0)");
+              textEl.setAttribute("filter", "none");
+            }
+            continue;
+          }
+          // Light reached this label — reveal it
+          revealedRef.current.add(i);
+        }
+
+        const isHovered = hoveredRef.current === LABELS[i].text;
         const lit = isHovered || intensity > 0.1;
         const textEl = el.querySelector("text");
         if (textEl) {
@@ -255,11 +314,12 @@ export default function InfinityLoop() {
                 x={0}
                 y={0}
                 fill="#5CAED4"
-                opacity="0.1"
+                opacity="0"
                 fontSize="68"
                 fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
                 fontWeight="300"
                 className="select-none pointer-events-none dev-watermark"
+                style={{ transition: "opacity 2s ease" }}
               >
                 Dev
               </text>
@@ -268,11 +328,12 @@ export default function InfinityLoop() {
                 x={0}
                 y={0}
                 fill="#7ECEB3"
-                opacity="0.1"
+                opacity="0"
                 fontSize="68"
                 fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
                 fontWeight="300"
                 className="select-none pointer-events-none ops-watermark"
+                style={{ transition: "opacity 2s ease" }}
               >
                 Ops
               </text>
@@ -301,7 +362,7 @@ export default function InfinityLoop() {
                       y={pos.y}
                       textAnchor="middle"
                       dominantBaseline="middle"
-                      fill="rgba(250,250,250,0.4)"
+                      fill="rgba(250,250,250,0)"
                       fontSize="12"
                       fontFamily="-apple-system, BlinkMacSystemFont, system-ui, sans-serif"
                       fontWeight="500"
