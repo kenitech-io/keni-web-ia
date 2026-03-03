@@ -24,16 +24,26 @@ const values = [
   },
 ];
 
-const team = [
+const process = [
   {
-    name: "Ane",
-    role: "Co-founder & Platform Engineer",
-    bio: "10+ years building infrastructure for startups and enterprises.",
+    step: "01",
+    title: "Audit",
+    text: "We review your current infrastructure, workflows, and pain points. No assumptions — just listening.",
   },
   {
-    name: "Mikel",
-    role: "Co-founder & DevOps Engineer",
-    bio: "From bare metal to Kubernetes. Obsessed with automation.",
+    step: "02",
+    title: "Plan",
+    text: "We design a clear roadmap tailored to your team, timeline, and budget. You approve every step.",
+  },
+  {
+    step: "03",
+    title: "Build",
+    text: "We implement alongside your engineers. Real PRs, real standups, real collaboration.",
+  },
+  {
+    step: "04",
+    title: "Handoff",
+    text: "We document everything, train your team, and make sure you're confident before we step back.",
   },
 ];
 
@@ -89,27 +99,27 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* Team */}
+      {/* Process */}
       <section className="py-section">
         <Container>
           <FadeIn>
             <h2 className="text-display-sm font-medium text-foreground text-center mb-16">
-              Our Team
+              How We Work
             </h2>
           </FadeIn>
-          <div className="flex flex-wrap justify-center gap-6 max-w-2xl mx-auto">
-            {team.map((member, index) => (
-              <FadeIn key={member.name} delay={index * 0.12} className="w-full md:w-[calc(50%-12px)]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            {process.map((item, index) => (
+              <FadeIn key={item.step} delay={index * 0.1}>
                 <div className="relative rounded-2xl border border-white/[0.06] overflow-hidden p-8 md:p-10">
                   <div className="absolute inset-0 mesh-gradient-strong opacity-40" />
                   <div className="absolute inset-0 noise" />
                   <div className="relative">
-                    <h3 className="text-xl font-medium text-foreground mb-1">
-                      {member.name}
+                    <span className="text-xs font-mono text-accent mb-3 block">{item.step}</span>
+                    <h3 className="text-xl font-medium text-foreground mb-3">
+                      {item.title}
                     </h3>
-                    <p className="text-sm text-accent mb-5">{member.role}</p>
                     <p className="text-sm leading-relaxed text-foreground-secondary/60">
-                      {member.bio}
+                      {item.text}
                     </p>
                   </div>
                 </div>
