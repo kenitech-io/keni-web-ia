@@ -222,10 +222,10 @@ export default function InfinityLoop() {
       setPos(glowRef.current, point.x, point.y);
 
       // Fade in Dev/Ops watermarks when light is well into their side
-      if (devRef.current && devRef.current.getAttribute("opacity") === "0" && point.x < CX - A * 0.3) {
+      if (devRef.current && devRef.current.getAttribute("opacity") === "0" && point.x < CX - A * 0.15) {
         devRef.current.setAttribute("opacity", "0.1");
       }
-      if (opsRef.current && opsRef.current.getAttribute("opacity") === "0" && point.x > CX + A * 0.3) {
+      if (opsRef.current && opsRef.current.getAttribute("opacity") === "0" && point.x > CX + A * 0.15) {
         opsRef.current.setAttribute("opacity", "0.1");
       }
 

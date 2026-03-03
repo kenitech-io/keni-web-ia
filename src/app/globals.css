@@ -197,13 +197,6 @@ textarea:-webkit-autofill:focus {
     opacity: 1;
   }
 
-  .dev-watermark {
-    opacity: 0.2 !important;
-  }
-
-  .ops-watermark {
-    opacity: 0.2 !important;
-  }
 }
 
 /* Scrollbar styling */
