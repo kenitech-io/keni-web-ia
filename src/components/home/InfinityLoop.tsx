@@ -138,6 +138,47 @@ export default function InfinityLoop() {
     []
   );
 
+  // If reduced motion: reveal everything immediately
+  useEffect(() => {
+    if (!reducedMotion) return;
+    const mobile = isMobileRef.current;
+    const baseOpacity = mobile ? 0.7 : 0.4;
+    for (let i = 0; i < LABELS.length; i++) {
+      const el = labelRefs.current[i];
+      if (!el) continue;
+      revealedRef.current.add(i);
+      const textEl = el.querySelector("text");
+      if (textEl) {
+        textEl.setAttribute("fill", `rgba(250,250,250,${baseOpacity})`);
+      }
+    }
+    if (devRef.current) devRef.current.setAttribute("opacity", "0.1");
+    if (opsRef.current) opsRef.current.setAttribute("opacity", "0.1");
+  }, [reducedMotion]);
+
+  // Fallback: if labels aren't revealed after 8s, show them anyway
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (revealedRef.current.size >= LABELS.length) return;
+      const mobile = isMobileRef.current;
+      const baseOpacity = mobile ? 0.7 : 0.4;
+      for (let i = 0; i < LABELS.length; i++) {
+        if (revealedRef.current.has(i)) continue;
+        revealedRef.current.add(i);
+        const el = labelRefs.current[i];
+        const textEl = el?.querySelector("text");
+        if (textEl) textEl.setAttribute("fill", `rgba(250,250,250,${baseOpacity})`);
+      }
+      if (devRef.current && devRef.current.getAttribute("opacity") === "0") {
+        devRef.current.setAttribute("opacity", "0.1");
+      }
+      if (opsRef.current && opsRef.current.getAttribute("opacity") === "0") {
+        opsRef.current.setAttribute("opacity", "0.1");
+      }
+    }, 8000);
+    return () => clearTimeout(timeout);
+  }, []);
+
   useEffect(() => {
     if (reducedMotion) return;
 
