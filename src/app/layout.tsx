@@ -58,8 +58,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
       <body className="font-sans bg-background text-foreground antialiased" style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, 'Helvetica Neue', sans-serif" }}>
-        <div className="mesh-gradient-strong fixed inset-0 z-0" />
-        <div className="noise fixed inset-0 z-0" />
+        <div className="mesh-gradient-strong fixed inset-0 z-0" style={{ transform: "translateZ(0)" }} />
+        <div className="noise fixed inset-0 z-0" style={{ transform: "translateZ(0)" }} />
         <div className="relative z-10">
           <Navbar />
           <main>{children}</main>
