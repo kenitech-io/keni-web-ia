@@ -24,26 +24,22 @@ const values = [
   },
 ];
 
-const process = [
+const reasons = [
   {
-    step: "01",
-    title: "Audit",
-    text: "We review your current infrastructure, workflows, and pain points. No assumptions — just listening.",
+    title: "We've been on your side of the table",
+    text: "We've been the on-call engineer at 3 AM. We've inherited undocumented infra. We build for the people who have to live with it.",
   },
   {
-    step: "02",
-    title: "Plan",
-    text: "We design a clear roadmap tailored to your team, timeline, and budget. You approve every step.",
+    title: "No vendor lock-in",
+    text: "We use open-source, industry-standard tools. When we're done, everything belongs to you — code, docs, pipelines, all of it.",
   },
   {
-    step: "03",
-    title: "Build",
-    text: "We implement alongside your engineers. Real PRs, real standups, real collaboration.",
+    title: "Remote-first, timezone-flexible",
+    text: "We work async by default and overlap with US business hours. Same Slack, same repos, no friction.",
   },
   {
-    step: "04",
-    title: "Handoff",
-    text: "We document everything, train your team, and make sure you're confident before we step back.",
+    title: "You keep the knowledge",
+    text: "We don't just deliver and disappear. We pair with your team, write runbooks, and make sure your engineers own the system.",
   },
 ];
 
@@ -99,23 +95,22 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* Process */}
+      {/* Why Keni */}
       <section className="py-section">
         <Container>
           <FadeIn>
             <h2 className="text-display-sm font-medium text-foreground text-center mb-16">
-              How We Work
+              Why Keni
             </h2>
           </FadeIn>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-            {process.map((item, index) => (
-              <FadeIn key={item.step} delay={index * 0.1}>
+            {reasons.map((item, index) => (
+              <FadeIn key={item.title} delay={index * 0.1}>
                 <div className="relative rounded-2xl border border-white/[0.06] overflow-hidden p-8 md:p-10">
                   <div className="absolute inset-0 mesh-gradient-strong opacity-40" />
                   <div className="absolute inset-0 noise" />
                   <div className="relative">
-                    <span className="text-xs font-mono text-accent mb-3 block">{item.step}</span>
-                    <h3 className="text-xl font-medium text-foreground mb-3">
+                    <h3 className="text-base font-medium text-foreground mb-3">
                       {item.title}
                     </h3>
                     <p className="text-sm leading-relaxed text-foreground-secondary/60">
