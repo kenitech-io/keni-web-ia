@@ -59,7 +59,7 @@ export default function ContactPageContent() {
               <div className="absolute inset-0 bg-gradient-to-br from-orange-400/20 via-orange-500/10 to-orange-600/10" />
               <div className="relative z-10">
                 <div className="flex justify-center items-center mb-6">
-                  <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-orange-400/40">
+                  <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-orange-400/40">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src="/team/ane.png" alt="Ane" className="w-full h-full object-cover" />
                   </div>
