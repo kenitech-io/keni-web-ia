@@ -58,12 +58,12 @@ export default function ContactPageContent() {
             <div className="relative rounded-2xl border border-orange-400/30 overflow-hidden backdrop-blur-xl backdrop-saturate-150 bg-orange-500/20 p-10 text-center">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-400/20 via-orange-500/10 to-orange-600/10" />
               <div className="relative z-10">
-                <div className="flex justify-center items-center gap-4 mb-6">
+                <div className="flex justify-center items-center mb-6">
                   <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-orange-400/40">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src="/team/ane.png" alt="Ane" className="w-full h-full object-cover" />
                   </div>
-                  <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-orange-400/40">
+                  <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-orange-400/40 -ml-3">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src="/team/mikel.png" alt="Mikel" className="w-full h-full object-cover" />
                   </div>
