@@ -7,12 +7,11 @@ import FadeIn from "@/components/ui/FadeIn";
 import { BOOKING_URL, CONTACT_EMAIL } from "@/lib/config";
 
 const serviceOptions = [
-  "Monitoring & Observability",
-  "Cloud Migration",
-  "Cloud Management",
+  "Internal Development Platform",
   "CI/CD Pipelines",
+  "Cloud Migration",
   "Infrastructure as Code",
-  "Kubernetes & Containers",
+  "Monitoring & Observability",
   "Not sure yet",
 ];
 
@@ -50,21 +49,20 @@ export default function ContactPageContent() {
   };
 
   const inputClasses =
-    "bg-transparent border-b border-border-color focus:border-accent py-3 text-body text-foreground w-full outline-none transition-colors placeholder:text-muted";
+    "bg-transparent border-b border-border-color focus:border-foreground py-3 text-body text-foreground w-full outline-none transition-colors placeholder:text-muted";
   const labelClasses =
-    "block text-label uppercase tracking-widest text-foreground-secondary mb-2";
+    "block text-label uppercase tracking-widest text-muted mb-2";
 
   return (
     <section className="pt-32 pb-section">
       <Container>
-        {/* Header */}
         <FadeIn>
           <div className="text-center mb-12">
-            <p className="text-label uppercase tracking-widest text-accent font-mono mb-4">
+            <p className="text-label uppercase tracking-widest text-muted mb-4">
               CONTACT
             </p>
             <h1 className="text-display-sm text-foreground mb-6">
-              Let&apos;s take this off your plate.
+              Let&apos;s take this off your plate
             </h1>
             <p className="text-body text-foreground-secondary max-w-[480px] mx-auto">
               Pick a time that works for you. 30 minutes, no pitch, no pressure
@@ -73,47 +71,41 @@ export default function ContactPageContent() {
           </div>
         </FadeIn>
 
-        {/* Book a call — button to open Google Calendar */}
         <FadeIn delay={0.15}>
           <div className="max-w-[480px] mx-auto mb-20">
-            <div className="relative rounded-2xl border border-orange-400/30 overflow-hidden backdrop-blur-xl backdrop-saturate-150 bg-orange-500/20 p-10 text-center">
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-400/20 via-orange-500/10 to-orange-600/10" />
-              <div className="relative z-10">
-                <div className="flex justify-center items-center mb-6">
-                  <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-orange-400/40">
-                    <Image src="/team/ane.png" alt="Ane" width={80} height={80} className="w-full h-full object-cover" />
-                  </div>
-                  <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-orange-400/40 -ml-3">
-                    <Image src="/team/mikel.png" alt="Mikel" width={80} height={80} className="w-full h-full object-cover" />
-                  </div>
+            <div className="rounded-2xl border border-border-color bg-surface p-10 text-center">
+              <div className="flex justify-center items-center mb-6">
+                <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-border-color">
+                  <Image src="/team/ane.jpg" alt="Ane" width={80} height={80} className="w-full h-full object-cover" />
                 </div>
-                <p className="text-body text-white mb-6">
-                  Pick a 30-minute slot that works for you.
-                </p>
-                <a
-                  href={BOOKING_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block bg-accent hover:bg-accent-hover text-background px-8 py-4 text-body font-medium rounded-full transition-colors"
-                >
-                  Schedule a Call
-                </a>
+                <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-border-color -ml-3">
+                  <Image src="/team/mikel.jpg" alt="Mikel" width={80} height={80} className="w-full h-full object-cover" />
+                </div>
               </div>
+              <p className="text-body text-foreground-secondary mb-6">
+                Pick a 30-minute slot that works for you.
+              </p>
+              <a
+                href={BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-foreground hover:bg-charcoal text-background px-8 py-4 text-body font-medium rounded-full transition-colors"
+              >
+                Schedule a Call
+              </a>
             </div>
           </div>
         </FadeIn>
 
-        {/* Divider */}
         <FadeIn delay={0.2}>
-          <div className="glow-line w-full max-w-[200px] mx-auto mb-20" />
+          <div className="w-full max-w-[200px] mx-auto mb-20 h-px bg-border-color" />
         </FadeIn>
 
-        {/* Alternative: contact form toggle */}
         <FadeIn delay={0.25}>
           <div className="text-center mb-12">
             <button
               onClick={() => setShowForm(!showForm)}
-              className="text-foreground-secondary hover:text-foreground text-body transition-colors"
+              className="text-muted hover:text-foreground text-body transition-colors"
             >
               {showForm
                 ? "Hide form"
@@ -129,10 +121,9 @@ export default function ContactPageContent() {
           <FadeIn delay={0}>
             <div className="max-w-[800px] mx-auto">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                {/* Left */}
                 <div>
                   <h2 className="text-heading text-foreground mb-6">
-                    Send us a message.
+                    Send us a message
                   </h2>
                   <p className="text-body text-foreground-secondary mb-10">
                     We&apos;ll get back to you within 24 hours.
@@ -141,21 +132,20 @@ export default function ContactPageContent() {
                     <p>
                       <a
                         href={`mailto:${CONTACT_EMAIL}`}
-                        className="text-body text-foreground hover:text-accent transition-colors"
+                        className="text-body text-foreground hover:text-muted transition-colors"
                       >
                         {CONTACT_EMAIL}
                       </a>
                     </p>
                     <p className="text-body text-muted">Remote-first.</p>
                     <div className="flex gap-6">
-                      <a href="https://www.linkedin.com/company/keniengineering/" target="_blank" rel="noopener noreferrer" className="text-foreground-secondary hover:text-accent transition-colors">
+                      <a href="https://www.linkedin.com/company/keniengineering/" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-foreground transition-colors">
                         LinkedIn
                       </a>
                     </div>
                   </div>
                 </div>
 
-                {/* Right — Form */}
                 <div>
                   {status === "sent" ? (
                     <div className="text-center py-12">
@@ -179,9 +169,9 @@ export default function ContactPageContent() {
                       <div>
                         <label htmlFor="service" className={labelClasses}>What do you need help with?</label>
                         <select id="service" value={service} onChange={(e) => setService(e.target.value)} className={`${inputClasses} appearance-none cursor-pointer`}>
-                          <option value="" disabled className="bg-surface text-foreground-secondary">Select a service...</option>
+                          <option value="" disabled className="bg-background text-muted">Select a service...</option>
                           {serviceOptions.map((option) => (
-                            <option key={option} value={option} className="bg-surface text-foreground">{option}</option>
+                            <option key={option} value={option} className="bg-background text-foreground">{option}</option>
                           ))}
                         </select>
                       </div>
@@ -192,12 +182,12 @@ export default function ContactPageContent() {
                       <button
                         type="submit"
                         disabled={status === "sending"}
-                        className="bg-accent hover:bg-accent-hover disabled:opacity-50 text-background w-full sm:w-auto px-8 py-4 text-body font-medium rounded-full transition-colors"
+                        className="bg-foreground hover:bg-charcoal disabled:opacity-50 text-background w-full sm:w-auto px-8 py-4 text-body font-medium rounded-full transition-colors"
                       >
                         {status === "sending" ? "Sending..." : "Send Message"}
                       </button>
                       {status === "error" && (
-                        <p className="text-sm text-red-400">Something went wrong. Please try again or email us directly.</p>
+                        <p className="text-sm text-red-600">Something went wrong. Please try again or email us directly.</p>
                       )}
                     </form>
                   )}

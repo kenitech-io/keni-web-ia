@@ -1,22 +1,15 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const spaceGrotesk = Space_Grotesk({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
+  variable: "--font-inter",
   display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains-mono",
-  display: "swap",
-  weight: ["400", "500"],
+  weight: ["300", "400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -25,17 +18,15 @@ export const metadata: Metadata = {
     template: "%s | Keni",
   },
   description:
-    "DevOps and Platform Engineering consulting for US companies. CI/CD, Kubernetes, Cloud Migration, Infrastructure as Code, Monitoring, and Cloud Management.",
+    "We build internal development platforms so your developers can focus on code. Diagnosis, design, implementation, and ongoing maintenance.",
   keywords: [
     "DevOps consulting",
     "Platform Engineering",
-    "Kubernetes",
+    "Internal Development Platform",
     "CI/CD",
-    "Cloud Migration",
     "Infrastructure as Code",
     "Cloud Management",
-    "Monitoring",
-    "Observability",
+    "Kubernetes",
   ],
   openGraph: {
     type: "website",
@@ -43,7 +34,7 @@ export const metadata: Metadata = {
     siteName: "Keni",
     title: "Keni — DevOps & Platform Engineering",
     description:
-      "DevOps and Platform Engineering consulting. We analyse, build, and train engineering teams to own their infrastructure.",
+      "We build internal development platforms so your developers can focus on code.",
   },
   robots: {
     index: true,
@@ -57,15 +48,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
-      <body className="font-sans bg-background text-foreground antialiased" style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, 'Helvetica Neue', sans-serif" }}>
-        <div className="mesh-gradient-strong fixed inset-0 z-0" style={{ transform: "translateZ(0)" }} />
-        <div className="noise fixed inset-0 z-0" style={{ transform: "translateZ(0)" }} />
-        <div className="relative z-10">
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-        </div>
+    <html lang="en" className={inter.variable}>
+      <body className="font-sans bg-background text-foreground antialiased">
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
         <Analytics />
       </body>
     </html>

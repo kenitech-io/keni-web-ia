@@ -1,19 +1,19 @@
-import InfinityLoop from "@/components/home/InfinityLoop";
-import ApproachSection from "@/components/home/ApproachSection";
-import ServicesPreview from "@/components/home/ServicesPreview";
-import TrustSection from "@/components/home/TrustSection";
+import HeroSection from "@/components/home/HeroSection";
+import ProblemSection from "@/components/home/ProblemSection";
+import SolutionSection from "@/components/home/SolutionSection";
+import ProcessSection from "@/components/home/ProcessSection";
 import CTASection from "@/components/CTASection";
 
 export default function Home() {
   return (
     <>
-      <InfinityLoop />
-      <ApproachSection />
-      <ServicesPreview />
-      <TrustSection />
+      <HeroSection />
+      <ProblemSection />
+      <SolutionSection />
+      <ProcessSection />
       <CTASection
-        headline="Ready to stop worrying about infrastructure?"
-        subtext="30 minutes. No pitch, no pressure — just a calm conversation about where you are and how we can help."
+        headline="Let's talk about your infrastructure"
+        subtext="30 minutes. No pitch, no pressure — just a calm conversation about what's keeping your team from shipping faster."
         buttonText="Let's Talk"
         buttonHref="/contact"
       />
