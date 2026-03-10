@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import Image from "next/image";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
 import { BOOKING_URL, CONTACT_EMAIL } from "@/lib/config";
@@ -22,10 +23,30 @@ export default function ContactPageContent() {
   const [service, setService] = useState("");
   const [message, setMessage] = useState("");
   const [showForm, setShowForm] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Contact form submission:", { name, company, email, service, message });
+    setStatus("sending");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, company, email, service, message }),
+      });
+
+      if (!res.ok) throw new Error("Failed to send");
+
+      setStatus("sent");
+      setName("");
+      setCompany("");
+      setEmail("");
+      setService("");
+      setMessage("");
+    } catch {
+      setStatus("error");
+    }
   };
 
   const inputClasses =
@@ -60,12 +81,10 @@ export default function ContactPageContent() {
               <div className="relative z-10">
                 <div className="flex justify-center items-center mb-6">
                   <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-orange-400/40">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="/team/ane.png" alt="Ane" className="w-full h-full object-cover" />
+                    <Image src="/team/ane.png" alt="Ane" width={80} height={80} className="w-full h-full object-cover" />
                   </div>
                   <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-orange-400/40 -ml-3">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="/team/mikel.png" alt="Mikel" className="w-full h-full object-cover" />
+                    <Image src="/team/mikel.png" alt="Mikel" width={80} height={80} className="w-full h-full object-cover" />
                   </div>
                 </div>
                 <p className="text-body text-white mb-6">
@@ -138,36 +157,50 @@ export default function ContactPageContent() {
 
                 {/* Right — Form */}
                 <div>
-                  <form onSubmit={handleSubmit} className="space-y-8">
-                    <div>
-                      <label htmlFor="name" className={labelClasses}>Name</label>
-                      <input id="name" type="text" value={name} onChange={(e) => setName(e.target.value)} className={inputClasses} placeholder="Your name" required />
+                  {status === "sent" ? (
+                    <div className="text-center py-12">
+                      <p className="text-heading text-foreground mb-4">Message sent.</p>
+                      <p className="text-body text-foreground-secondary">We&apos;ll get back to you within 24 hours.</p>
                     </div>
-                    <div>
-                      <label htmlFor="company" className={labelClasses}>Company</label>
-                      <input id="company" type="text" value={company} onChange={(e) => setCompany(e.target.value)} className={inputClasses} placeholder="Your company" />
-                    </div>
-                    <div>
-                      <label htmlFor="email" className={labelClasses}>Email</label>
-                      <input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} className={inputClasses} placeholder="you@company.com" required />
-                    </div>
-                    <div>
-                      <label htmlFor="service" className={labelClasses}>What do you need help with?</label>
-                      <select id="service" value={service} onChange={(e) => setService(e.target.value)} className={`${inputClasses} appearance-none cursor-pointer`}>
-                        <option value="" disabled className="bg-surface text-foreground-secondary">Select a service...</option>
-                        {serviceOptions.map((option) => (
-                          <option key={option} value={option} className="bg-surface text-foreground">{option}</option>
-                        ))}
-                      </select>
-                    </div>
-                    <div>
-                      <label htmlFor="message" className={labelClasses}>Message</label>
-                      <textarea id="message" rows={4} value={message} onChange={(e) => setMessage(e.target.value)} className={`${inputClasses} resize-none`} placeholder="Tell us about your project..." />
-                    </div>
-                    <button type="submit" className="bg-accent hover:bg-accent-hover text-background w-full sm:w-auto px-8 py-4 text-body font-medium rounded-full transition-colors">
-                      Send Message
-                    </button>
-                  </form>
+                  ) : (
+                    <form onSubmit={handleSubmit} className="space-y-8">
+                      <div>
+                        <label htmlFor="name" className={labelClasses}>Name</label>
+                        <input id="name" type="text" value={name} onChange={(e) => setName(e.target.value)} className={inputClasses} placeholder="Your name" required />
+                      </div>
+                      <div>
+                        <label htmlFor="company" className={labelClasses}>Company</label>
+                        <input id="company" type="text" value={company} onChange={(e) => setCompany(e.target.value)} className={inputClasses} placeholder="Your company" />
+                      </div>
+                      <div>
+                        <label htmlFor="email" className={labelClasses}>Email</label>
+                        <input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} className={inputClasses} placeholder="you@company.com" required />
+                      </div>
+                      <div>
+                        <label htmlFor="service" className={labelClasses}>What do you need help with?</label>
+                        <select id="service" value={service} onChange={(e) => setService(e.target.value)} className={`${inputClasses} appearance-none cursor-pointer`}>
+                          <option value="" disabled className="bg-surface text-foreground-secondary">Select a service...</option>
+                          {serviceOptions.map((option) => (
+                            <option key={option} value={option} className="bg-surface text-foreground">{option}</option>
+                          ))}
+                        </select>
+                      </div>
+                      <div>
+                        <label htmlFor="message" className={labelClasses}>Message</label>
+                        <textarea id="message" rows={4} value={message} onChange={(e) => setMessage(e.target.value)} className={`${inputClasses} resize-none`} placeholder="Tell us about your project..." />
+                      </div>
+                      <button
+                        type="submit"
+                        disabled={status === "sending"}
+                        className="bg-accent hover:bg-accent-hover disabled:opacity-50 text-background w-full sm:w-auto px-8 py-4 text-body font-medium rounded-full transition-colors"
+                      >
+                        {status === "sending" ? "Sending..." : "Send Message"}
+                      </button>
+                      {status === "error" && (
+                        <p className="text-sm text-red-400">Something went wrong. Please try again or email us directly.</p>
+                      )}
+                    </form>
+                  )}
                 </div>
               </div>
             </div>

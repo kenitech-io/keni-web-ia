@@ -5,4 +5,4 @@
 // ============================================
 export const BOOKING_URL = "https://calendar.app.google/ZBv4bRrojYQn9CLN8";
 
-export const CONTACT_EMAIL = "hello@keni.dev";
+export const CONTACT_EMAIL = "ugarte@kenitech.io";
