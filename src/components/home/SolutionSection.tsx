@@ -20,10 +20,9 @@ export default function SolutionSection() {
           </FadeIn>
           <FadeIn delay={0.2}>
             <p className="text-body text-foreground-secondary">
-              Automated CI/CD pipelines, centralized server management,
-              containerization, and monitoring — all designed around how your
-              team actually works. Your developers push code. Everything else
-              happens automatically.
+              CI/CD pipelines, containerized environments, monitoring, and
+              automated deploys — all wired together around how your team
+              actually works. You git push, it goes to production. That&apos;s it.
             </p>
           </FadeIn>
         </div>

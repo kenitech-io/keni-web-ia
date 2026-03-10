@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     template: "%s | Keni",
   },
   description:
-    "We build internal development platforms so your developers can focus on code. Diagnosis, design, implementation, and ongoing maintenance.",
+    "We handle your CI/CD, deploys, and ops so your developers can focus on shipping. Diagnosis, design, implementation, and ongoing maintenance.",
   keywords: [
     "DevOps consulting",
     "Platform Engineering",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     siteName: "Keni",
     title: "Keni — DevOps & Platform Engineering",
     description:
-      "We build internal development platforms so your developers can focus on code.",
+      "We handle your CI/CD, deploys, and ops so your developers can focus on shipping.",
   },
   robots: {
     index: true,

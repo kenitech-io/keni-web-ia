@@ -15,17 +15,15 @@ export default function ProblemSection() {
           </FadeIn>
           <FadeIn delay={0.1}>
             <h2 className="text-heading text-foreground mb-8">
-              Small dev teams handle frontend, backend, databases — and also
-              manage servers, manual deployments, and on-call incidents.
+              Your devs spend half their time on ops instead of shipping
             </h2>
           </FadeIn>
           <FadeIn delay={0.2}>
             <p className="text-body text-foreground-secondary">
-              Your developers are spending half their time on infrastructure
-              instead of building product. Deployments are manual and stressful.
-              There is no CI/CD. When something breaks, everyone stops what
-              they&apos;re doing. The IT team and the dev team are constantly
-              stepping on each other&apos;s toes.
+              Deploys are manual and scary. There&apos;s no CI/CD. When something
+              breaks in production, the whole team stops what they&apos;re doing
+              to firefight. Your best engineers are debugging servers instead
+              of building features.
             </p>
           </FadeIn>
         </div>

@@ -34,7 +34,7 @@ const config: Config = {
         "section-sm": "clamp(60px, 8vw, 100px)",
       },
       maxWidth: {
-        "content": "1100px",
+        "content": "1320px",
         "narrow": "640px",
       },
     },

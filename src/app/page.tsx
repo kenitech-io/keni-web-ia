@@ -12,8 +12,8 @@ export default function Home() {
       <SolutionSection />
       <ProcessSection />
       <CTASection
-        headline="Let's talk about your infrastructure"
-        subtext="30 minutes. No pitch, no pressure — just a calm conversation about what's keeping your team from shipping faster."
+        headline="Ready to just ship?"
+        subtext="30 minutes. No pitch, no pressure — just a conversation about what's slowing your team down and how to fix it."
         buttonText="Let's Talk"
         buttonHref="/contact"
       />

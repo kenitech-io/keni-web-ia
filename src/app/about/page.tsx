@@ -6,13 +6,13 @@ import CTASection from "@/components/CTASection";
 export const metadata: Metadata = {
   title: "About | Keni",
   description:
-    "DevOps and Platform Engineering consulting. We build infrastructure that lets your team focus on product.",
+    "DevOps and Platform Engineering consulting. We handle the ops so your team can focus on shipping.",
 };
 
 const values = [
   {
     title: "Boring is beautiful",
-    text: "The best infrastructure is the one you never think about. When deployments are boring and alerts are quiet — we've done our job.",
+    text: "The best deploy is the one nobody notices. When shipping is boring and alerts are quiet — we've done our job.",
   },
   {
     title: "Open standards, always",
@@ -37,10 +37,10 @@ export default function AboutPage() {
             </FadeIn>
             <FadeIn delay={0.1}>
               <p className="text-body text-foreground-secondary">
-                We&apos;ve spent years building and operating the kind of systems
-                we help you design. We understand the challenges of scaling
-                infrastructure, meeting tight deadlines, and keeping things
-                reliable — because we&apos;ve lived them.
+                We&apos;ve spent years setting up pipelines, automating deploys, and
+                keeping production running. We understand what it&apos;s like when
+                your team is stuck firefighting instead of shipping — because
+                we&apos;ve been there.
               </p>
             </FadeIn>
           </div>
@@ -74,7 +74,7 @@ export default function AboutPage() {
       </section>
 
       <CTASection
-        headline="Ready for infrastructure you don't have to worry about?"
+        headline="Ready to stop firefighting and start shipping?"
         buttonText="Let's Talk"
         buttonHref="/contact"
       />

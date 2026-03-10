@@ -9,24 +9,24 @@ export const phases: Phase[] = [
     number: "01",
     name: "Diagnosis",
     description:
-      "We audit your current infrastructure, map dependencies, and identify bottlenecks. In 72 hours you get a clear picture of where you are and what needs to change.",
+      "We look at your repos, your pipelines (or lack of), your deploy process, your monitoring. In 72 hours you get a clear report of what's broken and what to fix first.",
   },
   {
     number: "02",
     name: "Design",
     description:
-      "We architect the solution: CI/CD pipelines, server management, containerization, monitoring. Everything documented, nothing left to interpretation.",
+      "We architect the solution: CI/CD pipelines, container orchestration, monitoring, automated deploys. Everything documented before we touch a single config file.",
   },
   {
     number: "03",
     name: "Implementation",
     description:
-      "We build it. Infrastructure as code, automated deployments, centralized management. Your developers push code — everything else happens automatically.",
+      "We build it. Pipelines, environments, IaC, the whole thing. When we're done, your devs push code and it goes to production — no manual steps, no SSH.",
   },
   {
     number: "04",
     name: "Maintenance",
     description:
-      "A dedicated engineer manages your infrastructure ongoing. Updates, monitoring, incident response, optimization. You focus on product.",
+      "A dedicated engineer keeps everything running. Dependency updates, monitoring, incident response, scaling. You focus on shipping features.",
   },
 ];
