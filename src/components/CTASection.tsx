@@ -45,6 +45,7 @@ export default function CTASection({
               </a>
             ) : (
               <Link
+                id="bottom-cta"
                 href={href}
                 className="inline-block bg-foreground hover:bg-charcoal text-background px-8 py-4 text-body font-medium rounded-full transition-colors"
               >

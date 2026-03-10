@@ -1,20 +1,17 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Container from "@/components/ui/Container";
 
-const navLinks = [
-  { name: "About", href: "/about" },
-  { name: "Contact", href: "/contact" },
-];
-
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [showBubble, setShowBubble] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
+  const visibleCTAs = useRef(new Set<string>());
 
   const handleScroll = useCallback(() => {
     setScrolled(window.scrollY > 20);
@@ -24,6 +21,37 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
+
+  useEffect(() => {
+    const ids = ["hero-cta", "bottom-cta"];
+    visibleCTAs.current.clear();
+
+    const elements = ids
+      .map((id) => document.getElementById(id))
+      .filter(Boolean) as HTMLElement[];
+
+    if (elements.length === 0) {
+      setShowBubble(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            visibleCTAs.current.add(entry.target.id);
+          } else {
+            visibleCTAs.current.delete(entry.target.id);
+          }
+        });
+        setShowBubble(visibleCTAs.current.size === 0);
+      },
+      { threshold: 0 }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, [pathname]);
 
   useEffect(() => {
     if (mobileOpen) {
@@ -65,24 +93,27 @@ export default function Navbar() {
 
             {/* Desktop */}
             <div className="hidden md:flex items-center gap-8">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`text-xs font-medium transition-colors duration-200 ${
-                    isActive(link.href)
-                      ? "text-foreground"
-                      : "text-muted hover:text-foreground"
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              ))}
+              <Link
+                href="/about"
+                className={`text-xs font-medium transition-colors duration-200 ${
+                  isActive("/about")
+                    ? "text-foreground"
+                    : "text-muted hover:text-foreground"
+                }`}
+              >
+                About
+              </Link>
               <Link
                 href="/contact"
-                className="bg-foreground hover:bg-charcoal text-background text-xs font-medium px-3 py-1 rounded-full transition-colors duration-200"
+                className={`text-xs font-medium transition-all duration-300 ${
+                  showBubble
+                    ? "bg-foreground hover:bg-charcoal text-background px-3 py-1 rounded-full"
+                    : isActive("/contact")
+                      ? "text-foreground"
+                      : "text-muted hover:text-foreground"
+                }`}
               >
-                Let&apos;s Talk
+                Contact
               </Link>
             </div>
 
@@ -145,31 +176,6 @@ export default function Navbar() {
                 }}
                 className="flex flex-col gap-6"
               >
-                {navLinks.map((link) => (
-                  <motion.div
-                    key={link.href}
-                    variants={{
-                      hidden: { opacity: 0, y: 20 },
-                      visible: {
-                        opacity: 1,
-                        y: 0,
-                        transition: { duration: 0.4, ease: "easeOut" },
-                      },
-                    }}
-                  >
-                    <Link
-                      href={link.href}
-                      className={`text-3xl font-light transition-colors duration-200 ${
-                        isActive(link.href)
-                          ? "text-foreground"
-                          : "text-muted hover:text-foreground"
-                      }`}
-                    >
-                      {link.name}
-                    </Link>
-                  </motion.div>
-                ))}
-
                 <motion.div
                   variants={{
                     hidden: { opacity: 0, y: 20 },
@@ -179,13 +185,37 @@ export default function Navbar() {
                       transition: { duration: 0.4, ease: "easeOut" },
                     },
                   }}
-                  className="mt-8"
+                >
+                  <Link
+                    href="/about"
+                    className={`text-3xl font-light transition-colors duration-200 ${
+                      isActive("/about")
+                        ? "text-foreground"
+                        : "text-muted hover:text-foreground"
+                    }`}
+                  >
+                    About
+                  </Link>
+                </motion.div>
+                <motion.div
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: { duration: 0.4, ease: "easeOut" },
+                    },
+                  }}
                 >
                   <Link
                     href="/contact"
-                    className="inline-block bg-foreground text-background text-lg font-medium px-8 py-4 rounded-full transition-colors duration-200"
+                    className={`text-3xl font-light transition-colors duration-200 ${
+                      isActive("/contact")
+                        ? "text-foreground"
+                        : "text-muted hover:text-foreground"
+                    }`}
                   >
-                    Let&apos;s Talk
+                    Contact
                   </Link>
                 </motion.div>
               </motion.nav>

@@ -7,22 +7,23 @@ export default function HeroSection() {
   return (
     <section className="min-h-screen flex items-center justify-center relative">
       <div className="flex flex-col items-center text-center w-full px-6 -mt-16">
-        <FadeIn type="up" delay={0.2} className="w-full flex justify-center">
+        <FadeIn type="up" delay={0.2} once className="w-full flex justify-center">
           <h1 className="text-display-sm text-foreground text-center max-w-[720px] mx-auto">
             Your developers should write code, not fight deployments
           </h1>
         </FadeIn>
 
-        <FadeIn type="up" delay={0.4} className="w-full flex justify-center">
+        <FadeIn type="up" delay={0.4} once className="w-full flex justify-center">
           <p className="text-body text-foreground-secondary max-w-[560px] mx-auto text-center mt-6 md:mt-8 leading-relaxed">
             We set up your pipelines, automate your deploys, and keep
             everything running. Your team just git pushes and moves on.
           </p>
         </FadeIn>
 
-        <FadeIn type="up" delay={0.6} className="w-full flex justify-center">
+        <FadeIn type="up" delay={0.6} once className="w-full flex justify-center">
           <div className="mt-8 md:mt-10">
             <Link
+              id="hero-cta"
               href="/contact"
               className="inline-block bg-foreground hover:bg-charcoal text-background rounded-full px-8 py-4 font-medium transition-colors duration-200"
             >
