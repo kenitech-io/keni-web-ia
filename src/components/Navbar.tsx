@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Container from "@/components/ui/Container";
@@ -82,12 +83,9 @@ export default function Navbar() {
       >
         <Container>
           <div className="flex items-center justify-between">
-            {/* Wordmark */}
-            <Link
-              href="/"
-              className="text-sm font-semibold text-foreground tracking-tight"
-            >
-              Keni
+            {/* Logo */}
+            <Link href="/" className="flex items-center">
+              <Image src="/logo.png" alt="Keni" width={28} height={28} />
             </Link>
 
             {/* Desktop Navigation */}
