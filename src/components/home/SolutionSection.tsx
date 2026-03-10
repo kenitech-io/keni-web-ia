@@ -22,7 +22,7 @@ export default function SolutionSection() {
             <p className="text-body text-foreground-secondary">
               CI/CD pipelines, containerized environments, monitoring, and
               automated deploys. All wired together around how your team
-              actually works. You git push, it goes to production. That&apos;s it.
+              actually works. You push, it gets deployed. That&apos;s it.
             </p>
           </FadeIn>
         </div>
