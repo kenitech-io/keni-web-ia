@@ -16,7 +16,7 @@ export default function HeroSection() {
         <FadeIn type="up" delay={0.4} className="w-full flex justify-center">
           <p className="text-body text-foreground-secondary max-w-[560px] mx-auto text-center mt-6 md:mt-8 leading-relaxed">
             We set up your pipelines, automate your deploys, and keep
-            everything running — so your team can just git push and move on.
+            everything running. Your team just git pushes and moves on.
           </p>
         </FadeIn>
 

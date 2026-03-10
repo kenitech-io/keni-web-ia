@@ -4,7 +4,7 @@ import FadeIn from "@/components/ui/FadeIn";
 import CTASection from "@/components/CTASection";
 
 export const metadata: Metadata = {
-  title: "About | Keni",
+  title: "About",
   description:
     "DevOps and Platform Engineering consulting. We handle the ops so your team can focus on shipping.",
 };
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const values = [
   {
     title: "Boring is beautiful",
-    text: "The best deploy is the one nobody notices. When shipping is boring and alerts are quiet — we've done our job.",
+    text: "The best deploy is the one nobody notices. When shipping is boring and alerts are quiet, we've done our job.",
   },
   {
     title: "Open standards, always",
@@ -39,7 +39,7 @@ export default function AboutPage() {
               <p className="text-body text-foreground-secondary">
                 We&apos;ve spent years setting up pipelines, automating deploys, and
                 keeping production running. We understand what it&apos;s like when
-                your team is stuck firefighting instead of shipping — because
+                your team is stuck firefighting instead of shipping. Because
                 we&apos;ve been there.
               </p>
             </FadeIn>

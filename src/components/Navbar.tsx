@@ -58,7 +58,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between">
             <Link
               href="/"
-              className="text-sm font-medium text-foreground tracking-tight"
+              className="text-xs font-medium text-foreground tracking-tight"
             >
               Keni
             </Link>
@@ -69,7 +69,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-sm font-medium transition-colors duration-200 ${
+                  className={`text-xs font-medium transition-colors duration-200 ${
                     isActive(link.href)
                       ? "text-foreground"
                       : "text-muted hover:text-foreground"
@@ -80,7 +80,7 @@ export default function Navbar() {
               ))}
               <Link
                 href="/contact"
-                className="bg-foreground hover:bg-charcoal text-background text-sm font-medium px-5 py-2 rounded-full transition-colors duration-200"
+                className="bg-foreground hover:bg-charcoal text-background text-xs font-medium px-3 py-1 rounded-full transition-colors duration-200"
               >
                 Let&apos;s Talk
               </Link>

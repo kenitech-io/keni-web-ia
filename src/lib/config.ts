@@ -1,5 +1,5 @@
 // ============================================
-// BOOKING URL — Change this to your real Google Calendar Appointment Scheduling URL
+// BOOKING URL: Change this to your real Google Calendar Appointment Scheduling URL
 // It looks like: https://calendar.google.com/calendar/appointments/schedules/XXX
 // or: https://calendar.app.google/XXX
 // ============================================

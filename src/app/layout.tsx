@@ -14,7 +14,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Keni — DevOps & Platform Engineering",
+    default: "Keni: DevOps & Platform Engineering",
     template: "%s | Keni",
   },
   description:
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "Keni",
-    title: "Keni — DevOps & Platform Engineering",
+    title: "Keni: DevOps & Platform Engineering",
     description:
       "We handle your CI/CD, deploys, and ops so your developers can focus on shipping.",
   },

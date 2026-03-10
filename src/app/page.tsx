@@ -13,7 +13,7 @@ export default function Home() {
       <ProcessSection />
       <CTASection
         headline="Ready to just ship?"
-        subtext="30 minutes. No pitch, no pressure — just a conversation about what's slowing your team down and how to fix it."
+        subtext="30 minutes. No pitch, no pressure. Just a conversation about what's slowing your team down and how to fix it."
         buttonText="Let's Talk"
         buttonHref="/contact"
       />
