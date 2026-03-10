@@ -69,7 +69,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-sm font-light transition-colors duration-200 ${
+                  className={`text-sm font-medium transition-colors duration-200 ${
                     isActive(link.href)
                       ? "text-foreground"
                       : "text-muted hover:text-foreground"
