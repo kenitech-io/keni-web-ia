@@ -4,7 +4,7 @@ import { useState, FormEvent } from "react";
 import Image from "next/image";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
-import { BOOKING_URL, CONTACT_EMAIL } from "@/lib/config";
+import { BOOKING_URL } from "@/lib/config";
 
 const serviceOptions = [
   "Internal Development Platform",
@@ -129,14 +129,6 @@ export default function ContactPageContent() {
                     We&apos;ll get back to you within 24 hours.
                   </p>
                   <div className="space-y-4">
-                    <p>
-                      <a
-                        href={`mailto:${CONTACT_EMAIL}`}
-                        className="text-body text-foreground hover:text-muted transition-colors"
-                      >
-                        {CONTACT_EMAIL}
-                      </a>
-                    </p>
                     <p className="text-body text-muted">Remote-first.</p>
                     <div className="flex gap-6">
                       <a href="https://www.linkedin.com/company/keniengineering/" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-foreground transition-colors">
