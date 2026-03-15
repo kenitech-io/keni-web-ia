@@ -36,6 +36,7 @@ const BLOCKED_DOMAINS = [
 export default function PlatformPageContent() {
   const [diagramOpen, setDiagramOpen] = useState(false);
   const [email, setEmail] = useState("");
+  const [note, setNote] = useState("");
   const [status, setStatus] = useState<
     "idle" | "sending" | "sent" | "error" | "blocked"
   >("idle");
@@ -62,7 +63,7 @@ export default function PlatformPageContent() {
       const res = await fetch("/api/architecture", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, note }),
       });
 
       const data = await res.json();
@@ -166,6 +167,24 @@ export default function PlatformPageContent() {
                       placeholder="you@company.com"
                       required
                     />
+                  </div>
+                  <div className="mb-6">
+                    <label
+                      htmlFor="note"
+                      className="block text-label uppercase tracking-widest text-muted mb-2"
+                    >
+                      Note <span className="normal-case tracking-normal text-muted">(optional)</span>
+                    </label>
+                    <textarea
+                      id="note"
+                      value={note}
+                      onChange={(e) => setNote(e.target.value)}
+                      rows={2}
+                      className={`${inputClasses} resize-none`}
+                      placeholder="Anything you'd like us to know"
+                    />
+                  </div>
+                  <div>
                     {status === "blocked" && (
                       <p className="text-sm text-foreground-secondary mt-3">
                         Please use your work email. We send this to engineering

@@ -31,7 +31,7 @@ const BLOCKED_DOMAINS = [
 
 export async function POST(request: NextRequest) {
   try {
-    const { email } = await request.json();
+    const { email, note } = await request.json();
 
     if (!email || typeof email !== "string") {
       return NextResponse.json(
@@ -67,9 +67,12 @@ export async function POST(request: NextRequest) {
         `Email: ${email}`,
         `Domain: ${domain}`,
         `Time: ${new Date().toISOString()}`,
+        note ? `\nNote: ${note}` : null,
         ``,
         `Reply to this email to reach them directly.`,
-      ].join("\n"),
+      ]
+        .filter(Boolean)
+        .join("\n"),
     });
 
     return NextResponse.json(
