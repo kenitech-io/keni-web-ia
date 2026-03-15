@@ -135,11 +135,11 @@ export default function PlatformPageContent() {
               {status === "sent" ? (
                 <div className="py-8">
                   <p className="text-body-lg text-foreground mb-3">
-                    Check your inbox.
+                    Got it.
                   </p>
                   <p className="text-body text-foreground-secondary">
-                    The full architecture reference is on its way to{" "}
-                    <span className="text-foreground">{email}</span>.
+                    We will send the full reference to{" "}
+                    <span className="text-foreground">{email}</span> shortly.
                   </p>
                 </div>
               ) : (
