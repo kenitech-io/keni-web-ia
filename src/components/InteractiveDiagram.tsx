@@ -196,6 +196,7 @@ export default function InteractiveDiagram({
   const [activeZone, setActiveZone] = useState<string | null>(null);
   const [email, setEmail] = useState("");
   const [note, setNote] = useState("");
+  const [guideOpen, setGuideOpen] = useState(false);
   const exploredRef = useRef<Set<string>>(new Set());
   const [exploredCount, setExploredCount] = useState(0);
 
@@ -1298,151 +1299,195 @@ export default function InteractiveDiagram({
             {/* Side Panel - hidden until first hover */}
             <AnimatePresence>
               {exploredCount > 0 && (
-            <motion.div
-              initial={{ width: 0, opacity: 0 }}
-              animate={{ width: 380, opacity: 1 }}
-              exit={{ width: 0, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="shrink-0 border-t lg:border-t-0 lg:border-l border-border-color p-6 md:p-10 flex flex-col justify-center overflow-y-auto overflow-x-hidden"
-            >
-              {/* Component description */}
-              <div className="flex-1 flex items-center min-h-0 min-w-[320px]">
-                <AnimatePresence mode="wait">
-                  {activeInfo ? (
-                    <motion.div
-                      key={activeInfo.id}
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -8 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <p className="text-label uppercase tracking-widest text-muted mb-4">
-                        {activeInfo.label}
-                      </p>
-                      {activeInfo.parts ? (
-                        <div className="space-y-6">
-                          {activeInfo.parts.map((part) => (
-                            <div key={part.partLabel}>
-                              <p className="text-xs font-medium text-foreground mb-1.5">
-                                {part.partLabel}
-                              </p>
-                              <p className="text-body text-foreground-secondary leading-relaxed">
-                                {part.partDescription}
-                              </p>
+                <motion.div
+                  initial={{ width: 0, opacity: 0 }}
+                  animate={{ width: 380, opacity: 1 }}
+                  exit={{ width: 0, opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="shrink-0 border-t lg:border-t-0 lg:border-l border-border-color p-6 md:p-10 flex flex-col justify-center overflow-y-auto overflow-x-hidden"
+                >
+                  {/* Component description */}
+                  <div className="flex-1 flex items-center min-h-0 min-w-[320px]">
+                    <AnimatePresence mode="wait">
+                      {activeInfo ? (
+                        <motion.div
+                          key={activeInfo.id}
+                          initial={{ opacity: 0, y: 8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -8 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <p className="text-label uppercase tracking-widest text-muted mb-4">
+                            {activeInfo.label}
+                          </p>
+                          {activeInfo.parts ? (
+                            <div className="space-y-6">
+                              {activeInfo.parts.map((part) => (
+                                <div key={part.partLabel}>
+                                  <p className="text-xs font-medium text-foreground mb-1.5">
+                                    {part.partLabel}
+                                  </p>
+                                  <p className="text-body text-foreground-secondary leading-relaxed">
+                                    {part.partDescription}
+                                  </p>
+                                </div>
+                              ))}
                             </div>
-                          ))}
-                        </div>
+                          ) : (
+                            <p className="text-body text-foreground-secondary leading-relaxed">
+                              {activeInfo.description}
+                            </p>
+                          )}
+                        </motion.div>
                       ) : (
-                        <p className="text-body text-foreground-secondary leading-relaxed">
-                          {activeInfo.description}
-                        </p>
+                        <motion.div
+                          key="default"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                        >
+                          <p className="text-body text-muted">
+                            {showForm
+                              ? "Hover over any component to learn more."
+                              : "Hover over any component to learn what it does."}
+                          </p>
+                        </motion.div>
                       )}
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="default"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                    >
-                      <p className="text-body text-muted">
-                        {showForm
-                          ? "Hover over any component to learn more."
-                          : "Hover over any component to learn what it does."}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
+                    </AnimatePresence>
+                  </div>
 
-              {/* Email capture form, appears after engagement threshold */}
-              <AnimatePresence>
-                {showForm && emailStatus !== "sent" && (
-                  <motion.div
-                    key="email-form"
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.4, delay: 0.2 }}
-                    className="pt-6 mt-6 border-t border-border-color"
-                  >
-                    <p className="text-sm font-medium text-foreground mb-1">
-                      Get the guide
-                    </p>
-                    <p className="text-xs text-foreground-secondary mb-4">
-                      Exact tool recommendations and licensing cost.
-                    </p>
-                    <form onSubmit={handleFormSubmit} className="space-y-3">
-                      <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => {
-                          setEmail(e.target.value);
-                          if (
-                            emailStatus === "blocked" ||
-                            emailStatus === "error"
-                          ) {
-                            onEmailSubmit("__reset__", "");
-                          }
-                        }}
-                        className={inputClasses}
-                        placeholder="you@company.com"
-                        required
-                      />
-                      <textarea
-                        value={note}
-                        onChange={(e) => setNote(e.target.value)}
-                        rows={1}
-                        className={`${inputClasses} resize-none`}
-                        placeholder="Add a note"
-                      />
-                      {emailStatus === "blocked" && (
-                        <p className="text-xs text-foreground-secondary">
-                          Please use your work email.
-                        </p>
-                      )}
-                      {emailStatus === "error" && (
-                        <p className="text-xs text-red-600">
-                          Something went wrong. Please try again.
-                        </p>
-                      )}
-                      <button
-                        type="submit"
-                        disabled={emailStatus === "sending"}
-                        className="bg-foreground hover:bg-charcoal disabled:opacity-50 text-background w-full px-4 py-1.5 text-sm font-medium rounded-full transition-colors"
+                  {/* Guide CTA, appears after engagement threshold */}
+                  <AnimatePresence>
+                    {showForm && emailStatus !== "sent" && (
+                      <motion.div
+                        key="guide-cta"
+                        initial={{ opacity: 0, y: 16 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.4, delay: 0.2 }}
+                        className="pt-6 mt-6 border-t border-border-color text-center"
                       >
-                        {emailStatus === "sending"
-                          ? "Sending..."
-                          : "Request guide"}
-                      </button>
-                      <p className="text-[10px] text-muted text-center">
-                        We promise no spam.
-                      </p>
-                    </form>
-                  </motion.div>
-                )}
-                {emailStatus === "sent" && (
-                  <motion.div
-                    key="email-sent"
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="pt-6 mt-6 border-t border-border-color"
-                  >
-                    <p className="text-sm font-medium text-foreground mb-1">
-                      Got it.
-                    </p>
-                    <p className="text-xs text-foreground-secondary">
-                      We will send the full reference to{" "}
-                      <span className="text-foreground">{submittedEmail}</span>{" "}
-                      shortly.
-                    </p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
+                        <button
+                          onClick={() => setGuideOpen(true)}
+                          className="bg-foreground hover:bg-charcoal text-background w-full px-4 py-2.5 text-sm font-medium rounded-full transition-colors"
+                        >
+                          Request guide
+                        </button>
+                        <p className="text-[10px] text-muted mt-2">
+                          Exact tool recommendations and design principles.
+                        </p>
+                      </motion.div>
+                    )}
+                    {emailStatus === "sent" && (
+                      <motion.div
+                        key="email-sent"
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="pt-6 mt-6 border-t border-border-color"
+                      >
+                        <p className="text-sm font-medium text-foreground mb-1">
+                          Got it.
+                        </p>
+                        <p className="text-xs text-foreground-secondary">
+                          We will send the full reference to{" "}
+                          <span className="text-foreground">
+                            {submittedEmail}
+                          </span>{" "}
+                          shortly.
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
               )}
             </AnimatePresence>
           </div>
+
+          {/* Guide request modal */}
+          <AnimatePresence>
+            {guideOpen && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0 }}
+                className="absolute inset-0 z-20 flex items-center justify-center p-6"
+              >
+                <div
+                  className="absolute inset-0 bg-background/90 backdrop-blur-sm"
+                  onClick={() => setGuideOpen(false)}
+                />
+                <div className="relative w-full max-w-[400px] border border-border-color bg-background rounded-lg p-8">
+                  <button
+                    onClick={() => setGuideOpen(false)}
+                    className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-muted hover:text-foreground transition-colors"
+                    aria-label="Close"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                      <path
+                        d="M1 1L15 15M15 1L1 15"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                      />
+                    </svg>
+                  </button>
+                  <p className="text-sm font-medium text-foreground mb-1">
+                    Get the guide
+                  </p>
+                  <p className="text-xs text-foreground-secondary mb-6">
+                    Exact tool recommendations and licensing cost.
+                  </p>
+                  <form onSubmit={handleFormSubmit} className="space-y-4">
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                        if (
+                          emailStatus === "blocked" ||
+                          emailStatus === "error"
+                        ) {
+                          onEmailSubmit("__reset__", "");
+                        }
+                      }}
+                      className={inputClasses}
+                      placeholder="you@company.com"
+                      required
+                    />
+                    <textarea
+                      value={note}
+                      onChange={(e) => setNote(e.target.value)}
+                      rows={1}
+                      className={`${inputClasses} resize-none`}
+                      placeholder="Add a note"
+                    />
+                    {emailStatus === "blocked" && (
+                      <p className="text-xs text-foreground-secondary">
+                        Please use your work email.
+                      </p>
+                    )}
+                    {emailStatus === "error" && (
+                      <p className="text-xs text-red-600">
+                        Something went wrong. Please try again.
+                      </p>
+                    )}
+                    <button
+                      type="submit"
+                      disabled={emailStatus === "sending"}
+                      className="bg-foreground hover:bg-charcoal disabled:opacity-50 text-background w-full px-4 py-2.5 text-sm font-medium rounded-full transition-colors"
+                    >
+                      {emailStatus === "sending"
+                        ? "Sending..."
+                        : "Request guide"}
+                    </button>
+                    <p className="text-[10px] text-muted text-center">
+                      We promise no spam.
+                    </p>
+                  </form>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
       )}
     </AnimatePresence>
