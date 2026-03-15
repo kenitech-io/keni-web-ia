@@ -1,63 +1,39 @@
 "use client";
 
-import { useState, FormEvent } from "react";
-import Container from "@/components/ui/Container";
+import { useState } from "react";
 import FadeIn from "@/components/ui/FadeIn";
 import InteractiveDiagram from "@/components/InteractiveDiagram";
+import CTASection from "@/components/CTASection";
 
 const BLOCKED_DOMAINS = [
-  "gmail.com",
-  "googlemail.com",
-  "outlook.com",
-  "hotmail.com",
-  "live.com",
-  "msn.com",
-  "yahoo.com",
-  "yahoo.co.uk",
-  "yahoo.es",
-  "yahoo.fr",
-  "yahoo.de",
-  "aol.com",
-  "icloud.com",
-  "me.com",
-  "mac.com",
-  "protonmail.com",
-  "proton.me",
-  "zoho.com",
-  "yandex.com",
-  "yandex.ru",
-  "mail.ru",
-  "gmx.com",
-  "gmx.de",
-  "tutanota.com",
-  "fastmail.com",
+  "gmail.com", "googlemail.com", "outlook.com", "hotmail.com", "live.com",
+  "msn.com", "yahoo.com", "yahoo.co.uk", "yahoo.es", "yahoo.fr", "yahoo.de",
+  "aol.com", "icloud.com", "me.com", "mac.com", "protonmail.com", "proton.me",
+  "zoho.com", "yandex.com", "yandex.ru", "mail.ru", "gmx.com", "gmx.de",
+  "tutanota.com", "fastmail.com",
 ];
 
 export default function PlatformPageContent() {
   const [diagramOpen, setDiagramOpen] = useState(false);
-  const [email, setEmail] = useState("");
-  const [note, setNote] = useState("");
-  const [status, setStatus] = useState<
+  const [emailStatus, setEmailStatus] = useState<
     "idle" | "sending" | "sent" | "error" | "blocked"
   >("idle");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [submittedEmail, setSubmittedEmail] = useState("");
 
-  const isBusinessEmail = (addr: string): boolean => {
-    const domain = addr.split("@")[1]?.toLowerCase();
-    if (!domain) return false;
-    return !BLOCKED_DOMAINS.includes(domain);
-  };
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setErrorMessage("");
-
-    if (!isBusinessEmail(email)) {
-      setStatus("blocked");
+  const handleEmailSubmit = async (email: string, note: string) => {
+    // Reset signal from child
+    if (email === "__reset__") {
+      setEmailStatus("idle");
       return;
     }
 
-    setStatus("sending");
+    const domain = email.split("@")[1]?.toLowerCase();
+    if (!domain || BLOCKED_DOMAINS.includes(domain)) {
+      setEmailStatus("blocked");
+      return;
+    }
+
+    setEmailStatus("sending");
 
     try {
       const res = await fetch("/api/architecture", {
@@ -66,31 +42,25 @@ export default function PlatformPageContent() {
         body: JSON.stringify({ email, note }),
       });
 
-      const data = await res.json();
-
       if (!res.ok) {
         if (res.status === 422) {
-          setStatus("blocked");
+          setEmailStatus("blocked");
         } else {
-          setErrorMessage(data.message || "Something went wrong.");
-          setStatus("error");
+          setEmailStatus("error");
         }
         return;
       }
 
-      setStatus("sent");
+      setSubmittedEmail(email);
+      setEmailStatus("sent");
     } catch {
-      setErrorMessage("Something went wrong. Please try again.");
-      setStatus("error");
+      setEmailStatus("error");
     }
   };
 
-  const inputClasses =
-    "bg-transparent border-b border-border-color focus:border-foreground py-3 text-body text-foreground w-full outline-none transition-colors placeholder:text-muted";
-
   return (
     <main>
-      {/* Hero */}
+      {/* Hero with diagram preview */}
       <section className="min-h-screen flex items-center justify-center relative">
         <div className="flex flex-col items-center text-center w-full px-6 -mt-16">
           <FadeIn type="up" delay={0.2} once className="w-full flex justify-center">
@@ -99,15 +69,158 @@ export default function PlatformPageContent() {
             </h1>
           </FadeIn>
 
-          <FadeIn type="up" delay={0.5} once className="w-full flex justify-center">
-            <div className="mt-8 md:mt-10">
-              <button
-                onClick={() => setDiagramOpen(true)}
-                className="inline-block bg-foreground hover:bg-charcoal text-background rounded-full px-8 py-4 font-medium transition-colors duration-200"
+          {/* Diagram preview thumbnail */}
+          <FadeIn type="up" delay={0.4} once className="w-full flex justify-center">
+            <button
+              onClick={() => setDiagramOpen(true)}
+              className="mt-10 md:mt-12 group relative w-full max-w-[520px] aspect-[960/760] border border-border-color rounded-lg overflow-hidden transition-all duration-300 hover:border-foreground/30 hover:shadow-lg"
+            >
+              {/* Static SVG preview (complete diagram) */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 960 760"
+                className="w-full h-full"
+                style={{ fontFamily: "Inter, -apple-system, sans-serif" }}
               >
-                Show me
-              </button>
-            </div>
+                <rect width="960" height="760" fill="var(--background)" />
+
+                {/* SaaS row */}
+                <text x="56" y="58" fontSize="10" fontWeight="500" fill="#999" letterSpacing="2">SAAS</text>
+                <line x1="56" y1="96" x2="892" y2="96" stroke="var(--border-color)" strokeWidth="0.6" />
+                <rect x="136" y="42" width="138" height="34" rx="17" fill="var(--background)" stroke="#ccc" strokeWidth="0.8" />
+                <text x="205" y="64" fontSize="12" fontWeight="400" fill="var(--foreground-secondary)" textAnchor="middle">Overlay Network</text>
+                <rect x="290" y="42" width="138" height="34" rx="17" fill="var(--background)" stroke="#ccc" strokeWidth="0.8" />
+                <text x="359" y="64" fontSize="12" fontWeight="400" fill="var(--foreground-secondary)" textAnchor="middle">Secrets</text>
+                <rect x="444" y="42" width="138" height="34" rx="17" fill="var(--background)" stroke="#ccc" strokeWidth="0.8" />
+                <text x="513" y="64" fontSize="12" fontWeight="400" fill="var(--foreground-secondary)" textAnchor="middle">Identity</text>
+                <rect x="598" y="42" width="138" height="34" rx="17" fill="var(--background)" stroke="#ccc" strokeWidth="0.8" />
+                <text x="667" y="64" fontSize="12" fontWeight="400" fill="var(--foreground-secondary)" textAnchor="middle">Repository</text>
+                <rect x="752" y="42" width="138" height="34" rx="17" fill="var(--background)" stroke="#ccc" strokeWidth="0.8" />
+                <text x="821" y="64" fontSize="12" fontWeight="400" fill="var(--foreground-secondary)" textAnchor="middle">Backup</text>
+
+                {/* Core server */}
+                <rect x="56" y="132" width="836" height="240" rx="6" fill="transparent" stroke="var(--border-color)" strokeWidth="1" />
+                <text x="86" y="154" fontSize="10" fontWeight="500" fill="var(--muted)" letterSpacing="2">CORE</text>
+                <text x="86" y="170" fontSize="11" fontWeight="300" fill="var(--muted)" opacity="0.6">Bare Metal</text>
+
+                {/* Overlay bars */}
+                <rect x="80" y="186" width="788" height="20" rx="10" fill="#f5f5f5" stroke="#e0e0e0" strokeWidth="0.6" />
+                <text x="474" y="200" fontSize="9" fontWeight="400" fill="#aaa" textAnchor="middle" letterSpacing="1">OVERLAY NETWORK</text>
+
+                {/* Docker core */}
+                <rect x="80" y="214" width="788" height="110" rx="4" fill="transparent" stroke="var(--border-color)" strokeWidth="0.8" strokeDasharray="4 3" />
+                <text x="96" y="230" fontSize="11" fontWeight="300" fill="var(--muted)">Docker</text>
+
+                {/* CI group */}
+                <rect x="88" y="242" width="300" height="66" rx="4" fill="transparent" stroke="var(--border-color)" strokeWidth="0.8" strokeDasharray="4 3" />
+                <text x="238" y="258" fontSize="9" fontWeight="500" fill="var(--muted)" textAnchor="middle" letterSpacing="1.5">CI</text>
+
+                {/* CD group core */}
+                <rect x="400" y="242" width="162" height="66" rx="4" fill="transparent" stroke="var(--border-color)" strokeWidth="0.8" strokeDasharray="4 3" />
+                <text x="481" y="258" fontSize="9" fontWeight="500" fill="var(--muted)" textAnchor="middle" letterSpacing="1.5">CD</text>
+
+                {/* Observability group */}
+                <rect x="574" y="242" width="284" height="66" rx="4" fill="transparent" stroke="var(--border-color)" strokeWidth="0.8" strokeDasharray="4 3" />
+                <text x="716" y="258" fontSize="9" fontWeight="500" fill="var(--muted)" textAnchor="middle" letterSpacing="1.5">OBSERVABILITY</text>
+
+                {/* Inner components */}
+                <rect x="104" y="270" width="130" height="28" rx="4" fill="#EDE7F6" stroke="#5E35B1" strokeWidth="0.8" />
+                <text x="169" y="289" fontSize="11" fontWeight="400" fill="#4527A0" textAnchor="middle">Build</text>
+                <rect x="242" y="270" width="130" height="28" rx="4" fill="#FFF9C4" stroke="#D4B000" strokeWidth="0.8" />
+                <text x="307" y="289" fontSize="11" fontWeight="400" fill="#C6A700" textAnchor="middle">Store</text>
+                <rect x="416" y="270" width="130" height="28" rx="4" fill="#FFF3E0" stroke="#EF6C00" strokeWidth="0.8" />
+                <text x="481" y="289" fontSize="11" fontWeight="400" fill="#E65100" textAnchor="middle">Deploy</text>
+                <rect x="582" y="270" width="130" height="28" rx="4" fill="#E0F2F1" stroke="#00897B" strokeWidth="0.8" />
+                <text x="647" y="289" fontSize="11" fontWeight="400" fill="#00695C" textAnchor="middle">Monitoring</text>
+                <rect x="720" y="270" width="130" height="28" rx="4" fill="#E0F2F1" stroke="#00897B" strokeWidth="0.8" />
+                <text x="785" y="289" fontSize="11" fontWeight="400" fill="#00695C" textAnchor="middle">Alerts</text>
+
+                {/* Proxy core */}
+                <rect x="80" y="336" width="788" height="18" rx="4" fill="#FCE4EC" stroke="#C62828" strokeWidth="0.8" />
+                <text x="474" y="349" fontSize="9" fontWeight="400" fill="#C62828" textAnchor="middle">Proxy</text>
+
+                {/* Dev server */}
+                <rect x="56" y="408" width="400" height="304" rx="6" fill="transparent" stroke="var(--border-color)" strokeWidth="1" />
+                <text x="86" y="430" fontSize="10" fontWeight="500" fill="var(--muted)" letterSpacing="2">DEV</text>
+                <text x="86" y="446" fontSize="11" fontWeight="300" fill="var(--muted)" opacity="0.6">Bare Metal</text>
+
+                {/* Dev overlay */}
+                <rect x="80" y="462" width="352" height="20" rx="10" fill="#f5f5f5" stroke="#e0e0e0" strokeWidth="0.6" />
+                <text x="256" y="476" fontSize="9" fontWeight="400" fill="#aaa" textAnchor="middle" letterSpacing="1">OVERLAY NETWORK</text>
+
+                {/* Dev Docker */}
+                <rect x="80" y="490" width="352" height="174" rx="4" fill="transparent" stroke="var(--border-color)" strokeWidth="0.8" strokeDasharray="4 3" />
+                <text x="96" y="506" fontSize="11" fontWeight="300" fill="var(--muted)">Docker</text>
+
+                {/* Dev CD */}
+                <rect x="100" y="518" width="168" height="102" rx="4" fill="transparent" stroke="var(--border-color)" strokeWidth="0.8" strokeDasharray="4 3" />
+                <text x="184" y="534" fontSize="9" fontWeight="500" fill="var(--muted)" textAnchor="middle" letterSpacing="1.5">CD</text>
+
+                {/* Dev inner */}
+                <rect x="119" y="546" width="130" height="28" rx="4" fill="#FFF3E0" stroke="#EF6C00" strokeWidth="0.8" />
+                <text x="184" y="565" fontSize="11" fontWeight="400" fill="#E65100" textAnchor="middle">Deploy Agent</text>
+                <rect x="119" y="582" width="130" height="28" rx="4" fill="#E3F2FD" stroke="#1565C0" strokeWidth="0.8" />
+                <text x="184" y="601" fontSize="11" fontWeight="400" fill="#0D47A1" textAnchor="middle">Secrets Agent</text>
+
+                {/* Dev app stacks */}
+                <rect x="284" y="518" width="130" height="28" rx="4" fill="none" stroke="var(--border-color)" strokeWidth="0.8" strokeDasharray="4 3" />
+                <text x="349" y="537" fontSize="11" fontWeight="300" fill="var(--muted)" textAnchor="middle">App Stack</text>
+                <rect x="284" y="554" width="130" height="28" rx="4" fill="none" stroke="var(--border-color)" strokeWidth="0.8" strokeDasharray="4 3" />
+                <text x="349" y="573" fontSize="11" fontWeight="300" fill="var(--muted)" textAnchor="middle">App Stack</text>
+                <rect x="284" y="590" width="130" height="28" rx="4" fill="none" stroke="var(--border-color)" strokeWidth="0.8" strokeDasharray="4 3" />
+                <text x="349" y="609" fontSize="11" fontWeight="300" fill="var(--muted)" textAnchor="middle">App Stack</text>
+
+                {/* Dev proxy */}
+                <rect x="80" y="676" width="352" height="18" rx="4" fill="#FCE4EC" stroke="#C62828" strokeWidth="0.8" />
+                <text x="256" y="689" fontSize="9" fontWeight="400" fill="#C62828" textAnchor="middle">Proxy</text>
+
+                {/* Prod server */}
+                <rect x="492" y="408" width="400" height="304" rx="6" fill="transparent" stroke="var(--border-color)" strokeWidth="1" />
+                <text x="522" y="430" fontSize="10" fontWeight="500" fill="var(--muted)" letterSpacing="2">PROD</text>
+                <text x="522" y="446" fontSize="11" fontWeight="300" fill="var(--muted)" opacity="0.6">Bare Metal</text>
+
+                {/* Prod overlay */}
+                <rect x="516" y="462" width="352" height="20" rx="10" fill="#f5f5f5" stroke="#e0e0e0" strokeWidth="0.6" />
+                <text x="692" y="476" fontSize="9" fontWeight="400" fill="#aaa" textAnchor="middle" letterSpacing="1">OVERLAY NETWORK</text>
+
+                {/* Prod Docker */}
+                <rect x="516" y="490" width="352" height="174" rx="4" fill="transparent" stroke="var(--border-color)" strokeWidth="0.8" strokeDasharray="4 3" />
+                <text x="532" y="506" fontSize="11" fontWeight="300" fill="var(--muted)">Docker</text>
+
+                {/* Prod CD */}
+                <rect x="536" y="518" width="168" height="102" rx="4" fill="transparent" stroke="var(--border-color)" strokeWidth="0.8" strokeDasharray="4 3" />
+                <text x="620" y="534" fontSize="9" fontWeight="500" fill="var(--muted)" textAnchor="middle" letterSpacing="1.5">CD</text>
+
+                {/* Prod inner */}
+                <rect x="555" y="546" width="130" height="28" rx="4" fill="#FFF3E0" stroke="#EF6C00" strokeWidth="0.8" />
+                <text x="620" y="565" fontSize="11" fontWeight="400" fill="#E65100" textAnchor="middle">Deploy Agent</text>
+                <rect x="555" y="582" width="130" height="28" rx="4" fill="#E3F2FD" stroke="#1565C0" strokeWidth="0.8" />
+                <text x="620" y="601" fontSize="11" fontWeight="400" fill="#0D47A1" textAnchor="middle">Secrets Agent</text>
+
+                {/* Prod app stacks */}
+                <rect x="720" y="518" width="130" height="28" rx="4" fill="none" stroke="var(--border-color)" strokeWidth="0.8" strokeDasharray="4 3" />
+                <text x="785" y="537" fontSize="11" fontWeight="300" fill="var(--muted)" textAnchor="middle">App Stack</text>
+                <rect x="720" y="554" width="130" height="28" rx="4" fill="none" stroke="var(--border-color)" strokeWidth="0.8" strokeDasharray="4 3" />
+                <text x="785" y="573" fontSize="11" fontWeight="300" fill="var(--muted)" textAnchor="middle">App Stack</text>
+                <rect x="720" y="590" width="130" height="28" rx="4" fill="none" stroke="var(--border-color)" strokeWidth="0.8" strokeDasharray="4 3" />
+                <text x="785" y="609" fontSize="11" fontWeight="300" fill="var(--muted)" textAnchor="middle">App Stack</text>
+
+                {/* Prod backup agent */}
+                <rect x="536" y="633" width="314" height="18" rx="4" fill="#E8F5E9" stroke="#4CAF50" strokeWidth="0.8" />
+                <text x="693" y="646" fontSize="9" fontWeight="400" fill="#2E7D32" textAnchor="middle">Backup Agent</text>
+
+                {/* Prod proxy */}
+                <rect x="516" y="676" width="352" height="18" rx="4" fill="#FCE4EC" stroke="#C62828" strokeWidth="0.8" />
+                <text x="692" y="689" fontSize="9" fontWeight="400" fill="#C62828" textAnchor="middle">Proxy</text>
+              </svg>
+
+              {/* Overlay with CTA */}
+              <div className="absolute inset-0 flex items-center justify-center bg-background/40 group-hover:bg-background/60 transition-colors duration-300">
+                <span className="bg-foreground text-background rounded-full px-8 py-4 font-medium text-body">
+                  Explore the architecture
+                </span>
+              </div>
+            </button>
           </FadeIn>
         </div>
       </section>
@@ -116,105 +229,18 @@ export default function PlatformPageContent() {
       <InteractiveDiagram
         isOpen={diagramOpen}
         onClose={() => setDiagramOpen(false)}
+        emailStatus={emailStatus}
+        onEmailSubmit={handleEmailSubmit}
+        submittedEmail={submittedEmail}
       />
 
-      {/* Email gate */}
-      <section className="py-section-sm">
-        <Container>
-          <div className="max-w-[480px] mx-auto text-center">
-            <FadeIn>
-              <h2 className="text-heading text-foreground mb-4">
-                Get the full architecture reference
-              </h2>
-              <p className="text-body text-foreground-secondary mb-10">
-                The detailed version with specific tools, how they connect, and
-                why each one was chosen. Sent to your work email.
-              </p>
-            </FadeIn>
-
-            <FadeIn delay={0.1}>
-              {status === "sent" ? (
-                <div className="py-8">
-                  <p className="text-body-lg text-foreground mb-3">
-                    Got it.
-                  </p>
-                  <p className="text-body text-foreground-secondary">
-                    We will send the full reference to{" "}
-                    <span className="text-foreground">{email}</span> shortly.
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="text-left">
-                  <div className="mb-6">
-                    <label
-                      htmlFor="work-email"
-                      className="block text-label uppercase tracking-widest text-muted mb-2"
-                    >
-                      Work email
-                    </label>
-                    <input
-                      id="work-email"
-                      type="email"
-                      value={email}
-                      onChange={(e) => {
-                        setEmail(e.target.value);
-                        if (status === "blocked" || status === "error") {
-                          setStatus("idle");
-                          setErrorMessage("");
-                        }
-                      }}
-                      className={inputClasses}
-                      placeholder="you@company.com"
-                      required
-                    />
-                  </div>
-                  <div className="mb-6">
-                    <label
-                      htmlFor="note"
-                      className="block text-label uppercase tracking-widest text-muted mb-2"
-                    >
-                      Note <span className="normal-case tracking-normal text-muted">(optional)</span>
-                    </label>
-                    <textarea
-                      id="note"
-                      value={note}
-                      onChange={(e) => setNote(e.target.value)}
-                      rows={2}
-                      className={`${inputClasses} resize-none`}
-                      placeholder="Anything you'd like us to know"
-                    />
-                  </div>
-                  <div>
-                    {status === "blocked" && (
-                      <p className="text-sm text-foreground-secondary mt-3">
-                        Please use your work email. We send this to engineering
-                        teams, not personal inboxes.
-                      </p>
-                    )}
-                    {status === "error" && errorMessage && (
-                      <p className="text-sm text-red-600 mt-3">
-                        {errorMessage}
-                      </p>
-                    )}
-                  </div>
-                  <button
-                    type="submit"
-                    disabled={status === "sending"}
-                    className="bg-foreground hover:bg-charcoal disabled:opacity-50 text-background w-full px-8 py-4 text-body font-medium rounded-full transition-colors"
-                  >
-                    {status === "sending"
-                      ? "Sending..."
-                      : "Send me the reference"}
-                  </button>
-                  <p className="text-xs text-muted mt-4 text-center">
-                    No spam, no sequences. Just the architecture document.
-                  </p>
-                </form>
-              )}
-            </FadeIn>
-          </div>
-        </Container>
-      </section>
+      {/* Bottom CTA */}
+      <CTASection
+        headline="Want us to build yours?"
+        subtext="30 minutes. We look at your current setup and tell you exactly what we would change, and why."
+        buttonText="Book a call"
+        buttonHref="/contact"
+      />
     </main>
   );
 }

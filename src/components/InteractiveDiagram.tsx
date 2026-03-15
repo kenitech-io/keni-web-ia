@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef, FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ZonePart {
@@ -179,12 +179,28 @@ const zones: ZoneInfo[] = [
 interface Props {
   isOpen: boolean;
   onClose: () => void;
+  emailStatus: "idle" | "sending" | "sent" | "error" | "blocked";
+  onEmailSubmit: (email: string, note: string) => void;
+  submittedEmail?: string;
 }
 
-export default function InteractiveDiagram({ isOpen, onClose }: Props) {
+const ENGAGEMENT_THRESHOLD = 3;
+
+export default function InteractiveDiagram({
+  isOpen,
+  onClose,
+  emailStatus,
+  onEmailSubmit,
+  submittedEmail,
+}: Props) {
   const [activeZone, setActiveZone] = useState<string | null>(null);
+  const [email, setEmail] = useState("");
+  const [note, setNote] = useState("");
+  const exploredRef = useRef<Set<string>>(new Set());
+  const [exploredCount, setExploredCount] = useState(0);
 
   const activeInfo = zones.find((z) => z.id === activeZone);
+  const showForm = exploredCount >= ENGAGEMENT_THRESHOLD;
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -209,8 +225,22 @@ export default function InteractiveDiagram({ isOpen, onClose }: Props) {
     [activeZone]
   );
 
-  const enter = useCallback((id: string) => setActiveZone(id), []);
+  const enter = useCallback((id: string) => {
+    setActiveZone(id);
+    if (!exploredRef.current.has(id)) {
+      exploredRef.current.add(id);
+      setExploredCount(exploredRef.current.size);
+    }
+  }, []);
   const leave = useCallback(() => setActiveZone(null), []);
+
+  const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    onEmailSubmit(email, note);
+  };
+
+  const inputClasses =
+    "bg-transparent border-b border-border-color focus:border-foreground py-2 text-sm text-foreground w-full outline-none transition-colors placeholder:text-muted";
 
   return (
     <AnimatePresence>
@@ -425,48 +455,133 @@ export default function InteractiveDiagram({ isOpen, onClose }: Props) {
             </div>
 
             {/* Side Panel */}
-            <div className="w-full lg:w-[380px] shrink-0 border-t lg:border-t-0 lg:border-l border-border-color p-6 md:p-10 flex items-center">
-              <AnimatePresence mode="wait">
-                {activeInfo ? (
+            <div className="w-full lg:w-[380px] shrink-0 border-t lg:border-t-0 lg:border-l border-border-color p-6 md:p-10 flex flex-col justify-center overflow-y-auto">
+              {/* Component description */}
+              <div className="flex-1 flex items-center min-h-0">
+                <AnimatePresence mode="wait">
+                  {activeInfo ? (
+                    <motion.div
+                      key={activeInfo.id}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <p className="text-label uppercase tracking-widest text-muted mb-4">
+                        {activeInfo.label}
+                      </p>
+                      {activeInfo.parts ? (
+                        <div className="space-y-6">
+                          {activeInfo.parts.map((part) => (
+                            <div key={part.partLabel}>
+                              <p className="text-xs font-medium text-foreground mb-1.5">
+                                {part.partLabel}
+                              </p>
+                              <p className="text-body text-foreground-secondary leading-relaxed">
+                                {part.partDescription}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <p className="text-body text-foreground-secondary leading-relaxed">
+                          {activeInfo.description}
+                        </p>
+                      )}
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="default"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                    >
+                      <p className="text-body text-muted">
+                        {showForm
+                          ? "Hover over any component to learn more."
+                          : "Hover over any component to learn what it does."}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {/* Email capture form, appears after engagement threshold */}
+              <AnimatePresence>
+                {showForm && emailStatus !== "sent" && (
                   <motion.div
-                    key={activeInfo.id}
+                    key="email-form"
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.4, delay: 0.2 }}
+                    className="pt-6 mt-6 border-t border-border-color"
+                  >
+                    <p className="text-sm font-medium text-foreground mb-1">
+                      Get the full reference
+                    </p>
+                    <p className="text-xs text-foreground-secondary mb-4">
+                      Exact tool recommendations, cost breakdown, and implementation timeline. Sent to your work email.
+                    </p>
+                    <form onSubmit={handleFormSubmit} className="space-y-3">
+                      <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => {
+                          setEmail(e.target.value);
+                          if (emailStatus === "blocked" || emailStatus === "error") {
+                            onEmailSubmit("__reset__", "");
+                          }
+                        }}
+                        className={inputClasses}
+                        placeholder="you@company.com"
+                        required
+                      />
+                      <textarea
+                        value={note}
+                        onChange={(e) => setNote(e.target.value)}
+                        rows={1}
+                        className={`${inputClasses} resize-none`}
+                        placeholder="Brief context about your setup (optional)"
+                      />
+                      {emailStatus === "blocked" && (
+                        <p className="text-xs text-foreground-secondary">
+                          Please use your work email.
+                        </p>
+                      )}
+                      {emailStatus === "error" && (
+                        <p className="text-xs text-red-600">
+                          Something went wrong. Please try again.
+                        </p>
+                      )}
+                      <button
+                        type="submit"
+                        disabled={emailStatus === "sending"}
+                        className="bg-foreground hover:bg-charcoal disabled:opacity-50 text-background w-full px-6 py-3 text-sm font-medium rounded-full transition-colors"
+                      >
+                        {emailStatus === "sending" ? "Sending..." : "Send me the reference"}
+                      </button>
+                      <p className="text-[10px] text-muted text-center">
+                        No spam, no sequences. Just the document.
+                      </p>
+                    </form>
+                  </motion.div>
+                )}
+                {emailStatus === "sent" && (
+                  <motion.div
+                    key="email-sent"
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -8 }}
-                    transition={{ duration: 0.2 }}
+                    className="pt-6 mt-6 border-t border-border-color"
                   >
-                    <p className="text-label uppercase tracking-widest text-muted mb-4">
-                      {activeInfo.label}
+                    <p className="text-sm font-medium text-foreground mb-1">
+                      Got it.
                     </p>
-                    {activeInfo.parts ? (
-                      <div className="space-y-6">
-                        {activeInfo.parts.map((part) => (
-                          <div key={part.partLabel}>
-                            <p className="text-xs font-medium text-foreground mb-1.5">
-                              {part.partLabel}
-                            </p>
-                            <p className="text-body text-foreground-secondary leading-relaxed">
-                              {part.partDescription}
-                            </p>
-                          </div>
-                        ))}
-                      </div>
-                    ) : (
-                      <p className="text-body text-foreground-secondary leading-relaxed">
-                        {activeInfo.description}
-                      </p>
-                    )}
+                    <p className="text-xs text-foreground-secondary">
+                      We will send the full reference to{" "}
+                      <span className="text-foreground">{submittedEmail}</span> shortly.
+                    </p>
                   </motion.div>
-                ) : (
-                  <motion.p
-                    key="default"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="text-body text-muted"
-                  >
-                    Hover over any component to learn what it does.
-                  </motion.p>
                 )}
               </AnimatePresence>
             </div>
