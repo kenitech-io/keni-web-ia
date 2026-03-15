@@ -101,7 +101,7 @@ const zones: ZoneInfo[] = [
     id: "docker",
     label: "Docker",
     description:
-      "A technology that packages software into lightweight, portable units called containers. Each container includes everything the app needs to run: code, libraries, and settings. It eliminates the \"works on my machine\" problem because the container is the machine.",
+      'A technology that packages software into lightweight, portable units called containers. Each container includes everything the app needs to run: code, libraries, and settings. It eliminates the "works on my machine" problem because the container is the machine.',
   },
   {
     id: "ci",
@@ -119,13 +119,13 @@ const zones: ZoneInfo[] = [
     id: "observability",
     label: "Observability",
     description:
-      "The ability to understand what is happening inside your systems by looking at their outputs: metrics, logs, and traces. Without it, debugging is guesswork. With it, you can answer \"why is this slow?\" or \"what changed?\" in minutes instead of hours.",
+      'The ability to understand what is happening inside your systems by looking at their outputs: metrics, logs, and traces. Without it, debugging is guesswork. With it, you can answer "why is this slow?" or "what changed?" in minutes instead of hours.',
   },
   {
     id: "build",
     label: "Build",
     description:
-      "Every git push triggers an automated build. Code gets compiled, tested, and packaged into a container image. No manual steps, no \"works on my machine\" problems.",
+      'Every git push triggers an automated build. Code gets compiled, tested, and packaged into a container image. No manual steps, no "works on my machine" problems.',
   },
   {
     id: "store",
@@ -218,11 +218,14 @@ export default function InteractiveDiagram({
 
   const zoneStyle = useCallback(
     (id: string): React.CSSProperties => ({
-      opacity: !activeZone ? 1 : activeZone === id ? 1 : 0.12,
-      transition: "opacity 0.3s ease",
+      opacity: 1,
+      filter: activeZone === id ? "brightness(0.88) saturate(1.4)" : "none",
+      transform: activeZone === id ? "scale(1.01)" : "scale(1)",
+      transformOrigin: "center",
+      transition: "filter 0.3s ease, transform 0.3s ease",
       cursor: "pointer",
     }),
-    [activeZone]
+    [activeZone],
   );
 
   const enter = useCallback((id: string) => {
@@ -282,182 +285,1028 @@ export default function InteractiveDiagram({
                     Rendered first so inner elements sit on top
                     ══════════════════════════════════════ */}
 
-                <g onPointerEnter={() => enter("core")} onPointerLeave={leave} style={zoneStyle("core")}>
-                  <rect x="56" y="132" width="836" height="240" rx="6" fill="transparent" stroke="var(--border-color)" strokeWidth="1" />
-                  <text x="86" y="154" fontSize="10" fontWeight="500" fill="var(--muted)" letterSpacing="2">CORE</text>
-                  <text x="86" y="170" fontSize="11" fontWeight="300" fill="var(--muted)" style={{ opacity: 0.6 }}>Bare Metal</text>
+                <g
+                  onPointerEnter={() => enter("core")}
+                  onPointerLeave={leave}
+                  style={zoneStyle("core")}
+                >
+                  <rect
+                    x="56"
+                    y="132"
+                    width="836"
+                    height="240"
+                    rx="6"
+                    fill="transparent"
+                    stroke="var(--border-color)"
+                    strokeWidth="1"
+                  />
+                  <text
+                    x="86"
+                    y="154"
+                    fontSize="10"
+                    fontWeight="500"
+                    fill="var(--muted)"
+                    letterSpacing="2"
+                  >
+                    CORE
+                  </text>
+                  <text
+                    x="86"
+                    y="170"
+                    fontSize="11"
+                    fontWeight="300"
+                    fill="var(--muted)"
+                    style={{ opacity: 0.6 }}
+                  >
+                    Bare Metal
+                  </text>
                 </g>
 
-                <g onPointerEnter={() => enter("dev")} onPointerLeave={leave} style={zoneStyle("dev")}>
-                  <rect x="56" y="408" width="400" height="304" rx="6" fill="transparent" stroke="var(--border-color)" strokeWidth="1" />
-                  <text x="86" y="430" fontSize="10" fontWeight="500" fill="var(--muted)" letterSpacing="2">DEV</text>
-                  <text x="86" y="446" fontSize="11" fontWeight="300" fill="var(--muted)" style={{ opacity: 0.6 }}>Bare Metal</text>
+                <g
+                  onPointerEnter={() => enter("dev")}
+                  onPointerLeave={leave}
+                  style={zoneStyle("dev")}
+                >
+                  <rect
+                    x="56"
+                    y="408"
+                    width="400"
+                    height="304"
+                    rx="6"
+                    fill="transparent"
+                    stroke="var(--border-color)"
+                    strokeWidth="1"
+                  />
+                  <text
+                    x="86"
+                    y="430"
+                    fontSize="10"
+                    fontWeight="500"
+                    fill="var(--muted)"
+                    letterSpacing="2"
+                  >
+                    DEV
+                  </text>
+                  <text
+                    x="86"
+                    y="446"
+                    fontSize="11"
+                    fontWeight="300"
+                    fill="var(--muted)"
+                    style={{ opacity: 0.6 }}
+                  >
+                    Bare Metal
+                  </text>
                 </g>
 
-                <g onPointerEnter={() => enter("prod")} onPointerLeave={leave} style={zoneStyle("prod")}>
-                  <rect x="492" y="408" width="400" height="304" rx="6" fill="transparent" stroke="var(--border-color)" strokeWidth="1" />
-                  <text x="522" y="430" fontSize="10" fontWeight="500" fill="var(--muted)" letterSpacing="2">PROD</text>
-                  <text x="522" y="446" fontSize="11" fontWeight="300" fill="var(--muted)" style={{ opacity: 0.6 }}>Bare Metal</text>
+                <g
+                  onPointerEnter={() => enter("prod")}
+                  onPointerLeave={leave}
+                  style={zoneStyle("prod")}
+                >
+                  <rect
+                    x="492"
+                    y="408"
+                    width="400"
+                    height="304"
+                    rx="6"
+                    fill="transparent"
+                    stroke="var(--border-color)"
+                    strokeWidth="1"
+                  />
+                  <text
+                    x="522"
+                    y="430"
+                    fontSize="10"
+                    fontWeight="500"
+                    fill="var(--muted)"
+                    letterSpacing="2"
+                  >
+                    PROD
+                  </text>
+                  <text
+                    x="522"
+                    y="446"
+                    fontSize="11"
+                    fontWeight="300"
+                    fill="var(--muted)"
+                    style={{ opacity: 0.6 }}
+                  >
+                    Bare Metal
+                  </text>
                 </g>
 
                 {/* ══════════════════════════════════════
                     LAYER 2: Docker containers (transparent fill)
                     ══════════════════════════════════════ */}
 
-                <g onPointerEnter={() => enter("docker")} onPointerLeave={leave} style={zoneStyle("docker")}>
-                  <rect x="80" y="214" width="788" height="110" rx="4" fill="transparent" stroke="var(--border-color)" strokeWidth="0.8" strokeDasharray="4 3" />
-                  <text x="96" y="230" fontSize="11" fontWeight="300" fill="var(--muted)">Docker</text>
-                  <rect x="80" y="490" width="352" height="174" rx="4" fill="transparent" stroke="var(--border-color)" strokeWidth="0.8" strokeDasharray="4 3" />
-                  <text x="96" y="506" fontSize="11" fontWeight="300" fill="var(--muted)">Docker</text>
-                  <rect x="516" y="490" width="352" height="174" rx="4" fill="transparent" stroke="var(--border-color)" strokeWidth="0.8" strokeDasharray="4 3" />
-                  <text x="532" y="506" fontSize="11" fontWeight="300" fill="var(--muted)">Docker</text>
+                <g
+                  onPointerEnter={() => enter("docker")}
+                  onPointerLeave={leave}
+                  style={zoneStyle("docker")}
+                >
+                  <rect
+                    x="80"
+                    y="214"
+                    width="788"
+                    height="110"
+                    rx="4"
+                    fill="transparent"
+                    stroke="var(--border-color)"
+                    strokeWidth="0.8"
+                    strokeDasharray="4 3"
+                  />
+                  <text
+                    x="96"
+                    y="230"
+                    fontSize="11"
+                    fontWeight="300"
+                    fill="var(--muted)"
+                  >
+                    Docker
+                  </text>
+                  <rect
+                    x="80"
+                    y="490"
+                    width="352"
+                    height="174"
+                    rx="4"
+                    fill="transparent"
+                    stroke="var(--border-color)"
+                    strokeWidth="0.8"
+                    strokeDasharray="4 3"
+                  />
+                  <text
+                    x="96"
+                    y="506"
+                    fontSize="11"
+                    fontWeight="300"
+                    fill="var(--muted)"
+                  >
+                    Docker
+                  </text>
+                  <rect
+                    x="516"
+                    y="490"
+                    width="352"
+                    height="174"
+                    rx="4"
+                    fill="transparent"
+                    stroke="var(--border-color)"
+                    strokeWidth="0.8"
+                    strokeDasharray="4 3"
+                  />
+                  <text
+                    x="532"
+                    y="506"
+                    fontSize="11"
+                    fontWeight="300"
+                    fill="var(--muted)"
+                  >
+                    Docker
+                  </text>
                 </g>
 
                 {/* ══════════════════════════════════════
                     LAYER 3: CI / CD / Observability groups (transparent fill)
                     ══════════════════════════════════════ */}
 
-                <g onPointerEnter={() => enter("ci")} onPointerLeave={leave} style={zoneStyle("ci")}>
-                  <rect x="88" y="242" width="300" height="66" rx="4" fill="transparent" stroke="var(--border-color)" strokeWidth="0.8" strokeDasharray="4 3" />
-                  <text x="238" y="258" fontSize="9" fontWeight="500" fill="var(--muted)" textAnchor="middle" letterSpacing="1.5">CI</text>
+                <g
+                  onPointerEnter={() => enter("ci")}
+                  onPointerLeave={leave}
+                  style={zoneStyle("ci")}
+                >
+                  <rect
+                    x="88"
+                    y="242"
+                    width="300"
+                    height="66"
+                    rx="4"
+                    fill="transparent"
+                    stroke="var(--border-color)"
+                    strokeWidth="0.8"
+                    strokeDasharray="4 3"
+                  />
+                  <text
+                    x="238"
+                    y="258"
+                    fontSize="9"
+                    fontWeight="500"
+                    fill="var(--muted)"
+                    textAnchor="middle"
+                    letterSpacing="1.5"
+                  >
+                    CI
+                  </text>
                 </g>
 
-                <g onPointerEnter={() => enter("cd")} onPointerLeave={leave} style={zoneStyle("cd")}>
-                  <rect x="400" y="242" width="162" height="66" rx="4" fill="transparent" stroke="var(--border-color)" strokeWidth="0.8" strokeDasharray="4 3" />
-                  <text x="481" y="258" fontSize="9" fontWeight="500" fill="var(--muted)" textAnchor="middle" letterSpacing="1.5">CD</text>
-                  <rect x="100" y="518" width="168" height="102" rx="4" fill="transparent" stroke="var(--border-color)" strokeWidth="0.8" strokeDasharray="4 3" />
-                  <text x="184" y="534" fontSize="9" fontWeight="500" fill="var(--muted)" textAnchor="middle" letterSpacing="1.5">CD</text>
-                  <rect x="536" y="518" width="168" height="102" rx="4" fill="transparent" stroke="var(--border-color)" strokeWidth="0.8" strokeDasharray="4 3" />
-                  <text x="620" y="534" fontSize="9" fontWeight="500" fill="var(--muted)" textAnchor="middle" letterSpacing="1.5">CD</text>
+                <g
+                  onPointerEnter={() => enter("cd")}
+                  onPointerLeave={leave}
+                  style={zoneStyle("cd")}
+                >
+                  <rect
+                    x="400"
+                    y="242"
+                    width="162"
+                    height="66"
+                    rx="4"
+                    fill="transparent"
+                    stroke="var(--border-color)"
+                    strokeWidth="0.8"
+                    strokeDasharray="4 3"
+                  />
+                  <text
+                    x="481"
+                    y="258"
+                    fontSize="9"
+                    fontWeight="500"
+                    fill="var(--muted)"
+                    textAnchor="middle"
+                    letterSpacing="1.5"
+                  >
+                    CD
+                  </text>
+                  <rect
+                    x="100"
+                    y="518"
+                    width="168"
+                    height="102"
+                    rx="4"
+                    fill="transparent"
+                    stroke="var(--border-color)"
+                    strokeWidth="0.8"
+                    strokeDasharray="4 3"
+                  />
+                  <text
+                    x="184"
+                    y="534"
+                    fontSize="9"
+                    fontWeight="500"
+                    fill="var(--muted)"
+                    textAnchor="middle"
+                    letterSpacing="1.5"
+                  >
+                    CD
+                  </text>
+                  <rect
+                    x="536"
+                    y="518"
+                    width="168"
+                    height="102"
+                    rx="4"
+                    fill="transparent"
+                    stroke="var(--border-color)"
+                    strokeWidth="0.8"
+                    strokeDasharray="4 3"
+                  />
+                  <text
+                    x="620"
+                    y="534"
+                    fontSize="9"
+                    fontWeight="500"
+                    fill="var(--muted)"
+                    textAnchor="middle"
+                    letterSpacing="1.5"
+                  >
+                    CD
+                  </text>
                 </g>
 
-                <g onPointerEnter={() => enter("observability")} onPointerLeave={leave} style={zoneStyle("observability")}>
-                  <rect x="574" y="242" width="284" height="66" rx="4" fill="transparent" stroke="var(--border-color)" strokeWidth="0.8" strokeDasharray="4 3" />
-                  <text x="716" y="258" fontSize="9" fontWeight="500" fill="var(--muted)" textAnchor="middle" letterSpacing="1.5">OBSERVABILITY</text>
+                <g
+                  onPointerEnter={() => enter("observability")}
+                  onPointerLeave={leave}
+                  style={zoneStyle("observability")}
+                >
+                  <rect
+                    x="574"
+                    y="242"
+                    width="284"
+                    height="66"
+                    rx="4"
+                    fill="transparent"
+                    stroke="var(--border-color)"
+                    strokeWidth="0.8"
+                    strokeDasharray="4 3"
+                  />
+                  <text
+                    x="716"
+                    y="258"
+                    fontSize="9"
+                    fontWeight="500"
+                    fill="var(--muted)"
+                    textAnchor="middle"
+                    letterSpacing="1.5"
+                  >
+                    OBSERVABILITY
+                  </text>
                 </g>
 
                 {/* ══════════════════════════════════════
                     LAYER 4: SaaS pills (individual)
                     ══════════════════════════════════════ */}
 
-                <text x="56" y="58" fontSize="10" fontWeight="500" fill="#999" letterSpacing="2" style={{ opacity: activeZone ? 0.3 : 1, transition: "opacity 0.3s ease" }}>SAAS</text>
-                <line x1="56" y1="96" x2="892" y2="96" stroke="var(--border-color)" strokeWidth="0.6" />
+                <text
+                  x="56"
+                  y="58"
+                  fontSize="10"
+                  fontWeight="500"
+                  fill="#999"
+                  letterSpacing="2"
+                  style={{
+                    opacity: activeZone ? 0.3 : 1,
+                    transition: "opacity 0.3s ease",
+                  }}
+                >
+                  SAAS
+                </text>
+                <line
+                  x1="56"
+                  y1="96"
+                  x2="892"
+                  y2="96"
+                  stroke="var(--border-color)"
+                  strokeWidth="0.6"
+                />
 
-                <g onPointerEnter={() => enter("overlay")} onPointerLeave={leave} style={zoneStyle("overlay")}>
-                  <rect x="136" y="42" width="138" height="34" rx="17" fill="var(--background)" stroke="#ccc" strokeWidth="0.8" />
-                  <text x="205" y="64" fontSize="12" fontWeight="400" fill="var(--foreground-secondary)" textAnchor="middle">Overlay Network</text>
+                <g
+                  onPointerEnter={() => enter("overlay")}
+                  onPointerLeave={leave}
+                  style={zoneStyle("overlay")}
+                >
+                  <rect
+                    x="136"
+                    y="42"
+                    width="138"
+                    height="34"
+                    rx="17"
+                    fill="var(--background)"
+                    stroke="#ccc"
+                    strokeWidth="0.8"
+                  />
+                  <text
+                    x="205"
+                    y="64"
+                    fontSize="12"
+                    fontWeight="400"
+                    fill="var(--foreground-secondary)"
+                    textAnchor="middle"
+                  >
+                    Overlay Network
+                  </text>
                 </g>
 
-                <g onPointerEnter={() => enter("secrets")} onPointerLeave={leave} style={zoneStyle("secrets")}>
-                  <rect x="290" y="42" width="138" height="34" rx="17" fill="var(--background)" stroke="#ccc" strokeWidth="0.8" />
-                  <text x="359" y="64" fontSize="12" fontWeight="400" fill="var(--foreground-secondary)" textAnchor="middle">Secrets</text>
+                <g
+                  onPointerEnter={() => enter("secrets")}
+                  onPointerLeave={leave}
+                  style={zoneStyle("secrets")}
+                >
+                  <rect
+                    x="290"
+                    y="42"
+                    width="138"
+                    height="34"
+                    rx="17"
+                    fill="var(--background)"
+                    stroke="#ccc"
+                    strokeWidth="0.8"
+                  />
+                  <text
+                    x="359"
+                    y="64"
+                    fontSize="12"
+                    fontWeight="400"
+                    fill="var(--foreground-secondary)"
+                    textAnchor="middle"
+                  >
+                    Secrets
+                  </text>
                 </g>
 
-                <g onPointerEnter={() => enter("saas-identity")} onPointerLeave={leave} style={zoneStyle("saas-identity")}>
-                  <rect x="444" y="42" width="138" height="34" rx="17" fill="var(--background)" stroke="#ccc" strokeWidth="0.8" />
-                  <text x="513" y="64" fontSize="12" fontWeight="400" fill="var(--foreground-secondary)" textAnchor="middle">Identity</text>
+                <g
+                  onPointerEnter={() => enter("saas-identity")}
+                  onPointerLeave={leave}
+                  style={zoneStyle("saas-identity")}
+                >
+                  <rect
+                    x="444"
+                    y="42"
+                    width="138"
+                    height="34"
+                    rx="17"
+                    fill="var(--background)"
+                    stroke="#ccc"
+                    strokeWidth="0.8"
+                  />
+                  <text
+                    x="513"
+                    y="64"
+                    fontSize="12"
+                    fontWeight="400"
+                    fill="var(--foreground-secondary)"
+                    textAnchor="middle"
+                  >
+                    Identity
+                  </text>
                 </g>
 
-                <g onPointerEnter={() => enter("saas-repo")} onPointerLeave={leave} style={zoneStyle("saas-repo")}>
-                  <rect x="598" y="42" width="138" height="34" rx="17" fill="var(--background)" stroke="#ccc" strokeWidth="0.8" />
-                  <text x="667" y="64" fontSize="12" fontWeight="400" fill="var(--foreground-secondary)" textAnchor="middle">Repository</text>
+                <g
+                  onPointerEnter={() => enter("saas-repo")}
+                  onPointerLeave={leave}
+                  style={zoneStyle("saas-repo")}
+                >
+                  <rect
+                    x="598"
+                    y="42"
+                    width="138"
+                    height="34"
+                    rx="17"
+                    fill="var(--background)"
+                    stroke="#ccc"
+                    strokeWidth="0.8"
+                  />
+                  <text
+                    x="667"
+                    y="64"
+                    fontSize="12"
+                    fontWeight="400"
+                    fill="var(--foreground-secondary)"
+                    textAnchor="middle"
+                  >
+                    Repository
+                  </text>
                 </g>
 
-                <g onPointerEnter={() => enter("backup")} onPointerLeave={leave} style={zoneStyle("backup")}>
-                  <rect x="752" y="42" width="138" height="34" rx="17" fill="var(--background)" stroke="#ccc" strokeWidth="0.8" />
-                  <text x="821" y="64" fontSize="12" fontWeight="400" fill="var(--foreground-secondary)" textAnchor="middle">Backup</text>
+                <g
+                  onPointerEnter={() => enter("backup")}
+                  onPointerLeave={leave}
+                  style={zoneStyle("backup")}
+                >
+                  <rect
+                    x="752"
+                    y="42"
+                    width="138"
+                    height="34"
+                    rx="17"
+                    fill="var(--background)"
+                    stroke="#ccc"
+                    strokeWidth="0.8"
+                  />
+                  <text
+                    x="821"
+                    y="64"
+                    fontSize="12"
+                    fontWeight="400"
+                    fill="var(--foreground-secondary)"
+                    textAnchor="middle"
+                  >
+                    Backup
+                  </text>
                 </g>
 
                 {/* ══════════════════════════════════════
                     LAYER 5: Overlay Network bars
                     ══════════════════════════════════════ */}
 
-                <g onPointerEnter={() => enter("overlay")} onPointerLeave={leave} style={zoneStyle("overlay")}>
-                  <rect x="80" y="186" width="788" height="20" rx="10" fill="#f5f5f5" stroke="#e0e0e0" strokeWidth="0.6" />
-                  <text x="474" y="200" fontSize="9" fontWeight="400" fill="#aaa" textAnchor="middle" letterSpacing="1">OVERLAY NETWORK</text>
-                  <rect x="80" y="462" width="352" height="20" rx="10" fill="#f5f5f5" stroke="#e0e0e0" strokeWidth="0.6" />
-                  <text x="256" y="476" fontSize="9" fontWeight="400" fill="#aaa" textAnchor="middle" letterSpacing="1">OVERLAY NETWORK</text>
-                  <rect x="516" y="462" width="352" height="20" rx="10" fill="#f5f5f5" stroke="#e0e0e0" strokeWidth="0.6" />
-                  <text x="692" y="476" fontSize="9" fontWeight="400" fill="#aaa" textAnchor="middle" letterSpacing="1">OVERLAY NETWORK</text>
+                <g
+                  onPointerEnter={() => enter("overlay")}
+                  onPointerLeave={leave}
+                  style={zoneStyle("overlay")}
+                >
+                  <rect
+                    x="80"
+                    y="186"
+                    width="788"
+                    height="20"
+                    rx="10"
+                    fill="#f5f5f5"
+                    stroke="#e0e0e0"
+                    strokeWidth="0.6"
+                  />
+                  <text
+                    x="474"
+                    y="200"
+                    fontSize="9"
+                    fontWeight="400"
+                    fill="#aaa"
+                    textAnchor="middle"
+                    letterSpacing="1"
+                  >
+                    OVERLAY NETWORK
+                  </text>
+                  <rect
+                    x="80"
+                    y="462"
+                    width="352"
+                    height="20"
+                    rx="10"
+                    fill="#f5f5f5"
+                    stroke="#e0e0e0"
+                    strokeWidth="0.6"
+                  />
+                  <text
+                    x="256"
+                    y="476"
+                    fontSize="9"
+                    fontWeight="400"
+                    fill="#aaa"
+                    textAnchor="middle"
+                    letterSpacing="1"
+                  >
+                    OVERLAY NETWORK
+                  </text>
+                  <rect
+                    x="516"
+                    y="462"
+                    width="352"
+                    height="20"
+                    rx="10"
+                    fill="#f5f5f5"
+                    stroke="#e0e0e0"
+                    strokeWidth="0.6"
+                  />
+                  <text
+                    x="692"
+                    y="476"
+                    fontSize="9"
+                    fontWeight="400"
+                    fill="#aaa"
+                    textAnchor="middle"
+                    letterSpacing="1"
+                  >
+                    OVERLAY NETWORK
+                  </text>
                 </g>
 
                 {/* ══════════════════════════════════════
                     LAYER 6: Inner components (on top, most specific)
                     ══════════════════════════════════════ */}
 
-                <g onPointerEnter={() => enter("build")} onPointerLeave={leave} style={zoneStyle("build")}>
-                  <rect x="104" y="270" width="130" height="28" rx="4" fill="#EDE7F6" stroke="#5E35B1" strokeWidth="0.8" />
-                  <text x="169" y="289" fontSize="11" fontWeight="400" fill="#4527A0" textAnchor="middle">Build</text>
+                <g
+                  onPointerEnter={() => enter("build")}
+                  onPointerLeave={leave}
+                  style={zoneStyle("build")}
+                >
+                  <rect
+                    x="104"
+                    y="270"
+                    width="130"
+                    height="28"
+                    rx="4"
+                    fill="#EDE7F6"
+                    stroke="#5E35B1"
+                    strokeWidth="0.8"
+                  />
+                  <text
+                    x="169"
+                    y="289"
+                    fontSize="11"
+                    fontWeight="400"
+                    fill="#4527A0"
+                    textAnchor="middle"
+                  >
+                    Build
+                  </text>
                 </g>
 
-                <g onPointerEnter={() => enter("store")} onPointerLeave={leave} style={zoneStyle("store")}>
-                  <rect x="242" y="270" width="130" height="28" rx="4" fill="#FFF9C4" stroke="#D4B000" strokeWidth="0.8" />
-                  <text x="307" y="289" fontSize="11" fontWeight="400" fill="#C6A700" textAnchor="middle">Store</text>
+                <g
+                  onPointerEnter={() => enter("store")}
+                  onPointerLeave={leave}
+                  style={zoneStyle("store")}
+                >
+                  <rect
+                    x="242"
+                    y="270"
+                    width="130"
+                    height="28"
+                    rx="4"
+                    fill="#FFF9C4"
+                    stroke="#D4B000"
+                    strokeWidth="0.8"
+                  />
+                  <text
+                    x="307"
+                    y="289"
+                    fontSize="11"
+                    fontWeight="400"
+                    fill="#C6A700"
+                    textAnchor="middle"
+                  >
+                    Store
+                  </text>
                 </g>
 
-                <g onPointerEnter={() => enter("deploy")} onPointerLeave={leave} style={zoneStyle("deploy")}>
-                  <rect x="416" y="270" width="130" height="28" rx="4" fill="#FFF3E0" stroke="#EF6C00" strokeWidth="0.8" />
-                  <text x="481" y="289" fontSize="11" fontWeight="400" fill="#E65100" textAnchor="middle">Deploy</text>
-                  <rect x="119" y="546" width="130" height="28" rx="4" fill="#FFF3E0" stroke="#EF6C00" strokeWidth="0.8" />
-                  <text x="184" y="565" fontSize="11" fontWeight="400" fill="#E65100" textAnchor="middle">Deploy Agent</text>
-                  <rect x="555" y="546" width="130" height="28" rx="4" fill="#FFF3E0" stroke="#EF6C00" strokeWidth="0.8" />
-                  <text x="620" y="565" fontSize="11" fontWeight="400" fill="#E65100" textAnchor="middle">Deploy Agent</text>
+                <g
+                  onPointerEnter={() => enter("deploy")}
+                  onPointerLeave={leave}
+                  style={zoneStyle("deploy")}
+                >
+                  <rect
+                    x="416"
+                    y="270"
+                    width="130"
+                    height="28"
+                    rx="4"
+                    fill="#FFF3E0"
+                    stroke="#EF6C00"
+                    strokeWidth="0.8"
+                  />
+                  <text
+                    x="481"
+                    y="289"
+                    fontSize="11"
+                    fontWeight="400"
+                    fill="#E65100"
+                    textAnchor="middle"
+                  >
+                    Deploy
+                  </text>
+                  <rect
+                    x="119"
+                    y="546"
+                    width="130"
+                    height="28"
+                    rx="4"
+                    fill="#FFF3E0"
+                    stroke="#EF6C00"
+                    strokeWidth="0.8"
+                  />
+                  <text
+                    x="184"
+                    y="565"
+                    fontSize="11"
+                    fontWeight="400"
+                    fill="#E65100"
+                    textAnchor="middle"
+                  >
+                    Deploy Agent
+                  </text>
+                  <rect
+                    x="555"
+                    y="546"
+                    width="130"
+                    height="28"
+                    rx="4"
+                    fill="#FFF3E0"
+                    stroke="#EF6C00"
+                    strokeWidth="0.8"
+                  />
+                  <text
+                    x="620"
+                    y="565"
+                    fontSize="11"
+                    fontWeight="400"
+                    fill="#E65100"
+                    textAnchor="middle"
+                  >
+                    Deploy Agent
+                  </text>
                 </g>
 
-                <g onPointerEnter={() => enter("monitoring")} onPointerLeave={leave} style={zoneStyle("monitoring")}>
-                  <rect x="582" y="270" width="130" height="28" rx="4" fill="#E0F2F1" stroke="#00897B" strokeWidth="0.8" />
-                  <text x="647" y="289" fontSize="11" fontWeight="400" fill="#00695C" textAnchor="middle">Monitoring</text>
+                <g
+                  onPointerEnter={() => enter("monitoring")}
+                  onPointerLeave={leave}
+                  style={zoneStyle("monitoring")}
+                >
+                  <rect
+                    x="582"
+                    y="270"
+                    width="130"
+                    height="28"
+                    rx="4"
+                    fill="#E0F2F1"
+                    stroke="#00897B"
+                    strokeWidth="0.8"
+                  />
+                  <text
+                    x="647"
+                    y="289"
+                    fontSize="11"
+                    fontWeight="400"
+                    fill="#00695C"
+                    textAnchor="middle"
+                  >
+                    Monitoring
+                  </text>
                 </g>
 
-                <g onPointerEnter={() => enter("alerts")} onPointerLeave={leave} style={zoneStyle("alerts")}>
-                  <rect x="720" y="270" width="130" height="28" rx="4" fill="#E0F2F1" stroke="#00897B" strokeWidth="0.8" />
-                  <text x="785" y="289" fontSize="11" fontWeight="400" fill="#00695C" textAnchor="middle">Alerts</text>
+                <g
+                  onPointerEnter={() => enter("alerts")}
+                  onPointerLeave={leave}
+                  style={zoneStyle("alerts")}
+                >
+                  <rect
+                    x="720"
+                    y="270"
+                    width="130"
+                    height="28"
+                    rx="4"
+                    fill="#E0F2F1"
+                    stroke="#00897B"
+                    strokeWidth="0.8"
+                  />
+                  <text
+                    x="785"
+                    y="289"
+                    fontSize="11"
+                    fontWeight="400"
+                    fill="#00695C"
+                    textAnchor="middle"
+                  >
+                    Alerts
+                  </text>
                 </g>
 
-                <g onPointerEnter={() => enter("proxy")} onPointerLeave={leave} style={zoneStyle("proxy")}>
-                  <rect x="80" y="336" width="788" height="18" rx="4" fill="#FCE4EC" stroke="#C62828" strokeWidth="0.8" />
-                  <text x="474" y="349" fontSize="9" fontWeight="400" fill="#C62828" textAnchor="middle">Proxy</text>
-                  <rect x="80" y="676" width="352" height="18" rx="4" fill="#FCE4EC" stroke="#C62828" strokeWidth="0.8" />
-                  <text x="256" y="689" fontSize="9" fontWeight="400" fill="#C62828" textAnchor="middle">Proxy</text>
-                  <rect x="516" y="676" width="352" height="18" rx="4" fill="#FCE4EC" stroke="#C62828" strokeWidth="0.8" />
-                  <text x="692" y="689" fontSize="9" fontWeight="400" fill="#C62828" textAnchor="middle">Proxy</text>
+                <g
+                  onPointerEnter={() => enter("proxy")}
+                  onPointerLeave={leave}
+                  style={zoneStyle("proxy")}
+                >
+                  <rect
+                    x="80"
+                    y="336"
+                    width="788"
+                    height="18"
+                    rx="4"
+                    fill="#FCE4EC"
+                    stroke="#C62828"
+                    strokeWidth="0.8"
+                  />
+                  <text
+                    x="474"
+                    y="349"
+                    fontSize="9"
+                    fontWeight="400"
+                    fill="#C62828"
+                    textAnchor="middle"
+                  >
+                    Proxy
+                  </text>
+                  <rect
+                    x="80"
+                    y="676"
+                    width="352"
+                    height="18"
+                    rx="4"
+                    fill="#FCE4EC"
+                    stroke="#C62828"
+                    strokeWidth="0.8"
+                  />
+                  <text
+                    x="256"
+                    y="689"
+                    fontSize="9"
+                    fontWeight="400"
+                    fill="#C62828"
+                    textAnchor="middle"
+                  >
+                    Proxy
+                  </text>
+                  <rect
+                    x="516"
+                    y="676"
+                    width="352"
+                    height="18"
+                    rx="4"
+                    fill="#FCE4EC"
+                    stroke="#C62828"
+                    strokeWidth="0.8"
+                  />
+                  <text
+                    x="692"
+                    y="689"
+                    fontSize="9"
+                    fontWeight="400"
+                    fill="#C62828"
+                    textAnchor="middle"
+                  >
+                    Proxy
+                  </text>
                 </g>
 
                 {/* Secrets: SaaS pill + agents (merged zone) */}
-                <g onPointerEnter={() => enter("secrets")} onPointerLeave={leave} style={zoneStyle("secrets")}>
-                  <rect x="119" y="582" width="130" height="28" rx="4" fill="#E3F2FD" stroke="#1565C0" strokeWidth="0.8" />
-                  <text x="184" y="601" fontSize="11" fontWeight="400" fill="#0D47A1" textAnchor="middle">Secrets Agent</text>
-                  <rect x="555" y="582" width="130" height="28" rx="4" fill="#E3F2FD" stroke="#1565C0" strokeWidth="0.8" />
-                  <text x="620" y="601" fontSize="11" fontWeight="400" fill="#0D47A1" textAnchor="middle">Secrets Agent</text>
+                <g
+                  onPointerEnter={() => enter("secrets")}
+                  onPointerLeave={leave}
+                  style={zoneStyle("secrets")}
+                >
+                  <rect
+                    x="119"
+                    y="582"
+                    width="130"
+                    height="28"
+                    rx="4"
+                    fill="#E3F2FD"
+                    stroke="#1565C0"
+                    strokeWidth="0.8"
+                  />
+                  <text
+                    x="184"
+                    y="601"
+                    fontSize="11"
+                    fontWeight="400"
+                    fill="#0D47A1"
+                    textAnchor="middle"
+                  >
+                    Secrets Agent
+                  </text>
+                  <rect
+                    x="555"
+                    y="582"
+                    width="130"
+                    height="28"
+                    rx="4"
+                    fill="#E3F2FD"
+                    stroke="#1565C0"
+                    strokeWidth="0.8"
+                  />
+                  <text
+                    x="620"
+                    y="601"
+                    fontSize="11"
+                    fontWeight="400"
+                    fill="#0D47A1"
+                    textAnchor="middle"
+                  >
+                    Secrets Agent
+                  </text>
                 </g>
 
-                <g onPointerEnter={() => enter("apps")} onPointerLeave={leave} style={zoneStyle("apps")}>
-                  <rect x="284" y="518" width="130" height="28" rx="4" fill="none" stroke="var(--border-color)" strokeWidth="0.8" strokeDasharray="4 3" />
-                  <text x="349" y="537" fontSize="11" fontWeight="300" fill="var(--muted)" textAnchor="middle">App Stack</text>
-                  <rect x="284" y="554" width="130" height="28" rx="4" fill="none" stroke="var(--border-color)" strokeWidth="0.8" strokeDasharray="4 3" />
-                  <text x="349" y="573" fontSize="11" fontWeight="300" fill="var(--muted)" textAnchor="middle">App Stack</text>
-                  <rect x="284" y="590" width="130" height="28" rx="4" fill="none" stroke="var(--border-color)" strokeWidth="0.8" strokeDasharray="4 3" />
-                  <text x="349" y="609" fontSize="11" fontWeight="300" fill="var(--muted)" textAnchor="middle">App Stack</text>
-                  <rect x="720" y="518" width="130" height="28" rx="4" fill="none" stroke="var(--border-color)" strokeWidth="0.8" strokeDasharray="4 3" />
-                  <text x="785" y="537" fontSize="11" fontWeight="300" fill="var(--muted)" textAnchor="middle">App Stack</text>
-                  <rect x="720" y="554" width="130" height="28" rx="4" fill="none" stroke="var(--border-color)" strokeWidth="0.8" strokeDasharray="4 3" />
-                  <text x="785" y="573" fontSize="11" fontWeight="300" fill="var(--muted)" textAnchor="middle">App Stack</text>
-                  <rect x="720" y="590" width="130" height="28" rx="4" fill="none" stroke="var(--border-color)" strokeWidth="0.8" strokeDasharray="4 3" />
-                  <text x="785" y="609" fontSize="11" fontWeight="300" fill="var(--muted)" textAnchor="middle">App Stack</text>
+                <g
+                  onPointerEnter={() => enter("apps")}
+                  onPointerLeave={leave}
+                  style={zoneStyle("apps")}
+                >
+                  <rect
+                    x="284"
+                    y="518"
+                    width="130"
+                    height="28"
+                    rx="4"
+                    fill="none"
+                    stroke="var(--border-color)"
+                    strokeWidth="0.8"
+                    strokeDasharray="4 3"
+                  />
+                  <text
+                    x="349"
+                    y="537"
+                    fontSize="11"
+                    fontWeight="300"
+                    fill="var(--muted)"
+                    textAnchor="middle"
+                  >
+                    App Stack
+                  </text>
+                  <rect
+                    x="284"
+                    y="554"
+                    width="130"
+                    height="28"
+                    rx="4"
+                    fill="none"
+                    stroke="var(--border-color)"
+                    strokeWidth="0.8"
+                    strokeDasharray="4 3"
+                  />
+                  <text
+                    x="349"
+                    y="573"
+                    fontSize="11"
+                    fontWeight="300"
+                    fill="var(--muted)"
+                    textAnchor="middle"
+                  >
+                    App Stack
+                  </text>
+                  <rect
+                    x="284"
+                    y="590"
+                    width="130"
+                    height="28"
+                    rx="4"
+                    fill="none"
+                    stroke="var(--border-color)"
+                    strokeWidth="0.8"
+                    strokeDasharray="4 3"
+                  />
+                  <text
+                    x="349"
+                    y="609"
+                    fontSize="11"
+                    fontWeight="300"
+                    fill="var(--muted)"
+                    textAnchor="middle"
+                  >
+                    App Stack
+                  </text>
+                  <rect
+                    x="720"
+                    y="518"
+                    width="130"
+                    height="28"
+                    rx="4"
+                    fill="none"
+                    stroke="var(--border-color)"
+                    strokeWidth="0.8"
+                    strokeDasharray="4 3"
+                  />
+                  <text
+                    x="785"
+                    y="537"
+                    fontSize="11"
+                    fontWeight="300"
+                    fill="var(--muted)"
+                    textAnchor="middle"
+                  >
+                    App Stack
+                  </text>
+                  <rect
+                    x="720"
+                    y="554"
+                    width="130"
+                    height="28"
+                    rx="4"
+                    fill="none"
+                    stroke="var(--border-color)"
+                    strokeWidth="0.8"
+                    strokeDasharray="4 3"
+                  />
+                  <text
+                    x="785"
+                    y="573"
+                    fontSize="11"
+                    fontWeight="300"
+                    fill="var(--muted)"
+                    textAnchor="middle"
+                  >
+                    App Stack
+                  </text>
+                  <rect
+                    x="720"
+                    y="590"
+                    width="130"
+                    height="28"
+                    rx="4"
+                    fill="none"
+                    stroke="var(--border-color)"
+                    strokeWidth="0.8"
+                    strokeDasharray="4 3"
+                  />
+                  <text
+                    x="785"
+                    y="609"
+                    fontSize="11"
+                    fontWeight="300"
+                    fill="var(--muted)"
+                    textAnchor="middle"
+                  >
+                    App Stack
+                  </text>
                 </g>
 
                 {/* Backup: SaaS pill + agent (merged zone) */}
-                <g onPointerEnter={() => enter("backup")} onPointerLeave={leave} style={zoneStyle("backup")}>
-                  <rect x="536" y="633" width="314" height="18" rx="4" fill="#E8F5E9" stroke="#4CAF50" strokeWidth="0.8" />
-                  <text x="693" y="646" fontSize="9" fontWeight="400" fill="#2E7D32" textAnchor="middle">Backup Agent</text>
+                <g
+                  onPointerEnter={() => enter("backup")}
+                  onPointerLeave={leave}
+                  style={zoneStyle("backup")}
+                >
+                  <rect
+                    x="536"
+                    y="633"
+                    width="314"
+                    height="18"
+                    rx="4"
+                    fill="#E8F5E9"
+                    stroke="#4CAF50"
+                    strokeWidth="0.8"
+                  />
+                  <text
+                    x="693"
+                    y="646"
+                    fontSize="9"
+                    fontWeight="400"
+                    fill="#2E7D32"
+                    textAnchor="middle"
+                  >
+                    Backup Agent
+                  </text>
                 </g>
               </svg>
             </div>
 
-            {/* Side Panel */}
-            <div className="w-full lg:w-[380px] shrink-0 border-t lg:border-t-0 lg:border-l border-border-color p-6 md:p-10 flex flex-col justify-center overflow-y-auto">
+            {/* Side Panel - hidden until first hover */}
+            <AnimatePresence>
+              {exploredCount > 0 && (
+            <motion.div
+              initial={{ width: 0, opacity: 0 }}
+              animate={{ width: 380, opacity: 1 }}
+              exit={{ width: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="shrink-0 border-t lg:border-t-0 lg:border-l border-border-color p-6 md:p-10 flex flex-col justify-center overflow-y-auto overflow-x-hidden"
+            >
               {/* Component description */}
-              <div className="flex-1 flex items-center min-h-0">
+              <div className="flex-1 flex items-center min-h-0 min-w-[320px]">
                 <AnimatePresence mode="wait">
                   {activeInfo ? (
                     <motion.div
@@ -518,10 +1367,10 @@ export default function InteractiveDiagram({
                     className="pt-6 mt-6 border-t border-border-color"
                   >
                     <p className="text-sm font-medium text-foreground mb-1">
-                      Get the full reference
+                      Get the guide
                     </p>
                     <p className="text-xs text-foreground-secondary mb-4">
-                      Exact tool recommendations, cost breakdown, and implementation timeline. Sent to your work email.
+                      Exact tool recommendations and licensing cost.
                     </p>
                     <form onSubmit={handleFormSubmit} className="space-y-3">
                       <input
@@ -529,7 +1378,10 @@ export default function InteractiveDiagram({
                         value={email}
                         onChange={(e) => {
                           setEmail(e.target.value);
-                          if (emailStatus === "blocked" || emailStatus === "error") {
+                          if (
+                            emailStatus === "blocked" ||
+                            emailStatus === "error"
+                          ) {
                             onEmailSubmit("__reset__", "");
                           }
                         }}
@@ -542,7 +1394,7 @@ export default function InteractiveDiagram({
                         onChange={(e) => setNote(e.target.value)}
                         rows={1}
                         className={`${inputClasses} resize-none`}
-                        placeholder="Brief context about your setup (optional)"
+                        placeholder="Add a note"
                       />
                       {emailStatus === "blocked" && (
                         <p className="text-xs text-foreground-secondary">
@@ -557,12 +1409,14 @@ export default function InteractiveDiagram({
                       <button
                         type="submit"
                         disabled={emailStatus === "sending"}
-                        className="bg-foreground hover:bg-charcoal disabled:opacity-50 text-background w-full px-6 py-3 text-sm font-medium rounded-full transition-colors"
+                        className="bg-foreground hover:bg-charcoal disabled:opacity-50 text-background w-full px-4 py-1.5 text-sm font-medium rounded-full transition-colors"
                       >
-                        {emailStatus === "sending" ? "Sending..." : "Send me the reference"}
+                        {emailStatus === "sending"
+                          ? "Sending..."
+                          : "Request guide"}
                       </button>
                       <p className="text-[10px] text-muted text-center">
-                        No spam, no sequences. Just the document.
+                        We promise no spam.
                       </p>
                     </form>
                   </motion.div>
@@ -579,12 +1433,15 @@ export default function InteractiveDiagram({
                     </p>
                     <p className="text-xs text-foreground-secondary">
                       We will send the full reference to{" "}
-                      <span className="text-foreground">{submittedEmail}</span> shortly.
+                      <span className="text-foreground">{submittedEmail}</span>{" "}
+                      shortly.
                     </p>
                   </motion.div>
                 )}
               </AnimatePresence>
-            </div>
+            </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </motion.div>
       )}
