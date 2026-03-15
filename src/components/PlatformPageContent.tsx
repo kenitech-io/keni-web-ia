@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import Image from "next/image";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
+import InteractiveDiagram from "@/components/InteractiveDiagram";
 
 const BLOCKED_DOMAINS = [
   "gmail.com",
@@ -33,35 +33,8 @@ const BLOCKED_DOMAINS = [
   "fastmail.com",
 ];
 
-const layers = [
-  {
-    label: "SaaS",
-    description:
-      "Managed services that connect, secure, and back up the entire platform: overlay networking, secret management, identity, source control, and off-site backups.",
-  },
-  {
-    label: "CI/CD",
-    description:
-      "Code gets built, stored as an artifact, and deployed automatically. No manual steps between git push and production.",
-  },
-  {
-    label: "Observability",
-    description:
-      "Monitoring dashboards and alert rules that catch problems before your users do. Metrics, logs, and notifications in one place.",
-  },
-  {
-    label: "Networking",
-    description:
-      "Overlay network connecting all servers securely, with a reverse proxy handling TLS termination and routing at each node.",
-  },
-  {
-    label: "Environments",
-    description:
-      "Identical dev and prod servers, each running containerized app stacks with their own deploy agents and secret injection.",
-  },
-];
-
 export default function PlatformPageContent() {
+  const [diagramOpen, setDiagramOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<
     "idle" | "sending" | "sent" | "error" | "blocked"
@@ -116,71 +89,35 @@ export default function PlatformPageContent() {
 
   return (
     <main>
-      <section className="pt-40 pb-20 md:pt-48 md:pb-28">
-        <Container>
-          <div className="max-w-[640px] mx-auto text-center">
-            <FadeIn>
-              <p className="text-label uppercase tracking-widest text-muted mb-4">
-                PLATFORM
-              </p>
-              <h1 className="text-display-sm text-foreground mb-6">
-                This is what good infrastructure looks like
-              </h1>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <p className="text-body text-foreground-secondary">
-                A complete internal development platform: CI/CD, monitoring,
-                networking, secrets, backups. Your developers push code,
-                everything else is automated.
-              </p>
-            </FadeIn>
-          </div>
-        </Container>
-      </section>
+      {/* Hero */}
+      <section className="min-h-screen flex items-center justify-center relative">
+        <div className="flex flex-col items-center text-center w-full px-6 -mt-16">
+          <FadeIn type="up" delay={0.2} once className="w-full flex justify-center">
+            <h1 className="text-display-sm text-foreground text-center max-w-[720px] mx-auto">
+              Your first platform diagram
+            </h1>
+          </FadeIn>
 
-      <section className="pb-section-sm">
-        <Container>
-          <FadeIn delay={0.2}>
-            <div className="max-w-[960px] mx-auto">
-              <Image
-                src="/architecture-teaser.svg"
-                alt="Internal development platform architecture overview"
-                width={960}
-                height={760}
-                className="w-full h-auto"
-                priority
-              />
+          <FadeIn type="up" delay={0.5} once className="w-full flex justify-center">
+            <div className="mt-8 md:mt-10">
+              <button
+                onClick={() => setDiagramOpen(true)}
+                className="inline-block bg-foreground hover:bg-charcoal text-background rounded-full px-8 py-4 font-medium transition-colors duration-200"
+              >
+                Show me
+              </button>
             </div>
           </FadeIn>
-        </Container>
+        </div>
       </section>
 
-      <section className="py-section-sm bg-surface">
-        <Container>
-          <div className="max-w-[640px] mx-auto">
-            <FadeIn>
-              <p className="text-label uppercase tracking-widest text-muted mb-12">
-                WHAT EACH LAYER DOES
-              </p>
-            </FadeIn>
-            <div className="space-y-10">
-              {layers.map((layer, index) => (
-                <FadeIn key={layer.label} delay={index * 0.08}>
-                  <div>
-                    <h3 className="text-body-lg text-foreground font-normal mb-2">
-                      {layer.label}
-                    </h3>
-                    <p className="text-body text-foreground-secondary">
-                      {layer.description}
-                    </p>
-                  </div>
-                </FadeIn>
-              ))}
-            </div>
-          </div>
-        </Container>
-      </section>
+      {/* Interactive diagram overlay */}
+      <InteractiveDiagram
+        isOpen={diagramOpen}
+        onClose={() => setDiagramOpen(false)}
+      />
 
+      {/* Email gate */}
       <section className="py-section-sm">
         <Container>
           <div className="max-w-[480px] mx-auto text-center">

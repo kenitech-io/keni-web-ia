@@ -10,24 +10,24 @@
   </defs>
 
   <!-- Canvas -->
-  <rect width="960" height="760" fill="#FAFAF8"/>
+  <rect width="960" height="760" fill="#FFFFFF"/>
 
   <!-- ====== SAAS ====== -->
   <text x="56" y="58" font-size="10" font-weight="500" fill="#999" letter-spacing="2">SAAS</text>
 
-  <rect x="136" y="42" width="138" height="34" rx="17" fill="#FAFAF8" stroke="#ccc" stroke-width="0.8"/>
+  <rect x="136" y="42" width="138" height="34" rx="17" fill="#FFFFFF" stroke="#ccc" stroke-width="0.8"/>
   <text x="205" y="64" font-size="12" font-weight="400" fill="#444" text-anchor="middle">Overlay Network</text>
 
-  <rect x="290" y="42" width="138" height="34" rx="17" fill="#FAFAF8" stroke="#ccc" stroke-width="0.8"/>
+  <rect x="290" y="42" width="138" height="34" rx="17" fill="#FFFFFF" stroke="#ccc" stroke-width="0.8"/>
   <text x="359" y="64" font-size="12" font-weight="400" fill="#444" text-anchor="middle">Secrets</text>
 
-  <rect x="444" y="42" width="138" height="34" rx="17" fill="#FAFAF8" stroke="#ccc" stroke-width="0.8"/>
+  <rect x="444" y="42" width="138" height="34" rx="17" fill="#FFFFFF" stroke="#ccc" stroke-width="0.8"/>
   <text x="513" y="64" font-size="12" font-weight="400" fill="#444" text-anchor="middle">Identity</text>
 
-  <rect x="598" y="42" width="138" height="34" rx="17" fill="#FAFAF8" stroke="#ccc" stroke-width="0.8"/>
+  <rect x="598" y="42" width="138" height="34" rx="17" fill="#FFFFFF" stroke="#ccc" stroke-width="0.8"/>
   <text x="667" y="64" font-size="12" font-weight="400" fill="#444" text-anchor="middle">Repository</text>
 
-  <rect x="752" y="42" width="138" height="34" rx="17" fill="#FAFAF8" stroke="#ccc" stroke-width="0.8"/>
+  <rect x="752" y="42" width="138" height="34" rx="17" fill="#FFFFFF" stroke="#ccc" stroke-width="0.8"/>
   <text x="821" y="64" font-size="12" font-weight="400" fill="#444" text-anchor="middle">Backup</text>
 
   <line x1="56" y1="96" x2="892" y2="96" stroke="#E8E8E6" stroke-width="0.6"/>
