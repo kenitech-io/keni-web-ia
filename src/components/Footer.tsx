@@ -5,6 +5,7 @@ import Container from "@/components/ui/Container";
 
 const footerLinks = [
   { name: "About", href: "/about" },
+  { name: "Platform", href: "/platform" },
   { name: "Contact", href: "/contact" },
 ];
 

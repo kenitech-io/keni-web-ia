@@ -104,6 +104,16 @@ export default function Navbar() {
                 About
               </Link>
               <Link
+                href="/platform"
+                className={`text-xs font-medium transition-colors duration-200 ${
+                  isActive("/platform")
+                    ? "text-foreground"
+                    : "text-muted hover:text-foreground"
+                }`}
+              >
+                Platform
+              </Link>
+              <Link
                 href="/contact"
                 className={`text-xs font-medium transition-all duration-300 ${
                   showBubble
@@ -195,6 +205,27 @@ export default function Navbar() {
                     }`}
                   >
                     About
+                  </Link>
+                </motion.div>
+                <motion.div
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: { duration: 0.4, ease: "easeOut" },
+                    },
+                  }}
+                >
+                  <Link
+                    href="/platform"
+                    className={`text-3xl font-light transition-colors duration-200 ${
+                      isActive("/platform")
+                        ? "text-foreground"
+                        : "text-muted hover:text-foreground"
+                    }`}
+                  >
+                    Platform
                   </Link>
                 </motion.div>
                 <motion.div
