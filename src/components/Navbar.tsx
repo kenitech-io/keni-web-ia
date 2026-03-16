@@ -94,16 +94,6 @@ export default function Navbar() {
             {/* Desktop */}
             <div className="hidden md:flex items-center gap-8">
               <Link
-                href="/about"
-                className={`text-xs font-medium transition-colors duration-200 ${
-                  isActive("/about")
-                    ? "text-foreground"
-                    : "text-muted hover:text-foreground"
-                }`}
-              >
-                About
-              </Link>
-              <Link
                 href="/platform"
                 className={`text-xs font-medium transition-colors duration-200 ${
                   isActive("/platform")
@@ -112,6 +102,16 @@ export default function Navbar() {
                 }`}
               >
                 Platform
+              </Link>
+              <Link
+                href="/healthcheck"
+                className={`text-xs font-medium transition-colors duration-200 ${
+                  isActive("/healthcheck")
+                    ? "text-foreground"
+                    : "text-muted hover:text-foreground"
+                }`}
+              >
+                Health Check
               </Link>
               <Link
                 href="/contact"
@@ -197,14 +197,14 @@ export default function Navbar() {
                   }}
                 >
                   <Link
-                    href="/about"
+                    href="/platform"
                     className={`text-3xl font-light transition-colors duration-200 ${
-                      isActive("/about")
+                      isActive("/platform")
                         ? "text-foreground"
                         : "text-muted hover:text-foreground"
                     }`}
                   >
-                    About
+                    Platform
                   </Link>
                 </motion.div>
                 <motion.div
@@ -218,14 +218,14 @@ export default function Navbar() {
                   }}
                 >
                   <Link
-                    href="/platform"
+                    href="/healthcheck"
                     className={`text-3xl font-light transition-colors duration-200 ${
-                      isActive("/platform")
+                      isActive("/healthcheck")
                         ? "text-foreground"
                         : "text-muted hover:text-foreground"
                     }`}
                   >
-                    Platform
+                    Health Check
                   </Link>
                 </motion.div>
                 <motion.div
