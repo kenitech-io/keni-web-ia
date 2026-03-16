@@ -256,6 +256,9 @@ export default function InteractiveDiagram({
           transition={{ duration: 0.3 }}
           className="fixed inset-0 z-50 bg-background"
         >
+          <div className="absolute top-0 left-0 right-0 z-10 h-[64px] flex items-center px-6 md:px-8 mx-auto max-w-content w-full" style={{ left: "50%", transform: "translateX(-50%)" }}>
+            <a href="/" className="text-xs font-medium text-foreground tracking-tight">Keni</a>
+          </div>
           <button
             onClick={onClose}
             className="absolute top-5 right-6 z-10 w-8 h-8 flex items-center justify-center text-muted hover:text-foreground transition-colors"
@@ -270,9 +273,9 @@ export default function InteractiveDiagram({
             </svg>
           </button>
 
-          <div className="h-full flex flex-col lg:flex-row">
+          <div className="h-full flex flex-row relative">
             {/* Diagram */}
-            <div className="flex-1 flex items-center justify-center p-4 md:p-8 lg:p-12 min-h-0">
+            <div className="flex-1 flex items-start justify-center p-2 pt-[40px] md:p-8 md:pt-[64px] lg:p-12 lg:pt-[72px] min-h-0 overflow-hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 960 760"
@@ -1296,18 +1299,18 @@ export default function InteractiveDiagram({
               </svg>
             </div>
 
-            {/* Side Panel - hidden until first hover */}
+            {/* Side Panel - hidden until first interaction */}
             <AnimatePresence>
               {exploredCount > 0 && (
                 <motion.div
-                  initial={{ width: 0, opacity: 0 }}
-                  animate={{ width: 380, opacity: 1 }}
-                  exit={{ width: 0, opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="shrink-0 border-t lg:border-t-0 lg:border-l border-border-color p-6 md:p-10 flex flex-col justify-center overflow-y-auto overflow-x-hidden"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute bottom-0 left-0 right-0 lg:relative lg:bottom-auto lg:left-auto lg:right-auto lg:w-[380px] shrink-0 border-t lg:border-t-0 lg:border-l border-border-color bg-background p-4 pb-6 md:p-10 flex flex-col justify-start overflow-y-auto max-h-[30vh] lg:max-h-none text-sm lg:text-base"
                 >
                   {/* Component description */}
-                  <div className="flex-1 flex items-center min-h-0 min-w-[320px]">
+                  <div className="flex-1 flex items-center min-h-0 lg:min-w-[320px]">
                     <AnimatePresence mode="wait">
                       {activeInfo ? (
                         <motion.div
@@ -1317,24 +1320,24 @@ export default function InteractiveDiagram({
                           exit={{ opacity: 0, y: -8 }}
                           transition={{ duration: 0.2 }}
                         >
-                          <p className="text-label uppercase tracking-widest text-muted mb-4">
+                          <p className="text-label uppercase tracking-widest text-muted mb-2 lg:mb-4">
                             {activeInfo.label}
                           </p>
                           {activeInfo.parts ? (
-                            <div className="space-y-6">
+                            <div className="space-y-3 lg:space-y-6">
                               {activeInfo.parts.map((part) => (
                                 <div key={part.partLabel}>
-                                  <p className="text-xs font-medium text-foreground mb-1.5">
+                                  <p className="text-xs font-medium text-foreground mb-1">
                                     {part.partLabel}
                                   </p>
-                                  <p className="text-body text-foreground-secondary leading-relaxed">
+                                  <p className="text-xs lg:text-body text-foreground-secondary leading-relaxed">
                                     {part.partDescription}
                                   </p>
                                 </div>
                               ))}
                             </div>
                           ) : (
-                            <p className="text-body text-foreground-secondary leading-relaxed">
+                            <p className="text-xs lg:text-body text-foreground-secondary leading-relaxed">
                               {activeInfo.description}
                             </p>
                           )}
@@ -1365,17 +1368,14 @@ export default function InteractiveDiagram({
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.4, delay: 0.2 }}
-                        className="pt-6 mt-6 border-t border-border-color text-center"
+                        className="pt-3 mt-3 lg:pt-6 lg:mt-6 border-t border-border-color text-center"
                       >
                         <button
                           onClick={() => setGuideOpen(true)}
-                          className="bg-foreground hover:bg-charcoal text-background w-full px-4 py-2.5 text-sm font-medium rounded-full transition-colors"
+                          className="bg-foreground hover:bg-charcoal text-background w-full px-4 py-2 lg:py-2.5 text-xs lg:text-sm font-medium rounded-full transition-colors"
                         >
                           Request guide
                         </button>
-                        <p className="text-[10px] text-muted mt-2">
-                          Exact tool recommendations and design principles.
-                        </p>
                       </motion.div>
                     )}
                     {emailStatus === "sent" && (
