@@ -1,7 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, FormEvent } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import FadeIn from "@/components/ui/FadeIn";
+import Container from "@/components/ui/Container";
 import InteractiveDiagram from "@/components/InteractiveDiagram";
 import CTASection from "@/components/CTASection";
 
@@ -15,10 +17,13 @@ const BLOCKED_DOMAINS = [
 
 export default function PlatformPageContent() {
   const [diagramOpen, setDiagramOpen] = useState(false);
+  const [guideOpen, setGuideOpen] = useState(false);
   const [emailStatus, setEmailStatus] = useState<
     "idle" | "sending" | "sent" | "error" | "blocked"
   >("idle");
   const [submittedEmail, setSubmittedEmail] = useState("");
+  const [email, setEmail] = useState("");
+  const [note, setNote] = useState("");
 
   const handleEmailSubmit = async (email: string, note: string) => {
     // Reset signal from child
@@ -234,6 +239,56 @@ export default function PlatformPageContent() {
         submittedEmail={submittedEmail}
       />
 
+      {/* Guide request */}
+      <section className="py-section-sm">
+        <Container>
+          <FadeIn>
+            <div className="max-w-[480px] mx-auto text-center">
+              {emailStatus === "sent" ? (
+                <div className="py-8">
+                  <p className="text-sm font-medium text-foreground mb-1">Got it.</p>
+                  <p className="text-xs text-foreground-secondary">
+                    We will send the full reference to{" "}
+                    <span className="text-foreground">{submittedEmail}</span> shortly.
+                  </p>
+                </div>
+              ) : (
+                <>
+                  <p className="text-body text-foreground-secondary mb-6">
+                    Want the full guide with exact tool recommendations and design principles?
+                  </p>
+                  <button
+                    onClick={() => setGuideOpen(true)}
+                    className="text-muted hover:text-foreground text-sm transition-colors"
+                  >
+                    Request the guide
+                  </button>
+                </>
+              )}
+            </div>
+          </FadeIn>
+        </Container>
+      </section>
+
+      {/* Guide request modal */}
+      <AnimatePresence>
+        {guideOpen && (
+          <GuideModal
+            onClose={() => setGuideOpen(false)}
+            emailStatus={emailStatus}
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleEmailSubmit(email, note);
+            }}
+            email={email}
+            setEmail={setEmail}
+            note={note}
+            setNote={setNote}
+            onReset={() => handleEmailSubmit("__reset__", "")}
+          />
+        )}
+      </AnimatePresence>
+
       {/* Bottom CTA */}
       <CTASection
         headline="Want us to build yours?"
@@ -242,5 +297,101 @@ export default function PlatformPageContent() {
         buttonHref="/contact"
       />
     </main>
+  );
+}
+
+function GuideModal({
+  onClose,
+  emailStatus,
+  onSubmit,
+  email,
+  setEmail,
+  note,
+  setNote,
+  onReset,
+}: {
+  onClose: () => void;
+  emailStatus: "idle" | "sending" | "sent" | "error" | "blocked";
+  onSubmit: (e: FormEvent<HTMLFormElement>) => void;
+  email: string;
+  setEmail: (v: string) => void;
+  note: string;
+  setNote: (v: string) => void;
+  onReset: () => void;
+}) {
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
+
+  const inputClasses =
+    "bg-transparent border-b border-border-color focus:border-foreground py-2 text-sm text-foreground w-full outline-none transition-colors placeholder:text-muted";
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0 }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-6"
+    >
+      <div className="absolute inset-0 bg-background/90 backdrop-blur-sm" onClick={onClose} />
+      <div className="relative w-full max-w-[400px] border border-border-color bg-background rounded-lg p-8">
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-muted hover:text-foreground transition-colors"
+          aria-label="Close"
+        >
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+            <path d="M1 1L15 15M15 1L1 15" stroke="currentColor" strokeWidth="1.5" />
+          </svg>
+        </button>
+        <p className="text-sm font-medium text-foreground mb-1">Get the guide</p>
+        <p className="text-xs text-foreground-secondary mb-6">
+          Exact tool recommendations and design principles.
+        </p>
+        <form onSubmit={onSubmit} className="space-y-4">
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              if (emailStatus === "blocked" || emailStatus === "error") onReset();
+            }}
+            className={inputClasses}
+            placeholder="you@company.com"
+            required
+          />
+          <textarea
+            value={note}
+            onChange={(e) => setNote(e.target.value)}
+            rows={1}
+            className={`${inputClasses} resize-none`}
+            placeholder="Add a note"
+          />
+          {emailStatus === "blocked" && (
+            <p className="text-xs text-foreground-secondary">Please use your work email.</p>
+          )}
+          {emailStatus === "error" && (
+            <p className="text-xs text-red-600">Something went wrong. Please try again.</p>
+          )}
+          <button
+            type="submit"
+            disabled={emailStatus === "sending"}
+            className="bg-foreground hover:bg-charcoal disabled:opacity-50 text-background w-full px-4 py-2.5 text-sm font-medium rounded-full transition-colors"
+          >
+            {emailStatus === "sending" ? "Sending..." : "Request guide"}
+          </button>
+          <p className="text-[10px] text-muted text-center">We promise no spam.</p>
+        </form>
+      </div>
+    </motion.div>
   );
 }

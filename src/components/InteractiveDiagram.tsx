@@ -184,7 +184,7 @@ interface Props {
   submittedEmail?: string;
 }
 
-const ENGAGEMENT_THRESHOLD = 3;
+const ENGAGEMENT_THRESHOLD = 1;
 
 export default function InteractiveDiagram({
   isOpen,
@@ -1435,7 +1435,7 @@ export default function InteractiveDiagram({
                     Get the guide
                   </p>
                   <p className="text-xs text-foreground-secondary mb-6">
-                    Exact tool recommendations and licensing cost.
+                    Exact tool recommendations and design principles.
                   </p>
                   <form onSubmit={handleFormSubmit} className="space-y-4">
                     <input

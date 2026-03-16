@@ -31,6 +31,15 @@ export default function HeroSection() {
             </Link>
           </div>
         </FadeIn>
+
+        <div className="absolute bottom-8 left-0 right-0 flex justify-center">
+          <Link
+            href="/platform"
+            className="text-muted hover:text-foreground text-sm transition-colors"
+          >
+            See what the platform looks like
+          </Link>
+        </div>
       </div>
     </section>
   );
