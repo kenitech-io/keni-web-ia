@@ -16,14 +16,21 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   return (
     <main>
-      <section className="pt-40 pb-20 md:pt-48 md:pb-28">
+      <section className="py-32 md:py-48">
         <Container>
-          <div className="max-w-[640px] mx-auto">
+          <div className="max-w-[640px] mx-auto text-center">
             <FadeIn>
-              <h1 className="text-display text-foreground mb-8">Blog</h1>
+              <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-6">
+                Blog
+              </p>
+            </FadeIn>
+            <FadeIn delay={0.05}>
+              <h1 className="text-heading text-foreground font-light tracking-wide mb-8">
+                Guides & Best Practices
+              </h1>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <p className="text-body text-foreground-secondary">
+              <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                 Practical guides and honest takes on DevOps, infrastructure, and
                 platform engineering for small teams.
               </p>
@@ -32,24 +39,24 @@ export default function BlogPage() {
         </Container>
       </section>
 
-      <section className="pb-section">
+      <section className="py-32 md:py-48">
         <Container>
           <div className="max-w-[640px] mx-auto">
-            <div className="space-y-16">
+            <div className="space-y-20">
               {blogPosts.map((post, index) => (
                 <FadeIn key={post.slug} delay={index * 0.1}>
                   <article>
                     <Link href={`/blog/${post.slug}`} className="group block">
-                      <p className="text-label uppercase tracking-widest text-muted mb-3">
+                      <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-4">
                         {post.category}
                       </p>
-                      <h2 className="text-heading text-foreground group-hover:text-muted transition-colors mb-4">
+                      <h2 className="text-heading text-foreground font-light tracking-wide group-hover:text-foreground/60 transition-colors mb-6">
                         {post.title}
                       </h2>
-                      <p className="text-body text-foreground-secondary mb-4">
+                      <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-4">
                         {post.description}
                       </p>
-                      <p className="text-label text-muted">
+                      <p className="text-label text-muted/60 font-light">
                         {new Date(post.date).toLocaleDateString("en-US", {
                           year: "numeric",
                           month: "long",

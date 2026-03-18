@@ -54,25 +54,25 @@ export default function DockerVsPodman() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <article>
-        <section className="pt-40 pb-12 md:pt-48 md:pb-16">
+        <section className="py-32 md:py-48">
           <Container>
             <div className="max-w-[640px] mx-auto">
               <FadeIn>
-                <p className="text-label uppercase tracking-widest text-muted mb-4">CONTAINERS</p>
-                <h1 className="text-display-sm text-foreground mb-6">
+                <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-6">CONTAINERS</p>
+                <h1 className="text-heading text-foreground font-light tracking-wide mb-8">
                   Docker vs Podman: which container runtime should you use in 2026
                 </h1>
-                <p className="text-label text-muted">March 17, 2026 &middot; 7 min read</p>
+                <p className="text-label text-muted/60 font-light">March 17, 2026 &middot; 7 min read</p>
               </FadeIn>
             </div>
           </Container>
         </section>
 
-        <section className="pb-section">
+        <section className="pb-32 md:pb-48">
           <Container>
-            <div className="max-w-[640px] mx-auto space-y-8">
+            <div className="max-w-[640px] mx-auto space-y-10">
               <FadeIn delay={0.1}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Docker defined the container era. It is the tool most
                   developers learned first, and for years it was the only serious
                   option. Podman arrived as a drop-in alternative with a
@@ -83,18 +83,18 @@ export default function DockerVsPodman() {
               </FadeIn>
 
               <FadeIn delay={0.15}>
-                <h2 className="text-heading text-foreground">The short version</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">The short version</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <ul className="space-y-3 text-body text-foreground-secondary">
-                  <li className="pl-4 border-l border-border-color">
+                <ul className="space-y-3 text-sm text-foreground-secondary/70 leading-loose font-light">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">Docker</strong>: daemon-based,
                     massive ecosystem, Docker Compose built-in, the standard
                     that every tool integrates with. Requires a root daemon
                     running at all times.
                   </li>
-                  <li className="pl-4 border-l border-border-color">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">Podman</strong>: daemonless,
                     rootless by default, CLI-compatible with Docker. Better
                     security model, but smaller ecosystem and some compatibility
@@ -104,11 +104,11 @@ export default function DockerVsPodman() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">Daemon vs daemonless</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">Daemon vs daemonless</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Docker runs a central daemon (dockerd) that manages all
                   containers. Every Docker command talks to this daemon. If the
                   daemon crashes, all running containers are affected. The daemon
@@ -118,7 +118,7 @@ export default function DockerVsPodman() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Podman has no daemon. Each container runs as a direct child
                   process. No single point of failure, no always-running root
                   process. Containers can run as your regular user with no
@@ -127,7 +127,7 @@ export default function DockerVsPodman() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   For security-conscious teams, Podman&apos;s architecture is
                   objectively better. For teams that rely on tools that expect a
                   Docker socket (which is many of them), Docker&apos;s daemon is
@@ -136,11 +136,11 @@ export default function DockerVsPodman() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">Rootless containers</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">Rootless containers</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Podman was designed rootless from the ground up. Containers run
                   in user namespaces without needing root privileges. This
                   significantly reduces the blast radius if a container is
@@ -150,7 +150,7 @@ export default function DockerVsPodman() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Docker added rootless mode later, and it works, but it is not
                   the default and some features do not work in rootless mode
                   (certain network configurations, privileged operations). Most
@@ -159,11 +159,11 @@ export default function DockerVsPodman() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">Docker Compose compatibility</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">Docker Compose compatibility</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Docker Compose is how most small teams define multi-container
                   applications. It is simple, well-documented, and ubiquitous.
                   Docker Compose V2 is built directly into the Docker CLI.
@@ -171,7 +171,7 @@ export default function DockerVsPodman() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Podman supports Docker Compose files through{" "}
                   <code className="text-foreground text-sm">podman-compose</code> or by
                   emulating the Docker socket so that the regular{" "}
@@ -182,7 +182,7 @@ export default function DockerVsPodman() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   If your workflow is built around Docker Compose files, Docker
                   is the smoother experience. Podman can run the same files, but
                   you may hit friction in the details.
@@ -190,11 +190,11 @@ export default function DockerVsPodman() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">Ecosystem and tooling</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">Ecosystem and tooling</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Docker has the larger ecosystem by a wide margin. CI/CD
                   platforms, monitoring tools, reverse proxies (like Traefik),
                   and development tools all expect a Docker socket. Most
@@ -204,7 +204,7 @@ export default function DockerVsPodman() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Podman is CLI-compatible with Docker (you can alias{" "}
                   <code className="text-foreground text-sm">docker</code> to{" "}
                   <code className="text-foreground text-sm">podman</code> and most
@@ -215,11 +215,11 @@ export default function DockerVsPodman() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">Pods</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">Pods</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Podman has a concept of pods (hence the name), similar to
                   Kubernetes pods. Multiple containers can share a network
                   namespace inside a pod. This is useful if you are planning to
@@ -229,18 +229,18 @@ export default function DockerVsPodman() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Docker does not have pods. Multi-container networking is
                   handled through Docker networks and Compose services.
                 </p>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">Image building</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">Image building</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Both can build images from Dockerfiles. Docker uses BuildKit as
                   its build engine, which is fast and supports advanced features
                   like multi-stage builds, build caching, and secret mounts.
@@ -248,7 +248,7 @@ export default function DockerVsPodman() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Podman uses Buildah under the hood. Buildah is capable and
                   supports the same Dockerfile syntax, but BuildKit&apos;s
                   caching tends to be more efficient for complex builds.
@@ -256,18 +256,18 @@ export default function DockerVsPodman() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">When to use each one</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">When to use each one</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <ul className="space-y-3 text-body text-foreground-secondary">
-                  <li className="pl-4 border-l border-border-color">
+                <ul className="space-y-3 text-sm text-foreground-secondary/70 leading-loose font-light">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">Choose Docker</strong> if you
                     want the widest compatibility, use Docker Compose heavily,
                     rely on tools that expect a Docker socket (Traefik,
                     Portainer, Watchtower), and your team already knows Docker.
                   </li>
-                  <li className="pl-4 border-l border-border-color">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">Choose Podman</strong> if
                     security is a top priority, you want rootless containers by
                     default, you are on RHEL/Fedora (where Podman is the default
@@ -278,11 +278,11 @@ export default function DockerVsPodman() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">Our take</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">Our take</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   For most small teams building an internal development platform,
                   Docker is still the pragmatic default. The ecosystem advantage
                   is real. Tools like Traefik auto-discover services through the
@@ -292,7 +292,7 @@ export default function DockerVsPodman() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Podman is the technically superior architecture. If you are
                   starting from scratch with no Docker dependencies, or if your
                   security requirements mandate rootless, daemonless containers,
@@ -303,10 +303,10 @@ export default function DockerVsPodman() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <div className="border-t border-border-color pt-8 mt-8">
-                  <p className="text-body text-foreground-secondary">
+                <div className="border-t border-foreground/[0.08] pt-8 mt-8">
+                  <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                     See how containers fit into a full platform stack.{" "}
-                    <Link href="/platform" className="text-foreground hover:text-muted transition-colors">
+                    <Link href="/platform" className="text-foreground/80 hover:text-foreground transition-colors">
                       Explore our reference architecture
                     </Link>
                     .

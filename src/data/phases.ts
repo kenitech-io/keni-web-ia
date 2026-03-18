@@ -21,7 +21,7 @@ export const phases: Phase[] = [
     number: "03",
     name: "Implementation",
     description:
-      "We build it. Pipelines, environments, IaC, the whole thing. When we're done, your devs push code and it goes to production. No manual steps, no SSH.",
+      "We build it. Pipelines, environments, IaC, the whole thing. When we're done, your devs push code and it goes to production. No manual steps, no\u00A0SSH.",
   },
   {
     number: "04",

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, FormEvent } from "react";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import FadeIn from "@/components/ui/FadeIn";
 import Container from "@/components/ui/Container";
@@ -16,6 +17,7 @@ const BLOCKED_DOMAINS = [
 ];
 
 export default function PlatformPageContent() {
+  const router = useRouter();
   const [diagramOpen, setDiagramOpen] = useState(true);
   const [guideOpen, setGuideOpen] = useState(false);
   const [emailStatus, setEmailStatus] = useState<
@@ -227,7 +229,7 @@ export default function PlatformPageContent() {
       {/* Interactive diagram overlay */}
       <InteractiveDiagram
         isOpen={diagramOpen}
-        onClose={() => setDiagramOpen(false)}
+        onClose={() => router.push("/?skip")}
         emailStatus={emailStatus}
         onEmailSubmit={handleEmailSubmit}
         submittedEmail={submittedEmail}

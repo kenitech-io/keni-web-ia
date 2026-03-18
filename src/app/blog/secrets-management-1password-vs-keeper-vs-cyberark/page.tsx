@@ -54,25 +54,25 @@ export default function SecretsManagementComparison() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <article>
-        <section className="pt-40 pb-12 md:pt-48 md:pb-16">
+        <section className="py-32 md:py-48">
           <Container>
             <div className="max-w-[640px] mx-auto">
               <FadeIn>
-                <p className="text-label uppercase tracking-widest text-muted mb-4">SECURITY</p>
-                <h1 className="text-display-sm text-foreground mb-6">
+                <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-6">SECURITY</p>
+                <h1 className="text-heading text-foreground font-light tracking-wide mb-8">
                   Secrets management: 1Password vs Keeper vs CyberArk vs Vault
                 </h1>
-                <p className="text-label text-muted">March 17, 2026 &middot; 8 min read</p>
+                <p className="text-label text-muted/60 font-light">March 17, 2026 &middot; 8 min read</p>
               </FadeIn>
             </div>
           </Container>
         </section>
 
-        <section className="pb-section">
+        <section className="pb-32 md:pb-48">
           <Container>
-            <div className="max-w-[640px] mx-auto space-y-8">
+            <div className="max-w-[640px] mx-auto space-y-10">
               <FadeIn delay={0.1}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Every team has secrets: API keys, database credentials,
                   certificates, tokens. The question is where they live and how
                   they get to the services that need them. A .env file on a
@@ -83,34 +83,34 @@ export default function SecretsManagementComparison() {
               </FadeIn>
 
               <FadeIn delay={0.15}>
-                <h2 className="text-heading text-foreground">The short version</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">The short version</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <ul className="space-y-3 text-body text-foreground-secondary">
-                  <li className="pl-4 border-l border-border-color">
+                <ul className="space-y-3 text-sm text-foreground-secondary/70 leading-loose font-light">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">1Password</strong>: best for
                     teams that need a password manager first and secrets
                     injection second. Excellent UX, good CLI and CI/CD
                     integrations. SaaS only.
                   </li>
-                  <li className="pl-4 border-l border-border-color">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">Keeper</strong>: enterprise
                     password manager with secrets management features. Strong
                     compliance controls, good for regulated industries. SaaS
                     only.
                   </li>
-                  <li className="pl-4 border-l border-border-color">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">CyberArk</strong>: enterprise
                     privileged access management. Powerful but complex and
                     expensive. Overkill for most teams under 100 people.
                   </li>
-                  <li className="pl-4 border-l border-border-color">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">HashiCorp Vault</strong>: the
                     industry standard for infrastructure secrets. Self-hostable,
                     dynamic secrets, powerful but operationally complex.
                   </li>
-                  <li className="pl-4 border-l border-border-color">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">Infisical</strong>: open source,
                     developer-friendly, self-hostable. A modern alternative to
                     Vault with less operational overhead.
@@ -119,11 +119,11 @@ export default function SecretsManagementComparison() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">What matters in secrets management</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">What matters in secrets management</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   The tool you pick matters less than having a system at all. But
                   when evaluating options, these are the capabilities that
                   actually make a difference for a development team:
@@ -131,26 +131,26 @@ export default function SecretsManagementComparison() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <ul className="space-y-3 text-body text-foreground-secondary">
-                  <li className="pl-4 border-l border-border-color">
+                <ul className="space-y-3 text-sm text-foreground-secondary/70 leading-loose font-light">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">Automated injection</strong>:
                     can secrets be injected into containers and CI/CD pipelines
                     without manual steps?
                   </li>
-                  <li className="pl-4 border-l border-border-color">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">Rotation</strong>: can
                     credentials be rotated without downtime or code changes?
                   </li>
-                  <li className="pl-4 border-l border-border-color">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">Audit trail</strong>: can you
                     see who accessed what secret and when?
                   </li>
-                  <li className="pl-4 border-l border-border-color">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">Environment separation</strong>:
                     can you manage different secrets for dev, staging, and
                     production in one place?
                   </li>
-                  <li className="pl-4 border-l border-border-color">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">Self-hosting option</strong>:
                     can you run it on your own infrastructure if needed?
                   </li>
@@ -158,11 +158,11 @@ export default function SecretsManagementComparison() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">1Password for developers</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">1Password for developers</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   1Password started as a consumer password manager and expanded
                   into developer tooling. Their CLI (<code className="text-foreground text-sm">op</code>)
                   can inject secrets into shell commands, Docker containers, and
@@ -172,7 +172,7 @@ export default function SecretsManagementComparison() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   The biggest advantage is that your team probably already uses
                   1Password for passwords. Adding infrastructure secrets to the
                   same tool reduces context switching and means one fewer system
@@ -181,7 +181,7 @@ export default function SecretsManagementComparison() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   The limitation is that 1Password is SaaS only. You cannot
                   self-host the vault. For teams with data residency requirements,
                   this can be a blocker. It also lacks dynamic secrets (the
@@ -190,11 +190,11 @@ export default function SecretsManagementComparison() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">Keeper</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">Keeper</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Keeper positions itself between consumer password managers and
                   enterprise PAM solutions. It offers secrets management with
                   automated rotation, a CLI, and SDK integrations for injecting
@@ -203,7 +203,7 @@ export default function SecretsManagementComparison() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Keeper&apos;s strength is compliance. It has certifications
                   (SOC 2, ISO 27001, FedRAMP) that matter in regulated
                   industries. The rotation engine can automatically change
@@ -213,18 +213,18 @@ export default function SecretsManagementComparison() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Like 1Password, it is SaaS only. The developer experience is
                   functional but not as polished as 1Password&apos;s tooling.
                 </p>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">CyberArk</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">CyberArk</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   CyberArk is an enterprise privileged access management (PAM)
                   platform. It can manage secrets, but that is one feature within
                   a much larger product. It is designed for organizations with
@@ -234,7 +234,7 @@ export default function SecretsManagementComparison() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   For a team of 2-30 developers, CyberArk is almost certainly
                   overkill. The licensing cost, implementation complexity, and
                   operational overhead are designed for a different scale. If a
@@ -244,11 +244,11 @@ export default function SecretsManagementComparison() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">HashiCorp Vault</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">HashiCorp Vault</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Vault is the industry standard for infrastructure-level secrets
                   management. It can store static secrets, generate dynamic
                   secrets (short-lived database credentials, cloud IAM tokens),
@@ -257,7 +257,7 @@ export default function SecretsManagementComparison() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Vault is self-hostable and open source (the core, at least).
                   It integrates with everything: Kubernetes, Docker, Terraform,
                   CI/CD platforms, cloud providers. The feature set is
@@ -266,7 +266,7 @@ export default function SecretsManagementComparison() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   The tradeoff is operational complexity. Running Vault in
                   production requires understanding unsealing, storage backends,
                   HA configuration, audit logging, and token management. For a
@@ -277,11 +277,11 @@ export default function SecretsManagementComparison() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">Infisical</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">Infisical</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Infisical is the newest entrant and positions itself as a
                   developer-first alternative to Vault. It is open source,
                   self-hostable, and designed to be simpler to operate. The web
@@ -291,7 +291,7 @@ export default function SecretsManagementComparison() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   It does not have Vault&apos;s dynamic secrets engine or PKI
                   capabilities. But for teams that need to centralize static
                   secrets, inject them into containers, manage per-environment
@@ -301,32 +301,32 @@ export default function SecretsManagementComparison() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">When to use each one</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">When to use each one</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <ul className="space-y-3 text-body text-foreground-secondary">
-                  <li className="pl-4 border-l border-border-color">
+                <ul className="space-y-3 text-sm text-foreground-secondary/70 leading-loose font-light">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">Choose 1Password</strong> if
                     your team already uses it, you want the simplest path to
                     secrets injection, and SaaS is acceptable.
                   </li>
-                  <li className="pl-4 border-l border-border-color">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">Choose Keeper</strong> if
                     compliance certifications are a requirement and you need
                     built-in rotation.
                   </li>
-                  <li className="pl-4 border-l border-border-color">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">Choose CyberArk</strong> only
                     if your enterprise or client mandates it for compliance.
                   </li>
-                  <li className="pl-4 border-l border-border-color">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">Choose Vault</strong> if you
                     need dynamic secrets, PKI, encryption as a service, or your
                     infrastructure is complex enough to justify the operational
                     cost.
                   </li>
-                  <li className="pl-4 border-l border-border-color">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">Choose Infisical</strong> if
                     you want self-hosted secrets management that is simpler than
                     Vault and more infrastructure-focused than 1Password.
@@ -335,11 +335,11 @@ export default function SecretsManagementComparison() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">Our take</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">Our take</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   For small teams, the practical choice is between 1Password (if
                   you are already using it and SaaS is fine) and Infisical (if
                   you want self-hosted and open source). Both get you from
@@ -349,7 +349,7 @@ export default function SecretsManagementComparison() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   The most important thing is to pick one and use it. The
                   difference between any of these tools and &quot;credentials
                   shared over Slack&quot; is orders of magnitude larger than the
@@ -358,10 +358,10 @@ export default function SecretsManagementComparison() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <div className="border-t border-border-color pt-8 mt-8">
-                  <p className="text-body text-foreground-secondary">
+                <div className="border-t border-foreground/[0.08] pt-8 mt-8">
+                  <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                     Not sure how your secrets management stacks up?{" "}
-                    <Link href="/healthcheck" className="text-foreground hover:text-muted transition-colors">
+                    <Link href="/healthcheck" className="text-foreground/80 hover:text-foreground transition-colors">
                       Take our free DevOps health check
                     </Link>
                     {" "}to score your team across all seven areas, including

@@ -11,6 +11,7 @@ interface CTASectionProps {
   buttonText?: string;
   buttonHref?: string;
   external?: boolean;
+  dark?: boolean;
 }
 
 export default function CTASection({
@@ -19,18 +20,31 @@ export default function CTASection({
   buttonText = "Schedule a Call",
   buttonHref,
   external,
+  dark,
 }: CTASectionProps) {
   const href = buttonHref || BOOKING_URL;
   const isExternal = external ?? !buttonHref;
 
+  const headlineClass = dark
+    ? "text-heading text-[#d8d4cf] font-light tracking-wide mb-8"
+    : "text-heading text-foreground font-light tracking-wide mb-8";
+
+  const subtextClass = dark
+    ? "text-sm text-[#a09a93] leading-loose font-light max-w-[480px] mx-auto mb-12"
+    : "text-sm text-foreground-secondary/70 leading-loose font-light max-w-[480px] mx-auto mb-12";
+
+  const buttonClass = dark
+    ? "inline-block bg-[#c8c3bc] hover:bg-[#b5b0a9] text-[#1a1a1a] px-8 py-3 text-sm font-light tracking-wide rounded-full transition-colors"
+    : "inline-block bg-foreground hover:bg-foreground/85 text-background px-8 py-3 text-sm font-light tracking-wide rounded-full transition-colors";
+
   return (
-    <section className="py-section">
+    <section className="py-32 md:py-48">
       <Container>
         <FadeIn>
-          <div className="text-center py-20 md:py-28">
-            <h2 className="text-display-sm text-foreground mb-6">{headline}</h2>
+          <div className="text-center">
+            <h2 className={headlineClass}>{headline}</h2>
             {subtext && (
-              <p className="text-body text-foreground-secondary max-w-narrow mx-auto mb-10">
+              <p className={subtextClass}>
                 {subtext}
               </p>
             )}
@@ -39,7 +53,7 @@ export default function CTASection({
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-foreground hover:bg-charcoal text-background px-8 py-4 text-body font-medium rounded-full transition-colors"
+                className={buttonClass}
               >
                 {buttonText}
               </a>
@@ -47,7 +61,7 @@ export default function CTASection({
               <Link
                 id="bottom-cta"
                 href={href}
-                className="inline-block bg-foreground hover:bg-charcoal text-background px-8 py-4 text-body font-medium rounded-full transition-colors"
+                className={buttonClass}
               >
                 {buttonText}
               </Link>

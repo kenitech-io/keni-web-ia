@@ -135,7 +135,7 @@ const differentiators = [
 
 export default function DevOpsConsultingPage() {
   return (
-    <main>
+    <main className="bg-[#2c2c2c] text-[#e8e4df]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
@@ -145,16 +145,16 @@ export default function DevOpsConsultingPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       {/* Hero */}
-      <section className="pt-40 pb-20 md:pt-48 md:pb-28">
+      <section className="py-32 md:py-48">
         <Container>
-          <div className="max-w-[640px] mx-auto">
+          <div className="max-w-[640px] mx-auto text-center">
             <FadeIn>
-              <h1 className="text-display text-foreground mb-8">
+              <h1 className="text-heading text-[#d8d4cf] font-light tracking-wide mb-8">
                 DevOps consulting for teams that ship software
               </h1>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <p className="text-body text-foreground-secondary">
+              <p className="text-sm text-[#a09a93] leading-loose font-light">
                 Your developers should write code, not fight infrastructure. We
                 set up your CI/CD, automate your deploys, and keep everything
                 running. You push code, it goes to production. That is it.
@@ -165,27 +165,27 @@ export default function DevOpsConsultingPage() {
       </section>
 
       {/* The Problem */}
-      <section className="py-section-sm bg-surface">
+      <section className="py-32 md:py-48">
         <Container>
-          <div className="max-w-[640px] mx-auto">
+          <div className="max-w-[640px] mx-auto text-center">
             <FadeIn>
-              <p className="text-label uppercase tracking-widest text-muted mb-8">
+              <p className="text-label uppercase tracking-[0.25em] text-[#7a756f] mb-32 md:mb-40 font-light text-center">
                 THE PROBLEM
               </p>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <h2 className="text-heading text-foreground mb-8">
+              <h2 className="text-heading text-[#d8d4cf] font-light tracking-wide mb-8">
                 53% of SMBs lack DevOps capabilities
               </h2>
             </FadeIn>
             <FadeIn delay={0.2}>
-              <p className="text-body text-foreground-secondary mb-6">
+              <p className="text-sm text-[#a09a93] leading-loose font-light mb-6">
                 Hiring a full-time DevOps engineer in the US costs $130K-$220K+
                 per year when you include benefits and overhead. For a team of
                 5-30 developers, that is a massive investment for a role that
                 might not need to be full-time.
               </p>
-              <p className="text-body text-foreground-secondary">
+              <p className="text-sm text-[#a09a93] leading-loose font-light">
                 Meanwhile, your developers are spending half their time on
                 manual deploys, debugging servers, and firefighting production
                 issues instead of building features.
@@ -196,27 +196,27 @@ export default function DevOpsConsultingPage() {
       </section>
 
       {/* What We Do */}
-      <section className="py-section">
+      <section className="py-32 md:py-48">
         <Container>
           <div className="max-w-[640px] mx-auto">
             <FadeIn>
-              <p className="text-label uppercase tracking-widest text-muted mb-8">
+              <p className="text-label uppercase tracking-[0.25em] text-[#7a756f] mb-32 md:mb-40 font-light text-center">
                 WHAT WE DO
               </p>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <h2 className="text-heading text-foreground mb-16">
+              <h2 className="text-heading text-[#d8d4cf] font-light tracking-wide mb-16 text-center">
                 Everything your team needs to ship with confidence
               </h2>
             </FadeIn>
-            <div className="space-y-12">
+            <div className="space-y-16">
               {services.map((service, index) => (
                 <FadeIn key={service.title} delay={index * 0.1}>
                   <div>
-                    <h3 className="text-body-lg text-foreground font-normal mb-3">
+                    <h3 className="text-body text-[#d8d4cf] font-light tracking-wide mb-3">
                       {service.title}
                     </h3>
-                    <p className="text-body text-foreground-secondary">
+                    <p className="text-sm text-[#a09a93] leading-loose font-light">
                       {service.description}
                     </p>
                   </div>
@@ -228,27 +228,27 @@ export default function DevOpsConsultingPage() {
       </section>
 
       {/* Why Keni */}
-      <section className="py-section-sm bg-surface">
+      <section className="py-32 md:py-48">
         <Container>
           <div className="max-w-[640px] mx-auto">
             <FadeIn>
-              <p className="text-label uppercase tracking-widest text-muted mb-8">
+              <p className="text-label uppercase tracking-[0.25em] text-[#7a756f] mb-32 md:mb-40 font-light text-center">
                 WHY KENI
               </p>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <h2 className="text-heading text-foreground mb-16">
+              <h2 className="text-heading text-[#d8d4cf] font-light tracking-wide mb-16 text-center">
                 Built different from the big firms
               </h2>
             </FadeIn>
-            <div className="space-y-12">
+            <div className="space-y-16">
               {differentiators.map((item, index) => (
                 <FadeIn key={item.title} delay={index * 0.1}>
                   <div>
-                    <h3 className="text-body-lg text-foreground font-normal mb-3">
+                    <h3 className="text-body text-[#d8d4cf] font-light tracking-wide mb-3">
                       {item.title}
                     </h3>
-                    <p className="text-body text-foreground-secondary">
+                    <p className="text-sm text-[#a09a93] leading-loose font-light">
                       {item.description}
                     </p>
                   </div>
@@ -260,31 +260,31 @@ export default function DevOpsConsultingPage() {
       </section>
 
       {/* How We Work */}
-      <section className="py-section">
+      <section className="py-32 md:py-48">
         <Container>
-          <div className="max-w-[640px] mx-auto">
+          <div className="max-w-[640px] mx-auto text-center">
             <FadeIn>
-              <p className="text-label uppercase tracking-widest text-muted mb-8">
+              <p className="text-label uppercase tracking-[0.25em] text-[#7a756f] mb-32 md:mb-40 font-light text-center">
                 HOW WE WORK
               </p>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <h2 className="text-heading text-foreground mb-8">
+              <h2 className="text-heading text-[#d8d4cf] font-light tracking-wide mb-8">
                 Four phases, one clear outcome
               </h2>
             </FadeIn>
             <FadeIn delay={0.2}>
-              <p className="text-body text-foreground-secondary mb-6">
+              <p className="text-sm text-[#a09a93] leading-loose font-light mb-6">
                 Every engagement follows the same structured process. We start
                 with a diagnosis of your current setup, design the right
                 solution, implement it, and then maintain it for you.
               </p>
-              <p className="text-body text-foreground-secondary">
-                <Link href="/platform" className="text-foreground hover:text-muted transition-colors">
+              <p className="text-sm text-[#a09a93] leading-loose font-light">
+                <Link href="/platform" className="text-[#d8d4cf] hover:text-[#e8e4df] transition-colors">
                   See what the platform looks like
                 </Link>
                 {" "}or{" "}
-                <Link href="/healthcheck" className="text-foreground hover:text-muted transition-colors">
+                <Link href="/healthcheck" className="text-[#d8d4cf] hover:text-[#e8e4df] transition-colors">
                   take our free DevOps health check
                 </Link>
                 {" "}to see where your team stands.
@@ -299,6 +299,7 @@ export default function DevOpsConsultingPage() {
         subtext="30 minutes. No pitch, no pressure. Just a conversation about what's slowing your team down and how to fix it."
         buttonText="Book a Free Consultation"
         buttonHref="/contact"
+        dark
       />
     </main>
   );

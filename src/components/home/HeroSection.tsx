@@ -1,15 +1,19 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 
 export default function HeroSection() {
-  const [phase, setPhase] = useState<"devops" | "zoom" | "diagram">("devops");
+  const searchParams = useSearchParams();
+  const skip = searchParams.get("skip") !== null;
+  const [phase, setPhase] = useState<"devops" | "zoom" | "diagram">(skip ? "diagram" : "devops");
 
   useEffect(() => {
+    if (skip) return;
     const t1 = setTimeout(() => setPhase("zoom"), 500);
     const t2 = setTimeout(() => setPhase("diagram"), 1800);
     return () => { clearTimeout(t1); clearTimeout(t2); };
-  }, []);
+  }, [skip]);
 
   return (
     <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden">

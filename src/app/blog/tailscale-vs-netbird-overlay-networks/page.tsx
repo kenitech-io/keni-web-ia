@@ -55,25 +55,25 @@ export default function TailscaleVsNetbird() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <article>
-        <section className="pt-40 pb-12 md:pt-48 md:pb-16">
+        <section className="py-32 md:py-48">
           <Container>
             <div className="max-w-[640px] mx-auto">
               <FadeIn>
-                <p className="text-label uppercase tracking-widest text-muted mb-4">NETWORKING</p>
-                <h1 className="text-display-sm text-foreground mb-6">
+                <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-6">NETWORKING</p>
+                <h1 className="text-heading text-foreground font-light tracking-wide mb-8">
                   Tailscale vs Netbird vs ZeroTier: overlay networks for small teams
                 </h1>
-                <p className="text-label text-muted">March 17, 2026 &middot; 7 min read</p>
+                <p className="text-label text-muted/60 font-light">March 17, 2026 &middot; 7 min read</p>
               </FadeIn>
             </div>
           </Container>
         </section>
 
-        <section className="pb-section">
+        <section className="pb-32 md:pb-48">
           <Container>
-            <div className="max-w-[640px] mx-auto space-y-8">
+            <div className="max-w-[640px] mx-auto space-y-10">
               <FadeIn delay={0.1}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   When your infrastructure spans multiple servers, cloud
                   providers, or locations, you need a way to connect them
                   securely without exposing services to the public internet. That
@@ -84,23 +84,23 @@ export default function TailscaleVsNetbird() {
               </FadeIn>
 
               <FadeIn delay={0.15}>
-                <h2 className="text-heading text-foreground">The short version</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">The short version</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <ul className="space-y-3 text-body text-foreground-secondary">
-                  <li className="pl-4 border-l border-border-color">
+                <ul className="space-y-3 text-sm text-foreground-secondary/70 leading-loose font-light">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">Tailscale</strong>: easiest to
                     set up, best UX, managed coordination server. Built on
                     WireGuard. Free tier covers most small teams. Not
                     self-hostable (control plane is SaaS).
                   </li>
-                  <li className="pl-4 border-l border-border-color">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">Netbird</strong>: fully
                     self-hostable, open source, built on WireGuard. Slightly more
                     setup than Tailscale but you own everything. Growing fast.
                   </li>
-                  <li className="pl-4 border-l border-border-color">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">ZeroTier</strong>: custom
                     protocol (not WireGuard), self-hostable controller available.
                     More mature than Netbird, but the custom protocol is a
@@ -110,11 +110,11 @@ export default function TailscaleVsNetbird() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">Why overlay networks matter</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">Why overlay networks matter</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Without an overlay network, connecting services across servers
                   means opening ports, managing firewall rules, setting up VPNs,
                   and dealing with NAT traversal. Every new server or service
@@ -124,7 +124,7 @@ export default function TailscaleVsNetbird() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   An overlay network handles all of this. Install the agent on
                   each machine, and they can reach each other by hostname or
                   private IP. No ports to open, no VPN concentrators, no manual
@@ -133,11 +133,11 @@ export default function TailscaleVsNetbird() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">WireGuard vs custom protocols</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">WireGuard vs custom protocols</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Both Tailscale and Netbird use WireGuard under the hood.
                   WireGuard is a lean, audited, in-kernel VPN protocol that has
                   become the standard for encrypted tunnels. It is fast, has a
@@ -147,7 +147,7 @@ export default function TailscaleVsNetbird() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   ZeroTier uses its own protocol. It works well and has years of
                   production usage behind it, but it has not received the same
                   level of external security scrutiny as WireGuard. For teams
@@ -157,11 +157,11 @@ export default function TailscaleVsNetbird() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">Self-hosted vs managed</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">Self-hosted vs managed</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   This is the biggest decision point. Tailscale&apos;s control
                   plane is a managed service. Your traffic goes peer-to-peer (it
                   does not flow through Tailscale&apos;s servers), but the
@@ -173,7 +173,7 @@ export default function TailscaleVsNetbird() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Headscale exists as an open-source, self-hosted alternative to
                   Tailscale&apos;s control server. It works, but it is a
                   community project, not officially supported by Tailscale.
@@ -181,7 +181,7 @@ export default function TailscaleVsNetbird() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Netbird is fully self-hostable from the start. The control
                   plane, the management UI, the relay servers, everything can run
                   on your own infrastructure. The managed cloud option also
@@ -190,18 +190,18 @@ export default function TailscaleVsNetbird() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   ZeroTier offers a self-hosted controller as well, though it is
                   less polished than Netbird&apos;s self-hosted experience.
                 </p>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">Access control</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">Access control</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Tailscale has the most mature access control system. Its ACL
                   policy file lets you define which machines can talk to which
                   others, based on user identity, groups, tags, and network
@@ -211,7 +211,7 @@ export default function TailscaleVsNetbird() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Netbird has similar access control capabilities with network
                   policies and peer groups. It also supports integration with
                   identity providers. The feature set has grown quickly and
@@ -220,7 +220,7 @@ export default function TailscaleVsNetbird() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   ZeroTier has flow rules for access control, but the syntax is
                   less intuitive than Tailscale&apos;s or Netbird&apos;s
                   policy-based approach.
@@ -228,11 +228,11 @@ export default function TailscaleVsNetbird() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">Setup and day-to-day operations</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">Setup and day-to-day operations</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Tailscale wins on setup speed. Install the client, authenticate
                   with your identity provider, and the machine joins the
                   network. Under a minute from zero to connected. The admin
@@ -241,7 +241,7 @@ export default function TailscaleVsNetbird() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Netbird&apos;s setup is slightly more involved if you
                   self-host (you need to deploy the management server, the
                   signal server, and optionally relay servers). Using the managed
@@ -250,31 +250,31 @@ export default function TailscaleVsNetbird() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   ZeroTier&apos;s setup is straightforward but the management
                   interface feels dated compared to the other two.
                 </p>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">When to use each one</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">When to use each one</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <ul className="space-y-3 text-body text-foreground-secondary">
-                  <li className="pl-4 border-l border-border-color">
+                <ul className="space-y-3 text-sm text-foreground-secondary/70 leading-loose font-light">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">Choose Tailscale</strong> if
                     you want the fastest setup, best UX, and are comfortable with
                     a managed control plane. Great for teams that want to connect
                     machines and move on.
                   </li>
-                  <li className="pl-4 border-l border-border-color">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">Choose Netbird</strong> if
                     self-hosting is important, you want full control over every
                     component, and you are OK with slightly more setup work.
                     Ideal for teams with compliance or sovereignty requirements.
                   </li>
-                  <li className="pl-4 border-l border-border-color">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">Choose ZeroTier</strong> if you
                     have an existing ZeroTier deployment, need a mature solution,
                     and the custom protocol is not a concern for your security
@@ -284,11 +284,11 @@ export default function TailscaleVsNetbird() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">Our take</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">Our take</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   For most small to mid-sized teams, the choice comes down to
                   Tailscale or Netbird. If you do not have compliance constraints
                   and want the easiest path, Tailscale is hard to beat. If you
@@ -298,7 +298,7 @@ export default function TailscaleVsNetbird() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Either way, adding an overlay network to your infrastructure is
                   one of the highest-leverage changes a small team can make. It
                   eliminates an entire category of networking complexity and
@@ -307,11 +307,11 @@ export default function TailscaleVsNetbird() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <div className="border-t border-border-color pt-8 mt-8">
-                  <p className="text-body text-foreground-secondary">
+                <div className="border-t border-foreground/[0.08] pt-8 mt-8">
+                  <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                     See how an overlay network fits into a full platform
                     architecture.{" "}
-                    <Link href="/platform" className="text-foreground hover:text-muted transition-colors">
+                    <Link href="/platform" className="text-foreground/80 hover:text-foreground transition-colors">
                       Explore the reference diagram
                     </Link>
                     .

@@ -1,27 +1,24 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Container from "@/components/ui/Container";
 
-const footerLinks = [
-  { name: "DevOps Consulting", href: "/devops-consulting" },
-  { name: "Infrastructure Audit", href: "/infrastructure-audit" },
-  { name: "Platform", href: "/platform" },
-  { name: "Blog", href: "/blog" },
-  { name: "About", href: "/about" },
-  { name: "Contact", href: "/contact" },
-];
+const footerLinks: { name: string; href: string }[] = [];
 
 const socialLinks = [
   { name: "LinkedIn", href: "https://www.linkedin.com/company/keniengineering/" },
 ];
 
 export default function Footer() {
+  const pathname = usePathname();
+  const isDark = pathname === "/devops-consulting" || pathname === "/contact";
+
   return (
-    <footer className="border-t border-border-color">
+    <footer className={`border-t ${isDark ? "border-[#3a3a3a] bg-[#2c2c2c]" : "border-border-color"}`}>
       <Container>
         <div className="h-[60px] flex items-center justify-between">
-          <p className="text-xs text-muted shrink-0">
+          <p className={`text-xs shrink-0 ${isDark ? "text-[#7a756f]" : "text-muted"}`}>
             Keni &copy; 2026
           </p>
 
@@ -30,7 +27,11 @@ export default function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-xs text-muted hover:text-foreground transition-colors duration-200"
+                className={`text-xs transition-colors duration-200 ${
+                  isDark
+                    ? "text-[#7a756f] hover:text-[#e8e4df]"
+                    : "text-muted hover:text-foreground"
+                }`}
               >
                 {link.name}
               </Link>
@@ -42,7 +43,11 @@ export default function Footer() {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-xs text-muted hover:text-foreground transition-colors duration-200"
+                className={`text-xs transition-colors duration-200 ${
+                  isDark
+                    ? "text-[#7a756f] hover:text-[#e8e4df]"
+                    : "text-muted hover:text-foreground"
+                }`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
