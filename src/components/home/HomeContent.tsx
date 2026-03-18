@@ -59,7 +59,7 @@ export default function HomeContent() {
 
   return (
     <>
-      <HeroSection onOpenDiagram={() => setDiagramOpen(true)} />
+      <HeroSection />
       <ProblemSection />
       <SolutionSection />
       <ProcessSection />

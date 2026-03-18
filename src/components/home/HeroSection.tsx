@@ -1,13 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 
-interface HeroProps {
-  onOpenDiagram?: () => void;
-}
-
-export default function HeroSection({ onOpenDiagram }: HeroProps) {
+export default function HeroSection() {
   const [phase, setPhase] = useState<"devops" | "zoom" | "diagram">("devops");
 
   useEffect(() => {
