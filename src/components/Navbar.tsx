@@ -94,16 +94,6 @@ export default function Navbar() {
             {/* Desktop */}
             <div className="hidden md:flex items-center gap-8">
               <Link
-                href="/devops-consulting"
-                className={`text-xs font-medium transition-colors duration-200 ${
-                  isActive("/devops-consulting") || isActive("/infrastructure-audit")
-                    ? "text-foreground"
-                    : "text-muted hover:text-foreground"
-                }`}
-              >
-                Services
-              </Link>
-              <Link
                 href="/platform"
                 className={`text-xs font-medium transition-colors duration-200 ${
                   isActive("/platform")
@@ -122,16 +112,6 @@ export default function Navbar() {
                 }`}
               >
                 Health Check
-              </Link>
-              <Link
-                href="/blog"
-                className={`text-xs font-medium transition-colors duration-200 ${
-                  isActive("/blog")
-                    ? "text-foreground"
-                    : "text-muted hover:text-foreground"
-                }`}
-              >
-                Blog
               </Link>
               <Link
                 href="/contact"
@@ -217,27 +197,6 @@ export default function Navbar() {
                   }}
                 >
                   <Link
-                    href="/devops-consulting"
-                    className={`text-3xl font-light transition-colors duration-200 ${
-                      isActive("/devops-consulting")
-                        ? "text-foreground"
-                        : "text-muted hover:text-foreground"
-                    }`}
-                  >
-                    Services
-                  </Link>
-                </motion.div>
-                <motion.div
-                  variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: {
-                      opacity: 1,
-                      y: 0,
-                      transition: { duration: 0.4, ease: "easeOut" },
-                    },
-                  }}
-                >
-                  <Link
                     href="/platform"
                     className={`text-3xl font-light transition-colors duration-200 ${
                       isActive("/platform")
@@ -267,27 +226,6 @@ export default function Navbar() {
                     }`}
                   >
                     Health Check
-                  </Link>
-                </motion.div>
-                <motion.div
-                  variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: {
-                      opacity: 1,
-                      y: 0,
-                      transition: { duration: 0.4, ease: "easeOut" },
-                    },
-                  }}
-                >
-                  <Link
-                    href="/blog"
-                    className={`text-3xl font-light transition-colors duration-200 ${
-                      isActive("/blog")
-                        ? "text-foreground"
-                        : "text-muted hover:text-foreground"
-                    }`}
-                  >
-                    Blog
                   </Link>
                 </motion.div>
                 <motion.div
