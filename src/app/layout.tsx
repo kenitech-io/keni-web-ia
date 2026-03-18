@@ -14,32 +14,55 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://kenitech.io"),
   title: {
-    default: "Keni: DevOps Engineering",
-    template: "%s | Keni",
+    default: "DevOps Consulting for SMBs | Keni Engineering",
+    template: "%s | Keni Engineering",
   },
   description:
-    "We handle your CI/CD, deploys, and ops so your developers can focus on shipping. Diagnosis, design, implementation, and ongoing maintenance.",
+    "DevOps consulting and platform engineering for US software teams with 2-30 developers. We set up CI/CD, automate deploys, and keep your infrastructure running so your team ships faster.",
   keywords: [
     "DevOps consulting",
-    "Platform Engineering",
-    "Internal Development Platform",
-    "CI/CD",
-    "Infrastructure as Code",
-    "Cloud Management",
-    "Kubernetes",
+    "DevOps consulting for startups",
+    "platform engineering",
+    "internal developer platform",
+    "CI/CD pipeline setup",
+    "infrastructure as code consulting",
+    "cloud infrastructure management",
+    "DevOps audit",
+    "infrastructure audit",
+    "DevOps for small teams",
+    "automated deployments",
+    "DevOps outsourcing",
   ],
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Keni",
-    title: "Keni: DevOps Engineering",
+    siteName: "Keni Engineering",
+    title: "DevOps Consulting for SMBs | Keni Engineering",
     description:
-      "We handle your CI/CD, deploys, and ops so your developers can focus on shipping.",
+      "DevOps consulting and platform engineering for US software teams. CI/CD, infrastructure automation, and ongoing maintenance.",
+    url: "https://kenitech.io",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "DevOps Consulting for SMBs | Keni Engineering",
+    description:
+      "DevOps consulting and platform engineering for US software teams. CI/CD, infrastructure automation, and ongoing maintenance.",
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: "https://kenitech.io",
   },
 };
 
@@ -51,6 +74,64 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body className="font-sans bg-background text-foreground antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "@id": "https://kenitech.io/#organization",
+                  name: "Keni Engineering",
+                  url: "https://kenitech.io",
+                  logo: "https://kenitech.io/logo.png",
+                  description:
+                    "DevOps consulting and platform engineering for US software teams with 2-30 developers.",
+                  contactPoint: {
+                    "@type": "ContactPoint",
+                    email: "ugarte@kenitech.io",
+                    contactType: "sales",
+                  },
+                  sameAs: [
+                    "https://www.linkedin.com/company/keniengineering/",
+                  ],
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://kenitech.io/#website",
+                  url: "https://kenitech.io",
+                  name: "Keni Engineering",
+                  publisher: {
+                    "@id": "https://kenitech.io/#organization",
+                  },
+                },
+                {
+                  "@type": "ProfessionalService",
+                  "@id": "https://kenitech.io/#service",
+                  name: "Keni Engineering",
+                  url: "https://kenitech.io",
+                  description:
+                    "DevOps consulting, infrastructure audits, CI/CD pipeline setup, and platform engineering for SMBs.",
+                  provider: {
+                    "@id": "https://kenitech.io/#organization",
+                  },
+                  areaServed: {
+                    "@type": "Country",
+                    name: "United States",
+                  },
+                  serviceType: [
+                    "DevOps Consulting",
+                    "Infrastructure Audit",
+                    "Platform Engineering",
+                    "CI/CD Pipeline Setup",
+                    "Cloud Infrastructure Management",
+                  ],
+                },
+              ],
+            }),
+          }}
+        />
         <Navbar />
         <main>{children}</main>
         <Footer />

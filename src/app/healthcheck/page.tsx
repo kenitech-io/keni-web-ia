@@ -2,9 +2,12 @@ import { Metadata } from "next";
 import HealthCheckContent from "@/components/HealthCheckContent";
 
 export const metadata: Metadata = {
-  title: "DevOps Health Check",
+  title: "Free DevOps Maturity Assessment",
   description:
-    "Find out where your team stands. A quick self-assessment that scores your DevOps maturity across deployments, CI/CD, monitoring, and infrastructure.",
+    "Score your DevOps maturity in 2 minutes. A free self-assessment across deployments, CI/CD, monitoring, infrastructure as code, secrets management, and disaster recovery.",
+  alternates: {
+    canonical: "https://kenitech.io/healthcheck",
+  },
 };
 
 export default function HealthCheckPage() {

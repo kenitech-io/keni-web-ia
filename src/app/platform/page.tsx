@@ -2,9 +2,12 @@ import { Metadata } from "next";
 import PlatformPageContent from "@/components/PlatformPageContent";
 
 export const metadata: Metadata = {
-  title: "Platform",
+  title: "Internal Developer Platform Architecture",
   description:
-    "See what a modern internal development platform looks like. Architecture reference for teams shipping software with CI/CD, monitoring, and infrastructure automation.",
+    "See what a modern internal development platform looks like. Reference architecture with CI/CD pipelines, container orchestration, monitoring, and automated deployments for software teams.",
+  alternates: {
+    canonical: "https://kenitech.io/platform",
+  },
 };
 
 export default function PlatformPage() {

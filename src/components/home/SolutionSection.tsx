@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
 
@@ -19,10 +20,20 @@ export default function SolutionSection() {
             </h2>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <p className="text-body text-foreground-secondary">
+            <p className="text-body text-foreground-secondary mb-6">
               CI/CD pipelines, containerized environments, monitoring, and
               automated deploys. All wired together around how your team
               actually works. You push, it gets deployed. That&apos;s it.
+            </p>
+            <p className="text-body text-foreground-secondary">
+              <Link href="/devops-consulting" className="text-foreground hover:text-muted transition-colors">
+                See our consulting services
+              </Link>
+              {" "}or{" "}
+              <Link href="/infrastructure-audit" className="text-foreground hover:text-muted transition-colors">
+                start with an infrastructure audit
+              </Link>
+              .
             </p>
           </FadeIn>
         </div>

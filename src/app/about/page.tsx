@@ -4,9 +4,12 @@ import FadeIn from "@/components/ui/FadeIn";
 import CTASection from "@/components/CTASection";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About Us: DevOps Engineers for SMBs",
   description:
-    "DevOps and Platform Engineering consulting. We handle the ops so your team can focus on shipping.",
+    "Meet the team behind Keni Engineering. Senior DevOps engineers who have built platforms for companies like Motorola and Swisscom. We handle your ops so your team ships faster.",
+  alternates: {
+    canonical: "https://kenitech.io/about",
+  },
 };
 
 const values = [

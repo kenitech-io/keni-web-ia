@@ -4,8 +4,11 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 
 const footerLinks = [
-  { name: "About", href: "/about" },
+  { name: "DevOps Consulting", href: "/devops-consulting" },
+  { name: "Infrastructure Audit", href: "/infrastructure-audit" },
   { name: "Platform", href: "/platform" },
+  { name: "Blog", href: "/blog" },
+  { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];
 

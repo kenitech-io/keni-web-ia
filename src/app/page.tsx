@@ -1,8 +1,15 @@
+import { Metadata } from "next";
 import HeroSection from "@/components/home/HeroSection";
 import ProblemSection from "@/components/home/ProblemSection";
 import SolutionSection from "@/components/home/SolutionSection";
 import ProcessSection from "@/components/home/ProcessSection";
 import CTASection from "@/components/CTASection";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://kenitech.io",
+  },
+};
 
 export default function Home() {
   return (
