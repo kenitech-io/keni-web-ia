@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import HeroSection from "@/components/home/HeroSection";
 import ProblemSection from "@/components/home/ProblemSection";
 import SolutionSection from "@/components/home/SolutionSection";
@@ -59,7 +59,7 @@ export default function HomeContent() {
 
   return (
     <>
-      <HeroSection />
+      <Suspense><HeroSection /></Suspense>
       <ProblemSection />
       <SolutionSection />
       <ProcessSection />
