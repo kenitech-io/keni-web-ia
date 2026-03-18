@@ -1,8 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
-export default function HeroSection() {
+interface HeroProps {
+  onOpenDiagram?: () => void;
+}
+
+export default function HeroSection({ onOpenDiagram }: HeroProps) {
   const [phase, setPhase] = useState<"devops" | "zoom" | "diagram">("devops");
 
   useEffect(() => {
@@ -32,15 +37,20 @@ export default function HeroSection() {
         </div>
       )}
 
-      {/* Diagram */}
+      {/* Diagram + hook + CTAs */}
       {phase === "diagram" && (
         <div
-          className="w-full max-w-[1100px] px-4"
+          className="w-full max-w-[1100px] px-4 flex flex-col items-center"
           style={{
             opacity: 0,
             animation: "fadeIn 0.6s ease 0.1s forwards",
           }}
         >
+          {/* Hook */}
+          <p className="text-body text-foreground-secondary mb-12 md:mb-16 text-center">
+            From commit to production, hands-free
+          </p>
+
           <svg
             viewBox="0 0 960 280"
             fill="none"
@@ -157,6 +167,7 @@ export default function HeroSection() {
               <animate attributeName="opacity" values="0;0.25;0.25;0" dur="2.2s" repeatCount="indefinite" begin="2s" keyTimes="0;0.05;0.9;1" />
             </rect>
           </svg>
+
         </div>
       )}
 

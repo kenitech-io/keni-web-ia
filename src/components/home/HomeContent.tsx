@@ -1,0 +1,81 @@
+"use client";
+
+import { useState } from "react";
+import HeroSection from "@/components/home/HeroSection";
+import ProblemSection from "@/components/home/ProblemSection";
+import SolutionSection from "@/components/home/SolutionSection";
+import ProcessSection from "@/components/home/ProcessSection";
+import CTASection from "@/components/CTASection";
+import InteractiveDiagram from "@/components/InteractiveDiagram";
+
+const BLOCKED_DOMAINS = [
+  "gmail.com", "googlemail.com", "outlook.com", "hotmail.com", "live.com",
+  "msn.com", "yahoo.com", "yahoo.co.uk", "yahoo.es", "yahoo.fr", "yahoo.de",
+  "aol.com", "icloud.com", "me.com", "mac.com", "protonmail.com", "proton.me",
+  "zoho.com", "yandex.com", "yandex.ru", "mail.ru", "gmx.com", "gmx.de",
+  "tutanota.com", "fastmail.com",
+];
+
+export default function HomeContent() {
+  const [diagramOpen, setDiagramOpen] = useState(false);
+  const [emailStatus, setEmailStatus] = useState<
+    "idle" | "sending" | "sent" | "error" | "blocked"
+  >("idle");
+  const [submittedEmail, setSubmittedEmail] = useState("");
+
+  const handleEmailSubmit = async (email: string, note: string) => {
+    if (email === "__reset__") {
+      setEmailStatus("idle");
+      return;
+    }
+
+    const domain = email.split("@")[1]?.toLowerCase();
+    if (!domain || BLOCKED_DOMAINS.includes(domain)) {
+      setEmailStatus("blocked");
+      return;
+    }
+
+    setEmailStatus("sending");
+
+    try {
+      const res = await fetch("/api/architecture", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, note }),
+      });
+
+      if (!res.ok) {
+        if (res.status === 422) setEmailStatus("blocked");
+        else setEmailStatus("error");
+        return;
+      }
+
+      setSubmittedEmail(email);
+      setEmailStatus("sent");
+    } catch {
+      setEmailStatus("error");
+    }
+  };
+
+  return (
+    <>
+      <HeroSection onOpenDiagram={() => setDiagramOpen(true)} />
+      <ProblemSection />
+      <SolutionSection />
+      <ProcessSection />
+      <CTASection
+        headline="Ready to just ship?"
+        subtext="30 minutes. No pitch, no pressure. Just a conversation about what's slowing your team down and how to fix it."
+        buttonText="Let's Talk"
+        buttonHref="/contact"
+      />
+      <InteractiveDiagram
+        isOpen={diagramOpen}
+        onClose={() => setDiagramOpen(false)}
+        emailStatus={emailStatus}
+        onEmailSubmit={handleEmailSubmit}
+        submittedEmail={submittedEmail}
+      />
+    </>
+  );
+}

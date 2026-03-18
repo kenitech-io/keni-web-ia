@@ -16,7 +16,7 @@ const BLOCKED_DOMAINS = [
 ];
 
 export default function PlatformPageContent() {
-  const [diagramOpen, setDiagramOpen] = useState(false);
+  const [diagramOpen, setDiagramOpen] = useState(true);
   const [guideOpen, setGuideOpen] = useState(false);
   const [emailStatus, setEmailStatus] = useState<
     "idle" | "sending" | "sent" | "error" | "blocked"
