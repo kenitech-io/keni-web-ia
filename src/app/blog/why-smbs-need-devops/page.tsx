@@ -84,18 +84,18 @@ export default function WhySMBsNeedDevOps() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <article>
-        <section className="pt-40 pb-12 md:pt-48 md:pb-16">
+        <section className="py-32 md:py-48">
           <Container>
             <div className="max-w-[640px] mx-auto">
               <FadeIn>
-                <p className="text-label uppercase tracking-widest text-muted mb-4">
+                <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-6">
                   DEVOPS
                 </p>
-                <h1 className="text-display-sm text-foreground mb-6">
+                <h1 className="text-heading text-foreground font-light tracking-wide mb-8">
                   Why 53% of SMBs still don&apos;t have DevOps (and what it&apos;s costing
                   them)
                 </h1>
-                <p className="text-label text-muted">
+                <p className="text-label text-muted/60 font-light">
                   March 17, 2026 &middot; 6 min read
                 </p>
               </FadeIn>
@@ -103,11 +103,11 @@ export default function WhySMBsNeedDevOps() {
           </Container>
         </section>
 
-        <section className="pb-section">
+        <section className="pb-32 md:pb-48">
           <Container>
-            <div className="max-w-[640px] mx-auto space-y-8">
+            <div className="max-w-[640px] mx-auto space-y-10">
               <FadeIn delay={0.1}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   90% of Fortune 500 companies have adopted DevOps practices.
                   Among small and mid-sized businesses, that number drops to 47%.
                   That gap is not a coincidence. It is a structural problem, and
@@ -116,13 +116,13 @@ export default function WhySMBsNeedDevOps() {
               </FadeIn>
 
               <FadeIn delay={0.15}>
-                <h2 className="text-heading text-foreground">
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">
                   The real cost of not having DevOps
                 </h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   When a team of 10 developers spends 30% of their time on
                   manual deployments, server debugging, and firefighting
                   production issues, that is 3 full-time engineers worth of
@@ -133,7 +133,7 @@ export default function WhySMBsNeedDevOps() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   But the cost is not just salary. It is slower feature
                   delivery, more bugs reaching users, longer incident response
                   times, and engineer burnout from doing repetitive, stressful
@@ -142,13 +142,13 @@ export default function WhySMBsNeedDevOps() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">
                   Why small teams don&apos;t adopt DevOps
                 </h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   The answer is almost always the same: they cannot afford a
                   full-time DevOps engineer. The average US DevOps engineer
                   earns $85K-$150K+ per year depending on seniority and
@@ -158,7 +158,7 @@ export default function WhySMBsNeedDevOps() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   For a company with 5-15 developers, that is a significant
                   investment for a role that may not need to be full-time once
                   the initial setup is done. So the work either falls on the
@@ -168,13 +168,13 @@ export default function WhySMBsNeedDevOps() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">
                   The hiring problem makes it worse
                 </h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Even when SMBs decide to hire, they face a brutal market. 37%
                   of IT decision-makers cite DevOps as their primary skills gap.
                   Nearly 50% of SMB hiring managers say salary expectations are
@@ -184,7 +184,7 @@ export default function WhySMBsNeedDevOps() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Big tech companies and well-funded startups offer higher
                   salaries, better perks, and more interesting problems. A
                   20-person SaaS company in Ohio is competing for the same
@@ -193,13 +193,13 @@ export default function WhySMBsNeedDevOps() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">
                   What good looks like for a small team
                 </h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   The goal is not to replicate what Google or Netflix does. A
                   team of 10 developers does not need Kubernetes clusters across
                   three regions. What they need is the basics done right:
@@ -207,29 +207,29 @@ export default function WhySMBsNeedDevOps() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <ul className="space-y-3 text-body text-foreground-secondary">
-                  <li className="pl-4 border-l border-border-color">
+                <ul className="space-y-3 text-sm text-foreground-secondary/70 leading-loose font-light">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     CI/CD that runs tests on every push and deploys automatically
                     on merge to main
                   </li>
-                  <li className="pl-4 border-l border-border-color">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     Environments that match: what works in dev works in
                     production
                   </li>
-                  <li className="pl-4 border-l border-border-color">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     Monitoring that alerts you before your users do
                   </li>
-                  <li className="pl-4 border-l border-border-color">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     Infrastructure defined in code, not tribal knowledge
                   </li>
-                  <li className="pl-4 border-l border-border-color">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     Backups that are tested, not assumed
                   </li>
                 </ul>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Companies with these fundamentals in place deploy 973 times
                   more frequently and recover from failures 6,570 times faster
                   than teams without them. Those numbers come from Google&apos;s
@@ -238,13 +238,13 @@ export default function WhySMBsNeedDevOps() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">
                   The consulting alternative
                 </h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   The SME DevOps segment is growing at 21.2% CAGR, the fastest
                   of any enterprise size. Part of that growth is driven by
                   companies realizing they do not need a full-time hire. They
@@ -254,7 +254,7 @@ export default function WhySMBsNeedDevOps() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   An infrastructure audit, depending on the size and complexity
                   of the organization, can identify savings many times its
                   cost. And unlike a full-time hire, there is no ramp-up
@@ -264,7 +264,7 @@ export default function WhySMBsNeedDevOps() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   The question is not whether your team needs DevOps. The
                   question is whether you build the capability in-house or
                   bring in someone who has done it dozens of times before.
@@ -272,12 +272,12 @@ export default function WhySMBsNeedDevOps() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <div className="border-t border-border-color pt-8 mt-8">
-                  <p className="text-body text-foreground-secondary">
+                <div className="border-t border-foreground/[0.08] pt-8 mt-8">
+                  <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                     Want to see where your team stands?{" "}
                     <Link
                       href="/healthcheck"
-                      className="text-foreground hover:text-muted transition-colors"
+                      className="text-foreground/80 hover:text-foreground transition-colors"
                     >
                       Take our free DevOps health check
                     </Link>

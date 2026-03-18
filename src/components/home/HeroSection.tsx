@@ -1,6 +1,12 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
+
 export default function HeroSection() {
+  const searchParams = useSearchParams();
+  const skip = searchParams.get("skip") !== null;
+
+  if (skip) return null;
   return (
     <>
       {/* Full viewport: DEVOPS + beam */}

@@ -83,17 +83,17 @@ export default function DevOpsAuditWhatToExpect() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <article>
-        <section className="pt-40 pb-12 md:pt-48 md:pb-16">
+        <section className="py-32 md:py-48">
           <Container>
             <div className="max-w-[640px] mx-auto">
               <FadeIn>
-                <p className="text-label uppercase tracking-widest text-muted mb-4">
+                <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-6">
                   INFRASTRUCTURE
                 </p>
-                <h1 className="text-display-sm text-foreground mb-6">
+                <h1 className="text-heading text-foreground font-light tracking-wide mb-8">
                   What happens during a DevOps infrastructure audit
                 </h1>
-                <p className="text-label text-muted">
+                <p className="text-label text-muted/60 font-light">
                   March 17, 2026 &middot; 5 min read
                 </p>
               </FadeIn>
@@ -101,11 +101,11 @@ export default function DevOpsAuditWhatToExpect() {
           </Container>
         </section>
 
-        <section className="pb-section">
+        <section className="pb-32 md:pb-48">
           <Container>
-            <div className="max-w-[640px] mx-auto space-y-8">
+            <div className="max-w-[640px] mx-auto space-y-10">
               <FadeIn delay={0.1}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   An infrastructure audit is the starting point for any
                   serious DevOps improvement. But if you have never gone through
                   one, the process can feel opaque. Here is exactly what
@@ -114,13 +114,13 @@ export default function DevOpsAuditWhatToExpect() {
               </FadeIn>
 
               <FadeIn delay={0.15}>
-                <h2 className="text-heading text-foreground">
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">
                   Day 1: Access and discovery
                 </h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   We start by getting read-only access to your repositories,
                   CI/CD configuration, cloud accounts, and monitoring tools. We
                   do not need admin access, and we do not make any changes to
@@ -129,7 +129,7 @@ export default function DevOpsAuditWhatToExpect() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   We also schedule a 60-minute call with your technical lead or
                   CTO. This is not a sales call. We need to understand context
                   that code alone cannot tell us: why certain decisions were
@@ -139,13 +139,13 @@ export default function DevOpsAuditWhatToExpect() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">
                   Day 1-2: The seven areas we evaluate
                 </h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Every audit covers the same seven areas. Each one gets scored
                   on a maturity scale from 0 (manual/absent) to 4
                   (fully automated and battle-tested):
@@ -155,10 +155,10 @@ export default function DevOpsAuditWhatToExpect() {
               <FadeIn delay={0.2}>
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-body-lg text-foreground font-normal mb-2">
+                    <h3 className="text-body text-foreground font-light tracking-wide mb-2">
                       1. Deployment process
                     </h3>
-                    <p className="text-body text-foreground-secondary">
+                    <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                       How does code get from a developer&apos;s machine to
                       production? We look at the number of manual steps, rollback
                       capability, deployment frequency, and whether any developer
@@ -167,10 +167,10 @@ export default function DevOpsAuditWhatToExpect() {
                   </div>
 
                   <div>
-                    <h3 className="text-body-lg text-foreground font-normal mb-2">
+                    <h3 className="text-body text-foreground font-light tracking-wide mb-2">
                       2. CI/CD pipelines
                     </h3>
-                    <p className="text-body text-foreground-secondary">
+                    <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                       What happens when someone pushes code? We evaluate build
                       times, test coverage, whether failures block merges, and
                       how fast developers get feedback.
@@ -178,10 +178,10 @@ export default function DevOpsAuditWhatToExpect() {
                   </div>
 
                   <div>
-                    <h3 className="text-body-lg text-foreground font-normal mb-2">
+                    <h3 className="text-body text-foreground font-light tracking-wide mb-2">
                       3. Environment parity
                     </h3>
-                    <p className="text-body text-foreground-secondary">
+                    <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                       Does your staging environment match production? We check
                       for drift between environments, whether infrastructure is
                       defined in code, and whether the same configuration is used
@@ -190,10 +190,10 @@ export default function DevOpsAuditWhatToExpect() {
                   </div>
 
                   <div>
-                    <h3 className="text-body-lg text-foreground font-normal mb-2">
+                    <h3 className="text-body text-foreground font-light tracking-wide mb-2">
                       4. Monitoring and observability
                     </h3>
-                    <p className="text-body text-foreground-secondary">
+                    <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                       How do you know when something is broken? We look at
                       logging, metrics, dashboards, alerting thresholds, and
                       incident response process. The goal is to answer: would
@@ -202,10 +202,10 @@ export default function DevOpsAuditWhatToExpect() {
                   </div>
 
                   <div>
-                    <h3 className="text-body-lg text-foreground font-normal mb-2">
+                    <h3 className="text-body text-foreground font-light tracking-wide mb-2">
                       5. Infrastructure definition
                     </h3>
-                    <p className="text-body text-foreground-secondary">
+                    <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                       Is your infrastructure in code or in someone&apos;s head? We
                       evaluate Terraform, Ansible, Docker Compose, or whatever
                       tools are in use. The key question is whether the entire
@@ -214,10 +214,10 @@ export default function DevOpsAuditWhatToExpect() {
                   </div>
 
                   <div>
-                    <h3 className="text-body-lg text-foreground font-normal mb-2">
+                    <h3 className="text-body text-foreground font-light tracking-wide mb-2">
                       6. Secrets management
                     </h3>
-                    <p className="text-body text-foreground-secondary">
+                    <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                       Where do API keys, database passwords, and certificates
                       live? We check for secrets in code, .env files, shared
                       documents, and evaluate rotation policies and access
@@ -226,10 +226,10 @@ export default function DevOpsAuditWhatToExpect() {
                   </div>
 
                   <div>
-                    <h3 className="text-body-lg text-foreground font-normal mb-2">
+                    <h3 className="text-body text-foreground font-light tracking-wide mb-2">
                       7. Disaster recovery
                     </h3>
-                    <p className="text-body text-foreground-secondary">
+                    <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                       What happens if your production database disappears? We
                       verify backup existence, frequency, storage location, and
                       whether restores have ever been tested. Untested backups
@@ -240,34 +240,34 @@ export default function DevOpsAuditWhatToExpect() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">
                   Day 3: The report
                 </h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   The final deliverable is a document your CTO can act on
                   immediately. It includes:
                 </p>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <ul className="space-y-3 text-body text-foreground-secondary">
-                  <li className="pl-4 border-l border-border-color">
+                <ul className="space-y-3 text-sm text-foreground-secondary/70 leading-loose font-light">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">Maturity scorecard</strong>: a
                     visual score across all seven areas, benchmarked against
                     industry standards
                   </li>
-                  <li className="pl-4 border-l border-border-color">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">Risk assessment</strong>: critical
                     issues ranked by severity and likelihood of impact
                   </li>
-                  <li className="pl-4 border-l border-border-color">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">Prioritized roadmap</strong>: what
                     to fix first, second, and third. Ordered by impact vs. effort
                   </li>
-                  <li className="pl-4 border-l border-border-color">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">Cost estimates</strong>: what each
                     improvement costs to implement and what it saves
                   </li>
@@ -275,13 +275,13 @@ export default function DevOpsAuditWhatToExpect() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">
                   What happens after
                 </h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   The report is yours. You can implement the recommendations
                   in-house, hire someone else to do it, or ask us to handle
                   it. There is no lock-in and no obligation.
@@ -289,7 +289,7 @@ export default function DevOpsAuditWhatToExpect() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Most teams choose to start with the quick wins: the changes
                   that take 1-2 weeks and have the biggest immediate impact.
                   That alone can transform how a team ships.
@@ -297,19 +297,19 @@ export default function DevOpsAuditWhatToExpect() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <div className="border-t border-border-color pt-8 mt-8">
-                  <p className="text-body text-foreground-secondary">
+                <div className="border-t border-foreground/[0.08] pt-8 mt-8">
+                  <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                     Curious where your team would score?{" "}
                     <Link
                       href="/healthcheck"
-                      className="text-foreground hover:text-muted transition-colors"
+                      className="text-foreground/80 hover:text-foreground transition-colors"
                     >
                       Take our free DevOps health check
                     </Link>
                     {" "}for a quick self-assessment across all seven areas. Or{" "}
                     <Link
                       href="/infrastructure-audit"
-                      className="text-foreground hover:text-muted transition-colors"
+                      className="text-foreground/80 hover:text-foreground transition-colors"
                     >
                       learn more about our full audit service
                     </Link>

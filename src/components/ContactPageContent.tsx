@@ -39,80 +39,88 @@ export default function ContactPageContent() {
   };
 
   const inputClasses =
-    "bg-transparent border-b border-border-color focus:border-foreground py-2 text-sm text-foreground w-full outline-none transition-colors placeholder:text-muted";
+    "bg-transparent border-b border-[#4a4540] focus:border-[#7a756f] py-3 text-sm font-light text-[#d8d4cf] w-full outline-none transition-colors placeholder:text-[#5a554f]";
   const labelClasses =
-    "block text-label uppercase tracking-widest text-muted mb-2";
+    "block text-label uppercase tracking-[0.25em] text-[#7a756f] font-light mb-3";
 
   return (
-    <section className="pt-32 pb-section">
-      <Container>
-        <FadeIn>
-          <div className="text-center mb-12">
-            <p className="text-label uppercase tracking-widest text-muted mb-4">
-              CONTACT
-            </p>
-            <h1 className="text-display-sm text-foreground mb-6">
-              Let&apos;s take this off your plate
-            </h1>
-            <p className="text-body text-foreground-secondary max-w-[480px] mx-auto">
-              Pick a time that works for you. 30 minutes, no pitch, no pressure
-              just a calm conversation about what&apos;s keeping you up at night.
-            </p>
-          </div>
-        </FadeIn>
-
-        <FadeIn delay={0.15}>
-          <div className="max-w-[480px] mx-auto mb-20">
-            <div className="p-10 text-center">
-              <div className="flex justify-center items-center mb-10">
-                <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-border-color">
-                  <Image src="/team/ane.jpg" alt="Ane" width={80} height={80} className="w-full h-full object-cover" />
-                </div>
-                <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-border-color -ml-3">
-                  <Image src="/team/mikel.jpg" alt="Mikel" width={80} height={80} className="w-full h-full object-cover" />
-                </div>
-              </div>
-              <a
-                href={BOOKING_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-foreground hover:bg-charcoal text-background px-6 py-3 text-sm font-medium rounded-full transition-colors"
-              >
-                Schedule a Call
-              </a>
+    <main className="bg-[#2c2c2c] min-h-screen">
+      <section className="py-32 md:py-48">
+        <Container>
+          <FadeIn>
+            <div className="text-center mb-16">
+              <p className="text-label uppercase tracking-[0.25em] text-[#7a756f] font-light text-center mb-6">
+                CONTACT
+              </p>
+              <h1 className="text-heading text-[#d8d4cf] font-light tracking-wide mb-8">
+                Let&apos;s take this off your plate
+              </h1>
+              <p className="text-sm text-[#a09a93] leading-loose font-light max-w-[480px] mx-auto">
+                Pick a time that works for you. 30 minutes, no pitch, no pressure
+                just a calm conversation about what&apos;s keeping you up at night.
+              </p>
             </div>
-          </div>
-        </FadeIn>
+          </FadeIn>
 
-        <FadeIn delay={0.2}>
-          <div className="text-center">
-            <button
-              onClick={() => setShowForm(true)}
-              className="text-muted hover:text-foreground text-sm transition-colors"
-            >
-              Prefer to send a message instead?
-            </button>
-          </div>
-        </FadeIn>
+          <FadeIn delay={0.15}>
+            <div className="max-w-[480px] mx-auto mb-24 -mt-4">
+              <div className="p-12 text-center">
+                <div className="flex justify-center items-center gap-8 mb-12">
+                  <div className="flex flex-col items-center">
+                    <div className="w-24 h-24 rounded-full overflow-hidden mb-3">
+                      <Image src="/team/ane.jpg" alt="Ane Ugarte" width={96} height={96} className="w-full h-full object-cover" />
+                    </div>
+                    <span className="text-xs text-[#a09a93] font-light tracking-wide">Ane Ugarte</span>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <div className="w-24 h-24 rounded-full overflow-hidden mb-3">
+                      <Image src="/team/mikel.jpg" alt="Mikel Martin" width={96} height={96} className="w-full h-full object-cover" />
+                    </div>
+                    <span className="text-xs text-[#a09a93] font-light tracking-wide">Mikel Martin</span>
+                  </div>
+                </div>
+                <a
+                  href={BOOKING_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-[#c8c3bc] hover:bg-[#b5b0a9] text-[#1a1a1a] px-12 py-3.5 text-sm font-light tracking-wide rounded-full transition-colors"
+                >
+                  Schedule a Call
+                </a>
+              </div>
+            </div>
+          </FadeIn>
 
-        {/* Message form modal */}
-        <AnimatePresence>
-          {showForm && (
-            <MessageModal
-              onClose={() => setShowForm(false)}
-              status={status}
-              onSubmit={handleSubmit}
-              name={name} setName={setName}
-              company={company} setCompany={setCompany}
-              email={email} setEmail={setEmail}
-              message={message} setMessage={setMessage}
-              inputClasses={inputClasses}
-              labelClasses={labelClasses}
-            />
-          )}
-        </AnimatePresence>
-      </Container>
-    </section>
+          <FadeIn delay={0.2}>
+            <div className="text-center">
+              <button
+                onClick={() => setShowForm(true)}
+                className="text-sm text-[#7a756f] font-light hover:text-[#d8d4cf] transition-colors"
+              >
+                Prefer to send a message instead?
+              </button>
+            </div>
+          </FadeIn>
+
+          {/* Message form modal */}
+          <AnimatePresence>
+            {showForm && (
+              <MessageModal
+                onClose={() => setShowForm(false)}
+                status={status}
+                onSubmit={handleSubmit}
+                name={name} setName={setName}
+                company={company} setCompany={setCompany}
+                email={email} setEmail={setEmail}
+                message={message} setMessage={setMessage}
+                inputClasses={inputClasses}
+                labelClasses={labelClasses}
+              />
+            )}
+          </AnimatePresence>
+        </Container>
+      </section>
+    </main>
   );
 }
 
@@ -158,13 +166,13 @@ function MessageModal({
       className="fixed inset-0 z-50 flex items-center justify-center p-6"
     >
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-background/90 backdrop-blur-sm" onClick={onClose} />
+      <div className="absolute inset-0 bg-[#2c2c2c]/90 backdrop-blur-sm" onClick={onClose} />
 
       {/* Modal */}
-      <div className="relative w-full max-w-[400px] max-h-[90vh] overflow-y-auto border border-border-color bg-background rounded-lg p-8">
+      <div className="relative w-full max-w-[400px] max-h-[90vh] overflow-y-auto border border-[#3a3a3a] bg-[#333] rounded-lg p-10">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-muted hover:text-foreground transition-colors"
+          className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-[#7a756f] hover:text-[#d8d4cf] transition-colors"
           aria-label="Close"
         >
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
@@ -173,17 +181,17 @@ function MessageModal({
         </button>
 
         {status === "sent" ? (
-          <div className="text-center py-8">
-            <p className="text-heading text-foreground mb-4">Message sent.</p>
-            <p className="text-body text-foreground-secondary">We&apos;ll get back to you within 24 hours.</p>
+          <div className="text-center py-10">
+            <p className="text-heading text-[#d8d4cf] font-light tracking-wide mb-6">Message sent.</p>
+            <p className="text-sm text-[#a09a93] leading-loose font-light">We&apos;ll get back to you within 24 hours.</p>
           </div>
         ) : (
           <>
-            <p className="text-sm font-medium text-foreground mb-1">Send us a message</p>
-            <p className="text-xs text-foreground-secondary mb-6">
+            <p className="text-body text-[#d8d4cf] font-light tracking-wide mb-2">Send us a message</p>
+            <p className="text-sm text-[#a09a93] font-light mb-8">
               We&apos;ll get back to you within 24 hours.
             </p>
-            <form onSubmit={onSubmit} className="space-y-4">
+            <form onSubmit={onSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className={labelClasses}>Name</label>
                 <input id="name" type="text" value={name} onChange={(e) => setName(e.target.value)} className={inputClasses} placeholder="Your name" required />
@@ -203,12 +211,12 @@ function MessageModal({
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="bg-foreground hover:bg-charcoal disabled:opacity-50 text-background w-full px-4 py-2.5 text-sm font-medium rounded-full transition-colors"
+                className="bg-[#e8e4df] hover:bg-[#d4d0cb] disabled:opacity-50 text-[#2c2c2c] w-full px-8 py-3 text-sm font-light tracking-wide rounded-full transition-colors"
               >
                 {status === "sending" ? "Sending..." : "Send Message"}
               </button>
               {status === "error" && (
-                <p className="text-sm text-red-600">Something went wrong. Please try again.</p>
+                <p className="text-sm text-red-400 font-light">Something went wrong. Please try again.</p>
               )}
             </form>
           </>

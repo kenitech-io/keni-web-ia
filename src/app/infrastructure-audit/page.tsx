@@ -150,16 +150,16 @@ export default function InfrastructureAuditPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       {/* Hero */}
-      <section className="pt-40 pb-20 md:pt-48 md:pb-28">
+      <section className="py-32 md:py-48">
         <Container>
-          <div className="max-w-[640px] mx-auto">
+          <div className="max-w-[640px] mx-auto text-center">
             <FadeIn>
-              <h1 className="text-display text-foreground mb-8">
+              <h1 className="text-heading text-foreground font-light tracking-wide mb-8">
                 Know exactly where your infrastructure stands
               </h1>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <p className="text-body text-foreground-secondary">
+              <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                 A complete audit of your DevOps setup in 72 hours. We look at
                 your repos, pipelines, deploys, monitoring, and security. You
                 get a clear report with exactly what to fix and in what order.
@@ -170,26 +170,26 @@ export default function InfrastructureAuditPage() {
       </section>
 
       {/* Why an audit */}
-      <section className="py-section-sm bg-surface">
+      <section className="py-32 md:py-48">
         <Container>
-          <div className="max-w-[640px] mx-auto">
+          <div className="max-w-[640px] mx-auto text-center">
             <FadeIn>
-              <p className="text-label uppercase tracking-widest text-muted mb-8">
+              <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-32 md:mb-40 font-light text-center">
                 WHY AN AUDIT
               </p>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <h2 className="text-heading text-foreground mb-8">
+              <h2 className="text-heading text-foreground font-light tracking-wide mb-8">
                 The right assessment pays for itself many times over
               </h2>
             </FadeIn>
             <FadeIn delay={0.2}>
-              <p className="text-body text-foreground-secondary mb-6">
+              <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-6">
                 Most teams know something is not right, but they do not know
                 where to start. They fix the symptom that hurts most today and
                 ignore the structural issues underneath.
               </p>
-              <p className="text-body text-foreground-secondary">
+              <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                 An audit gives you the full picture. Instead of guessing, you
                 get a prioritized list of changes that will have the most impact
                 on your team&apos;s ability to ship.
@@ -200,27 +200,27 @@ export default function InfrastructureAuditPage() {
       </section>
 
       {/* What We Audit */}
-      <section className="py-section">
+      <section className="py-32 md:py-48">
         <Container>
           <div className="max-w-[640px] mx-auto">
             <FadeIn>
-              <p className="text-label uppercase tracking-widest text-muted mb-8">
+              <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-32 md:mb-40 font-light text-center">
                 WHAT WE AUDIT
               </p>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <h2 className="text-heading text-foreground mb-16">
+              <h2 className="text-heading text-foreground font-light tracking-wide mb-16 text-center">
                 Seven areas that determine your team&apos;s velocity
               </h2>
             </FadeIn>
-            <div className="space-y-12">
+            <div className="space-y-16">
               {auditAreas.map((area, index) => (
                 <FadeIn key={area.title} delay={index * 0.08}>
                   <div>
-                    <h3 className="text-body-lg text-foreground font-normal mb-3">
+                    <h3 className="text-body text-foreground font-light tracking-wide mb-3">
                       {area.title}
                     </h3>
-                    <p className="text-body text-foreground-secondary">
+                    <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                       {area.description}
                     </p>
                   </div>
@@ -232,27 +232,27 @@ export default function InfrastructureAuditPage() {
       </section>
 
       {/* What You Get */}
-      <section className="py-section-sm bg-surface">
+      <section className="py-32 md:py-48">
         <Container>
           <div className="max-w-[640px] mx-auto">
             <FadeIn>
-              <p className="text-label uppercase tracking-widest text-muted mb-8">
+              <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-32 md:mb-40 font-light text-center">
                 WHAT YOU GET
               </p>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <h2 className="text-heading text-foreground mb-16">
+              <h2 className="text-heading text-foreground font-light tracking-wide mb-16 text-center">
                 A report your CTO can act on Monday morning
               </h2>
             </FadeIn>
-            <div className="space-y-12">
+            <div className="space-y-16">
               {deliverables.map((item, index) => (
                 <FadeIn key={item.title} delay={index * 0.1}>
                   <div>
-                    <h3 className="text-body-lg text-foreground font-normal mb-3">
+                    <h3 className="text-body text-foreground font-light tracking-wide mb-3">
                       {item.title}
                     </h3>
-                    <p className="text-body text-foreground-secondary">
+                    <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                       {item.description}
                     </p>
                   </div>
@@ -264,22 +264,22 @@ export default function InfrastructureAuditPage() {
       </section>
 
       {/* Quick Self-Assessment */}
-      <section className="py-section">
+      <section className="py-32 md:py-48">
         <Container>
           <div className="max-w-[640px] mx-auto text-center">
             <FadeIn>
-              <h2 className="text-heading text-foreground mb-6">
+              <h2 className="text-heading text-foreground font-light tracking-wide mb-6">
                 Not sure if you need an audit?
               </h2>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <p className="text-body text-foreground-secondary mb-8">
+              <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-8">
                 Take our free DevOps health check. 7 questions, 2 minutes. You
                 will get an instant score and see where your team stands.
               </p>
               <Link
                 href="/healthcheck"
-                className="inline-block bg-foreground hover:bg-charcoal text-background rounded-full px-8 py-4 font-medium transition-colors duration-200"
+                className="inline-block bg-foreground hover:bg-foreground/85 text-background px-8 py-3 text-sm font-light tracking-wide rounded-full transition-colors"
               >
                 Take the Health Check
               </Link>

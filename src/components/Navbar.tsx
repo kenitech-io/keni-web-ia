@@ -6,12 +6,21 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Container from "@/components/ui/Container";
 
+const exploreLinks = [
+  { name: "DevOps Consulting", href: "/devops-consulting" },
+  { name: "Infrastructure Audit", href: "/infrastructure-audit" },
+  { name: "Blog", href: "/blog" },
+  { name: "About", href: "/about" },
+];
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [showBubble, setShowBubble] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [exploreOpen, setExploreOpen] = useState(false);
   const pathname = usePathname();
   const visibleCTAs = useRef(new Set<string>());
+  const exploreRef = useRef<HTMLDivElement>(null);
 
   const handleScroll = useCallback(() => {
     setScrolled(window.scrollY > 20);
@@ -66,39 +75,57 @@ export default function Navbar() {
 
   useEffect(() => {
     setMobileOpen(false);
+    setExploreOpen(false);
   }, [pathname]);
+
+  // Close explore dropdown on outside click
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      if (exploreRef.current && !exploreRef.current.contains(e.target as Node)) {
+        setExploreOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
   };
 
+  const isDark = pathname === "/devops-consulting" || pathname === "/contact";
+
+  const exploreHasActive = exploreLinks.some((l) => isActive(l.href));
+
   return (
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 h-[64px] flex items-center transition-all duration-300 ${
           scrolled
-            ? "backdrop-blur-md bg-background/80 border-b border-border-color"
-            : "bg-transparent"
+            ? isDark
+              ? "backdrop-blur-md bg-[#2c2c2c]/80 border-b border-[#3a3a3a]"
+              : "backdrop-blur-md bg-background/80 border-b border-border-color"
+            : isDark
+              ? "bg-transparent border-b border-[#3a3a3a]"
+              : "bg-transparent"
         }`}
       >
         <Container>
           <div className="flex items-center justify-between">
             <Link
               href="/"
-              className="text-xs font-medium text-foreground tracking-tight"
+              className={`text-xs font-medium tracking-tight ${isDark ? "text-[#e8e4df]" : "text-foreground"}`}
             >
               Keni
             </Link>
 
             {/* Desktop */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-baseline gap-8">
               <Link
                 href="/platform"
                 className={`text-xs font-medium transition-colors duration-200 ${
-                  isActive("/platform")
-                    ? "text-foreground"
-                    : "text-muted hover:text-foreground"
+                  isDark ? "text-[#e8e4df] hover:text-[#e8e4df]/70" : "text-foreground hover:text-foreground/70"
                 }`}
               >
                 Platform
@@ -106,21 +133,63 @@ export default function Navbar() {
               <Link
                 href="/healthcheck"
                 className={`text-xs font-medium transition-colors duration-200 ${
-                  isActive("/healthcheck")
-                    ? "text-foreground"
-                    : "text-muted hover:text-foreground"
+                  isDark ? "text-[#e8e4df] hover:text-[#e8e4df]/70" : "text-foreground hover:text-foreground/70"
                 }`}
               >
                 Health Check
               </Link>
+              {/* Explore dropdown */}
+              <div
+                ref={exploreRef}
+                className="relative"
+                onMouseEnter={() => setExploreOpen(true)}
+                onMouseLeave={() => setExploreOpen(false)}
+              >
+                <button
+                  className={`text-xs font-medium transition-colors duration-200 ${
+                    isDark ? "text-[#e8e4df] hover:text-[#e8e4df]/70" : "text-foreground hover:text-foreground/70"
+                  }`}
+                >
+                  Explore
+                </button>
+
+                <AnimatePresence>
+                  {exploreOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -4 }}
+                      transition={{ duration: 0.15 }}
+                      className={`absolute top-8 right-0 min-w-[180px] py-3 rounded-lg border ${
+                        isDark
+                          ? "bg-[#333] border-[#3a3a3a]"
+                          : "bg-background border-border-color"
+                      }`}
+                    >
+                      {exploreLinks.map((link) => (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          className={`block px-5 py-2 text-xs font-light transition-colors duration-200 ${
+                            isDark
+                              ? "text-[#e8e4df] hover:text-[#7a756f]"
+                              : "text-foreground hover:text-muted"
+                          }`}
+                        >
+                          {link.name}
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
               <Link
                 href="/contact"
                 className={`text-xs font-medium transition-all duration-300 ${
-                  showBubble
-                    ? "bg-foreground hover:bg-charcoal text-background px-3 py-1 rounded-full"
-                    : isActive("/contact")
-                      ? "text-foreground"
-                      : "text-muted hover:text-foreground"
+                  isDark
+                    ? "bg-[#c8c3bc] hover:bg-[#b5b0a9] text-[#1a1a1a] px-3 py-1 rounded-full"
+                    : "bg-foreground hover:bg-charcoal text-background px-3 py-1 rounded-full"
                 }`}
               >
                 Contact
@@ -141,12 +210,12 @@ export default function Navbar() {
                       : { rotate: 0, y: 0 }
                   }
                   transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="block h-[1px] w-full bg-foreground origin-center"
+                  className={`block h-[1px] w-full origin-center ${isDark ? "bg-[#e8e4df]" : "bg-foreground"}`}
                 />
                 <motion.span
                   animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
                   transition={{ duration: 0.2 }}
-                  className="block h-[1px] w-full bg-foreground"
+                  className={`block h-[1px] w-full ${isDark ? "bg-[#e8e4df]" : "bg-foreground"}`}
                 />
                 <motion.span
                   animate={
@@ -155,7 +224,7 @@ export default function Navbar() {
                       : { rotate: 0, y: 0 }
                   }
                   transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="block h-[1px] w-full bg-foreground origin-center"
+                  className={`block h-[1px] w-full origin-center ${isDark ? "bg-[#e8e4df]" : "bg-foreground"}`}
                 />
               </div>
             </button>
@@ -186,48 +255,30 @@ export default function Navbar() {
                 }}
                 className="flex flex-col gap-6"
               >
-                <motion.div
-                  variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: {
-                      opacity: 1,
-                      y: 0,
-                      transition: { duration: 0.4, ease: "easeOut" },
-                    },
-                  }}
-                >
-                  <Link
-                    href="/platform"
-                    className={`text-3xl font-light transition-colors duration-200 ${
-                      isActive("/platform")
-                        ? "text-foreground"
-                        : "text-muted hover:text-foreground"
-                    }`}
+                {exploreLinks.map((link) => (
+                  <motion.div
+                    key={link.href}
+                    variants={{
+                      hidden: { opacity: 0, y: 20 },
+                      visible: {
+                        opacity: 1,
+                        y: 0,
+                        transition: { duration: 0.4, ease: "easeOut" },
+                      },
+                    }}
                   >
-                    Platform
-                  </Link>
-                </motion.div>
-                <motion.div
-                  variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: {
-                      opacity: 1,
-                      y: 0,
-                      transition: { duration: 0.4, ease: "easeOut" },
-                    },
-                  }}
-                >
-                  <Link
-                    href="/healthcheck"
-                    className={`text-3xl font-light transition-colors duration-200 ${
-                      isActive("/healthcheck")
-                        ? "text-foreground"
-                        : "text-muted hover:text-foreground"
-                    }`}
-                  >
-                    Health Check
-                  </Link>
-                </motion.div>
+                    <Link
+                      href={link.href}
+                      className={`text-3xl font-light transition-colors duration-200 ${
+                        isActive(link.href)
+                          ? "text-foreground"
+                          : "text-muted hover:text-foreground"
+                      }`}
+                    >
+                      {link.name}
+                    </Link>
+                  </motion.div>
+                ))}
                 <motion.div
                   variants={{
                     hidden: { opacity: 0, y: 20 },

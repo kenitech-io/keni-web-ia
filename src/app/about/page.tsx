@@ -30,16 +30,16 @@ const values = [
 export default function AboutPage() {
   return (
     <main>
-      <section className="pt-40 pb-20 md:pt-48 md:pb-28">
+      <section className="py-32 md:py-48">
         <Container>
-          <div className="max-w-[640px] mx-auto">
+          <div className="max-w-[640px] mx-auto text-center">
             <FadeIn>
-              <h1 className="text-display text-foreground mb-8">
+              <h1 className="text-heading text-foreground font-light tracking-wide mb-8">
                 So your team can breathe
               </h1>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <p className="text-body text-foreground-secondary">
+              <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                 We&apos;ve spent years setting up pipelines, automating deploys, and
                 keeping production running. We understand what it&apos;s like when
                 your team is stuck firefighting instead of shipping. Because
@@ -50,22 +50,22 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="py-section-sm bg-surface">
+      <section className="py-32 md:py-48">
         <Container>
           <div className="max-w-[640px] mx-auto">
             <FadeIn>
-              <p className="text-label uppercase tracking-widest text-muted mb-12">
+              <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-32 md:mb-40 font-light text-center">
                 WHAT WE BELIEVE
               </p>
             </FadeIn>
-            <div className="space-y-12">
+            <div className="space-y-16">
               {values.map((value, index) => (
                 <FadeIn key={value.title} delay={index * 0.1}>
                   <div>
-                    <h3 className="text-body-lg text-foreground font-normal mb-3">
+                    <h3 className="text-body text-foreground font-light tracking-wide mb-3">
                       {value.title}
                     </h3>
-                    <p className="text-body text-foreground-secondary">
+                    <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                       {value.text}
                     </p>
                   </div>

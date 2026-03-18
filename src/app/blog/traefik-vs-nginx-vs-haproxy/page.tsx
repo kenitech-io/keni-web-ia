@@ -59,25 +59,25 @@ export default function TraefikVsNginxVsHAProxy() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <article>
-        <section className="pt-40 pb-12 md:pt-48 md:pb-16">
+        <section className="py-32 md:py-48">
           <Container>
             <div className="max-w-[640px] mx-auto">
               <FadeIn>
-                <p className="text-label uppercase tracking-widest text-muted mb-4">INFRASTRUCTURE</p>
-                <h1 className="text-display-sm text-foreground mb-6">
+                <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-6">INFRASTRUCTURE</p>
+                <h1 className="text-heading text-foreground font-light tracking-wide mb-8">
                   Traefik vs Nginx vs HAProxy: choosing a reverse proxy in 2026
                 </h1>
-                <p className="text-label text-muted">March 17, 2026 &middot; 8 min read</p>
+                <p className="text-label text-muted/60 font-light">March 17, 2026 &middot; 8 min read</p>
               </FadeIn>
             </div>
           </Container>
         </section>
 
-        <section className="pb-section">
+        <section className="pb-32 md:pb-48">
           <Container>
-            <div className="max-w-[640px] mx-auto space-y-8">
+            <div className="max-w-[640px] mx-auto space-y-10">
               <FadeIn delay={0.1}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Every internal development platform needs a reverse proxy. It
                   sits in front of your services, handles TLS termination, routes
                   traffic, and acts as the single entry point to your
@@ -88,22 +88,22 @@ export default function TraefikVsNginxVsHAProxy() {
               </FadeIn>
 
               <FadeIn delay={0.15}>
-                <h2 className="text-heading text-foreground">The short version</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">The short version</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <ul className="space-y-3 text-body text-foreground-secondary">
-                  <li className="pl-4 border-l border-border-color">
+                <ul className="space-y-3 text-sm text-foreground-secondary/70 leading-loose font-light">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">Traefik</strong>: best for
                     Docker-native and container-first environments. Auto-discovers services,
                     handles Let&apos;s Encrypt out of the box. Higher memory footprint.
                   </li>
-                  <li className="pl-4 border-l border-border-color">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">Nginx</strong>: most widely
                     deployed, massive ecosystem, excellent static file serving. Config is
                     manual and requires reloads.
                   </li>
-                  <li className="pl-4 border-l border-border-color">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">HAProxy</strong>: highest raw
                     performance, best for pure load balancing. Steeper learning curve,
                     less HTTP-layer flexibility.
@@ -112,11 +112,11 @@ export default function TraefikVsNginxVsHAProxy() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">Configuration and service discovery</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">Configuration and service discovery</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   This is where the three diverge most. Traefik watches your
                   Docker daemon (or Kubernetes API) and automatically registers
                   routes when containers start. You define routing rules as
@@ -126,7 +126,7 @@ export default function TraefikVsNginxVsHAProxy() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Nginx uses static configuration files. Every new service means
                   editing a config, writing an upstream block and a server block,
                   then running <code className="text-foreground text-sm">nginx -s reload</code>.
@@ -136,7 +136,7 @@ export default function TraefikVsNginxVsHAProxy() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   HAProxy also uses static configuration. Its config syntax is
                   different from Nginx (frontends, backends, ACLs) and takes
                   longer to learn. It supports runtime API changes for some
@@ -146,7 +146,7 @@ export default function TraefikVsNginxVsHAProxy() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   For a team running 5-20 services in Docker Compose on a single
                   server, Traefik&apos;s auto-discovery is a significant
                   advantage. You add a container, it gets a route. You remove it,
@@ -155,11 +155,11 @@ export default function TraefikVsNginxVsHAProxy() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">TLS and certificates</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">TLS and certificates</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Traefik has a built-in ACME client. Point it at Let&apos;s
                   Encrypt (or any ACME provider), and it automatically obtains
                   and renews certificates for every service it discovers. Zero
@@ -168,7 +168,7 @@ export default function TraefikVsNginxVsHAProxy() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Nginx requires a separate tool for automated certificates.
                   Certbot is the standard choice, but you need to configure it,
                   set up renewal hooks, and make sure Nginx reloads after
@@ -177,7 +177,7 @@ export default function TraefikVsNginxVsHAProxy() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   HAProxy can terminate TLS and has excellent cipher suite
                   control, but like Nginx, it does not handle certificate
                   issuance natively. You need an external tool.
@@ -185,11 +185,11 @@ export default function TraefikVsNginxVsHAProxy() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">Performance</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">Performance</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   HAProxy is the performance champion. It was built from the
                   ground up as a load balancer and consistently delivers the
                   lowest latency and highest throughput in benchmarks. It powers
@@ -198,7 +198,7 @@ export default function TraefikVsNginxVsHAProxy() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Nginx is close behind for most workloads and also excels at
                   serving static files directly, something HAProxy cannot do.
                   For a typical web application, the performance difference
@@ -207,7 +207,7 @@ export default function TraefikVsNginxVsHAProxy() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Traefik is written in Go and uses more memory than either Nginx
                   or HAProxy. For a small team running dozens of services, this
                   rarely matters. For high-throughput scenarios with thousands of
@@ -216,11 +216,11 @@ export default function TraefikVsNginxVsHAProxy() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">Middleware and extensibility</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">Middleware and extensibility</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Traefik has a middleware system for common needs: rate limiting,
                   authentication, path stripping, headers, compression. You apply
                   them as labels on your containers. It covers 80% of what teams
@@ -229,7 +229,7 @@ export default function TraefikVsNginxVsHAProxy() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Nginx has the largest module ecosystem of any proxy. From
                   GeoIP to Lua scripting to ModSecurity WAF, there is a module
                   for almost everything. The tradeoff is that many modules
@@ -238,7 +238,7 @@ export default function TraefikVsNginxVsHAProxy() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   HAProxy has excellent built-in features for load balancing
                   (sticky sessions, health checks, connection draining) but
                   fewer HTTP-layer features compared to Nginx or Traefik.
@@ -246,11 +246,11 @@ export default function TraefikVsNginxVsHAProxy() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">Dashboard and observability</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">Dashboard and observability</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Traefik ships with a built-in web dashboard that shows all
                   discovered services, routes, and middleware in real time. It
                   also exposes Prometheus metrics natively.
@@ -258,7 +258,7 @@ export default function TraefikVsNginxVsHAProxy() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   HAProxy has a stats page that shows connection counts, error
                   rates, and backend health. It is functional but basic compared
                   to Traefik&apos;s dashboard.
@@ -266,7 +266,7 @@ export default function TraefikVsNginxVsHAProxy() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Nginx exposes a stub status module for basic metrics. For
                   anything more detailed, you need the commercial Nginx Plus or
                   third-party exporters.
@@ -274,24 +274,24 @@ export default function TraefikVsNginxVsHAProxy() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">When to use each one</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">When to use each one</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <ul className="space-y-3 text-body text-foreground-secondary">
-                  <li className="pl-4 border-l border-border-color">
+                <ul className="space-y-3 text-sm text-foreground-secondary/70 leading-loose font-light">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">Choose Traefik</strong> if you
                     run Docker or Kubernetes, want automatic service discovery
                     and TLS, and prefer convention over configuration. Ideal for
                     teams with 5-30 services who want to minimize ops overhead.
                   </li>
-                  <li className="pl-4 border-l border-border-color">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">Choose Nginx</strong> if you
                     need to serve static files, require specific modules (WAF,
                     Lua scripting), or your team already knows Nginx well. Good
                     for hybrid setups where the proxy also serves assets.
                   </li>
-                  <li className="pl-4 border-l border-border-color">
+                  <li className="pl-4 border-l border-foreground/[0.08]">
                     <strong className="text-foreground font-normal">Choose HAProxy</strong> if raw
                     performance and advanced load balancing are your primary
                     concerns. Best for high-traffic TCP/HTTP workloads where
@@ -301,11 +301,11 @@ export default function TraefikVsNginxVsHAProxy() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h2 className="text-heading text-foreground">Our take</h2>
+                <h2 className="text-body-lg text-foreground font-light tracking-wide">Our take</h2>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   For most small to mid-sized teams running containerized
                   workloads, Traefik is the pragmatic choice. Auto-discovery
                   eliminates an entire class of manual configuration work, and
@@ -316,7 +316,7 @@ export default function TraefikVsNginxVsHAProxy() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <p className="text-body text-foreground-secondary">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   That said, there is no wrong answer among these three. All of
                   them are battle-tested, production-grade, and actively
                   maintained. The worst choice is the one that creates ongoing
@@ -325,11 +325,11 @@ export default function TraefikVsNginxVsHAProxy() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <div className="border-t border-border-color pt-8 mt-8">
-                  <p className="text-body text-foreground-secondary">
+                <div className="border-t border-foreground/[0.08] pt-8 mt-8">
+                  <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                     Want to see how a reverse proxy fits into a full internal
                     development platform?{" "}
-                    <Link href="/platform" className="text-foreground hover:text-muted transition-colors">
+                    <Link href="/platform" className="text-foreground/80 hover:text-foreground transition-colors">
                       Explore our reference architecture
                     </Link>
                     .

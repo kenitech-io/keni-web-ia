@@ -439,58 +439,61 @@ export default function HealthCheckContent() {
       {!showResults && currentQuestion && (
         <section className="min-h-screen flex items-center justify-center relative">
           <Container>
-            <div className="max-w-[640px] mx-auto">
+            <div className="max-w-[640px] mx-auto text-center">
 
               <div key={currentQuestion.id}>
-                  <h2 className="text-heading text-foreground mb-10">
-                    {currentQuestion.title}
-                  </h2>
+                <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-16 font-light">
+                  {currentQuestion.theme}
+                </p>
+                <h2 className="text-heading text-foreground font-light tracking-wide mb-16">
+                  {currentQuestion.title}
+                </h2>
 
-                  <div className="space-y-3">
-                    {currentQuestion.options.map((option, idx) => {
-                      const isSelected =
-                        answers[currentQuestion.id] === option.score;
-                      return (
-                        <motion.button
-                          key={option.label}
-                          initial={{ opacity: 0, y: 12 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{
-                            duration: 0.3,
-                            delay: idx * 0.06,
-                            ease: [0.25, 0.1, 0.25, 1],
-                          }}
-                          whileHover={{ scale: 1.015, transition: { type: "tween", duration: 0.1 } }}
-                          whileTap={{ scale: 0.985, transition: { type: "tween", duration: 0.05 } }}
-                          style={{ transition: "transform 0s" }}
-                          onClick={() =>
-                            selectAnswer(
-                              currentQuestion.id,
-                              option.score,
-                              option.insight
-                            )
-                          }
-                          className={`w-full text-left px-6 py-4 border rounded-lg transition-colors duration-200 ${
+                <div className="space-y-4">
+                  {currentQuestion.options.map((option, idx) => {
+                    const isSelected =
+                      answers[currentQuestion.id] === option.score;
+                    return (
+                      <motion.button
+                        key={option.label}
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                          duration: 0.3,
+                          delay: idx * 0.06,
+                          ease: [0.25, 0.1, 0.25, 1],
+                        }}
+                        whileHover={{ scale: 1.015, transition: { type: "tween", duration: 0.1 } }}
+                        whileTap={{ scale: 0.985, transition: { type: "tween", duration: 0.05 } }}
+                        style={{ transition: "transform 0s" }}
+                        onClick={() =>
+                          selectAnswer(
+                            currentQuestion.id,
+                            option.score,
+                            option.insight
+                          )
+                        }
+                        className={`w-full text-left px-8 py-5 border rounded-lg transition-colors duration-300 ${
+                          isSelected
+                            ? "border-foreground/40 bg-[#f5f5f7] hover:bg-[#ededf0]"
+                            : "border-foreground/[0.08] hover:border-foreground/20 hover:bg-[#f5f5f7]"
+                        }`}
+                      >
+                        <p
+                          className={`text-sm font-light leading-relaxed transition-colors duration-300 ${
                             isSelected
-                              ? "border-foreground"
-                              : "border-border-color hover:border-foreground"
+                              ? "text-foreground"
+                              : "text-foreground-secondary/70"
                           }`}
                         >
-                          <p
-                            className={`text-sm transition-colors duration-200 ${
-                              isSelected
-                                ? "text-foreground font-medium"
-                                : "text-foreground-secondary group-hover:text-foreground"
-                            }`}
-                          >
-                            {option.label}
-                          </p>
-                        </motion.button>
-                      );
-                    })}
-                  </div>
-
+                          {option.label}
+                        </p>
+                      </motion.button>
+                    );
+                  })}
                 </div>
+
+              </div>
             </div>
           </Container>
         </section>
@@ -498,21 +501,21 @@ export default function HealthCheckContent() {
 
       {/* Results */}
       {showResults && (
-        <section className="pt-32 pb-section">
+        <section className="py-32 md:py-48">
           <Container>
-            <div className="max-w-[640px] mx-auto">
+            <div className="max-w-[640px] mx-auto text-center">
               {/* Overall score */}
               <FadeIn type="up" delay={0.1} once>
-                <div className="flex items-baseline gap-3 mb-2">
-                  <span className="text-display text-foreground">{scoreOf10}</span>
-                  <span className="text-body text-muted">/ 10</span>
+                <div className="flex items-baseline justify-center gap-3 mb-4">
+                  <span className="text-[4rem] font-extralight text-foreground leading-none">{scoreOf10}</span>
+                  <span className="text-sm font-light text-muted/60">/ 10</span>
                 </div>
               </FadeIn>
 
               <FadeIn type="up" delay={0.2} once>
-                <div className="w-full h-1 bg-border-color rounded-full mb-6">
+                <div className="w-full max-w-[320px] mx-auto h-px bg-foreground/[0.08] rounded-full mb-10">
                   <motion.div
-                    className="h-full bg-foreground rounded-full"
+                    className="h-full bg-foreground/30 rounded-full"
                     initial={{ width: 0 }}
                     animate={{ width: `${pct}%` }}
                     transition={{
@@ -525,36 +528,36 @@ export default function HealthCheckContent() {
               </FadeIn>
 
               <FadeIn type="up" delay={0.3} once>
-                <p className="text-label uppercase tracking-widest text-muted mb-3">
+                <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-6">
                   {level.name}
                 </p>
-                <p className="text-body text-foreground-secondary leading-relaxed mb-16">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-32 md:mb-40">
                   {level.description}
                 </p>
               </FadeIn>
 
               {/* Inline report form */}
               <FadeIn type="up" delay={0.4} once>
-                <div className="mb-16 border border-border-color rounded-lg p-8">
+                <div className="mb-32 md:mb-40 border border-foreground/[0.08] rounded-lg p-10">
                   {emailStatus === "sent" ? (
-                    <div className="text-center">
-                      <p className="text-sm font-medium text-foreground mb-1">
+                    <div>
+                      <p className="text-sm font-light text-foreground mb-2">
                         Got it.
                       </p>
-                      <p className="text-xs text-foreground-secondary">
+                      <p className="text-xs text-foreground-secondary/70 font-light">
                         We will send your personalized report to{" "}
-                        <span className="text-foreground">{email}</span> shortly.
+                        <span className="text-foreground/80">{email}</span> shortly.
                       </p>
                     </div>
                   ) : (
                     <>
-                      <p className="text-sm text-foreground mb-1">
+                      <p className="text-sm font-light text-foreground mb-2">
                         Want specific recommendations for your team?
                       </p>
-                      <p className="text-xs text-foreground-secondary mb-5">
+                      <p className="text-xs text-foreground-secondary/70 font-light mb-8">
                         We will review your results and send a personalized action plan.
                       </p>
-                      <form onSubmit={handleEmailSubmit} className="space-y-3">
+                      <form onSubmit={handleEmailSubmit} className="space-y-4">
                         <input
                           type="email"
                           value={email}
@@ -563,7 +566,7 @@ export default function HealthCheckContent() {
                             if (emailStatus === "blocked" || emailStatus === "error")
                               setEmailStatus("idle");
                           }}
-                          className="bg-transparent border-b border-border-color focus:border-foreground py-2 text-sm text-foreground w-full outline-none transition-colors placeholder:text-muted"
+                          className="bg-transparent border-b border-foreground/[0.08] focus:border-foreground/30 py-3 text-sm font-light text-foreground w-full outline-none transition-colors placeholder:text-muted/40"
                           placeholder="you@company.com"
                           required
                         />
@@ -571,27 +574,27 @@ export default function HealthCheckContent() {
                           value={note}
                           onChange={(e) => setNote(e.target.value)}
                           rows={1}
-                          className="bg-transparent border-b border-border-color focus:border-foreground py-2 text-sm text-foreground w-full outline-none transition-colors placeholder:text-muted resize-none"
+                          className="bg-transparent border-b border-foreground/[0.08] focus:border-foreground/30 py-3 text-sm font-light text-foreground w-full outline-none transition-colors placeholder:text-muted/40 resize-none"
                           placeholder="Add a note"
                         />
                         {emailStatus === "blocked" && (
-                          <p className="text-xs text-foreground-secondary">
+                          <p className="text-xs text-foreground-secondary/70 font-light">
                             Please use your work email.
                           </p>
                         )}
                         {emailStatus === "error" && (
-                          <p className="text-xs text-red-600">
+                          <p className="text-xs text-red-600/70 font-light">
                             Something went wrong. Please try again.
                           </p>
                         )}
                         <button
                           type="submit"
                           disabled={emailStatus === "sending"}
-                          className="bg-foreground hover:bg-charcoal disabled:opacity-50 text-background w-full px-4 py-2.5 text-sm font-medium rounded-full transition-colors"
+                          className="bg-foreground hover:bg-foreground/85 disabled:opacity-50 text-background w-full px-4 py-3 text-sm font-light tracking-wide rounded-full transition-colors"
                         >
                           {emailStatus === "sending" ? "Sending..." : "Request report"}
                         </button>
-                        <p className="text-[10px] text-muted text-center">
+                        <p className="text-[10px] text-muted/40 font-light">
                           We promise no spam.
                         </p>
                       </form>
@@ -600,26 +603,26 @@ export default function HealthCheckContent() {
                 </div>
               </FadeIn>
 
-              {/* Per-area breakdown: insight-first */}
+              {/* Per-area breakdown */}
               <FadeIn type="up" delay={0.5} once>
-                <div className="space-y-10">
+                <div className="space-y-16 text-left">
                   {questions.map((q) => {
                     const qScore = answers[q.id] ?? 0;
                     const qOf10 = ((qScore / 4) * 10).toFixed(1);
                     return (
                       <div key={q.id}>
-                        <p className="text-body text-foreground leading-relaxed mb-3">
+                        <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-6">
                           {insights[q.id]}
                         </p>
-                        <div className="flex justify-between items-center mb-2">
-                          <p className="text-label uppercase tracking-widest text-muted">
+                        <div className="flex justify-between items-center mb-3">
+                          <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light">
                             {q.theme}
                           </p>
-                          <p className="text-label text-muted">{qOf10}</p>
+                          <p className="text-label text-muted/60 font-light">{qOf10}</p>
                         </div>
-                        <div className="w-full h-px bg-border-color">
+                        <div className="w-full h-px bg-foreground/[0.08]">
                           <motion.div
-                            className="h-full bg-foreground"
+                            className="h-full bg-foreground/30"
                             initial={{ width: 0 }}
                             animate={{ width: `${(qScore / 4) * 100}%` }}
                             transition={{
@@ -642,4 +645,3 @@ export default function HealthCheckContent() {
     </main>
   );
 }
-
