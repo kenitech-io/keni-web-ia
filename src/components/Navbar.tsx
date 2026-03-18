@@ -15,11 +15,10 @@ const exploreLinks = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [showBubble, setShowBubble] = useState(false);
+
   const [mobileOpen, setMobileOpen] = useState(false);
   const [exploreOpen, setExploreOpen] = useState(false);
   const pathname = usePathname();
-  const visibleCTAs = useRef(new Set<string>());
   const exploreRef = useRef<HTMLDivElement>(null);
 
   const handleScroll = useCallback(() => {
@@ -30,37 +29,6 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
-
-  useEffect(() => {
-    const ids = ["hero-cta", "bottom-cta"];
-    visibleCTAs.current.clear();
-
-    const elements = ids
-      .map((id) => document.getElementById(id))
-      .filter(Boolean) as HTMLElement[];
-
-    if (elements.length === 0) {
-      setShowBubble(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            visibleCTAs.current.add(entry.target.id);
-          } else {
-            visibleCTAs.current.delete(entry.target.id);
-          }
-        });
-        setShowBubble(visibleCTAs.current.size === 0);
-      },
-      { threshold: 0 }
-    );
-
-    elements.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, [pathname]);
 
   useEffect(() => {
     if (mobileOpen) {
@@ -96,7 +64,7 @@ export default function Navbar() {
 
   const isDark = pathname === "/devops-consulting" || pathname === "/contact";
 
-  const exploreHasActive = exploreLinks.some((l) => isActive(l.href));
+
 
   return (
     <>
