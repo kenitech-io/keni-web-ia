@@ -28,7 +28,7 @@ const faqJsonLd = {
       name: "How much does DevOps consulting cost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "DevOps consulting rates vary widely. Big firms charge $200+/hr, offshore teams $35-70/hr. Keni Engineering offers fixed pricing for each engagement so you know the cost before we start. A typical infrastructure audit starts at $10K, and managed DevOps retainers range from $5K-$15K/month.",
+        text: "DevOps consulting rates vary widely depending on scope and company size. Big firms charge $200+/hr, offshore teams $35-70/hr. Keni Engineering offers fixed pricing for each engagement so you know the cost before we start.",
       },
     },
     {
@@ -36,7 +36,7 @@ const faqJsonLd = {
       name: "Do I need a full-time DevOps engineer?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Not necessarily. A full-time US DevOps engineer costs $175K-$220K/year with benefits. For teams with 2-30 developers, a consulting engagement to set up the right infrastructure followed by a maintenance retainer is often more cost-effective than a full-time hire.",
+        text: "Not necessarily. A full-time US DevOps engineer costs $130K-$220K+/year depending on seniority and location. For teams with 2-30 developers, a consulting engagement to set up the right infrastructure followed by a maintenance retainer is often more cost-effective than a full-time hire.",
       },
     },
     {
@@ -180,7 +180,7 @@ export default function DevOpsConsultingPage() {
             </FadeIn>
             <FadeIn delay={0.2}>
               <p className="text-body text-foreground-secondary mb-6">
-                Hiring a full-time DevOps engineer in the US costs $175K-$220K
+                Hiring a full-time DevOps engineer in the US costs $130K-$220K+
                 per year when you include benefits and overhead. For a team of
                 5-30 developers, that is a massive investment for a role that
                 might not need to be full-time.

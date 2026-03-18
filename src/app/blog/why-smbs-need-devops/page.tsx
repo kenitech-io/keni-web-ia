@@ -7,7 +7,7 @@ import CTASection from "@/components/CTASection";
 export const metadata: Metadata = {
   title: "Why 53% of SMBs Still Don't Have DevOps (And What It's Costing Them)",
   description:
-    "Most small software teams know their deployment process is broken. The real question is how much it costs them every week and what a realistic fix looks like without hiring a $175K engineer.",
+    "Most small software teams know their deployment process is broken. The real question is how much it costs them every week and what a realistic fix looks like.",
   alternates: {
     canonical: "https://kenitech.io/blog/why-smbs-need-devops",
   },
@@ -127,7 +127,8 @@ export default function WhySMBsNeedDevOps() {
                   manual deployments, server debugging, and firefighting
                   production issues, that is 3 full-time engineers worth of
                   productivity lost. At US engineering salaries, that is
-                  roughly $400K-$500K per year in wasted capacity.
+                  roughly $300K-$600K per year in wasted capacity depending on
+                  team size and location.
                 </p>
               </FadeIn>
 
@@ -150,9 +151,9 @@ export default function WhySMBsNeedDevOps() {
                 <p className="text-body text-foreground-secondary">
                   The answer is almost always the same: they cannot afford a
                   full-time DevOps engineer. The average US DevOps engineer
-                  earns $129K-$143K per year in base salary. With benefits and
-                  overhead, the total cost to the employer is $175K-$220K or
-                  more.
+                  earns $85K-$150K+ per year depending on seniority and
+                  location. With benefits and overhead, the total cost to the
+                  employer can reach $130K-$250K+.
                 </p>
               </FadeIn>
 
@@ -254,9 +255,9 @@ export default function WhySMBsNeedDevOps() {
 
               <FadeIn delay={0.2}>
                 <p className="text-body text-foreground-secondary">
-                  A typical infrastructure audit costs $10K-$20K. That
-                  assessment alone can identify savings of hundreds of
-                  thousands. And unlike a full-time hire, there is no ramp-up
+                  An infrastructure audit, depending on the size and complexity
+                  of the organization, can identify savings many times its
+                  cost. And unlike a full-time hire, there is no ramp-up
                   period, no benefits cost, and no risk of the engineer leaving
                   six months in with all the knowledge in their head.
                 </p>

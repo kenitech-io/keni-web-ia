@@ -52,7 +52,7 @@ const faqJsonLd = {
       name: "How much does an infrastructure audit cost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Industry pricing for infrastructure audits ranges from $5,000 to $20,000 depending on scope. A $10K-$20K assessment can identify savings of hundreds of thousands in infrastructure costs, wasted developer time, and risk reduction.",
+        text: "Industry pricing for infrastructure audits varies significantly based on company size and complexity, typically ranging from a few thousand dollars to $50K+ for larger organizations. The ROI is clear: a proper assessment routinely identifies savings many times its cost.",
       },
     },
   ],
@@ -180,7 +180,7 @@ export default function InfrastructureAuditPage() {
             </FadeIn>
             <FadeIn delay={0.1}>
               <h2 className="text-heading text-foreground mb-8">
-                A $10K assessment can save hundreds of thousands
+                The right assessment pays for itself many times over
               </h2>
             </FadeIn>
             <FadeIn delay={0.2}>
