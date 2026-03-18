@@ -9,6 +9,24 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "github-actions-vs-gitlab-ci-vs-jenkins",
+    title: "GitHub Actions vs GitLab CI vs Jenkins: CI Tools Compared in 2026",
+    description:
+      "A practical comparison of GitHub Actions, GitLab CI/CD, and Jenkins. Setup, pricing, self-hosting, pipeline syntax, and when each one makes sense for your team.",
+    date: "2026-03-17",
+    readTime: "9 min read",
+    category: "CI/CD",
+  },
+  {
+    slug: "argocd-vs-flux-vs-watchtower",
+    title: "Argo CD vs Flux vs Watchtower: CD Tools for Automated Deployments in 2026",
+    description:
+      "GitOps with Argo CD and Flux for Kubernetes, or Watchtower for Docker Compose. When each approach makes sense and how to choose.",
+    date: "2026-03-17",
+    readTime: "8 min read",
+    category: "CI/CD",
+  },
+  {
     slug: "traefik-vs-nginx-vs-haproxy",
     title: "Traefik vs Nginx vs HAProxy: Choosing a Reverse Proxy in 2026",
     description:
