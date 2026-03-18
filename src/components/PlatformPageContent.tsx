@@ -68,14 +68,8 @@ export default function PlatformPageContent() {
       {/* Hero with diagram preview */}
       <section className="min-h-screen flex items-center justify-center relative">
         <div className="flex flex-col items-center text-center w-full px-6 -mt-16">
-          <FadeIn type="up" delay={0.2} once className="w-full flex justify-center">
-            <h1 className="text-display-sm text-foreground text-center max-w-[720px] mx-auto">
-              Your first platform diagram
-            </h1>
-          </FadeIn>
-
           {/* Diagram preview thumbnail */}
-          <FadeIn type="up" delay={0.4} once className="w-full flex justify-center">
+          <FadeIn type="up" delay={0.2} once className="w-full flex justify-center">
             <button
               onClick={() => setDiagramOpen(true)}
               className="mt-10 md:mt-12 group relative w-full max-w-[520px] aspect-[960/760] border border-border-color rounded-lg overflow-hidden transition-all duration-300 hover:border-foreground/30 hover:shadow-lg"
@@ -221,8 +215,8 @@ export default function PlatformPageContent() {
 
               {/* Overlay with CTA */}
               <div className="absolute inset-0 flex items-center justify-center bg-background/40 group-hover:bg-background/60 transition-colors duration-300">
-                <span className="bg-foreground text-background rounded-full px-8 py-4 font-medium text-body">
-                  Explore the architecture
+                <span className="bg-foreground text-background rounded-full px-5 py-2 font-medium text-sm">
+                  Explore
                 </span>
               </div>
             </button>

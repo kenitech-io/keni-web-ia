@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect, FormEvent } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, FormEvent } from "react";
+import { motion } from "framer-motion";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
 
@@ -351,18 +351,16 @@ const BLOCKED_DOMAINS = [
    ─────────────────────────────────────────── */
 
 export default function HealthCheckContent() {
-  const [currentStep, setCurrentStep] = useState(0);
+  const [currentStep, setCurrentStep] = useState(1);
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [insights, setInsights] = useState<Record<string, string>>({});
   const [showResults, setShowResults] = useState(false);
-  const [reportOpen, setReportOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [note, setNote] = useState("");
   const [emailStatus, setEmailStatus] = useState<
     "idle" | "sending" | "sent" | "error" | "blocked"
   >("idle");
 
-  const isStarted = currentStep > 0;
   const totalQuestions = questions.length;
   const currentQuestion = questions[currentStep - 1];
   const totalScore = Object.values(answers).reduce((a, b) => a + b, 0);
@@ -424,38 +422,8 @@ export default function HealthCheckContent() {
 
   return (
     <main>
-      {/* Hero / Start */}
-      {!isStarted && !showResults && (
-        <section className="min-h-screen flex items-center justify-center relative">
-          <div className="flex flex-col items-center text-center w-full px-6 -mt-16">
-            <FadeIn type="up" delay={0.2} once className="w-full flex justify-center">
-              <h1 className="text-display-sm text-foreground text-center max-w-[720px] mx-auto">
-                DevOps health check
-              </h1>
-            </FadeIn>
-
-            <FadeIn type="up" delay={0.4} once className="w-full flex justify-center">
-              <p className="text-body text-foreground-secondary max-w-[480px] mx-auto text-center mt-6 md:mt-8 leading-relaxed">
-                7 questions. 2 minutes.
-              </p>
-            </FadeIn>
-
-            <FadeIn type="up" delay={0.6} once className="w-full flex justify-center">
-              <div className="mt-8 md:mt-10">
-                <button
-                  onClick={() => setCurrentStep(1)}
-                  className="inline-block bg-foreground hover:bg-charcoal text-background rounded-full px-8 py-4 font-medium transition-colors duration-200"
-                >
-                  Start
-                </button>
-              </div>
-            </FadeIn>
-          </div>
-        </section>
-      )}
-
       {/* Fixed progress bar */}
-      {isStarted && !showResults && (
+      {!showResults && (
         <div className="fixed top-[64px] left-0 right-0 z-40 h-px bg-border-color">
           <motion.div
             className="h-full bg-foreground"
@@ -468,7 +436,7 @@ export default function HealthCheckContent() {
       )}
 
       {/* Questions */}
-      {isStarted && !showResults && currentQuestion && (
+      {!showResults && currentQuestion && (
         <section className="min-h-screen flex items-center justify-center relative">
           <Container>
             <div className="max-w-[640px] mx-auto">
@@ -565,39 +533,72 @@ export default function HealthCheckContent() {
                 </p>
               </FadeIn>
 
-              {/* CTA between summary and breakdown */}
-              {emailStatus !== "sent" && (
-                <FadeIn type="up" delay={0.4} once>
-                  <div className="mb-16 border border-border-color rounded-lg p-8 text-center">
-                    <p className="text-sm text-foreground mb-1">
-                      Want specific recommendations for your team?
-                    </p>
-                    <p className="text-xs text-foreground-secondary mb-5">
-                      We will review your results and send a personalized action plan.
-                    </p>
-                    <button
-                      onClick={() => setReportOpen(true)}
-                      className="bg-foreground hover:bg-charcoal text-background px-6 py-2.5 text-sm font-medium rounded-full transition-colors"
-                    >
-                      Request report
-                    </button>
-                  </div>
-                </FadeIn>
-              )}
-
-              {emailStatus === "sent" && (
-                <FadeIn type="up" delay={0.4} once>
-                  <div className="mb-16 border border-border-color rounded-lg p-8 text-center">
-                    <p className="text-sm font-medium text-foreground mb-1">
-                      Got it.
-                    </p>
-                    <p className="text-xs text-foreground-secondary">
-                      We will send your personalized report to{" "}
-                      <span className="text-foreground">{email}</span> shortly.
-                    </p>
-                  </div>
-                </FadeIn>
-              )}
+              {/* Inline report form */}
+              <FadeIn type="up" delay={0.4} once>
+                <div className="mb-16 border border-border-color rounded-lg p-8">
+                  {emailStatus === "sent" ? (
+                    <div className="text-center">
+                      <p className="text-sm font-medium text-foreground mb-1">
+                        Got it.
+                      </p>
+                      <p className="text-xs text-foreground-secondary">
+                        We will send your personalized report to{" "}
+                        <span className="text-foreground">{email}</span> shortly.
+                      </p>
+                    </div>
+                  ) : (
+                    <>
+                      <p className="text-sm text-foreground mb-1">
+                        Want specific recommendations for your team?
+                      </p>
+                      <p className="text-xs text-foreground-secondary mb-5">
+                        We will review your results and send a personalized action plan.
+                      </p>
+                      <form onSubmit={handleEmailSubmit} className="space-y-3">
+                        <input
+                          type="email"
+                          value={email}
+                          onChange={(e) => {
+                            setEmail(e.target.value);
+                            if (emailStatus === "blocked" || emailStatus === "error")
+                              setEmailStatus("idle");
+                          }}
+                          className="bg-transparent border-b border-border-color focus:border-foreground py-2 text-sm text-foreground w-full outline-none transition-colors placeholder:text-muted"
+                          placeholder="you@company.com"
+                          required
+                        />
+                        <textarea
+                          value={note}
+                          onChange={(e) => setNote(e.target.value)}
+                          rows={1}
+                          className="bg-transparent border-b border-border-color focus:border-foreground py-2 text-sm text-foreground w-full outline-none transition-colors placeholder:text-muted resize-none"
+                          placeholder="Add a note"
+                        />
+                        {emailStatus === "blocked" && (
+                          <p className="text-xs text-foreground-secondary">
+                            Please use your work email.
+                          </p>
+                        )}
+                        {emailStatus === "error" && (
+                          <p className="text-xs text-red-600">
+                            Something went wrong. Please try again.
+                          </p>
+                        )}
+                        <button
+                          type="submit"
+                          disabled={emailStatus === "sending"}
+                          className="bg-foreground hover:bg-charcoal disabled:opacity-50 text-background w-full px-4 py-2.5 text-sm font-medium rounded-full transition-colors"
+                        >
+                          {emailStatus === "sending" ? "Sending..." : "Request report"}
+                        </button>
+                        <p className="text-[10px] text-muted text-center">
+                          We promise no spam.
+                        </p>
+                      </form>
+                    </>
+                  )}
+                </div>
+              </FadeIn>
 
               {/* Per-area breakdown: insight-first */}
               <FadeIn type="up" delay={0.5} once>
@@ -638,143 +639,7 @@ export default function HealthCheckContent() {
         </section>
       )}
 
-      {/* Report request modal */}
-      <AnimatePresence>
-        {reportOpen && (
-          <ReportModal
-            onClose={() => setReportOpen(false)}
-            emailStatus={emailStatus}
-            onSubmit={handleEmailSubmit}
-            email={email}
-            setEmail={setEmail}
-            note={note}
-            setNote={setNote}
-            onReset={() => setEmailStatus("idle")}
-            scoreOf10={scoreOf10}
-            levelName={level.name}
-          />
-        )}
-      </AnimatePresence>
     </main>
   );
 }
 
-/* ───────────────────────────────────────────
-   Report modal
-   ─────────────────────────────────────────── */
-
-function ReportModal({
-  onClose,
-  emailStatus,
-  onSubmit,
-  email,
-  setEmail,
-  note,
-  setNote,
-  onReset,
-  scoreOf10,
-  levelName,
-}: {
-  onClose: () => void;
-  emailStatus: "idle" | "sending" | "sent" | "error" | "blocked";
-  onSubmit: (e: FormEvent<HTMLFormElement>) => void;
-  email: string;
-  setEmail: (v: string) => void;
-  note: string;
-  setNote: (v: string) => void;
-  onReset: () => void;
-  scoreOf10: string;
-  levelName: string;
-}) {
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-    document.addEventListener("keydown", handleKeyDown);
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "";
-    };
-  }, [onClose]);
-
-  const inputClasses =
-    "bg-transparent border-b border-border-color focus:border-foreground py-2 text-sm text-foreground w-full outline-none transition-colors placeholder:text-muted";
-
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0 }}
-      className="fixed inset-0 z-50 flex items-center justify-center p-6"
-    >
-      <div
-        className="absolute inset-0 bg-background/90 backdrop-blur-sm"
-        onClick={onClose}
-      />
-      <div className="relative w-full max-w-[400px] border border-border-color bg-background rounded-lg p-8">
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-muted hover:text-foreground transition-colors"
-          aria-label="Close"
-        >
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-            <path
-              d="M1 1L15 15M15 1L1 15"
-              stroke="currentColor"
-              strokeWidth="1.5"
-            />
-          </svg>
-        </button>
-        <p className="text-sm font-medium text-foreground mb-1">
-          Get your report
-        </p>
-        <p className="text-xs text-foreground-secondary mb-6">
-          Your score: {scoreOf10}/10 ({levelName}). We will send a personalized
-          action plan for your team.
-        </p>
-        <form onSubmit={onSubmit} className="space-y-4">
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-              if (emailStatus === "blocked" || emailStatus === "error") onReset();
-            }}
-            className={inputClasses}
-            placeholder="you@company.com"
-            required
-          />
-          <textarea
-            value={note}
-            onChange={(e) => setNote(e.target.value)}
-            rows={1}
-            className={`${inputClasses} resize-none`}
-            placeholder="Add a note"
-          />
-          {emailStatus === "blocked" && (
-            <p className="text-xs text-foreground-secondary">
-              Please use your work email.
-            </p>
-          )}
-          {emailStatus === "error" && (
-            <p className="text-xs text-red-600">
-              Something went wrong. Please try again.
-            </p>
-          )}
-          <button
-            type="submit"
-            disabled={emailStatus === "sending"}
-            className="bg-foreground hover:bg-charcoal disabled:opacity-50 text-background w-full px-4 py-2.5 text-sm font-medium rounded-full transition-colors"
-          >
-            {emailStatus === "sending" ? "Sending..." : "Request report"}
-          </button>
-          <p className="text-[10px] text-muted text-center">
-            We promise no spam.
-          </p>
-        </form>
-      </div>
-    </motion.div>
-  );
-}
