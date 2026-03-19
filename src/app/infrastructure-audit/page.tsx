@@ -185,7 +185,7 @@ export default function InfrastructureAuditPage() {
             </FadeIn>
             <FadeIn delay={0.2}>
               <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-6">
-                Most teams know something isn't right, but they don't know
+                Most teams know something isn&apos;t right, but they don&apos;t know
                 where to start. They fix the symptom that hurts most today and
                 ignore the structural issues underneath.
               </p>
