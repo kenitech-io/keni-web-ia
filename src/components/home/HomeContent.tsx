@@ -4,6 +4,7 @@ import { useState, Suspense } from "react";
 import HeroSection from "@/components/home/HeroSection";
 import ProblemSection from "@/components/home/ProblemSection";
 import SolutionSection from "@/components/home/SolutionSection";
+import SocialProofSection from "@/components/home/SocialProofSection";
 import ProcessSection from "@/components/home/ProcessSection";
 import CTASection from "@/components/CTASection";
 import InteractiveDiagram from "@/components/InteractiveDiagram";
@@ -62,6 +63,7 @@ export default function HomeContent() {
       <Suspense><HeroSection /></Suspense>
       <ProblemSection />
       <SolutionSection />
+      <SocialProofSection />
       <ProcessSection />
       <CTASection
         headline="Ready to just ship?"
