@@ -20,7 +20,7 @@ export default function SolutionSection() {
             </h2>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-4">
+            <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-8">
               CI/CD pipelines, containerized environments, monitoring, and
               automated deploys. All wired together around how your team
               actually works. You push, it gets deployed. That&apos;s it.

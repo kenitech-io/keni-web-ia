@@ -4,7 +4,7 @@ import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
-import { BLOCKED_DOMAINS } from "@/lib/config";
+import { BLOCKED_DOMAINS, BOOKING_URL } from "@/lib/config";
 
 /* ───────────────────────────────────────────
    Questions & scoring
@@ -598,6 +598,22 @@ export default function HealthCheckContent() {
                       </form>
                     </>
                   )}
+                </div>
+              </FadeIn>
+
+              <FadeIn type="up" delay={0.45} once>
+                <div className="mb-32 md:mb-40 text-center">
+                  <p className="text-sm text-foreground-secondary/70 font-light mb-6">
+                    Or skip the email and talk to us directly.
+                  </p>
+                  <a
+                    href={BOOKING_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block bg-foreground hover:bg-foreground/85 text-background px-8 py-3 text-sm font-light tracking-wide rounded-full transition-colors"
+                  >
+                    Book a free call
+                  </a>
                 </div>
               </FadeIn>
 
