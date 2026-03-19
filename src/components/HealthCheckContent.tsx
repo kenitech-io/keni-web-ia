@@ -463,8 +463,8 @@ export default function HealthCheckContent() {
                           delay: idx * 0.06,
                           ease: [0.25, 0.1, 0.25, 1],
                         }}
-                        whileHover={{ scale: 1.015, transition: { type: "tween", duration: 0.1 } }}
-                        whileTap={{ scale: 0.985, transition: { type: "tween", duration: 0.05 } }}
+                        whileHover={{ scale: 1.01, transition: { type: "tween", duration: 0.1 } }}
+                        whileTap={{ scale: 0.99, transition: { type: "tween", duration: 0.05 } }}
                         style={{ transition: "transform 0s" }}
                         onClick={() =>
                           selectAnswer(

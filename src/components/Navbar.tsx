@@ -223,7 +223,11 @@ export default function Navbar() {
                 }}
                 className="flex flex-col gap-6"
               >
-                {exploreLinks.map((link) => (
+                {[
+                  { name: "Platform", href: "/platform" },
+                  { name: "Health Check", href: "/healthcheck" },
+                  ...exploreLinks,
+                ].map((link) => (
                   <motion.div
                     key={link.href}
                     variants={{

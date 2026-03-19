@@ -15,7 +15,7 @@ const inter = Inter({
 });
 
 export const viewport: Viewport = {
-  width: 1200,
+  width: "device-width",
   initialScale: 1,
 };
 
