@@ -36,7 +36,7 @@ const faqJsonLd = {
       name: "Do I need a full-time DevOps engineer?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Not necessarily. A full-time US DevOps engineer costs $130K-$220K+/year depending on seniority and location. For teams with 2-30 developers, a consulting engagement to set up the right infrastructure followed by a maintenance retainer is often more cost-effective than a full-time hire.",
+        text: "Not necessarily. A full-time US DevOps engineer costs $130K-$220K/year depending on seniority and location. For teams with 2-30 developers, a consulting engagement to set up the right infrastructure followed by a maintenance retainer is often more cost-effective than a full-time hire.",
       },
     },
     {
@@ -175,14 +175,18 @@ export default function DevOpsConsultingPage() {
             </FadeIn>
             <FadeIn delay={0.1}>
               <h2 className="text-heading text-[#d8d4cf] font-light tracking-wide mb-8">
-                53% of SMBs lack DevOps capabilities
+                Only 47% of SMBs use DevOps tools
               </h2>
             </FadeIn>
             <FadeIn delay={0.2}>
+              <p className="text-sm text-[#a09a93] leading-loose font-light mb-2">
+                According to Statista, the majority of small and mid-sized
+                businesses still operate without proper DevOps practices.
+              </p>
               <p className="text-sm text-[#a09a93] leading-loose font-light mb-6">
-                Hiring a full-time DevOps engineer in the US costs $130K-$220K+
+                Hiring a full-time DevOps engineer in the US costs $130K-$220K
                 per year when you include benefits and overhead. For a team of
-                5-30 developers, that is a massive investment for a role that
+                5-30 developers, that&apos;s a significant investment for a role that
                 might not need to be full-time.
               </p>
               <p className="text-sm text-[#a09a93] leading-loose font-light">
@@ -297,7 +301,7 @@ export default function DevOpsConsultingPage() {
       <CTASection
         headline="Ready to stop firefighting?"
         subtext="30 minutes. No pitch, no pressure. Just a conversation about what's slowing your team down and how to fix it."
-        buttonText="Book a Free Consultation"
+        buttonText="Book a free call"
         buttonHref="/contact"
         dark
       />

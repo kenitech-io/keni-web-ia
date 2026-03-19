@@ -44,7 +44,7 @@ const faqJsonLd = {
       name: "What do you need access to for the audit?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We need read-only access to your code repositories, CI/CD configuration, cloud accounts, and monitoring tools. We do not need admin access and we do not make any changes to your systems during the audit.",
+        text: "We need read-only access to your code repositories, CI/CD configuration, cloud accounts, and monitoring tools. We don't need admin access and we don't make any changes to your systems during the audit.",
       },
     },
     {
@@ -52,7 +52,7 @@ const faqJsonLd = {
       name: "How much does an infrastructure audit cost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Industry pricing for infrastructure audits varies significantly based on company size and complexity, typically ranging from a few thousand dollars to $50K+ for larger organizations. The ROI is clear: a proper assessment routinely identifies savings many times its cost.",
+        text: "Pricing depends on the size and complexity of your infrastructure. We price audits based on ROI share, so the cost scales with the value we find. Book a free call and we'll scope it together.",
       },
     },
   ],
@@ -185,7 +185,7 @@ export default function InfrastructureAuditPage() {
             </FadeIn>
             <FadeIn delay={0.2}>
               <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-6">
-                Most teams know something is not right, but they do not know
+                Most teams know something isn't right, but they don't know
                 where to start. They fix the symptom that hurts most today and
                 ignore the structural issues underneath.
               </p>
@@ -291,7 +291,7 @@ export default function InfrastructureAuditPage() {
       <CTASection
         headline="Ready to see the full picture?"
         subtext="30 minutes. We will walk you through how the audit works and whether it makes sense for your team."
-        buttonText="Book a Free Consultation"
+        buttonText="Book a free call"
         buttonHref="/contact"
       />
     </main>
