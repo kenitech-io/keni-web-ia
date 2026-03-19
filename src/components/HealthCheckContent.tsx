@@ -435,6 +435,11 @@ export default function HealthCheckContent() {
             <div className="max-w-[640px] mx-auto text-center">
 
               <div key={currentQuestion.id}>
+                {currentStep === 1 && !answers[currentQuestion.id] && (
+                  <p className="text-sm text-foreground-secondary/70 font-light mb-16">
+                    7 questions. 2 minutes. See where your DevOps stands.
+                  </p>
+                )}
                 <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-16 font-light">
                   {currentQuestion.theme}
                 </p>

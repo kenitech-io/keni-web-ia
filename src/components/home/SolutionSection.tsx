@@ -20,10 +20,13 @@ export default function SolutionSection() {
             </h2>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-8">
+            <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-4">
               CI/CD pipelines, containerized environments, monitoring, and
               automated deploys. All wired together around how your team
               actually works. You push, it gets deployed. That&apos;s it.
+            </p>
+            <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-8">
+              For software teams with 2-30 developers who ship a product but don&apos;t have dedicated DevOps.
             </p>
             <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
               <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground transition-colors">

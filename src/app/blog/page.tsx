@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
+import CTASection from "@/components/CTASection";
 import { blogPosts } from "@/data/blog-posts";
 
 export const metadata: Metadata = {
@@ -110,6 +111,12 @@ export default function BlogPage() {
           </div>
         </Container>
       </section>
+
+      <CTASection
+        headline="Want to know where your team stands?"
+        buttonText="Book a free call"
+        buttonHref="/contact"
+      />
     </main>
   );
 }
