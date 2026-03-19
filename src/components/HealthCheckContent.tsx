@@ -4,6 +4,7 @@ import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
+import { BLOCKED_DOMAINS } from "@/lib/config";
 
 /* ───────────────────────────────────────────
    Questions & scoring
@@ -337,14 +338,6 @@ function getLevel(score: number): Level {
 /* ───────────────────────────────────────────
    Blocked domains (shared with other forms)
    ─────────────────────────────────────────── */
-
-const BLOCKED_DOMAINS = [
-  "gmail.com", "googlemail.com", "outlook.com", "hotmail.com", "live.com",
-  "msn.com", "yahoo.com", "yahoo.co.uk", "yahoo.es", "yahoo.fr", "yahoo.de",
-  "aol.com", "icloud.com", "me.com", "mac.com", "protonmail.com", "proton.me",
-  "zoho.com", "yandex.com", "yandex.ru", "mail.ru", "gmx.com", "gmx.de",
-  "tutanota.com", "fastmail.com",
-];
 
 /* ───────────────────────────────────────────
    Component

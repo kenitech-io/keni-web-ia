@@ -1,20 +1,18 @@
 "use client";
 
 import { useState, Suspense } from "react";
+import dynamic from "next/dynamic";
 import HeroSection from "@/components/home/HeroSection";
 import ProblemSection from "@/components/home/ProblemSection";
 import SolutionSection from "@/components/home/SolutionSection";
 import ProcessSection from "@/components/home/ProcessSection";
 import CTASection from "@/components/CTASection";
-import InteractiveDiagram from "@/components/InteractiveDiagram";
+import { BLOCKED_DOMAINS } from "@/lib/config";
 
-const BLOCKED_DOMAINS = [
-  "gmail.com", "googlemail.com", "outlook.com", "hotmail.com", "live.com",
-  "msn.com", "yahoo.com", "yahoo.co.uk", "yahoo.es", "yahoo.fr", "yahoo.de",
-  "aol.com", "icloud.com", "me.com", "mac.com", "protonmail.com", "proton.me",
-  "zoho.com", "yandex.com", "yandex.ru", "mail.ru", "gmx.com", "gmx.de",
-  "tutanota.com", "fastmail.com",
-];
+const InteractiveDiagram = dynamic(
+  () => import("@/components/InteractiveDiagram"),
+  { ssr: false }
+);
 
 export default function HomeContent() {
   const [diagramOpen, setDiagramOpen] = useState(false);

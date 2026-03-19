@@ -2,19 +2,17 @@
 
 import { useState, useEffect, FormEvent } from "react";
 import { useRouter } from "next/navigation";
+import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
 import FadeIn from "@/components/ui/FadeIn";
 import Container from "@/components/ui/Container";
-import InteractiveDiagram from "@/components/InteractiveDiagram";
 import CTASection from "@/components/CTASection";
+import { BLOCKED_DOMAINS } from "@/lib/config";
 
-const BLOCKED_DOMAINS = [
-  "gmail.com", "googlemail.com", "outlook.com", "hotmail.com", "live.com",
-  "msn.com", "yahoo.com", "yahoo.co.uk", "yahoo.es", "yahoo.fr", "yahoo.de",
-  "aol.com", "icloud.com", "me.com", "mac.com", "protonmail.com", "proton.me",
-  "zoho.com", "yandex.com", "yandex.ru", "mail.ru", "gmx.com", "gmx.de",
-  "tutanota.com", "fastmail.com",
-];
+const InteractiveDiagram = dynamic(
+  () => import("@/components/InteractiveDiagram"),
+  { ssr: false }
+);
 
 export default function PlatformPageContent() {
   const router = useRouter();

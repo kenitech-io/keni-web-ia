@@ -46,7 +46,7 @@ export default function BlogPage() {
               {blogPosts.map((post, index) => (
                 <FadeIn key={post.slug} delay={index * 0.1}>
                   <article>
-                    <Link href={`/blog/${post.slug}`} className="group block">
+                    <Link href={`/blog/${post.slug}`} prefetch={false} className="group block">
                       <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-4">
                         {post.category}
                       </p>
