@@ -1,97 +1,87 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 
 export default function HeroSection() {
   const searchParams = useSearchParams();
   const skip = searchParams.get("skip") !== null;
+  const [showIntro, setShowIntro] = useState(!skip);
 
-  if (skip) return null;
+  useEffect(() => {
+    if (skip) return;
+    const timer = setTimeout(() => setShowIntro(false), 3000);
+    return () => clearTimeout(timer);
+  }, [skip]);
+
   return (
     <>
-      {/* Full viewport: DEVOPS + beam */}
-      <section className="h-screen relative overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden" style={{ pointerEvents: "none" }}>
-          <svg
-            viewBox="0 0 1000 600"
-            preserveAspectRatio="none"
-            style={{
-              position: "absolute",
-              top: "-50%",
-              left: "-50%",
-              width: "200%",
-              height: "200%",
-              animation: "spiralMove 10s ease-in-out infinite",
-            }}
-          >
-            <defs>
-              <linearGradient id="spiralGrad" x1="1" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="rgba(239, 108, 0, 0.85)" />
-                <stop offset="40%" stopColor="rgba(255, 152, 0, 0.6)" />
-                <stop offset="70%" stopColor="rgba(255, 180, 50, 0.3)" />
-                <stop offset="100%" stopColor="rgba(255, 200, 100, 0)" />
-              </linearGradient>
-              <filter id="spiralBlur">
-                <feGaussianBlur stdDeviation="20" />
-              </filter>
-            </defs>
-            {/* Main spiral curve */}
-            <path
-              d="M1100,-50 C900,0 850,80 750,150 C600,260 400,320 200,350 C50,370 -50,400 -100,500"
-              stroke="url(#spiralGrad)"
-              strokeWidth="120"
-              fill="none"
-              strokeLinecap="round"
-              filter="url(#spiralBlur)"
-            >
-              <animate attributeName="d" dur="10s" repeatCount="indefinite" values="
-                M1100,-50 C900,0 850,80 750,150 C600,260 400,320 200,350 C50,370 -50,400 -100,500;
-                M1150,50 C950,80 800,150 680,220 C500,330 350,280 150,400 C0,470 -80,350 -150,550;
-                M1050,-100 C850,-30 900,120 780,200 C620,300 450,380 250,300 C80,240 -20,450 -80,450;
-                M1100,-50 C900,0 850,80 750,150 C600,260 400,320 200,350 C50,370 -50,400 -100,500
-              " calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1" />
-            </path>
-            {/* Inner brighter core */}
-            <path
-              d="M1050,-20 C880,30 820,100 720,170 C580,270 380,330 180,360 C40,380 -30,410 -80,490"
-              stroke="rgba(255, 152, 0, 0.5)"
-              strokeWidth="60"
-              fill="none"
-              strokeLinecap="round"
-              filter="url(#spiralBlur)"
-            >
-              <animate attributeName="d" dur="10s" repeatCount="indefinite" values="
-                M1050,-20 C880,30 820,100 720,170 C580,270 380,330 180,360 C40,380 -30,410 -80,490;
-                M1100,70 C920,100 770,170 650,240 C470,340 320,290 130,410 C-20,470 -60,340 -130,540;
-                M1000,-70 C820,-10 870,140 750,220 C590,310 420,390 220,310 C60,250 0,440 -60,440;
-                M1050,-20 C880,30 820,100 720,170 C580,270 380,330 180,360 C40,380 -30,410 -80,490
-              " calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1" />
-            </path>
-          </svg>
-        </div>
-        <span
-          className="text-foreground font-semibold absolute z-10"
+      {/* Intro screen */}
+      {showIntro && !skip && (
+        <div
+          className="fixed inset-0 z-[70] flex flex-col items-center justify-center"
           style={{
-            fontSize: "clamp(2rem, 3.5vw, 3.5rem)",
-            lineHeight: 1,
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
+            backgroundColor: "#EF6C00",
+            animation: "introOut 0.8s ease-in 2.2s forwards",
           }}
         >
-          DEVOPS
-        </span>
-      </section>
+          <span
+            className="font-semibold text-white"
+            style={{
+              fontSize: "clamp(2rem, 3.5vw, 3.5rem)",
+              lineHeight: 1,
+              opacity: 0,
+              animation: "introFadeIn 0.8s ease-out 0.3s forwards",
+            }}
+          >
+            DEVOPS
+          </span>
+          <span
+            className="font-light text-white/70 tracking-[0.3em] uppercase mt-4"
+            style={{
+              fontSize: "clamp(0.5rem, 0.8vw, 0.7rem)",
+              opacity: 0,
+              animation: "introFadeIn 0.8s ease-out 0.8s forwards",
+            }}
+          >
+            Keni Engineering
+          </span>
+        </div>
+      )}
 
       <style>{`
-        @keyframes spiralMove {
-          0% { transform: scale(1) rotate(0deg); }
-          25% { transform: scale(1.05) rotate(15deg); }
-          50% { transform: scale(0.95) rotate(-10deg); }
-          75% { transform: scale(1.08) rotate(8deg); }
-          100% { transform: scale(1) rotate(0deg); }
+        @keyframes introFadeIn {
+          from { opacity: 0; transform: translateY(8px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes introOut {
+          to { opacity: 0; pointer-events: none; }
         }
       `}</style>
+
+      {/* Main hero */}
+      <section className="h-screen flex items-center justify-center bg-white px-6">
+        <div className="max-w-[800px] text-center">
+          <h1
+            className="text-foreground font-bold tracking-tight"
+            style={{
+              fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
+              lineHeight: 1.1,
+            }}
+          >
+            Push. Deploy. Build.
+          </h1>
+          <p className="text-foreground-secondary text-lg md:text-xl font-light mt-6 mb-10 max-w-[560px] mx-auto leading-relaxed">
+            We take care of the plumbing so you can build the house.
+          </p>
+          <a
+            href="/contact"
+            className="inline-block bg-foreground hover:bg-foreground/85 text-background px-8 py-2.5 text-xs font-light tracking-wide rounded-full transition-colors"
+          >
+            Book a free call
+          </a>
+        </div>
+      </section>
 
       {/* Pipeline section */}
       <section className="flex flex-col items-center py-24 md:py-32">
