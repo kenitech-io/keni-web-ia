@@ -237,6 +237,13 @@ export default function InteractiveDiagram({
     }
   }, []);
   const leave = useCallback(() => setActiveZone(null), []);
+  const toggle = useCallback((id: string) => {
+    if (activeZone === id) {
+      setActiveZone(null);
+    } else {
+      enter(id);
+    }
+  }, [activeZone, enter]);
 
   const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -290,7 +297,7 @@ export default function InteractiveDiagram({
                     ══════════════════════════════════════ */}
 
                 <g
-                  onPointerEnter={() => enter("core")}
+                  onPointerEnter={() => enter("core")} onClick={() => toggle("core")}
                   onPointerLeave={leave}
                   style={zoneStyle("core")}
                 >
@@ -327,7 +334,7 @@ export default function InteractiveDiagram({
                 </g>
 
                 <g
-                  onPointerEnter={() => enter("dev")}
+                  onPointerEnter={() => enter("dev")} onClick={() => toggle("dev")}
                   onPointerLeave={leave}
                   style={zoneStyle("dev")}
                 >
@@ -364,7 +371,7 @@ export default function InteractiveDiagram({
                 </g>
 
                 <g
-                  onPointerEnter={() => enter("prod")}
+                  onPointerEnter={() => enter("prod")} onClick={() => toggle("prod")}
                   onPointerLeave={leave}
                   style={zoneStyle("prod")}
                 >
@@ -405,7 +412,7 @@ export default function InteractiveDiagram({
                     ══════════════════════════════════════ */}
 
                 <g
-                  onPointerEnter={() => enter("docker")}
+                  onPointerEnter={() => enter("docker")} onClick={() => toggle("docker")}
                   onPointerLeave={leave}
                   style={zoneStyle("docker")}
                 >
@@ -476,7 +483,7 @@ export default function InteractiveDiagram({
                     ══════════════════════════════════════ */}
 
                 <g
-                  onPointerEnter={() => enter("ci")}
+                  onPointerEnter={() => enter("ci")} onClick={() => toggle("ci")}
                   onPointerLeave={leave}
                   style={zoneStyle("ci")}
                 >
@@ -505,7 +512,7 @@ export default function InteractiveDiagram({
                 </g>
 
                 <g
-                  onPointerEnter={() => enter("cd")}
+                  onPointerEnter={() => enter("cd")} onClick={() => toggle("cd")}
                   onPointerLeave={leave}
                   style={zoneStyle("cd")}
                 >
@@ -578,7 +585,7 @@ export default function InteractiveDiagram({
                 </g>
 
                 <g
-                  onPointerEnter={() => enter("observability")}
+                  onPointerEnter={() => enter("observability")} onClick={() => toggle("observability")}
                   onPointerLeave={leave}
                   style={zoneStyle("observability")}
                 >
@@ -634,7 +641,7 @@ export default function InteractiveDiagram({
                 />
 
                 <g
-                  onPointerEnter={() => enter("overlay")}
+                  onPointerEnter={() => enter("overlay")} onClick={() => toggle("overlay")}
                   onPointerLeave={leave}
                   style={zoneStyle("overlay")}
                 >
@@ -661,7 +668,7 @@ export default function InteractiveDiagram({
                 </g>
 
                 <g
-                  onPointerEnter={() => enter("secrets")}
+                  onPointerEnter={() => enter("secrets")} onClick={() => toggle("secrets")}
                   onPointerLeave={leave}
                   style={zoneStyle("secrets")}
                 >
@@ -688,7 +695,7 @@ export default function InteractiveDiagram({
                 </g>
 
                 <g
-                  onPointerEnter={() => enter("saas-identity")}
+                  onPointerEnter={() => enter("saas-identity")} onClick={() => toggle("saas-identity")}
                   onPointerLeave={leave}
                   style={zoneStyle("saas-identity")}
                 >
@@ -715,7 +722,7 @@ export default function InteractiveDiagram({
                 </g>
 
                 <g
-                  onPointerEnter={() => enter("saas-repo")}
+                  onPointerEnter={() => enter("saas-repo")} onClick={() => toggle("saas-repo")}
                   onPointerLeave={leave}
                   style={zoneStyle("saas-repo")}
                 >
@@ -742,7 +749,7 @@ export default function InteractiveDiagram({
                 </g>
 
                 <g
-                  onPointerEnter={() => enter("backup")}
+                  onPointerEnter={() => enter("backup")} onClick={() => toggle("backup")}
                   onPointerLeave={leave}
                   style={zoneStyle("backup")}
                 >
@@ -773,7 +780,7 @@ export default function InteractiveDiagram({
                     ══════════════════════════════════════ */}
 
                 <g
-                  onPointerEnter={() => enter("overlay")}
+                  onPointerEnter={() => enter("overlay")} onClick={() => toggle("overlay")}
                   onPointerLeave={leave}
                   style={zoneStyle("overlay")}
                 >
@@ -847,7 +854,7 @@ export default function InteractiveDiagram({
                     ══════════════════════════════════════ */}
 
                 <g
-                  onPointerEnter={() => enter("build")}
+                  onPointerEnter={() => enter("build")} onClick={() => toggle("build")}
                   onPointerLeave={leave}
                   style={zoneStyle("build")}
                 >
@@ -874,7 +881,7 @@ export default function InteractiveDiagram({
                 </g>
 
                 <g
-                  onPointerEnter={() => enter("store")}
+                  onPointerEnter={() => enter("store")} onClick={() => toggle("store")}
                   onPointerLeave={leave}
                   style={zoneStyle("store")}
                 >
@@ -901,7 +908,7 @@ export default function InteractiveDiagram({
                 </g>
 
                 <g
-                  onPointerEnter={() => enter("deploy")}
+                  onPointerEnter={() => enter("deploy")} onClick={() => toggle("deploy")}
                   onPointerLeave={leave}
                   style={zoneStyle("deploy")}
                 >
@@ -968,7 +975,7 @@ export default function InteractiveDiagram({
                 </g>
 
                 <g
-                  onPointerEnter={() => enter("monitoring")}
+                  onPointerEnter={() => enter("monitoring")} onClick={() => toggle("monitoring")}
                   onPointerLeave={leave}
                   style={zoneStyle("monitoring")}
                 >
@@ -995,7 +1002,7 @@ export default function InteractiveDiagram({
                 </g>
 
                 <g
-                  onPointerEnter={() => enter("alerts")}
+                  onPointerEnter={() => enter("alerts")} onClick={() => toggle("alerts")}
                   onPointerLeave={leave}
                   style={zoneStyle("alerts")}
                 >
@@ -1022,7 +1029,7 @@ export default function InteractiveDiagram({
                 </g>
 
                 <g
-                  onPointerEnter={() => enter("proxy")}
+                  onPointerEnter={() => enter("proxy")} onClick={() => toggle("proxy")}
                   onPointerLeave={leave}
                   style={zoneStyle("proxy")}
                 >
@@ -1090,7 +1097,7 @@ export default function InteractiveDiagram({
 
                 {/* Secrets: SaaS pill + agents (merged zone) */}
                 <g
-                  onPointerEnter={() => enter("secrets")}
+                  onPointerEnter={() => enter("secrets")} onClick={() => toggle("secrets")}
                   onPointerLeave={leave}
                   style={zoneStyle("secrets")}
                 >
@@ -1137,7 +1144,7 @@ export default function InteractiveDiagram({
                 </g>
 
                 <g
-                  onPointerEnter={() => enter("apps")}
+                  onPointerEnter={() => enter("apps")} onClick={() => toggle("apps")}
                   onPointerLeave={leave}
                   style={zoneStyle("apps")}
                 >
@@ -1271,7 +1278,7 @@ export default function InteractiveDiagram({
 
                 {/* Backup: SaaS pill + agent (merged zone) */}
                 <g
-                  onPointerEnter={() => enter("backup")}
+                  onPointerEnter={() => enter("backup")} onClick={() => toggle("backup")}
                   onPointerLeave={leave}
                   style={zoneStyle("backup")}
                 >
@@ -1351,8 +1358,8 @@ export default function InteractiveDiagram({
                         >
                           <p className="text-body text-muted">
                             {showForm
-                              ? "Hover over any component to learn more."
-                              : "Hover over any component to learn what it does."}
+                              ? "Tap or hover over any component to learn more."
+                              : "Tap or hover over any component to learn what it does."}
                           </p>
                         </motion.div>
                       )}

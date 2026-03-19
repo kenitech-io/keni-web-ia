@@ -89,7 +89,28 @@ export default function HeroSection() {
           From commit to production, hands-free
         </p>
 
-        <div className="w-full max-w-[1100px] px-4">
+        {/* Simplified pipeline for mobile */}
+        <div className="flex md:hidden flex-col items-center gap-3 px-6">
+          <div className="flex items-center gap-2 text-xs text-muted">
+            <span className="px-3 py-1.5 border border-border-color rounded text-foreground-secondary">dev</span>
+            <span className="text-border-color">&rarr;</span>
+            <span className="px-3 py-1.5 border border-border-color rounded text-foreground-secondary">Repo</span>
+            <span className="text-border-color">&rarr;</span>
+            <span className="px-3 py-1.5 bg-[#EDE7F6] border border-[#5E35B1] rounded text-[#4527A0]">Build</span>
+            <span className="text-border-color">&rarr;</span>
+            <span className="px-3 py-1.5 bg-[#E0F2F1] border border-[#00897B] rounded text-[#00695C]">Test</span>
+          </div>
+          <div className="flex items-center gap-2 text-xs text-muted">
+            <span className="px-3 py-1.5 bg-[#FFF9C4] border border-[#D4B000] rounded text-[#C6A700]">Store</span>
+            <span className="text-border-color">&rarr;</span>
+            <span className="px-3 py-1.5 bg-[#E3F2FD] border border-[#1565C0] rounded text-[#0D47A1]">Secrets</span>
+            <span className="text-border-color">&rarr;</span>
+            <span className="px-3 py-1.5 bg-[#FFF3E0] border border-[#EF6C00] rounded text-[#E65100]">Deploy</span>
+          </div>
+          <p className="text-[10px] text-muted mt-1 tracking-wide uppercase">CI / CD Pipeline</p>
+        </div>
+
+        <div className="hidden md:block w-full max-w-[1100px] px-4">
           <svg
             viewBox="0 0 960 280"
             fill="none"
