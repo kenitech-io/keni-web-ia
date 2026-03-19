@@ -435,15 +435,10 @@ export default function HealthCheckContent() {
             <div className="max-w-[640px] mx-auto text-center">
 
               <div key={currentQuestion.id}>
-                {currentStep === 1 && !answers[currentQuestion.id] && (
-                  <p className="text-sm text-foreground-secondary/70 font-light mb-16">
-                    7 questions. 2 minutes. See where your DevOps stands.
-                  </p>
-                )}
                 <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-16 font-light">
                   {currentQuestion.theme}
                 </p>
-                <h2 className="text-heading text-foreground font-light tracking-wide mb-16">
+                <h2 className="text-body-lg text-foreground font-light tracking-wide mb-16">
                   {currentQuestion.title}
                 </h2>
 
@@ -534,8 +529,43 @@ export default function HealthCheckContent() {
                 </p>
               </FadeIn>
 
-              {/* Inline report form */}
+              {/* Per-area breakdown (value first) */}
               <FadeIn type="up" delay={0.4} once>
+                <div className="space-y-16 text-left mb-32 md:mb-40">
+                  {questions.map((q) => {
+                    const qScore = answers[q.id] ?? 0;
+                    const qOf10 = ((qScore / 4) * 10).toFixed(1);
+                    return (
+                      <div key={q.id}>
+                        <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-6">
+                          {insights[q.id]}
+                        </p>
+                        <div className="flex justify-between items-center mb-3">
+                          <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light">
+                            {q.theme}
+                          </p>
+                          <p className="text-label text-muted/60 font-light">{qOf10}</p>
+                        </div>
+                        <div className="w-full h-px bg-foreground/[0.08]">
+                          <motion.div
+                            className="h-full bg-foreground/30"
+                            initial={{ width: 0 }}
+                            animate={{ width: `${(qScore / 4) * 100}%` }}
+                            transition={{
+                              duration: 0.8,
+                              delay: 0.7,
+                              ease: [0.25, 0.1, 0.25, 1],
+                            }}
+                          />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </FadeIn>
+
+              {/* Lead magnet form */}
+              <FadeIn type="up" delay={0.5} once>
                 <div className="mb-32 md:mb-40 border border-foreground/[0.08] rounded-lg p-10">
                   {emailStatus === "sent" ? (
                     <div>
@@ -601,8 +631,8 @@ export default function HealthCheckContent() {
                 </div>
               </FadeIn>
 
-              <FadeIn type="up" delay={0.45} once>
-                <div className="mb-32 md:mb-40 text-center">
+              <FadeIn type="up" delay={0.55} once>
+                <div className="text-center">
                   <p className="text-sm text-foreground-secondary/70 font-light mb-6">
                     Or skip the email and talk to us directly.
                   </p>
@@ -614,41 +644,6 @@ export default function HealthCheckContent() {
                   >
                     Book a free call
                   </a>
-                </div>
-              </FadeIn>
-
-              {/* Per-area breakdown */}
-              <FadeIn type="up" delay={0.5} once>
-                <div className="space-y-16 text-left">
-                  {questions.map((q) => {
-                    const qScore = answers[q.id] ?? 0;
-                    const qOf10 = ((qScore / 4) * 10).toFixed(1);
-                    return (
-                      <div key={q.id}>
-                        <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-6">
-                          {insights[q.id]}
-                        </p>
-                        <div className="flex justify-between items-center mb-3">
-                          <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light">
-                            {q.theme}
-                          </p>
-                          <p className="text-label text-muted/60 font-light">{qOf10}</p>
-                        </div>
-                        <div className="w-full h-px bg-foreground/[0.08]">
-                          <motion.div
-                            className="h-full bg-foreground/30"
-                            initial={{ width: 0 }}
-                            animate={{ width: `${(qScore / 4) * 100}%` }}
-                            transition={{
-                              duration: 0.8,
-                              delay: 0.7,
-                              ease: [0.25, 0.1, 0.25, 1],
-                            }}
-                          />
-                        </div>
-                      </div>
-                    );
-                  })}
                 </div>
               </FadeIn>
             </div>

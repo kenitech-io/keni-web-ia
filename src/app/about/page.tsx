@@ -73,22 +73,6 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="py-32 md:py-48">
-        <Container>
-          <div className="max-w-[640px] mx-auto text-center">
-            <FadeIn>
-              <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-16 font-light">
-                TRACK RECORD
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
-                63 companies served. 220 workloads managed. 54K EUR/year average savings.
-              </p>
-            </FadeIn>
-          </div>
-        </Container>
-      </section>
 
       <section className="py-32 md:py-48">
         <Container>
