@@ -1314,7 +1314,7 @@ export default function InteractiveDiagram({
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 20 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute bottom-0 left-0 right-0 lg:relative lg:bottom-auto lg:left-auto lg:right-auto lg:w-[380px] shrink-0 border-t lg:border-t-0 lg:border-l border-border-color bg-background p-4 pb-6 md:p-10 flex flex-col justify-start overflow-y-auto max-h-[30vh] lg:max-h-none text-sm lg:text-base"
+                  className="absolute bottom-0 left-0 right-0 lg:relative lg:bottom-auto lg:left-auto lg:right-auto lg:w-[380px] shrink-0 border-t lg:border-t-0 lg:border-l border-border-color bg-background p-4 pb-6 md:p-10 flex flex-col justify-start overflow-y-auto max-h-[50vh] lg:max-h-none text-sm lg:text-base overscroll-contain"
                 >
                   {/* Component description */}
                   <div className="flex-1 flex items-center min-h-0 lg:min-w-[320px]">
