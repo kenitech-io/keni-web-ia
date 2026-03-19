@@ -26,7 +26,7 @@ const jsonLd = {
   headline: "Tailscale vs Netbird vs ZeroTier: Overlay Networks for Small Teams",
   description:
     "A practical comparison of Tailscale, Netbird, and ZeroTier for connecting servers across locations.",
-  datePublished: "2026-03-17",
+  datePublished: "2026-03-09",
   author: { "@type": "Organization", name: "Keni Engineering", url: "https://kenitech.io" },
   publisher: {
     "@type": "Organization",
@@ -63,7 +63,7 @@ export default function TailscaleVsNetbird() {
                 <h1 className="text-heading text-foreground font-light tracking-wide mb-8">
                   Tailscale vs Netbird vs ZeroTier: overlay networks for small teams
                 </h1>
-                <p className="text-label text-muted/60 font-light">March 17, 2026 &middot; 7 min read</p>
+                <p className="text-label text-muted/60 font-light">March 9, 2026 &middot; 7 min read</p>
               </FadeIn>
             </div>
           </Container>
@@ -303,6 +303,16 @@ export default function TailscaleVsNetbird() {
                   one of the highest-leverage changes a small team can make. It
                   eliminates an entire category of networking complexity and
                   makes multi-server setups manageable.
+                </p>
+              </FadeIn>
+
+              <FadeIn delay={0.2}>
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
+                  Setting up secure networking across servers is part of what we do for small teams.{" "}
+                  <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground transition-colors">
+                    See our DevOps consulting services
+                  </Link>
+                  .
                 </p>
               </FadeIn>
 

@@ -27,7 +27,7 @@ const jsonLd = {
     "Why 53% of SMBs Still Don't Have DevOps (And What It's Costing Them)",
   description:
     "Most small software teams know their deployment process is broken. The real question is how much it costs them every week and what a realistic fix looks like.",
-  datePublished: "2026-03-17",
+  datePublished: "2026-03-15",
   author: {
     "@type": "Organization",
     name: "Keni Engineering",
@@ -96,7 +96,7 @@ export default function WhySMBsNeedDevOps() {
                   them)
                 </h1>
                 <p className="text-label text-muted/60 font-light">
-                  March 17, 2026 &middot; 6 min read
+                  March 15, 2026 &middot; 6 min read
                 </p>
               </FadeIn>
             </div>
@@ -268,6 +268,19 @@ export default function WhySMBsNeedDevOps() {
                   The question is not whether your team needs DevOps. The
                   question is whether you build the capability in-house or
                   bring in someone who has done it dozens of times before.
+                </p>
+              </FadeIn>
+
+              <FadeIn delay={0.2}>
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
+                  Not sure where your team stands? Our free self-assessment takes 2 minutes and covers all the fundamentals.{" "}
+                  <Link
+                    href="/healthcheck"
+                    className="text-foreground/80 hover:text-foreground transition-colors"
+                  >
+                    Take the DevOps health check
+                  </Link>
+                  .
                 </p>
               </FadeIn>
 

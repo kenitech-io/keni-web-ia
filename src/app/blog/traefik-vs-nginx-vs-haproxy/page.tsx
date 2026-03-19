@@ -26,7 +26,7 @@ const jsonLd = {
   headline: "Traefik vs Nginx vs HAProxy: Choosing a Reverse Proxy in 2026",
   description:
     "A practical comparison of Traefik, Nginx, and HAProxy for small to mid-sized teams.",
-  datePublished: "2026-03-17",
+  datePublished: "2026-03-07",
   author: {
     "@type": "Organization",
     name: "Keni Engineering",
@@ -67,7 +67,7 @@ export default function TraefikVsNginxVsHAProxy() {
                 <h1 className="text-heading text-foreground font-light tracking-wide mb-8">
                   Traefik vs Nginx vs HAProxy: choosing a reverse proxy in 2026
                 </h1>
-                <p className="text-label text-muted/60 font-light">March 17, 2026 &middot; 8 min read</p>
+                <p className="text-label text-muted/60 font-light">March 7, 2026 &middot; 8 min read</p>
               </FadeIn>
             </div>
           </Container>
@@ -321,6 +321,16 @@ export default function TraefikVsNginxVsHAProxy() {
                   them are battle-tested, production-grade, and actively
                   maintained. The worst choice is the one that creates ongoing
                   manual work for your team.
+                </p>
+              </FadeIn>
+
+              <FadeIn delay={0.2}>
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
+                  We help teams set up and configure their infrastructure, including reverse proxies, as part of our consulting engagements.{" "}
+                  <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground transition-colors">
+                    Learn about our DevOps consulting
+                  </Link>
+                  .
                 </p>
               </FadeIn>
 

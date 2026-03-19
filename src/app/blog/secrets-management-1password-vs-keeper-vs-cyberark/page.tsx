@@ -25,7 +25,7 @@ const jsonLd = {
   "@type": "Article",
   headline: "Secrets Management: 1Password vs Keeper vs CyberArk vs Vault in 2026",
   description: "A practical comparison of secrets management tools for development teams.",
-  datePublished: "2026-03-17",
+  datePublished: "2026-03-13",
   author: { "@type": "Organization", name: "Keni Engineering", url: "https://kenitech.io" },
   publisher: {
     "@type": "Organization",
@@ -62,7 +62,7 @@ export default function SecretsManagementComparison() {
                 <h1 className="text-heading text-foreground font-light tracking-wide mb-8">
                   Secrets management: 1Password vs Keeper vs CyberArk vs Vault
                 </h1>
-                <p className="text-label text-muted/60 font-light">March 17, 2026 &middot; 8 min read</p>
+                <p className="text-label text-muted/60 font-light">March 13, 2026 &middot; 8 min read</p>
               </FadeIn>
             </div>
           </Container>
@@ -354,6 +354,16 @@ export default function SecretsManagementComparison() {
                   difference between any of these tools and &quot;credentials
                   shared over Slack&quot; is orders of magnitude larger than the
                   difference between the tools themselves.
+                </p>
+              </FadeIn>
+
+              <FadeIn delay={0.2}>
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
+                  Secrets management is one of the seven areas we evaluate and fix as part of our consulting engagements.{" "}
+                  <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground transition-colors">
+                    See our DevOps consulting services
+                  </Link>
+                  .
                 </p>
               </FadeIn>
 

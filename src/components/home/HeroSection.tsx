@@ -94,6 +94,8 @@ export default function HeroSection() {
             viewBox="0 0 960 280"
             fill="none"
             className="w-full"
+            role="img"
+            aria-label="CI/CD pipeline diagram"
             style={{ fontFamily: "Inter, -apple-system, sans-serif" }}
           >
             <line x1="58" y1="48" x2="80" y2="48" stroke="var(--border-color)" strokeWidth="0.8" />

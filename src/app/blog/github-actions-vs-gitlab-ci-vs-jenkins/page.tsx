@@ -25,7 +25,7 @@ const jsonLd = {
   "@type": "Article",
   headline: "GitHub Actions vs GitLab CI vs Jenkins: CI Tools Compared in 2026",
   description: "A practical comparison of CI tools for small to mid-sized development teams.",
-  datePublished: "2026-03-17",
+  datePublished: "2026-03-03",
   author: { "@type": "Organization", name: "Keni Engineering", url: "https://kenitech.io" },
   publisher: {
     "@type": "Organization",
@@ -62,7 +62,7 @@ export default function GithubActionsVsGitlabCiVsJenkins() {
                 <h1 className="text-heading text-foreground font-light tracking-wide mb-8">
                   GitHub Actions vs GitLab CI vs Jenkins: CI tools compared
                 </h1>
-                <p className="text-label text-muted/60 font-light">March 17, 2026 &middot; 9 min read</p>
+                <p className="text-label text-muted/60 font-light">March 3, 2026 &middot; 9 min read</p>
               </FadeIn>
             </div>
           </Container>
@@ -365,6 +365,16 @@ export default function GithubActionsVsGitlabCiVsJenkins() {
                   deep Jenkins expertise. But for greenfield projects, the
                   maintenance overhead is hard to justify when managed
                   alternatives exist.
+                </p>
+              </FadeIn>
+
+              <FadeIn delay={0.2}>
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
+                  If your team needs help setting up or migrating CI/CD pipelines, that is one of the core services we offer.{" "}
+                  <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground transition-colors">
+                    Learn more about our DevOps consulting
+                  </Link>
+                  .
                 </p>
               </FadeIn>
 
