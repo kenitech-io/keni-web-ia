@@ -10,6 +10,33 @@ export const metadata: Metadata = {
   },
 };
 
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://kenitech.io",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "DevOps Health Check",
+      item: "https://kenitech.io/healthcheck",
+    },
+  ],
+};
+
 export default function HealthCheckPage() {
-  return <HealthCheckContent />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <HealthCheckContent />
+    </>
+  );
 }

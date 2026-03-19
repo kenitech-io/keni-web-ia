@@ -297,6 +297,19 @@ export default function DevOpsAuditWhatToExpect() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
+                  If you want the full picture of where your infrastructure stands, our audit covers all seven areas in 72 hours.{" "}
+                  <Link
+                    href="/infrastructure-audit"
+                    className="text-foreground/80 hover:text-foreground transition-colors"
+                  >
+                    Learn more about our infrastructure audit
+                  </Link>
+                  .
+                </p>
+              </FadeIn>
+
+              <FadeIn delay={0.2}>
                 <div className="border-t border-foreground/[0.08] pt-8 mt-8">
                   <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                     Curious where your team would score?{" "}

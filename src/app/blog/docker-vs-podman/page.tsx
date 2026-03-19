@@ -25,7 +25,7 @@ const jsonLd = {
   "@type": "Article",
   headline: "Docker vs Podman: Which Container Runtime Should You Use in 2026",
   description: "A practical comparison of Docker and Podman for small to mid-sized teams.",
-  datePublished: "2026-03-17",
+  datePublished: "2026-03-11",
   author: { "@type": "Organization", name: "Keni Engineering", url: "https://kenitech.io" },
   publisher: {
     "@type": "Organization",
@@ -62,7 +62,7 @@ export default function DockerVsPodman() {
                 <h1 className="text-heading text-foreground font-light tracking-wide mb-8">
                   Docker vs Podman: which container runtime should you use in 2026
                 </h1>
-                <p className="text-label text-muted/60 font-light">March 17, 2026 &middot; 7 min read</p>
+                <p className="text-label text-muted/60 font-light">March 11, 2026 &middot; 7 min read</p>
               </FadeIn>
             </div>
           </Container>
@@ -299,6 +299,16 @@ export default function DockerVsPodman() {
                   Podman is the right choice. But switching an existing
                   Docker-based stack to Podman for marginal security gains is
                   rarely worth the friction.
+                </p>
+              </FadeIn>
+
+              <FadeIn delay={0.2}>
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
+                  We help teams containerize their applications and build the right platform around them.{" "}
+                  <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground transition-colors">
+                    Learn about our DevOps consulting
+                  </Link>
+                  .
                 </p>
               </FadeIn>
 

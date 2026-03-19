@@ -25,7 +25,7 @@ const jsonLd = {
   "@type": "Article",
   headline: "Argo CD vs Flux vs Watchtower: CD Tools for Automated Deployments in 2026",
   description: "A practical comparison of continuous deployment tools for different infrastructure setups.",
-  datePublished: "2026-03-17",
+  datePublished: "2026-03-05",
   author: { "@type": "Organization", name: "Keni Engineering", url: "https://kenitech.io" },
   publisher: {
     "@type": "Organization",
@@ -62,7 +62,7 @@ export default function ArgoCdVsFluxVsWatchtower() {
                 <h1 className="text-heading text-foreground font-light tracking-wide mb-8">
                   Argo CD vs Flux vs Watchtower: CD tools for automated deployments
                 </h1>
-                <p className="text-label text-muted/60 font-light">March 17, 2026 &middot; 8 min read</p>
+                <p className="text-label text-muted/60 font-light">March 5, 2026 &middot; 8 min read</p>
               </FadeIn>
             </div>
           </Container>
@@ -330,6 +330,16 @@ export default function ArgoCdVsFluxVsWatchtower() {
                   infrastructure, not aspirations. A well-configured Watchtower
                   setup on Docker Compose is better than a poorly maintained
                   Argo CD on an under-resourced Kubernetes cluster.
+                </p>
+              </FadeIn>
+
+              <FadeIn delay={0.2}>
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
+                  Need help choosing and setting up the right CD pipeline for your team? That is exactly what we do.{" "}
+                  <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground transition-colors">
+                    See our DevOps consulting services
+                  </Link>
+                  .
                 </p>
               </FadeIn>
 
