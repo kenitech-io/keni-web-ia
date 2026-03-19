@@ -60,7 +60,7 @@ export default function HeroSection() {
       `}</style>
 
       {/* Main hero */}
-      <section className="h-screen flex items-center justify-center bg-white px-6">
+      <section className="h-screen flex items-center justify-center bg-background px-6">
         <div className="max-w-[800px] text-center">
           <h1
             className="text-foreground font-bold tracking-tight"

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -13,6 +13,11 @@ const inter = Inter({
   display: "swap",
   weight: ["300", "400", "500"],
 });
+
+export const viewport: Viewport = {
+  width: 1200,
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://kenitech.io"),
