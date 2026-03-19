@@ -22,7 +22,7 @@ export default function HeroSection() {
           className="fixed inset-0 z-[70] flex flex-col items-center justify-center"
           style={{
             backgroundColor: "#EF6C00",
-            animation: "introOut 0.8s ease-in 2.2s forwards",
+            animation: "introOut 1.5s ease-out 2.2s forwards",
           }}
         >
           <span
@@ -51,8 +51,8 @@ export default function HeroSection() {
 
       <style>{`
         @keyframes introFadeIn {
-          from { opacity: 0; transform: translateY(8px); }
-          to { opacity: 1; transform: translateY(0); }
+          from { opacity: 0; }
+          to { opacity: 1; }
         }
         @keyframes introOut {
           to { opacity: 0; pointer-events: none; }
