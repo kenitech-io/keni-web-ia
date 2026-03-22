@@ -3,11 +3,7 @@
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 
-const footerLinks: { name: string; href: string }[] = [
-  { name: "Health Check", href: "/healthcheck" },
-  { name: "Platform", href: "/platform" },
-  { name: "Blog", href: "/blog" },
-];
+const footerLinks: { name: string; href: string }[] = [];
 
 const socialLinks = [
   { name: "LinkedIn", href: "https://www.linkedin.com/company/keniengineering/" },

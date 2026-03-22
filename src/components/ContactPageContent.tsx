@@ -72,14 +72,14 @@ export default function ContactPageContent() {
                     <div className="w-32 h-32 rounded-2xl overflow-hidden mb-4">
                       <Image src="/team/ane.jpg" alt="Ane Ugarte" width={128} height={128} className="w-full h-full object-cover" />
                     </div>
-                    <span className="text-sm text-foreground font-medium mt-1">Ane Ugarte</span>
+                    <a href="https://www.linkedin.com/in/aneugarte/" target="_blank" rel="noopener noreferrer" className="text-sm text-foreground font-medium mt-1">Ane Ugarte</a>
                     <span className="text-xs text-muted font-light">CEO</span>
                   </div>
                   <div className="flex flex-col items-center">
                     <div className="w-32 h-32 rounded-2xl overflow-hidden mb-4">
                       <Image src="/team/mikel.jpg" alt="Mikel Martin" width={128} height={128} className="w-full h-full object-cover" />
                     </div>
-                    <span className="text-sm text-foreground font-medium mt-1">Mikel Martin</span>
+                    <a href="https://www.linkedin.com/in/mikelm20/" target="_blank" rel="noopener noreferrer" className="text-sm text-foreground font-medium mt-1">Mikel Martin</a>
                     <span className="text-xs text-muted font-light">CTO</span>
                   </div>
                 </div>

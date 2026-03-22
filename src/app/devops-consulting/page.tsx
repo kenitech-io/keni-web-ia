@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
 import CTASection from "@/components/CTASection";
+import ProcessSection from "@/components/home/ProcessSection";
+import PhaseScreen from "@/components/PhaseScreen";
 import { phases } from "@/data/phases";
 
 export const metadata: Metadata = {
@@ -76,39 +78,6 @@ const breadcrumbJsonLd = {
     },
   ],
 };
-
-const services = [
-  {
-    title: "CI/CD Pipeline Setup",
-    description:
-      "Automated build, test, and deploy pipelines. Every push triggers the right checks, every merge to main goes to production. No manual steps, no SSH.",
-  },
-  {
-    title: "Infrastructure as Code",
-    description:
-      "Your entire infrastructure defined in version-controlled code. Terraform, Ansible, or whatever fits your stack. Reproducible, auditable, and reviewable.",
-  },
-  {
-    title: "Container Orchestration",
-    description:
-      "Docker environments that match across dev, staging, and production. Consistent behavior everywhere, with automated scaling when you need it.",
-  },
-  {
-    title: "Monitoring and Alerting",
-    description:
-      "Dashboards that show real system health and alerts that fire before your users notice. Structured logs, metrics, and runbooks for every alert.",
-  },
-  {
-    title: "Secrets Management",
-    description:
-      "Centralized vault with automated injection. No more API keys in .env files or credentials shared over Slack. Rotation and audit logs included.",
-  },
-  {
-    title: "Disaster Recovery",
-    description:
-      "Automated backups with tested restores. Documented recovery time objectives. When the worst happens, you know exactly how to come back.",
-  },
-];
 
 const differentiators = [
   {
@@ -196,61 +165,18 @@ export default function DevOpsConsultingPage() {
       </section>
 
       {/* What We Do */}
-      <section className="py-32 md:py-48">
-        <Container>
-          <div className="max-w-[640px] mx-auto">
-            <FadeIn>
-              <p className="text-label uppercase tracking-[0.25em] text-muted mb-32 md:mb-40 font-light text-center">
-                WHAT WE DO
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <h2 className="text-heading text-foreground font-light tracking-wide mb-16 text-center">
-                Everything your team needs to ship with confidence
-              </h2>
-            </FadeIn>
-            <div className="space-y-16">
-              {services.map((service, index) => (
-                <FadeIn key={service.title} delay={index * 0.1}>
-                  <div>
-                    <h3 className="text-body text-foreground font-light tracking-wide mb-3">
-                      {service.title}
-                    </h3>
-                    <p className="text-sm text-foreground leading-loose font-light">
-                      {service.description}
-                    </p>
-                  </div>
-                </FadeIn>
-              ))}
-            </div>
-          </div>
-        </Container>
-      </section>
+      <ProcessSection />
 
       {/* How We Work */}
       <section className="py-32 md:py-48">
         <Container>
           <FadeIn>
-            <p className="text-label uppercase tracking-[0.25em] text-muted mb-32 md:mb-40 text-center font-light">
+            <p className="text-label uppercase tracking-[0.25em] text-muted mb-16 md:mb-20 text-center font-light">
               HOW WE WORK
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-20 md:gap-16 max-w-[1100px] mx-auto">
-              {phases.map((phase, index) => (
-                <FadeIn key={phase.number} delay={index * 0.12}>
-                  <div className="text-center">
-                    <span className="text-lg font-extralight text-foreground/[0.06] leading-none block mb-6">
-                      {phase.number}
-                    </span>
-                    <h3 className="text-body text-foreground font-light tracking-wide mb-6 min-h-[2.5em] flex items-center justify-center uppercase">
-                      {phase.name}
-                    </h3>
-                    <p className="text-sm text-foreground leading-loose font-light">
-                      {phase.description}
-                    </p>
-                  </div>
-                </FadeIn>
-              ))}
-            </div>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <PhaseScreen />
           </FadeIn>
         </Container>
       </section>

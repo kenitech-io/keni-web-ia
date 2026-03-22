@@ -16,18 +16,6 @@ export default function HomeCTA() {
       <Container>
         <div className="max-w-[520px] mx-auto text-center">
           <FadeIn>
-            <div className="flex justify-center mb-10">
-              <div className="flex -space-x-3">
-                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-background">
-                  <Image src="/team/ane.jpg" alt="Ane Ugarte" width={48} height={48} className="w-full h-full object-cover" />
-                </div>
-                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-background">
-                  <Image src="/team/mikel.jpg" alt="Mikel Martin" width={48} height={48} className="w-full h-full object-cover" />
-                </div>
-              </div>
-            </div>
-          </FadeIn>
-          <FadeIn delay={0.08}>
             <h2 className="text-heading text-foreground font-light tracking-wide mb-4">
               Let&apos;s talk about your infrastructure
             </h2>

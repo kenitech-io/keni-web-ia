@@ -81,7 +81,7 @@ const auditAreas = [
   {
     title: "Deployment Process",
     description:
-      "How code gets from a developer's machine to production. Manual steps, automation gaps, rollback capabilities, and deployment frequency.",
+      "How code gets from a developer's machine to production. Manual steps, automation gaps, rollback capabilities.",
   },
   {
     title: "CI/CD Pipelines",
@@ -89,29 +89,39 @@ const auditAreas = [
       "Build times, test coverage, pipeline reliability. Whether failures block merges, how fast feedback reaches developers.",
   },
   {
-    title: "Infrastructure Definition",
+    title: "Infrastructure as Code",
     description:
-      "How your servers, networks, and services are configured. Infrastructure as code adoption, drift detection, reproducibility.",
+      "How your servers, networks, and services are configured. IaC adoption, drift detection, reproducibility.",
   },
   {
-    title: "Monitoring and Observability",
+    title: "Monitoring & Observability",
     description:
-      "What you can see when something goes wrong. Logging, metrics, dashboards, alerting, and incident response process.",
+      "What you can see when something goes wrong. Logging, metrics, dashboards, alerting, and incident response.",
   },
   {
     title: "Secrets Management",
     description:
-      "Where credentials live, who has access, how they rotate. Whether API keys are in code, .env files, or a proper vault.",
+      "Where credentials live, who has access, how they rotate. Whether API keys are in code or a proper vault.",
   },
   {
     title: "Disaster Recovery",
     description:
-      "Backup strategy, restore testing, recovery time objectives. What happens if your production database disappears right now.",
+      "Backup strategy, restore testing, recovery time objectives. What happens if your database disappears right now.",
   },
   {
     title: "Security Posture",
     description:
       "Network segmentation, access controls, dependency scanning, container security. The basics that prevent breaches.",
+  },
+  {
+    title: "Cost Efficiency",
+    description:
+      "Cloud spend analysis, unused resources, right-sizing opportunities. Where you're overpaying and where to optimize.",
+  },
+  {
+    title: "Developer Experience",
+    description:
+      "Onboarding friction, local dev setup, documentation gaps. How fast a new engineer can ship their first feature.",
   },
 ];
 
@@ -169,87 +179,94 @@ export default function InfrastructureAuditPage() {
         </Container>
       </section>
 
-      {/* Why an audit */}
+      {/* How it works — 3 days timeline */}
       <section className="py-32 md:py-48">
         <Container>
-          <div className="max-w-[640px] mx-auto text-center">
-            <FadeIn>
-              <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-32 md:mb-40 font-light text-center">
-                WHY AN AUDIT
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <h2 className="text-heading text-foreground font-light tracking-wide mb-8">
-                The right assessment pays for itself many times over
-              </h2>
-            </FadeIn>
-            <FadeIn delay={0.2}>
-              <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-6">
-                Most teams know something isn&apos;t right, but they don&apos;t know
-                where to start. They fix the symptom that hurts most today and
-                ignore the structural issues underneath.
-              </p>
-              <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
-                An audit gives you the full picture. Instead of guessing, you
-                get a prioritized list of changes that will have the most impact
-                on your team&apos;s ability to ship.
-              </p>
-            </FadeIn>
+          <FadeIn>
+            <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-16 md:mb-20 font-light text-center">
+              72 HOURS
+            </p>
+          </FadeIn>
+          <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
+            {[
+              {
+                day: "Day 1",
+                title: "Discovery",
+                desc: "We get read-only access to your repos, pipelines, cloud accounts, and monitoring. No admin needed.",
+              },
+              {
+                day: "Day 2",
+                title: "Evaluation",
+                desc: "We audit all seven areas systematically. Every finding documented, every risk scored.",
+              },
+              {
+                day: "Day 3",
+                title: "Report",
+                desc: "You get the full report: scores, risks, roadmap, and cost analysis. Ready to act on.",
+              },
+            ].map((step, i) => (
+              <FadeIn key={step.day} delay={i * 0.1}>
+                <div className="bg-surface rounded-2xl p-8 h-full shadow-[0_4px_30px_rgba(0,0,0,0.08)]">
+                  <span className="text-xs text-muted font-mono block mb-4">{step.day}</span>
+                  <h3 className="text-body text-foreground font-medium tracking-wide mb-3">
+                    {step.title}
+                  </h3>
+                  <p className="text-sm text-foreground-secondary/70 leading-relaxed font-light">
+                    {step.desc}
+                  </p>
+                </div>
+              </FadeIn>
+            ))}
           </div>
         </Container>
       </section>
 
-      {/* What We Audit */}
+      {/* What We Audit — cards */}
       <section className="py-32 md:py-48">
         <Container>
-          <div className="max-w-[640px] mx-auto">
-            <FadeIn>
-              <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-32 md:mb-40 font-light text-center">
-                WHAT WE AUDIT
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <h2 className="text-heading text-foreground font-light tracking-wide mb-16 text-center">
-                Seven areas that determine your team&apos;s velocity
-              </h2>
-            </FadeIn>
-            <div className="space-y-16">
-              {auditAreas.map((area, index) => (
-                <FadeIn key={area.title} delay={index * 0.08}>
-                  <div>
-                    <h3 className="text-body text-foreground font-light tracking-wide mb-3">
-                      {area.title}
-                    </h3>
-                    <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
-                      {area.description}
-                    </p>
-                  </div>
-                </FadeIn>
-              ))}
-            </div>
+          <FadeIn>
+            <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-16 md:mb-20 font-light text-center">
+              WHAT WE AUDIT
+            </p>
+          </FadeIn>
+          <div className="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {auditAreas.map((area, index) => (
+              <FadeIn key={area.title} delay={index * 0.06}>
+                <div className="bg-surface rounded-2xl p-8 h-full shadow-[0_4px_30px_rgba(0,0,0,0.08)]">
+                  <h3 className="text-body text-foreground font-light tracking-wide mb-3">
+                    {area.title}
+                  </h3>
+                  <p className="text-sm text-foreground-secondary/70 leading-relaxed font-light">
+                    {area.description}
+                  </p>
+                </div>
+              </FadeIn>
+            ))}
           </div>
         </Container>
       </section>
 
-      {/* What You Get */}
+      {/* What You Get — horizontal grid */}
       <section className="py-32 md:py-48">
         <Container>
-          <div className="max-w-[640px] mx-auto">
+          <div className="max-w-[900px] mx-auto">
             <FadeIn>
-              <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-32 md:mb-40 font-light text-center">
+              <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-16 md:mb-20 font-light text-center">
                 WHAT YOU GET
               </p>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <h2 className="text-heading text-foreground font-light tracking-wide mb-16 text-center">
+              <h2 className="text-heading text-foreground font-light tracking-wide mb-12 text-center">
                 A report your CTO can act on Monday morning
               </h2>
             </FadeIn>
-            <div className="space-y-16">
+            <div>
               {deliverables.map((item, index) => (
-                <FadeIn key={item.title} delay={index * 0.1}>
-                  <div>
-                    <h3 className="text-body text-foreground font-light tracking-wide mb-3">
+                <FadeIn key={item.title} delay={index * 0.08}>
+                  <div className={`grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-4 md:gap-16 py-10 ${
+                    index < deliverables.length - 1 ? "border-b border-border-color" : ""
+                  }`}>
+                    <h3 className="text-body text-foreground font-light tracking-wide">
                       {item.title}
                     </h3>
                     <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
@@ -263,7 +280,7 @@ export default function InfrastructureAuditPage() {
         </Container>
       </section>
 
-      {/* Quick Self-Assessment */}
+      {/* Health Check CTA */}
       <section className="py-32 md:py-48">
         <Container>
           <div className="max-w-[640px] mx-auto text-center">

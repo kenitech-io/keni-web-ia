@@ -21,8 +21,8 @@ export default function CTASection({
   buttonHref,
   external,
 }: CTASectionProps) {
-  const href = buttonHref || BOOKING_URL;
-  const isExternal = external ?? !buttonHref;
+  const href = buttonHref === "/contact" ? BOOKING_URL : (buttonHref || BOOKING_URL);
+  const isExternal = external ?? (href === BOOKING_URL || !buttonHref);
 
   return (
     <section className="py-32 md:py-48">
