@@ -13,9 +13,14 @@ const exploreLinks = [
   { name: "About", href: "/about" },
 ];
 
+const mobileLinks = [
+  { name: "Platform", href: "/platform" },
+  { name: "Health Check", href: "/healthcheck" },
+  ...exploreLinks,
+];
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-
   const [mobileOpen, setMobileOpen] = useState(false);
   const [exploreOpen, setExploreOpen] = useState(false);
   const pathname = usePathname();
@@ -36,9 +41,7 @@ export default function Navbar() {
     } else {
       document.body.style.overflow = "";
     }
-    return () => {
-      document.body.style.overflow = "";
-    };
+    return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
 
   useEffect(() => {
@@ -46,7 +49,6 @@ export default function Navbar() {
     setExploreOpen(false);
   }, [pathname]);
 
-  // Close explore dropdown on outside click
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
       if (exploreRef.current && !exploreRef.current.contains(e.target as Node)) {
@@ -62,48 +64,27 @@ export default function Navbar() {
     return pathname.startsWith(href);
   };
 
-  const isDark = pathname === "/devops-consulting" || pathname === "/contact";
-
-
-
   return (
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 h-[64px] flex items-center transition-all duration-300 ${
           scrolled
-            ? isDark
-              ? "backdrop-blur-md bg-[#2c2c2c]/80 border-b border-[#3a3a3a]"
-              : "backdrop-blur-md bg-background/80 border-b border-border-color"
-            : isDark
-              ? "bg-transparent border-b border-[#3a3a3a]"
-              : "bg-transparent"
+            ? "backdrop-blur-md bg-background/80 border-b border-border-color"
+            : "bg-transparent"
         }`}
       >
         <Container>
           <div className="flex items-center justify-between">
-            <Link
-              href="/"
-              className={`text-xs font-medium tracking-tight ${isDark ? "text-[#e8e4df]" : "text-foreground"}`}
-            >
+            <Link href="/" className="text-xs font-medium tracking-tight text-foreground">
               Keni
             </Link>
 
             {/* Desktop */}
             <div className="hidden md:flex items-baseline gap-8">
-              <Link
-                href="/platform"
-                className={`text-xs font-medium transition-colors duration-200 ${
-                  isDark ? "text-[#e8e4df] hover:text-[#e8e4df]/70" : "text-foreground hover:text-foreground/70"
-                }`}
-              >
+              <Link href="/platform" className="text-xs font-medium transition-colors duration-200 text-foreground hover:text-foreground/70">
                 Platform
               </Link>
-              <Link
-                href="/healthcheck"
-                className={`text-xs font-medium transition-colors duration-200 ${
-                  isDark ? "text-[#e8e4df] hover:text-[#e8e4df]/70" : "text-foreground hover:text-foreground/70"
-                }`}
-              >
+              <Link href="/healthcheck" className="text-xs font-medium transition-colors duration-200 text-foreground hover:text-foreground/70">
                 Health Check
               </Link>
               {/* Explore dropdown */}
@@ -113,11 +94,7 @@ export default function Navbar() {
                 onMouseEnter={() => setExploreOpen(true)}
                 onMouseLeave={() => setExploreOpen(false)}
               >
-                <button
-                  className={`text-xs font-medium transition-colors duration-200 ${
-                    isDark ? "text-[#e8e4df] hover:text-[#e8e4df]/70" : "text-foreground hover:text-foreground/70"
-                  }`}
-                >
+                <button className="text-xs font-medium transition-colors duration-200 text-foreground hover:text-foreground/70">
                   Explore
                 </button>
 
@@ -128,21 +105,13 @@ export default function Navbar() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -4 }}
                       transition={{ duration: 0.15 }}
-                      className={`absolute top-8 right-0 min-w-[180px] py-3 rounded-lg border ${
-                        isDark
-                          ? "bg-[#333] border-[#3a3a3a]"
-                          : "bg-background border-border-color"
-                      }`}
+                      className="absolute top-8 right-0 min-w-[180px] py-3 rounded-lg border bg-background border-border-color"
                     >
                       {exploreLinks.map((link) => (
                         <Link
                           key={link.href}
                           href={link.href}
-                          className={`block px-5 py-2 text-xs font-light transition-colors duration-200 ${
-                            isDark
-                              ? "text-[#e8e4df] hover:text-[#7a756f]"
-                              : "text-foreground hover:text-muted"
-                          }`}
+                          className="block px-5 py-2 text-xs font-light transition-colors duration-200 text-foreground hover:text-muted"
                         >
                           {link.name}
                         </Link>
@@ -154,11 +123,7 @@ export default function Navbar() {
 
               <Link
                 href="/contact"
-                className={`text-xs font-medium transition-all duration-300 ${
-                  isDark
-                    ? "bg-[#c8c3bc] hover:bg-[#b5b0a9] text-[#1a1a1a] px-3 py-1 rounded-full"
-                    : "bg-foreground hover:bg-charcoal text-background px-3 py-1 rounded-full"
-                }`}
+                className="text-xs font-medium transition-all duration-300 bg-foreground hover:bg-charcoal text-background px-3 py-1 rounded-full"
               >
                 Contact
               </Link>
@@ -172,27 +137,19 @@ export default function Navbar() {
             >
               <div className="w-5 flex flex-col gap-[5px]">
                 <motion.span
-                  animate={
-                    mobileOpen
-                      ? { rotate: 45, y: 7 }
-                      : { rotate: 0, y: 0 }
-                  }
+                  animate={mobileOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
                   transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className={`block h-[1px] w-full origin-center ${isDark ? "bg-[#e8e4df]" : "bg-foreground"}`}
+                  className="block h-[1px] w-full origin-center bg-foreground"
                 />
                 <motion.span
                   animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
                   transition={{ duration: 0.2 }}
-                  className={`block h-[1px] w-full ${isDark ? "bg-[#e8e4df]" : "bg-foreground"}`}
+                  className="block h-[1px] w-full bg-foreground"
                 />
                 <motion.span
-                  animate={
-                    mobileOpen
-                      ? { rotate: -45, y: -7 }
-                      : { rotate: 0, y: 0 }
-                  }
+                  animate={mobileOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
                   transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className={`block h-[1px] w-full origin-center ${isDark ? "bg-[#e8e4df]" : "bg-foreground"}`}
+                  className="block h-[1px] w-full origin-center bg-foreground"
                 />
               </div>
             </button>
@@ -223,28 +180,18 @@ export default function Navbar() {
                 }}
                 className="flex flex-col gap-6"
               >
-                {[
-                  { name: "Platform", href: "/platform" },
-                  { name: "Health Check", href: "/healthcheck" },
-                  ...exploreLinks,
-                ].map((link) => (
+                {mobileLinks.map((link) => (
                   <motion.div
                     key={link.href}
                     variants={{
                       hidden: { opacity: 0, y: 20 },
-                      visible: {
-                        opacity: 1,
-                        y: 0,
-                        transition: { duration: 0.4, ease: "easeOut" },
-                      },
+                      visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
                     }}
                   >
                     <Link
                       href={link.href}
                       className={`text-3xl font-light transition-colors duration-200 ${
-                        isActive(link.href)
-                          ? "text-foreground"
-                          : "text-muted hover:text-foreground"
+                        isActive(link.href) ? "text-foreground" : "text-muted hover:text-foreground"
                       }`}
                     >
                       {link.name}
@@ -254,19 +201,13 @@ export default function Navbar() {
                 <motion.div
                   variants={{
                     hidden: { opacity: 0, y: 20 },
-                    visible: {
-                      opacity: 1,
-                      y: 0,
-                      transition: { duration: 0.4, ease: "easeOut" },
-                    },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
                   }}
                 >
                   <Link
                     href="/contact"
                     className={`text-3xl font-light transition-colors duration-200 ${
-                      isActive("/contact")
-                        ? "text-foreground"
-                        : "text-muted hover:text-foreground"
+                      isActive("/contact") ? "text-foreground" : "text-muted hover:text-foreground"
                     }`}
                   >
                     Contact

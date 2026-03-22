@@ -2,17 +2,19 @@
 
 import { useState, useEffect, FormEvent } from "react";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
 import { BOOKING_URL } from "@/lib/config";
 
 export default function ContactPageContent() {
+  const searchParams = useSearchParams();
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [showForm, setShowForm] = useState(false);
+  const [showForm, setShowForm] = useState(searchParams.get("form") === "true");
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -39,23 +41,23 @@ export default function ContactPageContent() {
   };
 
   const inputClasses =
-    "bg-transparent border-b border-[#4a4540] focus:border-[#7a756f] py-3 text-sm font-light text-[#d8d4cf] w-full outline-none transition-colors placeholder:text-[#5a554f]";
+    "bg-transparent border-b border-border-color focus:border-muted py-3 text-sm font-light text-foreground w-full outline-none transition-colors placeholder:text-muted/50";
   const labelClasses =
-    "block text-label uppercase tracking-[0.25em] text-[#7a756f] font-light mb-3";
+    "block text-label uppercase tracking-[0.25em] text-muted font-light mb-3";
 
   return (
-    <main className="bg-[#2c2c2c] min-h-screen">
+    <main className="bg-background min-h-screen">
       <section className="py-32 md:py-48">
         <Container>
           <FadeIn>
             <div className="text-center mb-16">
-              <p className="text-label uppercase tracking-[0.25em] text-[#7a756f] font-light text-center mb-6">
+              <p className="text-label uppercase tracking-[0.25em] text-muted font-light text-center mb-6">
                 CONTACT
               </p>
-              <h1 className="text-heading text-[#d8d4cf] font-light tracking-wide mb-8">
+              <h1 className="text-heading text-foreground font-light tracking-wide mb-8">
                 Let&apos;s take this off your plate
               </h1>
-              <p className="text-sm text-[#a09a93] leading-loose font-light max-w-[480px] mx-auto">
+              <p className="text-sm text-foreground-secondary leading-loose font-light max-w-[480px] mx-auto">
                 Pick a time that works for you. 30 minutes, no pitch, no pressure
                 just a calm conversation about what&apos;s keeping you up at night.
               </p>
@@ -65,25 +67,27 @@ export default function ContactPageContent() {
           <FadeIn delay={0.15}>
             <div className="max-w-[480px] mx-auto mb-24 -mt-4">
               <div className="p-12 text-center">
-                <div className="flex justify-center items-center gap-8 mb-12">
+                <div className="flex justify-center items-center gap-16 mb-12">
                   <div className="flex flex-col items-center">
-                    <div className="w-24 h-24 rounded-full overflow-hidden mb-3">
-                      <Image src="/team/ane.jpg" alt="Ane Ugarte" width={96} height={96} className="w-full h-full object-cover" />
+                    <div className="w-32 h-32 rounded-2xl overflow-hidden mb-4">
+                      <Image src="/team/ane.jpg" alt="Ane Ugarte" width={128} height={128} className="w-full h-full object-cover" />
                     </div>
-                    <span className="text-xs text-[#a09a93] font-light tracking-wide">Ane Ugarte</span>
+                    <span className="text-sm text-foreground font-medium mt-1">Ane Ugarte</span>
+                    <span className="text-xs text-muted font-light">CEO</span>
                   </div>
                   <div className="flex flex-col items-center">
-                    <div className="w-24 h-24 rounded-full overflow-hidden mb-3">
-                      <Image src="/team/mikel.jpg" alt="Mikel Martin" width={96} height={96} className="w-full h-full object-cover" />
+                    <div className="w-32 h-32 rounded-2xl overflow-hidden mb-4">
+                      <Image src="/team/mikel.jpg" alt="Mikel Martin" width={128} height={128} className="w-full h-full object-cover" />
                     </div>
-                    <span className="text-xs text-[#a09a93] font-light tracking-wide">Mikel Martin</span>
+                    <span className="text-sm text-foreground font-medium mt-1">Mikel Martin</span>
+                    <span className="text-xs text-muted font-light">CTO</span>
                   </div>
                 </div>
                 <a
                   href={BOOKING_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block bg-[#c8c3bc] hover:bg-[#b5b0a9] text-[#1a1a1a] px-12 py-3.5 text-sm font-light tracking-wide rounded-full transition-colors"
+                  className="inline-block bg-foreground hover:bg-foreground/85 text-background px-12 py-3.5 text-sm font-light tracking-wide rounded-full transition-colors"
                 >
                   Schedule a Call
                 </a>
@@ -91,11 +95,11 @@ export default function ContactPageContent() {
             </div>
           </FadeIn>
 
-          <FadeIn delay={0.2}>
+          <FadeIn delay={0.05}>
             <div className="text-center">
               <button
                 onClick={() => setShowForm(true)}
-                className="text-sm text-[#7a756f] font-light hover:text-[#d8d4cf] transition-colors"
+                className="text-sm text-muted font-light hover:text-foreground transition-colors"
               >
                 Prefer to send a message instead?
               </button>
@@ -166,13 +170,13 @@ function MessageModal({
       className="fixed inset-0 z-50 flex items-center justify-center p-6"
     >
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-[#2c2c2c]/90 backdrop-blur-sm" onClick={onClose} />
+      <div className="absolute inset-0 bg-background/90 backdrop-blur-sm" onClick={onClose} />
 
       {/* Modal */}
-      <div className="relative w-full max-w-[400px] max-h-[90vh] overflow-y-auto border border-[#3a3a3a] bg-[#333] rounded-lg p-10">
+      <div className="relative w-full max-w-[400px] max-h-[90vh] overflow-y-auto border border-border-color bg-background rounded-lg p-10">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-[#7a756f] hover:text-[#d8d4cf] transition-colors"
+          className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-muted hover:text-foreground transition-colors"
           aria-label="Close"
         >
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
@@ -182,13 +186,13 @@ function MessageModal({
 
         {status === "sent" ? (
           <div className="text-center py-10">
-            <p className="text-heading text-[#d8d4cf] font-light tracking-wide mb-6">Message sent.</p>
-            <p className="text-sm text-[#a09a93] leading-loose font-light">We&apos;ll get back to you within 24 hours.</p>
+            <p className="text-heading text-foreground font-light tracking-wide mb-6">Message sent.</p>
+            <p className="text-sm text-foreground-secondary leading-loose font-light">We&apos;ll get back to you within 24 hours.</p>
           </div>
         ) : (
           <>
-            <p className="text-body text-[#d8d4cf] font-light tracking-wide mb-2">Send us a message</p>
-            <p className="text-sm text-[#a09a93] font-light mb-8">
+            <p className="text-body text-foreground font-light tracking-wide mb-2">Send us a message</p>
+            <p className="text-sm text-foreground-secondary font-light mb-8">
               We&apos;ll get back to you within 24 hours.
             </p>
             <form onSubmit={onSubmit} className="space-y-6">
@@ -211,7 +215,7 @@ function MessageModal({
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="bg-[#e8e4df] hover:bg-[#d4d0cb] disabled:opacity-50 text-[#2c2c2c] w-full px-8 py-3 text-sm font-light tracking-wide rounded-full transition-colors"
+                className="bg-foreground hover:bg-foreground/85 disabled:opacity-50 text-background w-full px-8 py-3 text-sm font-light tracking-wide rounded-full transition-colors"
               >
                 {status === "sending" ? "Sending..." : "Send Message"}
               </button>

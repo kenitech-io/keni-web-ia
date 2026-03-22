@@ -1,7 +1,9 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
 import CTASection from "@/components/CTASection";
+import LiveScreen from "@/components/LiveScreen";
 
 export const metadata: Metadata = {
   title: "About Us: DevOps Engineers for SMBs",
@@ -24,6 +26,19 @@ const values = [
   {
     title: "We leave you stronger",
     text: "We work alongside your team and make sure that when we step back, your team feels capable and in control.",
+  },
+];
+
+const team = [
+  {
+    name: "Ane Ugarte",
+    role: "CEO",
+    image: "/team/ane.jpg",
+  },
+  {
+    name: "Mikel Martin",
+    role: "CTO",
+    image: "/team/mikel.jpg",
   },
 ];
 
@@ -53,13 +68,47 @@ export default function AboutPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
+      {/* Hero with logo */}
+      {/* Statement */}
+      <section className="py-32 md:py-48">
+        <Container>
+          <div className="max-w-[800px] mx-auto text-center">
+            <FadeIn>
+              <div className="flex justify-center mb-12">
+                <Image
+                  src="/logo.png"
+                  alt="Keni Engineering"
+                  width={104}
+                  height={104}
+                  className="w-[104px] h-[104px]"
+                />
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.08}>
+              <h1
+                className="text-foreground font-light tracking-wide"
+                style={{
+                  fontSize: "clamp(1.3rem, 2.2vw, 1.8rem)",
+                  lineHeight: 1.4,
+                }}
+              >
+                Obsessed with building, refining, and perfecting
+                <br />
+                <span className="text-muted">internal development platforms.</span>
+              </h1>
+            </FadeIn>
+          </div>
+        </Container>
+      </section>
+
+      {/* Story */}
       <section className="py-32 md:py-48">
         <Container>
           <div className="max-w-[640px] mx-auto text-center">
             <FadeIn>
-              <h1 className="text-heading text-foreground font-light tracking-wide mb-8">
+              <h2 className="text-heading text-foreground font-light tracking-wide mb-8">
                 So your team can breathe
-              </h1>
+              </h2>
             </FadeIn>
             <FadeIn delay={0.1}>
               <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
@@ -73,20 +122,22 @@ export default function AboutPage() {
         </Container>
       </section>
 
-
+      {/* Values */}
       <section className="py-32 md:py-48">
         <Container>
-          <div className="max-w-[640px] mx-auto">
+          <div className="max-w-[900px] mx-auto">
             <FadeIn>
-              <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-32 md:mb-40 font-light text-center">
+              <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-20 md:mb-24 font-light text-center">
                 WHAT WE BELIEVE
               </p>
             </FadeIn>
-            <div className="space-y-16">
+            <div>
               {values.map((value, index) => (
                 <FadeIn key={value.title} delay={index * 0.1}>
-                  <div>
-                    <h3 className="text-body text-foreground font-light tracking-wide mb-3">
+                  <div className={`grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-4 md:gap-16 py-10 ${
+                    index < values.length - 1 ? "border-b border-border-color" : ""
+                  }`}>
+                    <h3 className="text-body text-foreground font-light tracking-wide">
                       {value.title}
                     </h3>
                     <p className="text-sm text-foreground-secondary/70 leading-loose font-light">

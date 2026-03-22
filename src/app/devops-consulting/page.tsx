@@ -3,6 +3,7 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
 import CTASection from "@/components/CTASection";
+import { phases } from "@/data/phases";
 
 export const metadata: Metadata = {
   title: "DevOps Consulting Services for Small Teams",
@@ -135,7 +136,7 @@ const differentiators = [
 
 export default function DevOpsConsultingPage() {
   return (
-    <main className="bg-[#2c2c2c] text-[#e8e4df]">
+    <main className="bg-background text-foreground">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
@@ -149,12 +150,12 @@ export default function DevOpsConsultingPage() {
         <Container>
           <div className="max-w-[640px] mx-auto text-center">
             <FadeIn>
-              <h1 className="text-heading text-[#d8d4cf] font-light tracking-wide mb-8">
+              <h1 className="text-heading text-foreground font-light tracking-wide mb-8">
                 DevOps consulting for teams that ship software
               </h1>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <p className="text-sm text-[#a09a93] leading-loose font-light">
+              <p className="text-sm text-foreground leading-loose font-light">
                 Your developers should write code, not fight infrastructure. We
                 set up your CI/CD, automate your deploys, and keep everything
                 running. You push code, it goes to production. That is it.
@@ -169,27 +170,23 @@ export default function DevOpsConsultingPage() {
         <Container>
           <div className="max-w-[640px] mx-auto text-center">
             <FadeIn>
-              <p className="text-label uppercase tracking-[0.25em] text-[#7a756f] mb-32 md:mb-40 font-light text-center">
+              <p className="text-label uppercase tracking-[0.25em] text-muted mb-32 md:mb-40 font-light text-center">
                 THE PROBLEM
               </p>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <h2 className="text-heading text-[#d8d4cf] font-light tracking-wide mb-8">
-                Only 47% of SMBs use DevOps tools
+              <h2 className="text-heading text-foreground font-light tracking-wide mb-8">
+                53% of SMBs lack DevOps capabilities
               </h2>
             </FadeIn>
             <FadeIn delay={0.2}>
-              <p className="text-sm text-[#a09a93] leading-loose font-light mb-2">
-                According to Statista, the majority of small and mid-sized
-                businesses still operate without proper DevOps practices.
-              </p>
-              <p className="text-sm text-[#a09a93] leading-loose font-light mb-6">
-                Hiring a full-time DevOps engineer in the US costs $130K-$220K
+              <p className="text-sm text-foreground leading-loose font-light mb-6">
+                Hiring a full-time DevOps engineer in the US costs $130K-$220K+
                 per year when you include benefits and overhead. For a team of
                 5-30 developers, that&apos;s a significant investment for a role that
                 might not need to be full-time.
               </p>
-              <p className="text-sm text-[#a09a93] leading-loose font-light">
+              <p className="text-sm text-foreground leading-loose font-light">
                 Meanwhile, your developers are spending half their time on
                 manual deploys, debugging servers, and firefighting production
                 issues instead of building features.
@@ -204,12 +201,12 @@ export default function DevOpsConsultingPage() {
         <Container>
           <div className="max-w-[640px] mx-auto">
             <FadeIn>
-              <p className="text-label uppercase tracking-[0.25em] text-[#7a756f] mb-32 md:mb-40 font-light text-center">
+              <p className="text-label uppercase tracking-[0.25em] text-muted mb-32 md:mb-40 font-light text-center">
                 WHAT WE DO
               </p>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <h2 className="text-heading text-[#d8d4cf] font-light tracking-wide mb-16 text-center">
+              <h2 className="text-heading text-foreground font-light tracking-wide mb-16 text-center">
                 Everything your team needs to ship with confidence
               </h2>
             </FadeIn>
@@ -217,43 +214,11 @@ export default function DevOpsConsultingPage() {
               {services.map((service, index) => (
                 <FadeIn key={service.title} delay={index * 0.1}>
                   <div>
-                    <h3 className="text-body text-[#d8d4cf] font-light tracking-wide mb-3">
+                    <h3 className="text-body text-foreground font-light tracking-wide mb-3">
                       {service.title}
                     </h3>
-                    <p className="text-sm text-[#a09a93] leading-loose font-light">
+                    <p className="text-sm text-foreground leading-loose font-light">
                       {service.description}
-                    </p>
-                  </div>
-                </FadeIn>
-              ))}
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* Why Keni */}
-      <section className="py-32 md:py-48">
-        <Container>
-          <div className="max-w-[640px] mx-auto">
-            <FadeIn>
-              <p className="text-label uppercase tracking-[0.25em] text-[#7a756f] mb-32 md:mb-40 font-light text-center">
-                WHY KENI
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <h2 className="text-heading text-[#d8d4cf] font-light tracking-wide mb-16 text-center">
-                Built different from the big firms
-              </h2>
-            </FadeIn>
-            <div className="space-y-16">
-              {differentiators.map((item, index) => (
-                <FadeIn key={item.title} delay={index * 0.1}>
-                  <div>
-                    <h3 className="text-body text-[#d8d4cf] font-light tracking-wide mb-3">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm text-[#a09a93] leading-loose font-light">
-                      {item.description}
                     </p>
                   </div>
                 </FadeIn>
@@ -266,34 +231,59 @@ export default function DevOpsConsultingPage() {
       {/* How We Work */}
       <section className="py-32 md:py-48">
         <Container>
-          <div className="max-w-[640px] mx-auto text-center">
+          <FadeIn>
+            <p className="text-label uppercase tracking-[0.25em] text-muted mb-32 md:mb-40 text-center font-light">
+              HOW WE WORK
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-20 md:gap-16 max-w-[1100px] mx-auto">
+              {phases.map((phase, index) => (
+                <FadeIn key={phase.number} delay={index * 0.12}>
+                  <div className="text-center">
+                    <span className="text-lg font-extralight text-foreground/[0.06] leading-none block mb-6">
+                      {phase.number}
+                    </span>
+                    <h3 className="text-body text-foreground font-light tracking-wide mb-6 min-h-[2.5em] flex items-center justify-center uppercase">
+                      {phase.name}
+                    </h3>
+                    <p className="text-sm text-foreground leading-loose font-light">
+                      {phase.description}
+                    </p>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+          </FadeIn>
+        </Container>
+      </section>
+
+      {/* Why Keni */}
+      <section className="py-32 md:py-48">
+        <Container>
+          <div className="max-w-[640px] mx-auto">
             <FadeIn>
-              <p className="text-label uppercase tracking-[0.25em] text-[#7a756f] mb-32 md:mb-40 font-light text-center">
-                HOW WE WORK
+              <p className="text-label uppercase tracking-[0.25em] text-muted mb-32 md:mb-40 font-light text-center">
+                WHY KENI
               </p>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <h2 className="text-heading text-[#d8d4cf] font-light tracking-wide mb-8">
-                Four phases, one clear outcome
+              <h2 className="text-heading text-foreground font-light tracking-wide mb-16 text-center">
+                Built different from the big firms
               </h2>
             </FadeIn>
-            <FadeIn delay={0.2}>
-              <p className="text-sm text-[#a09a93] leading-loose font-light mb-6">
-                Every engagement follows the same structured process. We start
-                with a diagnosis of your current setup, design the right
-                solution, implement it, and then maintain it for you.
-              </p>
-              <p className="text-sm text-[#a09a93] leading-loose font-light">
-                <Link href="/platform" className="text-[#d8d4cf] hover:text-[#e8e4df] transition-colors">
-                  See what the platform looks like
-                </Link>
-                {" "}or{" "}
-                <Link href="/healthcheck" className="text-[#d8d4cf] hover:text-[#e8e4df] transition-colors">
-                  take our free DevOps health check
-                </Link>
-                {" "}to see where your team stands.
-              </p>
-            </FadeIn>
+            <div className="space-y-16">
+              {differentiators.map((item, index) => (
+                <FadeIn key={item.title} delay={index * 0.1}>
+                  <div>
+                    <h3 className="text-body text-foreground font-light tracking-wide mb-3">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-foreground leading-loose font-light">
+                      {item.description}
+                    </p>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
           </div>
         </Container>
       </section>
@@ -303,7 +293,6 @@ export default function DevOpsConsultingPage() {
         subtext="30 minutes. No pitch, no pressure. Just a conversation about what's slowing your team down and how to fix it."
         buttonText="Book a free call"
         buttonHref="/contact"
-        dark
       />
     </main>
   );

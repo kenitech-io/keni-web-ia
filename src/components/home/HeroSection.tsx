@@ -6,23 +6,55 @@ import { useSearchParams } from "next/navigation";
 export default function HeroSection() {
   const searchParams = useSearchParams();
   const skip = searchParams.get("skip") !== null;
-  const [showIntro, setShowIntro] = useState(!skip);
+  const [phase, setPhase] = useState<"loading" | "intro" | "transition" | "hero">(() => {
+    if (typeof window !== "undefined" && sessionStorage.getItem("intro-seen") === "true") return "hero";
+    return "loading";
+  });
+  const [showTitle, setShowTitle] = useState(false);
+  const [showSubtitle, setShowSubtitle] = useState(false);
 
   useEffect(() => {
-    if (skip) return;
-    const timer = setTimeout(() => setShowIntro(false), 3000);
-    return () => clearTimeout(timer);
+    const alreadySeen = sessionStorage.getItem("intro-seen") === "true";
+    if (skip || alreadySeen) {
+      setPhase("hero");
+      return;
+    }
+    setPhase("intro");
+    const s1 = setTimeout(() => setShowTitle(true), 300);
+    const s2 = setTimeout(() => setShowSubtitle(true), 800);
+    const t1 = setTimeout(() => {
+      sessionStorage.setItem("intro-seen", "true");
+      setPhase("transition");
+    }, 2000);
+    const t2 = setTimeout(() => setPhase("hero"), 2800);
+    return () => { clearTimeout(s1); clearTimeout(s2); clearTimeout(t1); clearTimeout(t2); };
   }, [skip]);
 
   return (
     <>
-      {/* Intro screen */}
-      {showIntro && !skip && (
+      {/* Hero section */}
+      <section
+        className="h-screen flex items-center justify-center px-6 relative overflow-hidden"
+        style={{ backgroundColor: "var(--background)" }}
+      >
+        {/* Orange background */}
         <div
-          className="fixed inset-0 z-[70] flex flex-col items-center justify-center"
+          className="absolute inset-0"
           style={{
             backgroundColor: "#EF6C00",
-            animation: "introOut 1.5s ease-out 2.2s forwards",
+            opacity: phase === "intro" || phase === "loading" ? 1 : 0,
+            transition: "opacity 1.4s cubic-bezier(0.4, 0, 0.2, 1)",
+            pointerEvents: "none",
+          }}
+        />
+
+        {/* Intro content */}
+        <div
+          className="absolute flex flex-col items-center text-center"
+          style={{
+            opacity: phase === "intro" ? 1 : 0,
+            transition: "opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1)",
+            pointerEvents: phase === "intro" ? "auto" : "none",
           }}
         >
           <span
@@ -30,8 +62,8 @@ export default function HeroSection() {
             style={{
               fontSize: "clamp(2rem, 3.5vw, 3.5rem)",
               lineHeight: 1,
-              opacity: 0,
-              animation: "introFadeIn 0.8s ease-out 0.3s forwards",
+              opacity: showTitle ? 1 : 0,
+              transition: "opacity 0.8s ease-out",
             }}
           >
             DEVOPS
@@ -40,47 +72,42 @@ export default function HeroSection() {
             className="font-light text-white/70 tracking-[0.3em] uppercase mt-4"
             style={{
               fontSize: "clamp(0.5rem, 0.8vw, 0.7rem)",
-              opacity: 0,
-              animation: "introFadeIn 0.8s ease-out 0.8s forwards",
+              opacity: showSubtitle ? 1 : 0,
+              transition: "opacity 0.8s ease-out",
             }}
           >
             Keni Engineering
           </span>
         </div>
-      )}
 
-      <style>{`
-        @keyframes introFadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        @keyframes introOut {
-          to { opacity: 0; pointer-events: none; }
-        }
-      `}</style>
-
-      {/* Main hero */}
-      <section className="h-screen flex items-center justify-center bg-background px-6">
-        <div className="max-w-[800px] text-center">
-          <h1
-            className="text-foreground font-bold tracking-tight"
-            style={{
-              fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
-              lineHeight: 1.1,
-            }}
-          >
-            Push. Build. Deploy.
-          </h1>
-          <p className="text-foreground-secondary text-lg md:text-xl font-light mt-6 mb-10 max-w-[560px] mx-auto leading-relaxed">
-            We automate everything so your team can focus on product.
-          </p>
-          <a
-            href="/contact"
-            className="inline-block bg-foreground hover:bg-foreground/85 text-background px-8 py-2.5 text-xs font-light tracking-wide rounded-full transition-colors"
-          >
-            Book a free call
-          </a>
-        </div>
+        {/* Main hero content — fades in slowly during transition */}
+        <div
+          className="max-w-[800px] text-center"
+          style={{
+            opacity: phase === "hero" ? 1 : 0,
+            transform: phase === "hero" ? "translateY(0)" : "translateY(6px)",
+            transition: "opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), transform 1.2s cubic-bezier(0.4, 0, 0.2, 1)",
+          }}
+        >
+            <h1
+              className="text-foreground font-bold tracking-tight"
+              style={{
+                fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
+                lineHeight: 1.1,
+              }}
+            >
+              Push. Deploy. Build.
+            </h1>
+            <p className="text-foreground-secondary text-lg md:text-xl font-light mt-6 mb-10 max-w-[560px] mx-auto leading-relaxed">
+              We take care of the plumbing so you can build the house.
+            </p>
+            <a
+              href="/contact"
+              className="inline-block bg-foreground hover:bg-foreground/85 text-background px-10 py-3 text-base font-light tracking-wide rounded-full transition-colors"
+            >
+              Book a free call
+            </a>
+          </div>
       </section>
 
       {/* Pipeline section */}

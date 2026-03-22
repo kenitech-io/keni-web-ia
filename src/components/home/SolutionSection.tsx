@@ -6,7 +6,7 @@ import FadeIn from "@/components/ui/FadeIn";
 
 export default function SolutionSection() {
   return (
-    <section className="py-32 md:py-48 bg-surface">
+    <section className="py-32 md:py-48">
       <Container>
         <FadeIn>
           <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-32 md:mb-40 text-center font-light">

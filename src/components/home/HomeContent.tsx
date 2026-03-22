@@ -2,11 +2,14 @@
 
 import { useState, Suspense } from "react";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import HeroSection from "@/components/home/HeroSection";
 import ProblemSection from "@/components/home/ProblemSection";
-import SolutionSection from "@/components/home/SolutionSection";
 import ProcessSection from "@/components/home/ProcessSection";
-import CTASection from "@/components/CTASection";
+import HomeCTA from "@/components/home/HomeCTA";
+import LiveScreen from "@/components/LiveScreen";
+import Container from "@/components/ui/Container";
+import FadeIn from "@/components/ui/FadeIn";
 import { BLOCKED_DOMAINS } from "@/lib/config";
 
 const InteractiveDiagram = dynamic(
@@ -59,14 +62,15 @@ export default function HomeContent() {
     <>
       <Suspense><HeroSection /></Suspense>
       <ProblemSection />
-      <SolutionSection />
+      <section className="py-32 md:py-48">
+        <Container>
+          <FadeIn>
+            <LiveScreen />
+          </FadeIn>
+        </Container>
+      </section>
       <ProcessSection />
-      <CTASection
-        headline="Ready to just ship?"
-        subtext="30 minutes. No pitch, no pressure. Just a conversation about what's slowing your team down and how to fix it."
-        buttonText="Let's Talk"
-        buttonHref="/contact"
-      />
+      <HomeCTA />
       <InteractiveDiagram
         isOpen={diagramOpen}
         onClose={() => setDiagramOpen(false)}
