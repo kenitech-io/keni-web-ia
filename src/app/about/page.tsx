@@ -138,7 +138,7 @@ export default function AboutPage() {
       </section>
 
       <CTASection
-        headline="Let's see if we're a good fit."
+        headline="Let's find out how much your infrastructure is really costing you."
         buttonText="Book a free call"
         buttonHref="/contact"
       />

@@ -110,13 +110,13 @@ export default function HeroSection() {
             >
               Book a free call
             </a>
-            <div className="mt-12 pt-10 border-t border-border-color">
+            <div className="mt-12 pt-10 border-t border-border-color w-[130%] -ml-[15%]">
               <a href="/infrastructure-audit">
-                <p className="text-xs tracking-wide font-medium mb-1 hover:opacity-70 transition-opacity">
+                <p className="text-sm tracking-wide font-semibold mb-1 hover:opacity-70 transition-opacity">
                   <span className="text-[#EF6C00]">FREE</span> <span className="text-foreground">INFRASTRUCTURE AUDIT</span>
                 </p>
               </a>
-              <p className="text-xs text-muted font-light">
+              <p className="text-sm text-muted font-light">
                 CI/CD review, security audit, cost analysis, architecture report & actionable roadmap
               </p>
             </div>
