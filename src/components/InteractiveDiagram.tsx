@@ -790,8 +790,8 @@ export default function InteractiveDiagram({
                     width="788"
                     height="20"
                     rx="10"
-                    fill="#f5f5f5"
-                    stroke="#e0e0e0"
+                    fill="var(--pipe-overlay-bg)"
+                    stroke="var(--pipe-overlay-border)"
                     strokeWidth="0.6"
                   />
                   <text
@@ -811,8 +811,8 @@ export default function InteractiveDiagram({
                     width="352"
                     height="20"
                     rx="10"
-                    fill="#f5f5f5"
-                    stroke="#e0e0e0"
+                    fill="var(--pipe-overlay-bg)"
+                    stroke="var(--pipe-overlay-border)"
                     strokeWidth="0.6"
                   />
                   <text
@@ -832,8 +832,8 @@ export default function InteractiveDiagram({
                     width="352"
                     height="20"
                     rx="10"
-                    fill="#f5f5f5"
-                    stroke="#e0e0e0"
+                    fill="var(--pipe-overlay-bg)"
+                    stroke="var(--pipe-overlay-border)"
                     strokeWidth="0.6"
                   />
                   <text
@@ -864,8 +864,8 @@ export default function InteractiveDiagram({
                     width="130"
                     height="28"
                     rx="4"
-                    fill="#EDE7F6"
-                    stroke="#5E35B1"
+                    fill="var(--pipe-purple-bg)"
+                    stroke="var(--pipe-purple-border)"
                     strokeWidth="0.8"
                   />
                   <text
@@ -873,7 +873,7 @@ export default function InteractiveDiagram({
                     y="289"
                     fontSize="11"
                     fontWeight="400"
-                    fill="#4527A0"
+                    fill="var(--pipe-purple-text)"
                     textAnchor="middle"
                   >
                     Build
@@ -891,8 +891,8 @@ export default function InteractiveDiagram({
                     width="130"
                     height="28"
                     rx="4"
-                    fill="#FFF9C4"
-                    stroke="#D4B000"
+                    fill="var(--pipe-yellow-bg)"
+                    stroke="var(--pipe-yellow-border)"
                     strokeWidth="0.8"
                   />
                   <text
@@ -900,7 +900,7 @@ export default function InteractiveDiagram({
                     y="289"
                     fontSize="11"
                     fontWeight="400"
-                    fill="#C6A700"
+                    fill="var(--pipe-yellow-text)"
                     textAnchor="middle"
                   >
                     Store
@@ -918,8 +918,8 @@ export default function InteractiveDiagram({
                     width="130"
                     height="28"
                     rx="4"
-                    fill="#FFF3E0"
-                    stroke="#EF6C00"
+                    fill="var(--pipe-orange-bg)"
+                    stroke="var(--pipe-orange-border)"
                     strokeWidth="0.8"
                   />
                   <text
@@ -927,7 +927,7 @@ export default function InteractiveDiagram({
                     y="289"
                     fontSize="11"
                     fontWeight="400"
-                    fill="#E65100"
+                    fill="var(--pipe-orange-text)"
                     textAnchor="middle"
                   >
                     Deploy
@@ -938,8 +938,8 @@ export default function InteractiveDiagram({
                     width="130"
                     height="28"
                     rx="4"
-                    fill="#FFF3E0"
-                    stroke="#EF6C00"
+                    fill="var(--pipe-orange-bg)"
+                    stroke="var(--pipe-orange-border)"
                     strokeWidth="0.8"
                   />
                   <text
@@ -947,7 +947,7 @@ export default function InteractiveDiagram({
                     y="565"
                     fontSize="11"
                     fontWeight="400"
-                    fill="#E65100"
+                    fill="var(--pipe-orange-text)"
                     textAnchor="middle"
                   >
                     Deploy Agent
@@ -958,8 +958,8 @@ export default function InteractiveDiagram({
                     width="130"
                     height="28"
                     rx="4"
-                    fill="#FFF3E0"
-                    stroke="#EF6C00"
+                    fill="var(--pipe-orange-bg)"
+                    stroke="var(--pipe-orange-border)"
                     strokeWidth="0.8"
                   />
                   <text
@@ -967,7 +967,7 @@ export default function InteractiveDiagram({
                     y="565"
                     fontSize="11"
                     fontWeight="400"
-                    fill="#E65100"
+                    fill="var(--pipe-orange-text)"
                     textAnchor="middle"
                   >
                     Deploy Agent
@@ -985,8 +985,8 @@ export default function InteractiveDiagram({
                     width="130"
                     height="28"
                     rx="4"
-                    fill="#E0F2F1"
-                    stroke="#00897B"
+                    fill="var(--pipe-green-bg)"
+                    stroke="var(--pipe-green-border)"
                     strokeWidth="0.8"
                   />
                   <text
@@ -994,7 +994,7 @@ export default function InteractiveDiagram({
                     y="289"
                     fontSize="11"
                     fontWeight="400"
-                    fill="#00695C"
+                    fill="var(--pipe-green-text)"
                     textAnchor="middle"
                   >
                     Monitoring
@@ -1012,8 +1012,8 @@ export default function InteractiveDiagram({
                     width="130"
                     height="28"
                     rx="4"
-                    fill="#E0F2F1"
-                    stroke="#00897B"
+                    fill="var(--pipe-green-bg)"
+                    stroke="var(--pipe-green-border)"
                     strokeWidth="0.8"
                   />
                   <text
@@ -1021,7 +1021,7 @@ export default function InteractiveDiagram({
                     y="289"
                     fontSize="11"
                     fontWeight="400"
-                    fill="#00695C"
+                    fill="var(--pipe-green-text)"
                     textAnchor="middle"
                   >
                     Alerts
@@ -1039,8 +1039,8 @@ export default function InteractiveDiagram({
                     width="788"
                     height="18"
                     rx="4"
-                    fill="#FCE4EC"
-                    stroke="#C62828"
+                    fill="var(--pipe-red-bg)"
+                    stroke="var(--pipe-red-border)"
                     strokeWidth="0.8"
                   />
                   <text
@@ -1048,7 +1048,7 @@ export default function InteractiveDiagram({
                     y="349"
                     fontSize="9"
                     fontWeight="400"
-                    fill="#C62828"
+                    fill="var(--pipe-red-text)"
                     textAnchor="middle"
                   >
                     Proxy
@@ -1059,8 +1059,8 @@ export default function InteractiveDiagram({
                     width="352"
                     height="18"
                     rx="4"
-                    fill="#FCE4EC"
-                    stroke="#C62828"
+                    fill="var(--pipe-red-bg)"
+                    stroke="var(--pipe-red-border)"
                     strokeWidth="0.8"
                   />
                   <text
@@ -1068,7 +1068,7 @@ export default function InteractiveDiagram({
                     y="689"
                     fontSize="9"
                     fontWeight="400"
-                    fill="#C62828"
+                    fill="var(--pipe-red-text)"
                     textAnchor="middle"
                   >
                     Proxy
@@ -1079,8 +1079,8 @@ export default function InteractiveDiagram({
                     width="352"
                     height="18"
                     rx="4"
-                    fill="#FCE4EC"
-                    stroke="#C62828"
+                    fill="var(--pipe-red-bg)"
+                    stroke="var(--pipe-red-border)"
                     strokeWidth="0.8"
                   />
                   <text
@@ -1088,7 +1088,7 @@ export default function InteractiveDiagram({
                     y="689"
                     fontSize="9"
                     fontWeight="400"
-                    fill="#C62828"
+                    fill="var(--pipe-red-text)"
                     textAnchor="middle"
                   >
                     Proxy
@@ -1107,8 +1107,8 @@ export default function InteractiveDiagram({
                     width="130"
                     height="28"
                     rx="4"
-                    fill="#E3F2FD"
-                    stroke="#1565C0"
+                    fill="var(--pipe-blue-bg)"
+                    stroke="var(--pipe-blue-border)"
                     strokeWidth="0.8"
                   />
                   <text
@@ -1116,7 +1116,7 @@ export default function InteractiveDiagram({
                     y="601"
                     fontSize="11"
                     fontWeight="400"
-                    fill="#0D47A1"
+                    fill="var(--pipe-blue-text)"
                     textAnchor="middle"
                   >
                     Secrets Agent
@@ -1127,8 +1127,8 @@ export default function InteractiveDiagram({
                     width="130"
                     height="28"
                     rx="4"
-                    fill="#E3F2FD"
-                    stroke="#1565C0"
+                    fill="var(--pipe-blue-bg)"
+                    stroke="var(--pipe-blue-border)"
                     strokeWidth="0.8"
                   />
                   <text
@@ -1136,7 +1136,7 @@ export default function InteractiveDiagram({
                     y="601"
                     fontSize="11"
                     fontWeight="400"
-                    fill="#0D47A1"
+                    fill="var(--pipe-blue-text)"
                     textAnchor="middle"
                   >
                     Secrets Agent
@@ -1288,8 +1288,8 @@ export default function InteractiveDiagram({
                     width="314"
                     height="18"
                     rx="4"
-                    fill="#E8F5E9"
-                    stroke="#4CAF50"
+                    fill="var(--pipe-teal-bg)"
+                    stroke="var(--pipe-teal-border)"
                     strokeWidth="0.8"
                   />
                   <text
@@ -1297,7 +1297,7 @@ export default function InteractiveDiagram({
                     y="646"
                     fontSize="9"
                     fontWeight="400"
-                    fill="#2E7D32"
+                    fill="var(--pipe-teal-text)"
                     textAnchor="middle"
                   >
                     Backup Agent

@@ -123,16 +123,16 @@ export default function HeroSection() {
             <span className="text-border-color">&rarr;</span>
             <span className="px-3 py-1.5 border border-border-color rounded text-foreground-secondary">Repo</span>
             <span className="text-border-color">&rarr;</span>
-            <span className="px-3 py-1.5 bg-[#EDE7F6] border border-[#5E35B1] rounded text-[#4527A0]">Build</span>
+            <span className="px-3 py-1.5 rounded" style={{ background: "var(--pipe-purple-bg)", border: "1px solid var(--pipe-purple-border)", color: "var(--pipe-purple-text)" }}>Build</span>
             <span className="text-border-color">&rarr;</span>
-            <span className="px-3 py-1.5 bg-[#E0F2F1] border border-[#00897B] rounded text-[#00695C]">Test</span>
+            <span className="px-3 py-1.5 rounded" style={{ background: "var(--pipe-green-bg)", border: "1px solid var(--pipe-green-border)", color: "var(--pipe-green-text)" }}>Test</span>
           </div>
           <div className="flex items-center gap-2 text-xs text-muted">
-            <span className="px-3 py-1.5 bg-[#FFF9C4] border border-[#D4B000] rounded text-[#C6A700]">Store</span>
+            <span className="px-3 py-1.5 rounded" style={{ background: "var(--pipe-yellow-bg)", border: "1px solid var(--pipe-yellow-border)", color: "var(--pipe-yellow-text)" }}>Store</span>
             <span className="text-border-color">&rarr;</span>
-            <span className="px-3 py-1.5 bg-[#E3F2FD] border border-[#1565C0] rounded text-[#0D47A1]">Secrets</span>
+            <span className="px-3 py-1.5 rounded" style={{ background: "var(--pipe-blue-bg)", border: "1px solid var(--pipe-blue-border)", color: "var(--pipe-blue-text)" }}>Secrets</span>
             <span className="text-border-color">&rarr;</span>
-            <span className="px-3 py-1.5 bg-[#FFF3E0] border border-[#EF6C00] rounded text-[#E65100]">Deploy</span>
+            <span className="px-3 py-1.5 rounded" style={{ background: "var(--pipe-orange-bg)", border: "1px solid var(--pipe-orange-border)", color: "var(--pipe-orange-text)" }}>Deploy</span>
           </div>
           <p className="text-[10px] text-muted mt-1 tracking-wide uppercase">CI / CD Pipeline</p>
         </div>
@@ -160,14 +160,14 @@ export default function HeroSection() {
             <rect x="80" y="34" width="80" height="28" rx="4" fill="none" stroke="var(--border-color)" strokeWidth="0.8" strokeDasharray="4 3" />
             <text x="120" y="52" fontSize="10" fontWeight="300" fill="var(--muted)" textAnchor="middle">Repo</text>
 
-            <rect x="185" y="34" width="100" height="28" rx="4" fill="#EDE7F6" stroke="#5E35B1" strokeWidth="0.8" />
-            <text x="235" y="52" fontSize="11" fontWeight="400" fill="#4527A0" textAnchor="middle">Build</text>
+            <rect x="185" y="34" width="100" height="28" rx="4" fill="var(--pipe-purple-bg)" stroke="var(--pipe-purple-border)" strokeWidth="0.8" />
+            <text x="235" y="52" fontSize="11" fontWeight="400" fill="var(--pipe-purple-text)" textAnchor="middle">Build</text>
 
-            <rect x="310" y="34" width="100" height="28" rx="4" fill="#E0F2F1" stroke="#00897B" strokeWidth="0.8" />
-            <text x="360" y="52" fontSize="11" fontWeight="400" fill="#00695C" textAnchor="middle">Test</text>
+            <rect x="310" y="34" width="100" height="28" rx="4" fill="var(--pipe-green-bg)" stroke="var(--pipe-green-border)" strokeWidth="0.8" />
+            <text x="360" y="52" fontSize="11" fontWeight="400" fill="var(--pipe-green-text)" textAnchor="middle">Test</text>
 
-            <rect x="480" y="34" width="100" height="28" rx="4" fill="#FFF9C4" stroke="#D4B000" strokeWidth="0.8" />
-            <text x="530" y="52" fontSize="11" fontWeight="400" fill="#C6A700" textAnchor="middle">Store</text>
+            <rect x="480" y="34" width="100" height="28" rx="4" fill="var(--pipe-yellow-bg)" stroke="var(--pipe-yellow-border)" strokeWidth="0.8" />
+            <text x="530" y="52" fontSize="11" fontWeight="400" fill="var(--pipe-yellow-text)" textAnchor="middle">Store</text>
 
             <line x1="580" y1="48" x2="650" y2="48" stroke="var(--border-color)" strokeWidth="0.8" />
             <path d="M530 62 L530 100 Q530 128 550 128 L650 128" stroke="var(--border-color)" strokeWidth="0.8" fill="none" />
@@ -175,27 +175,27 @@ export default function HeroSection() {
 
             <rect x="620" y="18" width="310" height="60" rx="4" fill="transparent" stroke="var(--border-color)" strokeWidth="0.8" strokeDasharray="4 3" />
             <text x="775" y="12" fontSize="9" fontWeight="500" fill="var(--muted)" textAnchor="middle" letterSpacing="1.5">CD</text>
-            <rect x="650" y="34" width="100" height="28" rx="4" fill="#E3F2FD" stroke="#1565C0" strokeWidth="0.8" />
-            <text x="700" y="52" fontSize="10" fontWeight="400" fill="#0D47A1" textAnchor="middle">Secrets</text>
+            <rect x="650" y="34" width="100" height="28" rx="4" fill="var(--pipe-blue-bg)" stroke="var(--pipe-blue-border)" strokeWidth="0.8" />
+            <text x="700" y="52" fontSize="10" fontWeight="400" fill="var(--pipe-blue-text)" textAnchor="middle">Secrets</text>
             <line x1="750" y1="48" x2="780" y2="48" stroke="var(--border-color)" strokeWidth="0.8" />
-            <rect x="780" y="34" width="100" height="28" rx="4" fill="#FFF3E0" stroke="#EF6C00" strokeWidth="0.8" />
-            <text x="830" y="52" fontSize="11" fontWeight="400" fill="#E65100" textAnchor="middle">DEV</text>
+            <rect x="780" y="34" width="100" height="28" rx="4" fill="var(--pipe-orange-bg)" stroke="var(--pipe-orange-border)" strokeWidth="0.8" />
+            <text x="830" y="52" fontSize="11" fontWeight="400" fill="var(--pipe-orange-text)" textAnchor="middle">DEV</text>
 
             <rect x="620" y="98" width="310" height="60" rx="4" fill="transparent" stroke="var(--border-color)" strokeWidth="0.8" strokeDasharray="4 3" />
             <text x="775" y="92" fontSize="9" fontWeight="500" fill="var(--muted)" textAnchor="middle" letterSpacing="1.5">CD</text>
-            <rect x="650" y="114" width="100" height="28" rx="4" fill="#E3F2FD" stroke="#1565C0" strokeWidth="0.8" />
-            <text x="700" y="132" fontSize="10" fontWeight="400" fill="#0D47A1" textAnchor="middle">Secrets</text>
+            <rect x="650" y="114" width="100" height="28" rx="4" fill="var(--pipe-blue-bg)" stroke="var(--pipe-blue-border)" strokeWidth="0.8" />
+            <text x="700" y="132" fontSize="10" fontWeight="400" fill="var(--pipe-blue-text)" textAnchor="middle">Secrets</text>
             <line x1="750" y1="128" x2="780" y2="128" stroke="var(--border-color)" strokeWidth="0.8" />
-            <rect x="780" y="114" width="100" height="28" rx="4" fill="#FFF3E0" stroke="#EF6C00" strokeWidth="0.8" />
-            <text x="830" y="132" fontSize="11" fontWeight="400" fill="#E65100" textAnchor="middle">STG</text>
+            <rect x="780" y="114" width="100" height="28" rx="4" fill="var(--pipe-orange-bg)" stroke="var(--pipe-orange-border)" strokeWidth="0.8" />
+            <text x="830" y="132" fontSize="11" fontWeight="400" fill="var(--pipe-orange-text)" textAnchor="middle">STG</text>
 
             <rect x="620" y="188" width="310" height="60" rx="4" fill="transparent" stroke="var(--border-color)" strokeWidth="0.8" strokeDasharray="4 3" />
             <text x="775" y="182" fontSize="9" fontWeight="500" fill="var(--muted)" textAnchor="middle" letterSpacing="1.5">CD</text>
-            <rect x="650" y="204" width="100" height="28" rx="4" fill="#E3F2FD" stroke="#1565C0" strokeWidth="0.8" />
-            <text x="700" y="222" fontSize="10" fontWeight="400" fill="#0D47A1" textAnchor="middle">Secrets</text>
+            <rect x="650" y="204" width="100" height="28" rx="4" fill="var(--pipe-blue-bg)" stroke="var(--pipe-blue-border)" strokeWidth="0.8" />
+            <text x="700" y="222" fontSize="10" fontWeight="400" fill="var(--pipe-blue-text)" textAnchor="middle">Secrets</text>
             <line x1="750" y1="218" x2="780" y2="218" stroke="var(--border-color)" strokeWidth="0.8" />
-            <rect x="780" y="204" width="100" height="28" rx="4" fill="#FFF3E0" stroke="#EF6C00" strokeWidth="0.8" />
-            <text x="830" y="222" fontSize="11" fontWeight="400" fill="#E65100" textAnchor="middle">PRO</text>
+            <rect x="780" y="204" width="100" height="28" rx="4" fill="var(--pipe-orange-bg)" stroke="var(--pipe-orange-border)" strokeWidth="0.8" />
+            <text x="830" y="222" fontSize="11" fontWeight="400" fill="var(--pipe-orange-text)" textAnchor="middle">PRO</text>
 
             <circle r="2.5" fill="var(--foreground)" opacity="0">
               <animate attributeName="cx" values="58;80;160;185" dur="1.5s" repeatCount="indefinite" begin="1s" calcMode="spline" keySplines="0.25 0.1 0.25 1;0.25 0.1 0.25 1;0.25 0.1 0.25 1" />

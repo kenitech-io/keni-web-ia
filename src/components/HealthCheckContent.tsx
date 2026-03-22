@@ -430,7 +430,7 @@ export default function HealthCheckContent() {
 
       {/* Questions */}
       {!showResults && currentQuestion && (
-        <section className="min-h-screen flex items-center justify-center relative">
+        <section className="min-h-screen flex items-center justify-center relative pt-20 md:pt-0">
           <Container>
             <div className="max-w-[640px] mx-auto text-center">
 
