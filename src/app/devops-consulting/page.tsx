@@ -163,9 +163,6 @@ export default function DevOpsConsultingPage() {
         </Container>
       </section>
 
-      {/* What We Do */}
-      <ProcessSection />
-
       {/* How We Work */}
       <section className="py-32 md:py-48">
         <Container>
@@ -179,6 +176,9 @@ export default function DevOpsConsultingPage() {
           </FadeIn>
         </Container>
       </section>
+
+      {/* What We Do */}
+      <ProcessSection />
 
       {/* Why Keni */}
       <section className="py-32 md:py-48">
