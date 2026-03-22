@@ -4,7 +4,6 @@ import FadeIn from "@/components/ui/FadeIn";
 import CTASection from "@/components/CTASection";
 import ProcessSection from "@/components/home/ProcessSection";
 import PhaseScreen from "@/components/PhaseScreen";
-import { phases } from "@/data/phases";
 
 export const metadata: Metadata = {
   title: "DevOps Consulting Services for Small Teams",
