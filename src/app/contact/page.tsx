@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Metadata } from "next";
 import ContactPageContent from "@/components/ContactPageContent";
 
@@ -36,7 +37,7 @@ export default function ContactPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <ContactPageContent />
+      <Suspense><ContactPageContent /></Suspense>
     </>
   );
 }

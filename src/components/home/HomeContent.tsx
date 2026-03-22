@@ -2,7 +2,6 @@
 
 import { useState, Suspense } from "react";
 import dynamic from "next/dynamic";
-import Image from "next/image";
 import HeroSection from "@/components/home/HeroSection";
 import ProblemSection from "@/components/home/ProblemSection";
 import ProcessSection from "@/components/home/ProcessSection";

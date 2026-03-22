@@ -3,7 +3,6 @@ import Image from "next/image";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
 import CTASection from "@/components/CTASection";
-import LiveScreen from "@/components/LiveScreen";
 
 export const metadata: Metadata = {
   title: "About Us: DevOps Engineers for SMBs",
@@ -26,19 +25,6 @@ const values = [
   {
     title: "We leave you stronger",
     text: "We work alongside your team and make sure that when we step back, your team feels capable and in control.",
-  },
-];
-
-const team = [
-  {
-    name: "Ane Ugarte",
-    role: "CEO",
-    image: "/team/ane.jpg",
-  },
-  {
-    name: "Mikel Martin",
-    role: "CTO",
-    image: "/team/mikel.jpg",
   },
 ];
 

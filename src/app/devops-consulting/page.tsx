@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
 import CTASection from "@/components/CTASection";
