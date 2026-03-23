@@ -1,75 +1,140 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const pipelineSteps = [
   { name: "Build", status: "done" },
   { name: "Test", status: "done" },
-  { name: "Security Scan", status: "done" },
-  { name: "Deploy to STG", status: "done" },
-  { name: "Deploy to PRO", status: "running" },
+  { name: "Push Image", status: "done" },
+  { name: "Deploy STG", status: "done" },
+  { name: "Deploy PRO", status: "running" },
 ];
 
-const logs = [
-  "$ terraform plan",
-  "Refreshing state...",
-  "Plan: 3 to add, 1 to change, 0 to destroy.",
-  "$ terraform apply -auto-approve",
-  "aws_ecs_service.api: Creating...",
-  "aws_ecs_service.api: Creation complete [id=arn:aws:ecs:...]",
-  "aws_cloudwatch_log_group.api: Creating...",
-  "aws_cloudwatch_log_group.api: Creation complete",
-  "Apply complete! Resources: 3 added, 1 changed, 0 destroyed.",
+const infraLogs = [
+  "$ ansible-playbook provision.yml -i production",
+  "PLAY [Provision infrastructure]",
   "",
-  "$ kubectl get pods -n production",
-  "NAME                    READY   STATUS    RESTARTS   AGE",
-  "api-7d4b8c6f9-x2k1p    1/1     Running   0          12s",
-  "api-7d4b8c6f9-m3j5q    1/1     Running   0          12s",
-  "worker-5f8a9b2c1-h8n3   1/1     Running   0          45s",
+  "TASK [Gather facts]",
+  "ok: [pro-api-01]",
+  "ok: [pro-api-02]",
+  "ok: [pro-worker-01]",
   "",
-  "$ argocd app sync production",
-  "TIMESTAMP    GROUP   KIND        NAME    STATUS   HEALTH",
-  "12:34:05     apps    Deployment  api     Synced   Healthy",
-  "12:34:05     apps    Deployment  worker  Synced   Healthy",
-  "12:34:06            Service     api     Synced   Healthy",
+  "TASK [Install Docker]",
+  "ok: [pro-api-01]",
+  "ok: [pro-api-02]",
+  "changed: [pro-worker-01]",
   "",
-  "✓ All resources are synced and healthy",
+  "TASK [Configure Caddy reverse proxy]",
+  "changed: [pro-api-01]",
+  "ok: [pro-api-02]",
   "",
-  "$ promtool check rules alerts.yml",
-  "Checking alerts.yml",
-  "  SUCCESS: 12 rules found",
+  "TASK [Deploy monitoring stack]",
+  "changed: [pro-api-01]",
+  "changed: [pro-api-02]",
   "",
-  "$ grafana-cli plugins ls",
-  "installed plugins:",
-  "  grafana-piechart-panel @ 1.6.2",
-  "  grafana-clock-panel @ 2.1.0",
+  "TASK [Configure firewall rules]",
+  "ok: [pro-api-01]",
+  "ok: [pro-api-02]",
+  "ok: [pro-worker-01]",
   "",
-  "Deployment complete. All systems operational.",
+  "PLAY RECAP",
+  "pro-api-01    : ok=8  changed=3  failed=0",
+  "pro-api-02    : ok=8  changed=1  failed=0",
+  "pro-worker-01 : ok=6  changed=2  failed=0",
+  "",
+  "✓ Infrastructure provisioned successfully.",
 ];
 
-function Terminal() {
-  const [visibleLines, setVisibleLines] = useState(0);
+const devLogs = [
+  "$ git checkout -b feature/add-billing-api",
+  "Switched to a new branch 'feature/add-billing-api'",
+  "",
+  "$ git add -A && git commit -m 'Add billing endpoint'",
+  "[feature/add-billing-api e7b4a91] Add billing endpoint",
+  " 4 files changed, 127 insertions(+), 3 deletions(-)",
+  "",
+  "$ git push origin feature/add-billing-api",
+  "remote: Create a pull request on GitHub:",
+  "remote:   https://github.com/client/api/pull/new/...",
+  "",
+  "$ gh pr create --fill",
+  "Creating pull request for feature/add-billing-api",
+  "https://github.com/client/api/pull/142",
+  "",
+  "$ gh pr checks 142 --watch",
+  "  Build .......... pass (18s)",
+  "  Lint ........... pass (4s)",
+  "  Test ........... pass (31s)",
+  "  Security scan .. pass (12s)",
+  "✓ All checks passed",
+  "",
+  "$ gh pr merge 142 --squash",
+  "Merged pull request #142",
+  "",
+  "$ git tag v2.4.1 && git push --tags",
+  "To github.com:client/api.git",
+  "  * [new tag]  v2.4.1 -> v2.4.1",
+  "",
+  "✓ Release v2.4.1 tagged.",
+];
+
+const deployLogs = [
+  "$ gh run watch",
+  "Run triggered: Deploy v2.4.1 #248",
+  "  Build image .... pass (22s)",
+  "  Push to registry pass (8s)",
+  "  Notify deploy .. pass (1s)",
+  "✓ Pipeline #248 completed in 31s",
+  "",
+  "$ docker compose pull",
+  "Pulling api     ... done",
+  "Pulling worker  ... done",
+  "Pulling redis   ... skipped (up to date)",
+  "",
+  "$ docker compose up -d",
+  "Recreating api    ... done",
+  "Recreating worker ... done",
+  "",
+  "$ docker compose ps",
+  "NAME        STATUS          PORTS",
+  "api         Up (healthy)    8080/tcp",
+  "worker      Up (healthy)    -",
+  "redis       Up (healthy)    6379/tcp",
+  "caddy       Up (healthy)    80/tcp, 443/tcp",
+  "",
+  "$ curl -s localhost:8080/health | jq .",
+  '{  "status": "ok",  "version": "2.4.1"  }',
+  "",
+  "✓ Deployment complete. All services healthy.",
+];
+
+function Terminal({ lines }: { lines: string[] }) {
+  const [visibleCount, setVisibleCount] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setVisibleLines((prev) => {
-        if (prev >= logs.length) return 0;
-        return prev + 1;
-      });
-    }, 600);
-    return () => clearInterval(interval);
-  }, []);
+    setVisibleCount(0);
+  }, [lines]);
 
-  const displayLines = logs.slice(
-    Math.max(0, visibleLines - 14),
-    visibleLines
-  );
+  useEffect(() => {
+    if (visibleCount >= lines.length) return;
+    const timeout = setTimeout(() => {
+      setVisibleCount((prev) => prev + 1);
+    }, 350);
+    return () => clearTimeout(timeout);
+  }, [visibleCount, lines]);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.scrollTop = containerRef.current.scrollHeight;
+    }
+  }, [visibleCount]);
 
   return (
-    <div className="font-mono text-[10px] md:text-xs leading-relaxed">
-      {displayLines.map((line, i) => (
+    <div ref={containerRef} className="font-mono text-[10px] md:text-xs leading-relaxed h-full overflow-hidden">
+      {lines.slice(0, visibleCount).map((line, i) => (
         <div
-          key={`${visibleLines}-${i}`}
+          key={i}
           className={
             line.startsWith("$")
               ? "text-green-400"
@@ -79,14 +144,13 @@ function Terminal() {
               ? "text-emerald-400"
               : "text-[#8b949e]"
           }
-          style={{
-            animation: "lineIn 0.3s ease-out",
-          }}
         >
           {line || "\u00A0"}
         </div>
       ))}
-      <span className="inline-block w-[6px] h-[14px] bg-green-400/70 animate-pulse ml-0.5" />
+      {visibleCount < lines.length && (
+        <span className="inline-block w-[6px] h-[14px] bg-green-400/70 animate-pulse ml-0.5" />
+      )}
     </div>
   );
 }
@@ -97,7 +161,7 @@ function Pipeline() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveStep((prev) => (prev >= 4 ? 0 : prev + 1));
-    }, 2000);
+    }, 4000);
     return () => clearInterval(interval);
   }, []);
 
@@ -144,7 +208,7 @@ function Pipeline() {
           )}
           {i < activeStep && (
             <span className="text-[9px] text-green-400/30 font-mono">
-              {Math.floor(Math.random() * 20 + 5)}s
+              {[18, 4, 31, 12, 9][i]}s
             </span>
           )}
         </div>
@@ -157,8 +221,10 @@ function Metrics() {
   const [cpu, setCpu] = useState(23);
   const [mem, setMem] = useState(41);
   const [req, setReq] = useState(847);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const interval = setInterval(() => {
       setCpu(Math.floor(Math.random() * 15 + 18));
       setMem(Math.floor(Math.random() * 10 + 38));
@@ -166,6 +232,8 @@ function Metrics() {
     }, 3000);
     return () => clearInterval(interval);
   }, []);
+
+  if (!mounted) return null;
 
   return (
     <div className="space-y-3">
@@ -215,7 +283,15 @@ function Metric({
   );
 }
 
+const tabs = [
+  { label: "Developer", logs: devLogs },
+  { label: "Deploy", logs: deployLogs },
+  { label: "Infra", logs: infraLogs },
+];
+
 export default function LiveScreen() {
+  const [activeTab, setActiveTab] = useState(0);
+
   return (
     <>
       <style>{`
@@ -234,14 +310,28 @@ export default function LiveScreen() {
               <div className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
               <div className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
             </div>
-            <span className="text-[10px] text-[#484f58] font-mono ml-2">Keni — internal development platform</span>
+            <div className="flex gap-0 ml-4">
+              {tabs.map((tab, i) => (
+                <button
+                  key={tab.label}
+                  onClick={() => setActiveTab(i)}
+                  className={`px-4 py-1 text-[10px] font-mono transition-colors ${
+                    i === activeTab
+                      ? "text-[#c9d1d9] bg-[#161b22] rounded-t"
+                      : "text-[#484f58] hover:text-[#8b949e]"
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Content */}
           <div className="grid grid-cols-1 md:grid-cols-[1fr_280px] h-[420px] md:h-[380px]">
             {/* Terminal */}
             <div className="p-5 md:p-6 border-b md:border-b-0 md:border-r border-[#1b2028] overflow-hidden">
-              <Terminal />
+              <Terminal lines={tabs[activeTab].logs} />
             </div>
 
             {/* Sidebar */}
