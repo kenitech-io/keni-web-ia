@@ -336,7 +336,7 @@ export default function TailscaleVsNetbird() {
       <CTASection
         headline="Need help connecting your infrastructure?"
         subtext="30 minutes. We will look at your setup and recommend the right networking approach."
-        buttonText="Book a Free Consultation"
+        buttonText="Book a free call"
         buttonHref="/contact"
       />
     </main>

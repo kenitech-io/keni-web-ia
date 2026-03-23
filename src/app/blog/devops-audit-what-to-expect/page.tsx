@@ -338,7 +338,7 @@ export default function DevOpsAuditWhatToExpect() {
       <CTASection
         headline="Want the full picture?"
         subtext="30 minutes. We will walk you through how the audit works for your specific setup."
-        buttonText="Book a Free Consultation"
+        buttonText="Book a free call"
         buttonHref="/contact"
       />
     </main>

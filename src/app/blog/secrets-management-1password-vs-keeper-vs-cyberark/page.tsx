@@ -387,7 +387,7 @@ export default function SecretsManagementComparison() {
       <CTASection
         headline="Want to lock down your secrets?"
         subtext="30 minutes. We will look at how your team handles credentials and recommend the right approach."
-        buttonText="Book a Free Consultation"
+        buttonText="Book a free call"
         buttonHref="/contact"
       />
     </main>

@@ -97,10 +97,10 @@ export default function HeroSection() {
                 lineHeight: 1.1,
               }}
             >
-              Push. Deploy. Build.
+              Push. Build. Deploy.
             </h1>
             <p className="text-foreground-secondary text-base md:text-lg font-light mt-5 mb-9 max-w-[520px] mx-auto leading-relaxed">
-              We take care of the plumbing so you can build the house.
+              We automate everything so your team can focus on product.
             </p>
             <a
               href={BOOKING_URL}

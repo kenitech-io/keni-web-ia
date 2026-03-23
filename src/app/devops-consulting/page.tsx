@@ -143,12 +143,16 @@ export default function DevOpsConsultingPage() {
             </FadeIn>
             <FadeIn delay={0.1}>
               <h2 className="text-heading text-foreground font-light tracking-wide mb-8">
-                53% of SMBs lack DevOps capabilities
+                Only 47% of SMBs use DevOps tools
               </h2>
             </FadeIn>
             <FadeIn delay={0.2}>
+              <p className="text-sm text-foreground leading-loose font-light mb-2">
+                According to Statista, the majority of small and mid-sized
+                businesses still operate without proper DevOps practices.
+              </p>
               <p className="text-sm text-foreground leading-loose font-light mb-6">
-                Hiring a full-time DevOps engineer in the US costs $130K-$220K+
+                Hiring a full-time DevOps engineer in the US costs $130K-$220K
                 per year when you include benefits and overhead. For a team of
                 5-30 developers, that&apos;s a significant investment for a role that
                 might not need to be full-time.

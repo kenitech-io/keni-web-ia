@@ -331,7 +331,7 @@ export default function DockerVsPodman() {
       <CTASection
         headline="Building your container platform?"
         subtext="30 minutes. We will help you pick the right runtime and orchestration for your team."
-        buttonText="Book a Free Consultation"
+        buttonText="Book a free call"
         buttonHref="/contact"
       />
     </main>

@@ -401,7 +401,7 @@ export default function GithubActionsVsGitlabCiVsJenkins() {
       <CTASection
         headline="Need help setting up CI/CD?"
         subtext="30 minutes. We will look at your current pipeline and tell you what to improve."
-        buttonText="Book a Free Consultation"
+        buttonText="Book a free call"
         buttonHref="/contact"
       />
     </main>
