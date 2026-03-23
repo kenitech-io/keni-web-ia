@@ -286,8 +286,8 @@ export default function PlatformPageContent() {
       {/* Bottom CTA */}
       <CTASection
         headline="Want us to build yours?"
-        subtext="30 minutes. We look at your current setup and tell you exactly what we would change, and why."
-        buttonText="Book a call"
+        subtext="We look at your current setup and tell you exactly what we would change, and why."
+        buttonText="Let's talk"
         buttonHref="/contact"
       />
     </main>

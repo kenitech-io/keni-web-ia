@@ -52,7 +52,7 @@ const faqJsonLd = {
       name: "How much does an infrastructure audit cost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Pricing depends on the size and complexity of your infrastructure. We price audits based on ROI share, so the cost scales with the value we find. Book a free call and we'll scope it together.",
+        text: "Pricing depends on the size and complexity of your infrastructure. We price audits based on ROI share, so the cost scales with the value we find. Get in touch and we will scope it together.",
       },
     },
   ],
@@ -307,8 +307,8 @@ export default function InfrastructureAuditPage() {
 
       <CTASection
         headline="Ready to see the full picture?"
-        subtext="30 minutes. We will walk you through how the audit works and whether it makes sense for your team."
-        buttonText="Book a free call"
+        subtext="We will walk you through how the audit works and whether it makes sense for your team."
+        buttonText="Let's talk"
         buttonHref="/contact"
       />
     </main>

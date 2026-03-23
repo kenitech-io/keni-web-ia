@@ -218,8 +218,8 @@ export default function DevOpsConsultingPage() {
 
       <CTASection
         headline="Ready to stop firefighting?"
-        subtext="30 minutes. No pitch, no pressure. Just a conversation about what's slowing your team down and how to fix it."
-        buttonText="Book a free call"
+        subtext="Just a conversation about what's slowing your team down and how to fix it."
+        buttonText="Let's talk"
         buttonHref="/contact"
       />
     </main>

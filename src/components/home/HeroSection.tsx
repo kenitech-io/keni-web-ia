@@ -108,7 +108,7 @@ export default function HeroSection() {
               rel="noopener noreferrer"
               className="inline-block bg-foreground hover:bg-foreground/85 text-background px-10 py-3 text-base font-light tracking-wide rounded-full transition-colors"
             >
-              Book a free call
+              Let&apos;s talk
             </a>
             <div className="mt-12 pt-10 border-t border-border-color w-[130%] -ml-[15%]">
               <a href="/infrastructure-audit">

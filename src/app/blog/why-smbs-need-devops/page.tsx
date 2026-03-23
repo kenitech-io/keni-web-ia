@@ -305,8 +305,8 @@ export default function WhySMBsNeedDevOps() {
 
       <CTASection
         headline="Want to talk about your setup?"
-        subtext="30 minutes. We will look at your situation and tell you what we would change."
-        buttonText="Book a free call"
+        subtext="We will look at your situation and tell you what we would change."
+        buttonText="Let's talk"
         buttonHref="/contact"
       />
     </main>

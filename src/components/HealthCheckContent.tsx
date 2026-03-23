@@ -642,7 +642,7 @@ export default function HealthCheckContent() {
                     rel="noopener noreferrer"
                     className="inline-block bg-foreground hover:bg-foreground/85 text-background px-8 py-3 text-sm font-light tracking-wide rounded-full transition-colors"
                   >
-                    Book a free call
+                    Let&apos;s talk
                   </a>
                 </div>
               </FadeIn>

@@ -353,8 +353,8 @@ export default function TraefikVsNginxVsHAProxy() {
 
       <CTASection
         headline="Not sure which proxy fits your setup?"
-        subtext="30 minutes. We will look at your current infrastructure and recommend the right tools."
-        buttonText="Book a free call"
+        subtext="We will look at your current infrastructure and recommend the right tools."
+        buttonText="Let's talk"
         buttonHref="/contact"
       />
     </main>

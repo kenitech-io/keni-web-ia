@@ -361,8 +361,8 @@ export default function ArgoCdVsFluxVsWatchtower() {
 
       <CTASection
         headline="Want automated deployments for your team?"
-        subtext="30 minutes. We will look at your infrastructure and recommend the right CD approach."
-        buttonText="Book a free call"
+        subtext="We will look at your infrastructure and recommend the right CD approach."
+        buttonText="Let's talk"
         buttonHref="/contact"
       />
     </main>

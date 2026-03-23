@@ -3,9 +3,9 @@ import { Metadata } from "next";
 import ContactPageContent from "@/components/ContactPageContent";
 
 export const metadata: Metadata = {
-  title: "Contact Us: Book a Free DevOps Consultation",
+  title: "Contact Us: DevOps Consultation",
   description:
-    "Book a free 30-minute DevOps consultation with Keni Engineering. No pitch, no pressure. Tell us about your infrastructure challenges and we will show you how to fix them.",
+    "Tell us about your infrastructure challenges. Keni Engineering helps small teams set up CI/CD, automate deploys, and build internal development platforms.",
   alternates: {
     canonical: "https://kenitech.io/contact",
   },

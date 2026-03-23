@@ -114,7 +114,7 @@ export default function BlogPage() {
 
       <CTASection
         headline="Want to know where your team stands?"
-        buttonText="Book a free call"
+        buttonText="Let's talk"
         buttonHref="/contact"
       />
     </main>

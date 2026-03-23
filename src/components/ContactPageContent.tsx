@@ -58,8 +58,8 @@ export default function ContactPageContent() {
                 Let&apos;s take this off your plate
               </h1>
               <p className="text-sm text-foreground-secondary leading-loose font-light max-w-[480px] mx-auto">
-                Pick a time that works for you. 30 minutes, no pitch, no pressure
-                just a calm conversation about what&apos;s keeping you up at night.
+                Pick a time that works for you.
+                A calm conversation about what&apos;s keeping you up at night.
               </p>
             </div>
           </FadeIn>

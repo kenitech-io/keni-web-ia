@@ -21,7 +21,6 @@ export default function HomeCTA() {
           </FadeIn>
           <FadeIn delay={0.14}>
             <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-10">
-              30 minutes with us. No pitch, no pressure.
               Just a conversation about what&apos;s slowing your team down.
             </p>
           </FadeIn>
@@ -32,7 +31,7 @@ export default function HomeCTA() {
               rel="noopener noreferrer"
               className="inline-block bg-foreground hover:bg-foreground/85 text-background px-10 py-3 text-base font-light tracking-wide rounded-full transition-colors"
             >
-              Book a free call
+              Let&apos;s talk
             </a>
           </FadeIn>
           <FadeIn delay={0.25}>
