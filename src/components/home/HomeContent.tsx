@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, Suspense } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import HeroSection from "@/components/home/HeroSection";
@@ -60,7 +60,7 @@ export default function HomeContent() {
 
   return (
     <>
-      <Suspense><HeroSection /></Suspense>
+      <HeroSection />
       <ProblemSection />
 
       {/* Pipeline + Terminals */}

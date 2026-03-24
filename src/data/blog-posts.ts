@@ -80,4 +80,31 @@ export const blogPosts: BlogPost[] = [
     readTime: "5 min read",
     category: "Infrastructure",
   },
+  {
+    slug: "devops-checklist-for-startups",
+    title: "The DevOps Checklist for Startups: 15 Things to Get Right Before You Scale",
+    description:
+      "A practical 15-point checklist covering version control, CI/CD, containers, secrets management, monitoring, IaC, and the other foundations every startup needs before scaling.",
+    date: "2026-03-19",
+    readTime: "10 min read",
+    category: "DevOps",
+  },
+  {
+    slug: "how-much-does-devops-cost",
+    title: "How Much Does DevOps Cost in 2026? Full-Time Hire vs Consulting vs DIY",
+    description:
+      "A full breakdown of DevOps costs. Full-time engineer ($130K-$220K), consulting ($5K-$20K per project), and DIY. Salary data, hidden costs, and ROI comparison.",
+    date: "2026-03-21",
+    readTime: "8 min read",
+    category: "DevOps",
+  },
+  {
+    slug: "kubernetes-vs-docker-compose",
+    title: "Kubernetes vs Docker Compose: Which One Does Your Team Actually Need? (2026)",
+    description:
+      "For teams with 2-30 developers, Docker Compose is usually the right choice. When K8s makes sense, cost comparison, operational overhead, and the migration path.",
+    date: "2026-03-23",
+    readTime: "9 min read",
+    category: "Containers",
+  },
 ];

@@ -5,14 +5,14 @@ import FadeIn from "@/components/ui/FadeIn";
 import CTASection from "@/components/CTASection";
 
 export const metadata: Metadata = {
-  title: "DevOps Infrastructure Audit",
+  title: "DevOps Infrastructure Audit in 72 Hours | Keni Engineering",
   description:
-    "Get a complete picture of your infrastructure in 72 hours. We audit your CI/CD pipelines, deployment process, monitoring, secrets management, and disaster recovery. Clear report with prioritized recommendations.",
+    "Get a full infrastructure audit in 72 hours. We review your CI/CD, deployments, monitoring, secrets, and disaster recovery. Prioritized roadmap included.",
   alternates: {
     canonical: "https://kenitech.io/infrastructure-audit",
   },
   openGraph: {
-    title: "DevOps Infrastructure Audit | Keni Engineering",
+    title: "DevOps Infrastructure Audit in 72 Hours | Keni Engineering",
     description:
       "Get a complete picture of your infrastructure in 72 hours. Clear report with prioritized recommendations for your team.",
     url: "https://kenitech.io/infrastructure-audit",
@@ -165,7 +165,7 @@ export default function InfrastructureAuditPage() {
           <div className="max-w-[640px] mx-auto text-center">
             <FadeIn>
               <h1 className="text-heading text-foreground font-light tracking-wide mb-8">
-                Know exactly where your infrastructure stands
+                A full infrastructure audit of your stack, delivered in 72 hours
               </h1>
             </FadeIn>
             <FadeIn delay={0.1}>

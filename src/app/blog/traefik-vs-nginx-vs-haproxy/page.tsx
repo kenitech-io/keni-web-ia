@@ -3,6 +3,7 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
 import CTASection from "@/components/CTASection";
+import BlogEmailCapture from "@/components/BlogEmailCapture";
 
 export const metadata: Metadata = {
   title: "Traefik vs Nginx vs HAProxy: Choosing a Reverse Proxy in 2026",
@@ -27,10 +28,12 @@ const jsonLd = {
   description:
     "A practical comparison of Traefik, Nginx, and HAProxy for small to mid-sized teams.",
   datePublished: "2026-03-07",
+  dateModified: "2026-03-07",
+  image: "https://kenitech.io/blog/traefik-vs-nginx-vs-haproxy/opengraph-image",
   author: {
-    "@type": "Organization",
-    name: "Keni Engineering",
-    url: "https://kenitech.io",
+    "@type": "Person",
+    name: "Mikel Martin",
+    url: "https://www.linkedin.com/in/mikelmartin/",
   },
   publisher: {
     "@type": "Organization",
@@ -68,6 +71,14 @@ export default function TraefikVsNginxVsHAProxy() {
                   Traefik vs Nginx vs HAProxy: choosing a reverse proxy in 2026
                 </h1>
                 <p className="text-label text-muted/60 font-light">March 7, 2026 &middot; 8 min read</p>
+                <div className="flex items-center gap-3 mt-6">
+                  <div>
+                    <p className="text-sm text-foreground font-light">
+                      <a href="https://www.linkedin.com/in/mikelmartin/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground/80 transition-colors">Mikel Martin</a>
+                    </p>
+                    <p className="text-xs text-muted/60 font-light">CTO, Keni Engineering</p>
+                  </div>
+                </div>
               </FadeIn>
             </div>
           </Container>
@@ -357,10 +368,19 @@ export default function TraefikVsNginxVsHAProxy() {
                   </p>
                 </div>
               </FadeIn>
+              <FadeIn delay={0.2}>
+                <h2 className="text-xl font-light text-foreground tracking-wide mt-16 mb-6">Related reading</h2>
+                <ul className="space-y-3">
+                  <li><Link href="/blog/docker-vs-podman" className="text-foreground-secondary hover:text-foreground transition-colors">Docker vs Podman: which container runtime should you use in 2026</Link></li>
+                  <li><Link href="/blog/tailscale-vs-netbird-overlay-networks" className="text-foreground-secondary hover:text-foreground transition-colors">Tailscale vs Netbird vs ZeroTier: overlay networks for small teams</Link></li>
+                </ul>
+              </FadeIn>
             </div>
           </Container>
         </section>
       </article>
+
+      <BlogEmailCapture />
 
       <CTASection
         headline="Not sure which proxy fits your setup?"

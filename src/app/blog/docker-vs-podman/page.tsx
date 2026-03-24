@@ -3,6 +3,7 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
 import CTASection from "@/components/CTASection";
+import BlogEmailCapture from "@/components/BlogEmailCapture";
 
 export const metadata: Metadata = {
   title: "Docker vs Podman: Which Container Runtime Should You Use in 2026",
@@ -26,7 +27,9 @@ const jsonLd = {
   headline: "Docker vs Podman: Which Container Runtime Should You Use in 2026",
   description: "A practical comparison of Docker and Podman for small to mid-sized teams.",
   datePublished: "2026-03-11",
-  author: { "@type": "Organization", name: "Keni Engineering", url: "https://kenitech.io" },
+  dateModified: "2026-03-11",
+  image: "https://kenitech.io/blog/docker-vs-podman/opengraph-image",
+  author: { "@type": "Person", name: "Mikel Martin", url: "https://www.linkedin.com/in/mikelmartin/" },
   publisher: {
     "@type": "Organization",
     name: "Keni Engineering",
@@ -63,6 +66,14 @@ export default function DockerVsPodman() {
                   Docker vs Podman: which container runtime should you use in 2026
                 </h1>
                 <p className="text-label text-muted/60 font-light">March 11, 2026 &middot; 7 min read</p>
+                <div className="flex items-center gap-3 mt-6">
+                  <div>
+                    <p className="text-sm text-foreground font-light">
+                      <a href="https://www.linkedin.com/in/mikelmartin/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground/80 transition-colors">Mikel Martin</a>
+                    </p>
+                    <p className="text-xs text-muted/60 font-light">CTO, Keni Engineering</p>
+                  </div>
+                </div>
               </FadeIn>
             </div>
           </Container>
@@ -334,10 +345,19 @@ export default function DockerVsPodman() {
                   </p>
                 </div>
               </FadeIn>
+              <FadeIn delay={0.2}>
+                <h2 className="text-xl font-light text-foreground tracking-wide mt-16 mb-6">Related reading</h2>
+                <ul className="space-y-3">
+                  <li><Link href="/blog/traefik-vs-nginx-vs-haproxy" className="text-foreground-secondary hover:text-foreground transition-colors">Traefik vs Nginx vs HAProxy: choosing a reverse proxy in 2026</Link></li>
+                  <li><Link href="/blog/argocd-vs-flux-vs-watchtower" className="text-foreground-secondary hover:text-foreground transition-colors">Argo CD vs Flux vs Watchtower: CD tools for automated deployments</Link></li>
+                </ul>
+              </FadeIn>
             </div>
           </Container>
         </section>
       </article>
+
+      <BlogEmailCapture />
 
       <CTASection
         headline="Building your container platform?"

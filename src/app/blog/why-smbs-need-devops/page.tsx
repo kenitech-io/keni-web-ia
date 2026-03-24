@@ -3,6 +3,7 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
 import CTASection from "@/components/CTASection";
+import BlogEmailCapture from "@/components/BlogEmailCapture";
 
 export const metadata: Metadata = {
   title: "Why 53% of SMBs Still Don't Have DevOps (And What It's Costing Them)",
@@ -28,10 +29,12 @@ const jsonLd = {
   description:
     "Most small software teams know their deployment process is broken. The real question is how much it costs them every week and what a realistic fix looks like.",
   datePublished: "2026-03-15",
+  dateModified: "2026-03-15",
+  image: "https://kenitech.io/blog/why-smbs-need-devops/opengraph-image",
   author: {
-    "@type": "Organization",
-    name: "Keni Engineering",
-    url: "https://kenitech.io",
+    "@type": "Person",
+    name: "Mikel Martin",
+    url: "https://www.linkedin.com/in/mikelmartin/",
   },
   publisher: {
     "@type": "Organization",
@@ -98,6 +101,14 @@ export default function WhySMBsNeedDevOps() {
                 <p className="text-label text-muted/60 font-light">
                   March 15, 2026 &middot; 6 min read
                 </p>
+                <div className="flex items-center gap-3 mt-6">
+                  <div>
+                    <p className="text-sm text-foreground font-light">
+                      <a href="https://www.linkedin.com/in/mikelmartin/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground/80 transition-colors">Mikel Martin</a>
+                    </p>
+                    <p className="text-xs text-muted/60 font-light">CTO, Keni Engineering</p>
+                  </div>
+                </div>
               </FadeIn>
             </div>
           </Container>
@@ -306,10 +317,19 @@ export default function WhySMBsNeedDevOps() {
                   </p>
                 </div>
               </FadeIn>
+              <FadeIn delay={0.2}>
+                <h2 className="text-xl font-light text-foreground tracking-wide mt-16 mb-6">Related reading</h2>
+                <ul className="space-y-3">
+                  <li><Link href="/blog/devops-audit-what-to-expect" className="text-foreground-secondary hover:text-foreground transition-colors">What happens during a DevOps infrastructure audit</Link></li>
+                  <li><Link href="/blog/github-actions-vs-gitlab-ci-vs-jenkins" className="text-foreground-secondary hover:text-foreground transition-colors">GitHub Actions vs GitLab CI vs Jenkins: CI tools compared</Link></li>
+                </ul>
+              </FadeIn>
             </div>
           </Container>
         </section>
       </article>
+
+      <BlogEmailCapture />
 
       <CTASection
         headline="Want to talk about your setup?"

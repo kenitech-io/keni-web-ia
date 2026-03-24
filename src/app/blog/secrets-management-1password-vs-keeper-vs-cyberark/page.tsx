@@ -3,6 +3,7 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
 import CTASection from "@/components/CTASection";
+import BlogEmailCapture from "@/components/BlogEmailCapture";
 
 export const metadata: Metadata = {
   title: "Secrets Management: 1Password vs Keeper vs CyberArk vs Vault in 2026",
@@ -26,7 +27,9 @@ const jsonLd = {
   headline: "Secrets Management: 1Password vs Keeper vs CyberArk vs Vault in 2026",
   description: "A practical comparison of secrets management tools for development teams.",
   datePublished: "2026-03-13",
-  author: { "@type": "Organization", name: "Keni Engineering", url: "https://kenitech.io" },
+  dateModified: "2026-03-13",
+  image: "https://kenitech.io/blog/secrets-management-1password-vs-keeper-vs-cyberark/opengraph-image",
+  author: { "@type": "Person", name: "Mikel Martin", url: "https://www.linkedin.com/in/mikelmartin/" },
   publisher: {
     "@type": "Organization",
     name: "Keni Engineering",
@@ -63,6 +66,14 @@ export default function SecretsManagementComparison() {
                   Secrets management: 1Password vs Keeper vs CyberArk vs Vault
                 </h1>
                 <p className="text-label text-muted/60 font-light">March 13, 2026 &middot; 8 min read</p>
+                <div className="flex items-center gap-3 mt-6">
+                  <div>
+                    <p className="text-sm text-foreground font-light">
+                      <a href="https://www.linkedin.com/in/mikelmartin/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground/80 transition-colors">Mikel Martin</a>
+                    </p>
+                    <p className="text-xs text-muted/60 font-light">CTO, Keni Engineering</p>
+                  </div>
+                </div>
               </FadeIn>
             </div>
           </Container>
@@ -387,10 +398,19 @@ export default function SecretsManagementComparison() {
                   </p>
                 </div>
               </FadeIn>
+              <FadeIn delay={0.2}>
+                <h2 className="text-xl font-light text-foreground tracking-wide mt-16 mb-6">Related reading</h2>
+                <ul className="space-y-3">
+                  <li><Link href="/blog/tailscale-vs-netbird-overlay-networks" className="text-foreground-secondary hover:text-foreground transition-colors">Tailscale vs Netbird vs ZeroTier: overlay networks for small teams</Link></li>
+                  <li><Link href="/blog/devops-audit-what-to-expect" className="text-foreground-secondary hover:text-foreground transition-colors">What happens during a DevOps infrastructure audit</Link></li>
+                </ul>
+              </FadeIn>
             </div>
           </Container>
         </section>
       </article>
+
+      <BlogEmailCapture />
 
       <CTASection
         headline="Want to lock down your secrets?"

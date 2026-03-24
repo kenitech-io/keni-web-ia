@@ -3,6 +3,7 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
 import CTASection from "@/components/CTASection";
+import BlogEmailCapture from "@/components/BlogEmailCapture";
 
 export const metadata: Metadata = {
   title: "GitHub Actions vs GitLab CI vs Jenkins: CI Tools Compared in 2026",
@@ -26,7 +27,9 @@ const jsonLd = {
   headline: "GitHub Actions vs GitLab CI vs Jenkins: CI Tools Compared in 2026",
   description: "A practical comparison of CI tools for small to mid-sized development teams.",
   datePublished: "2026-03-03",
-  author: { "@type": "Organization", name: "Keni Engineering", url: "https://kenitech.io" },
+  dateModified: "2026-03-03",
+  image: "https://kenitech.io/blog/github-actions-vs-gitlab-ci-vs-jenkins/opengraph-image",
+  author: { "@type": "Person", name: "Mikel Martin", url: "https://www.linkedin.com/in/mikelmartin/" },
   publisher: {
     "@type": "Organization",
     name: "Keni Engineering",
@@ -63,6 +66,14 @@ export default function GithubActionsVsGitlabCiVsJenkins() {
                   GitHub Actions vs GitLab CI vs Jenkins: CI tools compared
                 </h1>
                 <p className="text-label text-muted/60 font-light">March 3, 2026 &middot; 9 min read</p>
+                <div className="flex items-center gap-3 mt-6">
+                  <div>
+                    <p className="text-sm text-foreground font-light">
+                      <a href="https://www.linkedin.com/in/mikelmartin/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground/80 transition-colors">Mikel Martin</a>
+                    </p>
+                    <p className="text-xs text-muted/60 font-light">CTO, Keni Engineering</p>
+                  </div>
+                </div>
               </FadeIn>
             </div>
           </Container>
@@ -400,10 +411,19 @@ export default function GithubActionsVsGitlabCiVsJenkins() {
                   </p>
                 </div>
               </FadeIn>
+              <FadeIn delay={0.2}>
+                <h2 className="text-xl font-light text-foreground tracking-wide mt-16 mb-6">Related reading</h2>
+                <ul className="space-y-3">
+                  <li><Link href="/blog/argocd-vs-flux-vs-watchtower" className="text-foreground-secondary hover:text-foreground transition-colors">Argo CD vs Flux vs Watchtower: CD tools for automated deployments</Link></li>
+                  <li><Link href="/blog/docker-vs-podman" className="text-foreground-secondary hover:text-foreground transition-colors">Docker vs Podman: which container runtime should you use in 2026</Link></li>
+                </ul>
+              </FadeIn>
             </div>
           </Container>
         </section>
       </article>
+
+      <BlogEmailCapture />
 
       <CTASection
         headline="Need help setting up CI/CD?"
