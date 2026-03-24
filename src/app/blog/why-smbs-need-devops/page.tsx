@@ -255,7 +255,11 @@ export default function WhySMBsNeedDevOps() {
 
               <FadeIn delay={0.2}>
                 <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
-                  An infrastructure audit, depending on the size and complexity
+                  An{" "}
+                  <Link href="/infrastructure-audit" className="text-foreground/80 hover:text-foreground transition-colors">
+                    infrastructure audit
+                  </Link>
+                  , depending on the size and complexity
                   of the organization, can identify savings many times its
                   cost. And unlike a full-time hire, there is no ramp-up
                   period, no benefits cost, and no risk of the engineer leaving
@@ -267,7 +271,11 @@ export default function WhySMBsNeedDevOps() {
                 <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   The question is not whether your team needs DevOps. The
                   question is whether you build the capability in-house or
-                  bring in someone who has done it dozens of times before.
+                  bring in someone who has done it dozens of times before. That is exactly what{" "}
+                  <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground transition-colors">
+                    our DevOps consulting
+                  </Link>
+                  {" "}is built for.
                 </p>
               </FadeIn>
 
@@ -287,14 +295,14 @@ export default function WhySMBsNeedDevOps() {
               <FadeIn delay={0.2}>
                 <div className="border-t border-foreground/[0.08] pt-8 mt-8">
                   <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
-                    Want to see where your team stands?{" "}
+                    Related reading:{" "}
                     <Link
-                      href="/healthcheck"
+                      href="/blog/devops-audit-what-to-expect"
                       className="text-foreground/80 hover:text-foreground transition-colors"
                     >
-                      Take our free DevOps health check
+                      What happens during a DevOps infrastructure audit
                     </Link>
-                    . 7 questions, 2 minutes, instant results.
+                    {" "}: a step-by-step breakdown of our audit process and what the report looks like.
                   </p>
                 </div>
               </FadeIn>

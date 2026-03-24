@@ -280,6 +280,58 @@ export default function InfrastructureAuditPage() {
         </Container>
       </section>
 
+      {/* After the audit */}
+      <section className="py-32 md:py-48">
+        <Container>
+          <div className="max-w-[640px] mx-auto text-center">
+            <FadeIn>
+              <h2 className="text-heading text-foreground font-light tracking-wide mb-6">
+                What happens after the audit
+              </h2>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-8">
+                The report is yours. You can implement the recommendations
+                in-house, or our{" "}
+                <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground transition-colors">
+                  DevOps consulting team
+                </Link>
+                {" "}can handle it for you. Fixed pricing, no surprises, no lock-in.
+              </p>
+            </FadeIn>
+          </div>
+        </Container>
+      </section>
+
+      {/* Related reading */}
+      <section className="py-32 md:py-48">
+        <Container>
+          <div className="max-w-[640px] mx-auto">
+            <FadeIn>
+              <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-16 md:mb-20 font-light text-center">
+                RELATED READING
+              </p>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <div className="space-y-8">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
+                  <Link href="/blog/devops-audit-what-to-expect" className="text-foreground/80 hover:text-foreground transition-colors">
+                    What happens during a DevOps infrastructure audit
+                  </Link>
+                  {" "}: a step-by-step walkthrough of our audit process and what the deliverable looks like.
+                </p>
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
+                  <Link href="/blog/why-smbs-need-devops" className="text-foreground/80 hover:text-foreground transition-colors">
+                    Why 53% of SMBs still don&apos;t have DevOps
+                  </Link>
+                  {" "}: the data behind why small teams struggle with infrastructure, and what it costs them.
+                </p>
+              </div>
+            </FadeIn>
+          </div>
+        </Container>
+      </section>
+
       {/* Health Check CTA */}
       <section className="py-32 md:py-48">
         <Container>

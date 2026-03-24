@@ -308,9 +308,13 @@ export default function TailscaleVsNetbird() {
 
               <FadeIn delay={0.2}>
                 <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
-                  Setting up secure networking across servers is part of what we do for small teams.{" "}
+                  Setting up secure networking across servers is part of what we do for small teams. Start with an{" "}
+                  <Link href="/infrastructure-audit" className="text-foreground/80 hover:text-foreground transition-colors">
+                    infrastructure audit
+                  </Link>
+                  {" "}to map your current network setup, or go straight to our{" "}
                   <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground transition-colors">
-                    See our DevOps consulting services
+                    DevOps consulting services
                   </Link>
                   .
                 </p>
@@ -323,6 +327,13 @@ export default function TailscaleVsNetbird() {
                     architecture.{" "}
                     <Link href="/platform" className="text-foreground/80 hover:text-foreground transition-colors">
                       Explore the reference diagram
+                    </Link>
+                    .
+                  </p>
+                  <p className="text-sm text-foreground-secondary/70 leading-loose font-light mt-4">
+                    With your network sorted, the next layer is secrets. Read our comparison of{" "}
+                    <Link href="/blog/secrets-management-1password-vs-keeper-vs-cyberark" className="text-foreground/80 hover:text-foreground transition-colors">
+                      secrets management tools for development teams
                     </Link>
                     .
                   </p>

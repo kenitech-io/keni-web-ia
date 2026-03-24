@@ -42,7 +42,7 @@ export default function HeroSection() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundColor: "#EF6C00",
+            backgroundColor: "#C65100",
             opacity: phase === "intro" || phase === "loading" ? 1 : 0,
             transition: "opacity 1.4s cubic-bezier(0.4, 0, 0.2, 1)",
             pointerEvents: "none",
@@ -113,7 +113,7 @@ export default function HeroSection() {
             <div className="mt-12 pt-10 border-t border-border-color w-[130%] -ml-[15%]">
               <a href="/infrastructure-audit">
                 <p className="text-sm tracking-wide font-semibold mb-1 hover:opacity-70 transition-opacity">
-                  <span className="text-[#EF6C00]">FREE</span> <span className="text-foreground">INFRASTRUCTURE AUDIT</span>
+                  <span className="text-[#C65100]">FREE</span> <span className="text-foreground">INFRASTRUCTURE AUDIT</span>
                 </p>
               </a>
               <p className="text-sm text-muted font-light">

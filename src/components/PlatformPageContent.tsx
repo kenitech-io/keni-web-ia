@@ -4,6 +4,7 @@ import { useState, useEffect, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 import FadeIn from "@/components/ui/FadeIn";
 import Container from "@/components/ui/Container";
 import CTASection from "@/components/CTASection";
@@ -282,6 +283,46 @@ export default function PlatformPageContent() {
           />
         )}
       </AnimatePresence>
+
+      {/* Service links */}
+      <section className="py-32 md:py-48">
+        <Container>
+          <div className="max-w-[640px] mx-auto text-center">
+            <FadeIn>
+              <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-6">
+                This is the kind of platform we build for small teams. Start with an{" "}
+                <Link href="/infrastructure-audit" className="text-foreground/80 hover:text-foreground transition-colors">
+                  infrastructure audit
+                </Link>
+                {" "}to see where your current setup stands, or go straight to{" "}
+                <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground transition-colors">
+                  our DevOps consulting services
+                </Link>
+                {" "}to start building.
+              </p>
+              <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
+                For deep dives into each layer, explore our{" "}
+                <Link href="/blog" className="text-foreground/80 hover:text-foreground transition-colors">
+                  blog
+                </Link>
+                : from{" "}
+                <Link href="/blog/github-actions-vs-gitlab-ci-vs-jenkins" className="text-foreground/80 hover:text-foreground transition-colors">
+                  CI/CD tools
+                </Link>
+                {" "}to{" "}
+                <Link href="/blog/traefik-vs-nginx-vs-haproxy" className="text-foreground/80 hover:text-foreground transition-colors">
+                  reverse proxies
+                </Link>
+                {" "}to{" "}
+                <Link href="/blog/tailscale-vs-netbird-overlay-networks" className="text-foreground/80 hover:text-foreground transition-colors">
+                  overlay networks
+                </Link>
+                .
+              </p>
+            </FadeIn>
+          </div>
+        </Container>
+      </section>
 
       {/* Bottom CTA */}
       <CTASection

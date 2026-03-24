@@ -8,7 +8,7 @@
   --surface: #FAFAFA;
   --foreground: #000000;
   --foreground-secondary: #444444;
-  --muted: #999999;
+  --muted: #737373;
   --border-color: #E5E5E5;
   --charcoal: #1A1A1A;
   /* Pipeline colors */
@@ -25,8 +25,8 @@
   --pipe-blue-border: #1565C0;
   --pipe-blue-text: #0D47A1;
   --pipe-orange-bg: #FFF3E0;
-  --pipe-orange-border: #EF6C00;
-  --pipe-orange-text: #E65100;
+  --pipe-orange-border: #C65100;
+  --pipe-orange-text: #C65100;
   --pipe-red-bg: #FCE4EC;
   --pipe-red-border: #C62828;
   --pipe-red-text: #C62828;

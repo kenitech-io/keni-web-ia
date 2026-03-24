@@ -304,9 +304,13 @@ export default function DockerVsPodman() {
 
               <FadeIn delay={0.2}>
                 <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
-                  We help teams containerize their applications and build the right platform around them.{" "}
+                  We help teams containerize their applications and build the right platform around them. Our{" "}
+                  <Link href="/infrastructure-audit" className="text-foreground/80 hover:text-foreground transition-colors">
+                    infrastructure audit
+                  </Link>
+                  {" "}evaluates your container setup as part of a broader review, or you can go straight to{" "}
                   <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground transition-colors">
-                    Learn about our DevOps consulting
+                    our DevOps consulting
                   </Link>
                   .
                 </p>
@@ -318,6 +322,13 @@ export default function DockerVsPodman() {
                     See how containers fit into a full platform stack.{" "}
                     <Link href="/platform" className="text-foreground/80 hover:text-foreground transition-colors">
                       Explore our reference architecture
+                    </Link>
+                    .
+                  </p>
+                  <p className="text-sm text-foreground-secondary/70 leading-loose font-light mt-4">
+                    Once you have chosen a runtime, you will need a reverse proxy in front of your containers. Read our comparison of{" "}
+                    <Link href="/blog/traefik-vs-nginx-vs-haproxy" className="text-foreground/80 hover:text-foreground transition-colors">
+                      Traefik vs Nginx vs HAProxy
                     </Link>
                     .
                   </p>

@@ -70,6 +70,9 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://kenitech.io",
+    types: {
+      "application/rss+xml": "https://kenitech.io/blog/feed.xml",
+    },
   },
 };
 

@@ -335,9 +335,13 @@ export default function ArgoCdVsFluxVsWatchtower() {
 
               <FadeIn delay={0.2}>
                 <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
-                  Need help choosing and setting up the right CD pipeline for your team? That is exactly what we do.{" "}
+                  Need help choosing and setting up the right CD pipeline for your team? That is exactly what we do. Start with an{" "}
+                  <Link href="/infrastructure-audit" className="text-foreground/80 hover:text-foreground transition-colors">
+                    infrastructure audit
+                  </Link>
+                  {" "}to assess your current setup, or go straight to our{" "}
                   <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground transition-colors">
-                    See our DevOps consulting services
+                    DevOps consulting services
                   </Link>
                   .
                 </p>
@@ -349,6 +353,13 @@ export default function ArgoCdVsFluxVsWatchtower() {
                     See how CI and CD fit together in a complete platform.{" "}
                     <Link href="/platform" className="text-foreground/80 hover:text-foreground transition-colors">
                       Explore the reference architecture
+                    </Link>
+                    .
+                  </p>
+                  <p className="text-sm text-foreground-secondary/70 leading-loose font-light mt-4">
+                    For the CI side of the equation, see our comparison of{" "}
+                    <Link href="/blog/github-actions-vs-gitlab-ci-vs-jenkins" className="text-foreground/80 hover:text-foreground transition-colors">
+                      GitHub Actions vs GitLab CI vs Jenkins
                     </Link>
                     .
                   </p>

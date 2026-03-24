@@ -283,8 +283,11 @@ export default function DevOpsAuditWhatToExpect() {
               <FadeIn delay={0.2}>
                 <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   The report is yours. You can implement the recommendations
-                  in-house, hire someone else to do it, or ask us to handle
-                  it. There is no lock-in and no obligation.
+                  in-house, hire someone else to do it, or ask our{" "}
+                  <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground transition-colors">
+                    DevOps consulting team
+                  </Link>
+                  {" "}to handle it. There is no lock-in and no obligation.
                 </p>
               </FadeIn>
 
@@ -325,6 +328,16 @@ export default function DevOpsAuditWhatToExpect() {
                       className="text-foreground/80 hover:text-foreground transition-colors"
                     >
                       learn more about our full audit service
+                    </Link>
+                    .
+                  </p>
+                  <p className="text-sm text-foreground-secondary/70 leading-loose font-light mt-4">
+                    For background on why this matters for small teams, read{" "}
+                    <Link
+                      href="/blog/why-smbs-need-devops"
+                      className="text-foreground/80 hover:text-foreground transition-colors"
+                    >
+                      why 53% of SMBs still don&apos;t have DevOps
                     </Link>
                     .
                   </p>

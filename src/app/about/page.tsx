@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
 import CTASection from "@/components/CTASection";
@@ -111,6 +112,19 @@ export default function AboutPage() {
                 keeping production running. We understand what it&apos;s like when
                 your team is stuck firefighting instead of shipping. Because
                 we&apos;ve been there.
+              </p>
+            </FadeIn>
+            <FadeIn delay={0.15}>
+              <p className="text-sm text-foreground-secondary/70 leading-loose font-light mt-8">
+                That is why we offer{" "}
+                <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground transition-colors">
+                  DevOps consulting for small teams
+                </Link>
+                {" "}and a focused{" "}
+                <Link href="/infrastructure-audit" className="text-foreground/80 hover:text-foreground transition-colors">
+                  infrastructure audit
+                </Link>
+                {" "}that tells you exactly where you stand and what to fix first.
               </p>
             </FadeIn>
           </div>

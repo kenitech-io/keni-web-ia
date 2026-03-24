@@ -622,7 +622,7 @@ export default function InteractiveDiagram({
                   y="58"
                   fontSize="10"
                   fontWeight="500"
-                  fill="#999"
+                  fill="#737373"
                   letterSpacing="2"
                   style={{
                     opacity: activeZone ? 0.3 : 1,

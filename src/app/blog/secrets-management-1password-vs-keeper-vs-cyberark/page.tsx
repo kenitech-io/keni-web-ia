@@ -359,9 +359,13 @@ export default function SecretsManagementComparison() {
 
               <FadeIn delay={0.2}>
                 <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
-                  Secrets management is one of the seven areas we evaluate and fix as part of our consulting engagements.{" "}
+                  Secrets management is one of the seven areas we evaluate in our{" "}
+                  <Link href="/infrastructure-audit" className="text-foreground/80 hover:text-foreground transition-colors">
+                    infrastructure audit
+                  </Link>
+                  {" "}and fix as part of our{" "}
                   <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground transition-colors">
-                    See our DevOps consulting services
+                    DevOps consulting engagements
                   </Link>
                   .
                 </p>
@@ -375,7 +379,11 @@ export default function SecretsManagementComparison() {
                       Take our free DevOps health check
                     </Link>
                     {" "}to score your team across all seven areas, including
-                    secrets.
+                    secrets. You might also want to read about{" "}
+                    <Link href="/blog/devops-audit-what-to-expect" className="text-foreground/80 hover:text-foreground transition-colors">
+                      what happens during a full infrastructure audit
+                    </Link>
+                    .
                   </p>
                 </div>
               </FadeIn>

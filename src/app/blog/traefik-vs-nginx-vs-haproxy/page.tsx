@@ -326,9 +326,13 @@ export default function TraefikVsNginxVsHAProxy() {
 
               <FadeIn delay={0.2}>
                 <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
-                  We help teams set up and configure their infrastructure, including reverse proxies, as part of our consulting engagements.{" "}
+                  We help teams set up and configure their infrastructure, including reverse proxies, as part of our consulting engagements. Our{" "}
+                  <Link href="/infrastructure-audit" className="text-foreground/80 hover:text-foreground transition-colors">
+                    infrastructure audit
+                  </Link>
+                  {" "}evaluates your current proxy setup alongside the rest of your stack, or you can go directly to{" "}
                   <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground transition-colors">
-                    Learn about our DevOps consulting
+                    our DevOps consulting
                   </Link>
                   .
                 </p>
@@ -341,6 +345,13 @@ export default function TraefikVsNginxVsHAProxy() {
                     development platform?{" "}
                     <Link href="/platform" className="text-foreground/80 hover:text-foreground transition-colors">
                       Explore our reference architecture
+                    </Link>
+                    .
+                  </p>
+                  <p className="text-sm text-foreground-secondary/70 leading-loose font-light mt-4">
+                    Your proxy sits in front of containers. If you are still choosing a runtime, read our comparison of{" "}
+                    <Link href="/blog/docker-vs-podman" className="text-foreground/80 hover:text-foreground transition-colors">
+                      Docker vs Podman
                     </Link>
                     .
                   </p>

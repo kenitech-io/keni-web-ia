@@ -391,6 +391,13 @@ export default function GithubActionsVsGitlabCiVsJenkins() {
                     </Link>
                     {" "}to score your current CI setup.
                   </p>
+                  <p className="text-sm text-foreground-secondary/70 leading-loose font-light mt-4">
+                    Once your CI is set, the next question is continuous deployment.{" "}
+                    <Link href="/blog/argocd-vs-flux-vs-watchtower" className="text-foreground/80 hover:text-foreground transition-colors">
+                      Argo CD vs Flux vs Watchtower
+                    </Link>
+                    {" "}covers how to get your code from the registry to production automatically.
+                  </p>
                 </div>
               </FadeIn>
             </div>

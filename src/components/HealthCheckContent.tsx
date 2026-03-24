@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
@@ -561,6 +562,26 @@ export default function HealthCheckContent() {
                       </div>
                     );
                   })}
+                </div>
+              </FadeIn>
+
+              {/* Service links */}
+              <FadeIn type="up" delay={0.45} once>
+                <div className="text-left mb-32 md:mb-40 space-y-6">
+                  <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
+                    Want the full picture? Our{" "}
+                    <Link href="/infrastructure-audit" className="text-foreground/80 hover:text-foreground transition-colors">
+                      72-hour infrastructure audit
+                    </Link>
+                    {" "}goes deeper than a self-assessment. We get read-only access to your repos, pipelines, and cloud accounts, then deliver a prioritized roadmap with cost estimates.
+                  </p>
+                  <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
+                    If you already know what needs fixing, our{" "}
+                    <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground transition-colors">
+                      DevOps consulting team
+                    </Link>
+                    {" "}can handle the implementation. CI/CD pipelines, monitoring, infrastructure as code, and everything in between.
+                  </p>
                 </div>
               </FadeIn>
 

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
 import CTASection from "@/components/CTASection";
@@ -95,9 +96,9 @@ const differentiators = [
       "We work with companies that have 2-30 developers. Our solutions are right-sized, not enterprise bloat scaled down.",
   },
   {
-    title: "US timezone, real-time collaboration",
+    title: "Real-time collaboration, no handoffs",
     description:
-      "Same working hours, same Slack channels, same standups. No overnight handoffs or lost-in-translation delays.",
+      "Same working hours, same Slack channels, same standups. No overnight delays or lost-in-translation communication gaps.",
   },
 ];
 
@@ -184,6 +185,35 @@ export default function DevOpsConsultingPage() {
       {/* What We Do */}
       <ProcessSection />
 
+      {/* Not sure where to start */}
+      <section className="py-32 md:py-48">
+        <Container>
+          <div className="max-w-[640px] mx-auto text-center">
+            <FadeIn>
+              <h2 className="text-heading text-foreground font-light tracking-wide mb-6">
+                Not sure where to start?
+              </h2>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <p className="text-sm text-foreground leading-loose font-light mb-8">
+                Our{" "}
+                <Link href="/infrastructure-audit" className="text-foreground/80 hover:text-foreground underline underline-offset-4 decoration-foreground/20 hover:decoration-foreground/60 transition-all">
+                  72-hour infrastructure audit
+                </Link>
+                {" "}gives you a complete picture of your CI/CD, monitoring, security, and infrastructure. You get a prioritized roadmap your team can act on immediately.
+              </p>
+              <p className="text-sm text-foreground leading-loose font-light">
+                Or take our{" "}
+                <Link href="/healthcheck" className="text-foreground/80 hover:text-foreground underline underline-offset-4 decoration-foreground/20 hover:decoration-foreground/60 transition-all">
+                  free DevOps health check
+                </Link>
+                {" "}to score your team across seven key areas in 2 minutes.
+              </p>
+            </FadeIn>
+          </div>
+        </Container>
+      </section>
+
       {/* Why Keni */}
       <section className="py-32 md:py-48">
         <Container>
@@ -212,6 +242,41 @@ export default function DevOpsConsultingPage() {
                 </FadeIn>
               ))}
             </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Related reading */}
+      <section className="py-32 md:py-48">
+        <Container>
+          <div className="max-w-[640px] mx-auto">
+            <FadeIn>
+              <p className="text-label uppercase tracking-[0.25em] text-muted mb-16 md:mb-20 font-light text-center">
+                FROM THE BLOG
+              </p>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <div className="space-y-8">
+                <p className="text-sm text-foreground leading-loose font-light">
+                  <Link href="/blog/why-smbs-need-devops" className="text-foreground/80 hover:text-foreground transition-colors underline underline-offset-4 decoration-foreground/20 hover:decoration-foreground/60">
+                    Why 53% of SMBs still don&apos;t have DevOps
+                  </Link>
+                  {" "}: the real cost of not having a proper deployment process, and what a realistic fix looks like.
+                </p>
+                <p className="text-sm text-foreground leading-loose font-light">
+                  <Link href="/blog/github-actions-vs-gitlab-ci-vs-jenkins" className="text-foreground/80 hover:text-foreground transition-colors underline underline-offset-4 decoration-foreground/20 hover:decoration-foreground/60">
+                    GitHub Actions vs GitLab CI vs Jenkins
+                  </Link>
+                  {" "}: a practical comparison of CI tools for small to mid-sized teams.
+                </p>
+                <p className="text-sm text-foreground leading-loose font-light">
+                  <Link href="/blog/devops-audit-what-to-expect" className="text-foreground/80 hover:text-foreground transition-colors underline underline-offset-4 decoration-foreground/20 hover:decoration-foreground/60">
+                    What happens during a DevOps infrastructure audit
+                  </Link>
+                  {" "}: a step-by-step breakdown of our audit process and what the report looks like.
+                </p>
+              </div>
+            </FadeIn>
           </div>
         </Container>
       </section>
