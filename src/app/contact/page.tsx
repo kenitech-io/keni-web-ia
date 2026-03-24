@@ -9,6 +9,15 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://kenitech.io/contact",
   },
+  openGraph: {
+    title: "Contact Us: DevOps Consultation",
+    description:
+      "Tell us about your infrastructure challenges. Keni Engineering helps small teams set up CI/CD, automate deploys, and build internal development platforms.",
+    url: "https://kenitech.io/contact",
+    siteName: "Keni Engineering",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 const breadcrumbJsonLd = {

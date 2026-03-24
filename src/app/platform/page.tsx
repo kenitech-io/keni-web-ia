@@ -8,6 +8,15 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://kenitech.io/platform",
   },
+  openGraph: {
+    title: "Internal Developer Platform Architecture",
+    description:
+      "See what a modern internal development platform looks like. Reference architecture with CI/CD pipelines, container orchestration, monitoring, and automated deployments for software teams.",
+    url: "https://kenitech.io/platform",
+    siteName: "Keni Engineering",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 const breadcrumbJsonLd = {

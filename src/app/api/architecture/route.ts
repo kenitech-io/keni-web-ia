@@ -60,7 +60,7 @@ export async function POST(request: NextRequest) {
       from: process.env.GMAIL_USER,
       to: "martin@kenitech.io",
       replyTo: email,
-      subject: `[Lead] Kenitech.io full diagram request`,
+      subject: `[Lead] Keni Engineering - Architecture diagram request`,
       text: [
         `New lead from kenitech.io/platform`,
         ``,

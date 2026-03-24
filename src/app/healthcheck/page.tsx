@@ -8,6 +8,15 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://kenitech.io/healthcheck",
   },
+  openGraph: {
+    title: "Free DevOps Maturity Assessment",
+    description:
+      "Score your DevOps maturity in 2 minutes. A free self-assessment across deployments, CI/CD, monitoring, infrastructure as code, secrets management, and disaster recovery.",
+    url: "https://kenitech.io/healthcheck",
+    siteName: "Keni Engineering",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 const breadcrumbJsonLd = {

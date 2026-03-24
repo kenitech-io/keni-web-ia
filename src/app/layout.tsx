@@ -6,6 +6,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import DarkBackground from "@/components/DarkBackground";
+import PostHogProvider from "@/components/PostHogProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -138,12 +139,14 @@ export default function RootLayout({
             }),
           }}
         />
-        <DarkBackground />
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-        <Analytics />
-        <SpeedInsights />
+        <PostHogProvider>
+          <DarkBackground />
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+          <Analytics />
+          <SpeedInsights />
+        </PostHogProvider>
       </body>
     </html>
   );

@@ -11,6 +11,15 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://kenitech.io/about",
   },
+  openGraph: {
+    title: "About Us: DevOps Engineers for SMBs",
+    description:
+      "Meet the team behind Keni Engineering. Senior DevOps engineers who have built platforms for companies like Motorola and Swisscom. We handle your ops so your team ships faster.",
+    url: "https://kenitech.io/about",
+    siteName: "Keni Engineering",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 const values = [

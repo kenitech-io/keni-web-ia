@@ -12,6 +12,15 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://kenitech.io/blog",
   },
+  openGraph: {
+    title: "DevOps Blog: Guides and Best Practices",
+    description:
+      "Practical DevOps guides for small software teams. CI/CD pipelines, infrastructure automation, monitoring, and deployment best practices from senior engineers.",
+    url: "https://kenitech.io/blog",
+    siteName: "Keni Engineering",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 const breadcrumbJsonLd = {
