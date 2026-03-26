@@ -6,26 +6,20 @@ steps:
   - name: build
     image: docker
     commands:
+      - cd ${CI_WORKSPACE}
       - docker build -t keni-web:${CI_COMMIT_SHA:0:7} -t keni-web:latest .
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
   - name: deploy
-    image: docker
+    image: ghcr.io/moghtech/komodo-cli:1.19.5
+    environment:
+      KOMODO_HOST:
+        from_secret: komodo_host
+      KOMODO_KEY:
+        from_secret: komodo_key
+      KOMODO_SECRET:
+        from_secret: komodo_secret
     commands:
-      - docker stop keni-web-demo 2>/dev/null || true
-      - docker rm keni-web-demo 2>/dev/null || true
-      - |
-        docker run -d \
-          --name keni-web-demo \
-          --network balancer \
-          --restart unless-stopped \
-          --memory 256m \
-          -l "traefik.enable=true" \
-          -l "traefik.docker.network=balancer" \
-          -l "traefik.http.routers.keni-web-demo.entrypoints=web" \
-          -l "traefik.http.routers.keni-web-demo.rule=Host(\`demo.kenitech.io\`)" \
-          -l "traefik.http.services.keni-web-demo.loadbalancer.server.port=3000" \
-          keni-web:${CI_COMMIT_SHA:0:7}
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - km set var keni-web-demo KENI_WEB_VERSION ${CI_COMMIT_SHA:0:7}
+      - km deploy stack keni-web-demo

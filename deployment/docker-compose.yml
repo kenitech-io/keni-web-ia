@@ -1,0 +1,26 @@
+services:
+  web:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    image: keni-web:${KENI_WEB_VERSION:-latest}
+    container_name: keni-web-demo
+    restart: unless-stopped
+    networks:
+      - balancer
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=balancer"
+      - "traefik.http.routers.keni-web-demo.entrypoints=web"
+      - "traefik.http.routers.keni-web-demo.rule=Host(`demo.kenitech.io`)"
+      - "traefik.http.services.keni-web-demo.loadbalancer.server.port=3000"
+    mem_limit: 256m
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:3000/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+networks:
+  balancer:
+    external: true
