@@ -1,0 +1,21 @@
+when:
+  branch: demo
+  event: [push, tag]
+
+steps:
+  - name: build
+    image: docker
+    commands:
+      - docker build -t ghcr.io/kenitech-io/keni-web:latest .
+      - docker build -t ghcr.io/kenitech-io/keni-web:${CI_COMMIT_SHA:0:7} .
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  - name: deploy
+    image: docker
+    commands:
+      - docker stop keni-web-demo || true
+      - docker rm keni-web-demo || true
+      - docker run -d --name keni-web-demo --network balancer --restart unless-stopped -l "traefik.enable=true" -l "traefik.docker.network=balancer" -l "traefik.http.routers.keni-web-demo.rule=Host(\`demo.kenitech.io\`)" -l "traefik.http.services.keni-web-demo.loadbalancer.server.port=3000" ghcr.io/kenitech-io/keni-web:${CI_COMMIT_SHA:0:7}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
