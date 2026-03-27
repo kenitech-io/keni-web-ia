@@ -11,14 +11,14 @@ steps:
       - /var/run/docker.sock:/var/run/docker.sock
 
   - name: deploy
-    image: docker
+    image: debian:bookworm
     environment:
       KOMODO_CLI_KEY:
         from_secret: komodo_key
       KOMODO_CLI_SECRET:
         from_secret: komodo_secret
+      KOMODO_CLI_HOST: http://komodo-core:9120
     commands:
-      - echo "" | docker run --rm -i --network komodo -e KOMODO_CLI_HOST=http://komodo-core:9120 -e KOMODO_CLI_KEY=$KOMODO_CLI_KEY -e KOMODO_CLI_SECRET=$KOMODO_CLI_SECRET ghcr.io/moghtech/komodo-cli:1.19.5 km update stack keni-web-demo "environment=KENI_WEB_VERSION%3D${CI_COMMIT_SHA:0:7}"
-      - echo "" | docker run --rm -i --network komodo -e KOMODO_CLI_HOST=http://komodo-core:9120 -e KOMODO_CLI_KEY=$KOMODO_CLI_KEY -e KOMODO_CLI_SECRET=$KOMODO_CLI_SECRET ghcr.io/moghtech/komodo-cli:1.19.5 km deploy stack keni-web-demo
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - apt-get update -qq && apt-get install -y -qq libssl3 ca-certificates curl 2>/dev/null 1>/dev/null
+      - curl -sL https://github.com/moghtech/komodo/releases/download/v2.0.0/km-$(uname -m) -o /usr/local/bin/km && chmod +x /usr/local/bin/km
+      - km execute -y deploy-stack keni-web-demo
