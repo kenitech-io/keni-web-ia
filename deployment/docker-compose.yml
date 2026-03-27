@@ -1,8 +1,5 @@
 services:
   web:
-    build:
-      context: ..
-      dockerfile: Dockerfile
     image: keni-web:${KENI_WEB_VERSION:-latest}
     container_name: keni-web-demo
     pull_policy: never
@@ -10,11 +7,11 @@ services:
     networks:
       - balancer
     labels:
-      - "traefik.enable=true"
-      - "traefik.docker.network=balancer"
-      - "traefik.http.routers.keniweb.entryPoints=web"
-      - "traefik.http.routers.keniweb.rule=Host(`demo.kenitech.io`)"
-      - "traefik.http.services.keniweb.loadbalancer.server.port=3000"
+      traefik.enable: "true"
+      traefik.docker.network: balancer
+      traefik.http.routers.keniweb.entryPoints: web
+      traefik.http.routers.keniweb.rule: "Host(`demo.kenitech.io`)"
+      traefik.http.services.keniweb.loadbalancer.server.port: "3000"
     mem_limit: 256m
     healthcheck:
       test: ["CMD", "wget", "-q", "--spider", "http://localhost:3000/"]
