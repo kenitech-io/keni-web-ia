@@ -20,5 +20,5 @@ steps:
       KOMODO_CLI_SECRET:
         from_secret: komodo_secret
     commands:
-      - km -y update stack keni-web-demo "environment=KENI_WEB_VERSION%3D${CI_COMMIT_SHA:0:7}"
-      - km -y deploy stack keni-web-demo
+      - echo "" | km update stack keni-web-demo "environment=KENI_WEB_VERSION%3D${CI_COMMIT_SHA:0:7}"
+      - echo "" | km deploy stack keni-web-demo
