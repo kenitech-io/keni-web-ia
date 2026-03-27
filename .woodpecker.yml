@@ -20,5 +20,8 @@ steps:
     commands:
       - echo "" | docker run --rm -i --network komodo -e KOMODO_CLI_HOST=http://komodo-core:9120 -e KOMODO_CLI_KEY=$KOMODO_CLI_KEY -e KOMODO_CLI_SECRET=$KOMODO_CLI_SECRET ghcr.io/moghtech/komodo-cli:1.19.5 km update stack keni-web-demo "environment=KENI_WEB_VERSION%3D${CI_COMMIT_SHA:0:7}"
       - echo "" | docker run --rm -i --network komodo -e KOMODO_CLI_HOST=http://komodo-core:9120 -e KOMODO_CLI_KEY=$KOMODO_CLI_KEY -e KOMODO_CLI_SECRET=$KOMODO_CLI_SECRET ghcr.io/moghtech/komodo-cli:1.19.5 km deploy stack keni-web-demo
+      - sleep 5
+      - docker network disconnect balancer keni-web-demo || true
+      - docker network connect balancer keni-web-demo
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
