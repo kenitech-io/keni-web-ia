@@ -4,20 +4,24 @@ services:
     container_name: keni-web-demo
     pull_policy: never
     restart: unless-stopped
-    networks:
-      - balancer
-    labels:
-      traefik.enable: "true"
-      traefik.docker.network: balancer
-      traefik.http.routers.keniweb.entryPoints: web
-      traefik.http.routers.keniweb.rule: "Host(`demo.kenitech.io`)"
-      traefik.http.services.keniweb.loadbalancer.server.port: "3000"
-    mem_limit: 256m
     healthcheck:
       test: ["CMD", "wget", "-q", "--spider", "http://localhost:3000/"]
       interval: 30s
       timeout: 5s
       retries: 3
+      start_period: 10s
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=balancer"
+      - "traefik.http.routers.keniweb.entryPoints=web"
+      - "traefik.http.routers.keniweb.rule=Host(`demo.kenitech.io`)"
+      - "traefik.http.services.keniweb.loadbalancer.server.port=3000"
+    networks:
+      - balancer
+    deploy:
+      resources:
+        limits:
+          memory: 256M
 
 networks:
   balancer:
