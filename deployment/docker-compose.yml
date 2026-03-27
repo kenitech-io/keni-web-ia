@@ -11,9 +11,9 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=balancer"
-      - "traefik.http.routers.keni-web-demo.entrypoints=web"
-      - "traefik.http.routers.keni-web-demo.rule=Host(`demo.kenitech.io`)"
-      - "traefik.http.services.keni-web-demo.loadbalancer.server.port=3000"
+      - "traefik.http.routers.keniweb.entrypoints=web"
+      - "traefik.http.routers.keniweb.rule=Host(`demo.kenitech.io`)"
+      - "traefik.http.services.keniweb.loadbalancer.server.port=3000"
     mem_limit: 256m
     healthcheck:
       test: ["CMD", "wget", "-q", "--spider", "http://localhost:3000/"]
