@@ -1,8 +1,7 @@
 services:
   web:
-    image: keni-web:${KENI_WEB_VERSION:-latest}
+    image: devops-registry.kenitech.io/keni-web:${KENI_WEB_VERSION:-latest}
     container_name: keni-web-demo
-    pull_policy: never
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1:3000/"]
