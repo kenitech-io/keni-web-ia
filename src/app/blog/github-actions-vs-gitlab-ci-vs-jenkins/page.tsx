@@ -382,7 +382,7 @@ export default function GithubActionsVsGitlabCiVsJenkins() {
               <FadeIn delay={0.2}>
                 <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   If your team needs help setting up or migrating CI/CD pipelines, that is one of the core services we offer.{" "}
-                  <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground transition-colors">
+                  <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                     Learn more about our DevOps consulting
                   </Link>
                   .
@@ -393,18 +393,18 @@ export default function GithubActionsVsGitlabCiVsJenkins() {
                 <div className="border-t border-foreground/[0.08] pt-8 mt-8">
                   <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                     Want to see how CI fits into a full platform?{" "}
-                    <Link href="/platform" className="text-foreground/80 hover:text-foreground transition-colors">
+                    <Link href="/platform" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                       Explore our reference architecture
                     </Link>
                     {" "}or{" "}
-                    <Link href="/healthcheck" className="text-foreground/80 hover:text-foreground transition-colors">
+                    <Link href="/healthcheck" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                       take the DevOps health check
                     </Link>
                     {" "}to score your current CI setup.
                   </p>
                   <p className="text-sm text-foreground-secondary/70 leading-loose font-light mt-4">
                     Once your CI is set, the next question is continuous deployment.{" "}
-                    <Link href="/blog/argocd-vs-flux-vs-watchtower" className="text-foreground/80 hover:text-foreground transition-colors">
+                    <Link href="/blog/argocd-vs-flux-vs-watchtower" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                       Argo CD vs Flux vs Watchtower
                     </Link>
                     {" "}covers how to get your code from the registry to production automatically.

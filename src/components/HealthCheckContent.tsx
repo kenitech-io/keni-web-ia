@@ -469,8 +469,8 @@ export default function HealthCheckContent() {
                         }
                         className={`w-full text-left px-8 py-5 border rounded-lg transition-colors duration-300 ${
                           isSelected
-                            ? "border-foreground/40 bg-[#f5f5f7] hover:bg-[#ededf0]"
-                            : "border-foreground/[0.08] hover:border-foreground/20 hover:bg-[#f5f5f7]"
+                            ? "border-foreground/40 bg-[#ececec] dark:bg-[#1e1e1e] hover:bg-[#e0e0e0] dark:hover:bg-[#262626]"
+                            : "border-foreground/[0.08] hover:border-foreground/20 hover:bg-[#ececec] dark:hover:bg-[#1e1e1e]"
                         }`}
                       >
                         <p
@@ -570,14 +570,14 @@ export default function HealthCheckContent() {
                 <div className="text-left mb-32 md:mb-40 space-y-6">
                   <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                     Want the full picture? Our{" "}
-                    <Link href="/infrastructure-audit" className="text-foreground/80 hover:text-foreground transition-colors">
+                    <Link href="/infrastructure-audit" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                       72-hour infrastructure audit
                     </Link>
                     {" "}goes deeper than a self-assessment. We get read-only access to your repos, pipelines, and cloud accounts, then deliver a prioritized roadmap with cost estimates.
                   </p>
                   <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                     If you already know what needs fixing, our{" "}
-                    <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground transition-colors">
+                    <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                       DevOps consulting team
                     </Link>
                     {" "}can handle the implementation. CI/CD pipelines, monitoring, infrastructure as code, and everything in between.

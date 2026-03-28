@@ -291,30 +291,30 @@ export default function PlatformPageContent() {
             <FadeIn>
               <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-6">
                 This is the kind of platform we build for small teams. Start with an{" "}
-                <Link href="/infrastructure-audit" className="text-foreground/80 hover:text-foreground transition-colors">
+                <Link href="/infrastructure-audit" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                   infrastructure audit
                 </Link>
                 {" "}to see where your current setup stands, or go straight to{" "}
-                <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground transition-colors">
+                <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                   our DevOps consulting services
                 </Link>
                 {" "}to start building.
               </p>
               <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                 For deep dives into each layer, explore our{" "}
-                <Link href="/blog" className="text-foreground/80 hover:text-foreground transition-colors">
+                <Link href="/blog" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                   blog
                 </Link>
                 : from{" "}
-                <Link href="/blog/github-actions-vs-gitlab-ci-vs-jenkins" className="text-foreground/80 hover:text-foreground transition-colors">
+                <Link href="/blog/github-actions-vs-gitlab-ci-vs-jenkins" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                   CI/CD tools
                 </Link>
                 {" "}to{" "}
-                <Link href="/blog/traefik-vs-nginx-vs-haproxy" className="text-foreground/80 hover:text-foreground transition-colors">
+                <Link href="/blog/traefik-vs-nginx-vs-haproxy" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                   reverse proxies
                 </Link>
                 {" "}to{" "}
-                <Link href="/blog/tailscale-vs-netbird-overlay-networks" className="text-foreground/80 hover:text-foreground transition-colors">
+                <Link href="/blog/tailscale-vs-netbird-overlay-networks" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                   overlay networks
                 </Link>
                 .

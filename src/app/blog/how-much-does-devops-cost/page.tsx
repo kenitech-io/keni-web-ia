@@ -228,11 +228,11 @@ export default function HowMuchDoesDevOpsCost() {
               <FadeIn delay={0.2}>
                 <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Want to see where your infrastructure stands? Our{" "}
-                  <Link href="/infrastructure-audit" className="text-foreground/80 hover:text-foreground transition-colors">
+                  <Link href="/infrastructure-audit" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                     infrastructure audit
                   </Link>
                   {" "}gives you a clear picture of your current state and prioritized next steps. Or explore our{" "}
-                  <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground transition-colors">
+                  <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                     DevOps consulting
                   </Link>
                   {" "}to see how we work with teams like yours.
@@ -243,7 +243,7 @@ export default function HowMuchDoesDevOpsCost() {
                 <div className="border-t border-foreground/[0.08] pt-8 mt-8">
                   <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                     Still not sure if DevOps is worth the investment? Read{" "}
-                    <Link href="/blog/why-smbs-need-devops" className="text-foreground/80 hover:text-foreground transition-colors">
+                    <Link href="/blog/why-smbs-need-devops" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                       why 53% of SMBs still do not have DevOps
                     </Link>
                     {" "}and what it is costing them.

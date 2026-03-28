@@ -225,11 +225,11 @@ export default function KubernetesVsDockerCompose() {
               <FadeIn delay={0.2}>
                 <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Not sure which approach fits your team? Our{" "}
-                  <Link href="/infrastructure-audit" className="text-foreground/80 hover:text-foreground transition-colors">
+                  <Link href="/infrastructure-audit" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                     infrastructure audit
                   </Link>
                   {" "}evaluates your current setup and recommends the right orchestration strategy. Or talk to us about{" "}
-                  <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground transition-colors">
+                  <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                     DevOps consulting
                   </Link>
                   {" "}to get hands-on help.
@@ -240,7 +240,7 @@ export default function KubernetesVsDockerCompose() {
                 <div className="border-t border-foreground/[0.08] pt-8 mt-8">
                   <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                     Already using Docker? Read our comparison of{" "}
-                    <Link href="/blog/docker-vs-podman" className="text-foreground/80 hover:text-foreground transition-colors">
+                    <Link href="/blog/docker-vs-podman" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                       Docker vs Podman
                     </Link>
                     {" "}to see if a different runtime makes sense.

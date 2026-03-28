@@ -371,11 +371,11 @@ export default function SecretsManagementComparison() {
               <FadeIn delay={0.2}>
                 <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Secrets management is one of the seven areas we evaluate in our{" "}
-                  <Link href="/infrastructure-audit" className="text-foreground/80 hover:text-foreground transition-colors">
+                  <Link href="/infrastructure-audit" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                     infrastructure audit
                   </Link>
                   {" "}and fix as part of our{" "}
-                  <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground transition-colors">
+                  <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                     DevOps consulting engagements
                   </Link>
                   .
@@ -386,12 +386,12 @@ export default function SecretsManagementComparison() {
                 <div className="border-t border-foreground/[0.08] pt-8 mt-8">
                   <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                     Not sure how your secrets management stacks up?{" "}
-                    <Link href="/healthcheck" className="text-foreground/80 hover:text-foreground transition-colors">
+                    <Link href="/healthcheck" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                       Take our free DevOps health check
                     </Link>
                     {" "}to score your team across all seven areas, including
                     secrets. You might also want to read about{" "}
-                    <Link href="/blog/devops-audit-what-to-expect" className="text-foreground/80 hover:text-foreground transition-colors">
+                    <Link href="/blog/devops-audit-what-to-expect" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                       what happens during a full infrastructure audit
                     </Link>
                     .

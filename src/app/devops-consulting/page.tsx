@@ -123,7 +123,7 @@ export default function DevOpsConsultingPage() {
               </h1>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <p className="text-sm text-foreground leading-loose font-light">
+              <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                 Your developers should write code, not fight infrastructure. We
                 set up your CI/CD, automate your deploys, and keep everything
                 running. You push code, it goes to production. That is it.
@@ -138,7 +138,7 @@ export default function DevOpsConsultingPage() {
         <Container>
           <div className="max-w-[640px] mx-auto text-center">
             <FadeIn>
-              <p className="text-label uppercase tracking-[0.25em] text-muted mb-32 md:mb-40 font-light text-center">
+              <p className="text-label uppercase tracking-[0.25em] text-muted mb-16 md:mb-20 font-light text-center">
                 THE PROBLEM
               </p>
             </FadeIn>
@@ -148,17 +148,17 @@ export default function DevOpsConsultingPage() {
               </h2>
             </FadeIn>
             <FadeIn delay={0.2}>
-              <p className="text-sm text-foreground leading-loose font-light mb-2">
+              <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-2">
                 According to Statista, the majority of small and mid-sized
                 businesses still operate without proper DevOps practices.
               </p>
-              <p className="text-sm text-foreground leading-loose font-light mb-6">
+              <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-6">
                 Hiring a full-time DevOps engineer in the US costs $130K-$220K
                 per year when you include benefits and overhead. For a team of
                 5-30 developers, that&apos;s a significant investment for a role that
                 might not need to be full-time.
               </p>
-              <p className="text-sm text-foreground leading-loose font-light">
+              <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                 Meanwhile, your developers are spending half their time on
                 manual deploys, debugging servers, and firefighting production
                 issues instead of building features.
@@ -188,28 +188,42 @@ export default function DevOpsConsultingPage() {
       {/* Not sure where to start */}
       <section className="py-32 md:py-48">
         <Container>
-          <div className="max-w-[640px] mx-auto text-center">
+          <div className="max-w-[640px] mx-auto">
             <FadeIn>
-              <h2 className="text-heading text-foreground font-light tracking-wide mb-6">
-                Not sure where to start?
-              </h2>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <p className="text-sm text-foreground leading-loose font-light mb-8">
-                Our{" "}
-                <Link href="/infrastructure-audit" className="text-foreground/80 hover:text-foreground underline underline-offset-4 decoration-foreground/20 hover:decoration-foreground/60 transition-all">
-                  72-hour infrastructure audit
-                </Link>
-                {" "}gives you a complete picture of your CI/CD, monitoring, security, and infrastructure. You get a prioritized roadmap your team can act on immediately.
-              </p>
-              <p className="text-sm text-foreground leading-loose font-light">
-                Or take our{" "}
-                <Link href="/healthcheck" className="text-foreground/80 hover:text-foreground underline underline-offset-4 decoration-foreground/20 hover:decoration-foreground/60 transition-all">
-                  free DevOps health check
-                </Link>
-                {" "}to score your team across seven key areas in 2 minutes.
+              <p className="text-label uppercase tracking-[0.25em] text-muted mb-16 md:mb-20 font-light text-center">
+                NOT SURE WHERE TO START?
               </p>
             </FadeIn>
+            <div className="space-y-16">
+              <FadeIn delay={0.1}>
+                <div>
+                  <h3 className="text-body text-foreground font-light tracking-wide mb-3">
+                    Infrastructure audit
+                  </h3>
+                  <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
+                    Our{" "}
+                    <Link href="/infrastructure-audit" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
+                      72-hour infrastructure audit
+                    </Link>
+                    {" "}gives you a complete picture of your CI/CD, monitoring, security, and infrastructure. You get a prioritized roadmap your team can act on immediately.
+                  </p>
+                </div>
+              </FadeIn>
+              <FadeIn delay={0.2}>
+                <div>
+                  <h3 className="text-body text-foreground font-light tracking-wide mb-3">
+                    Quick self-assessment
+                  </h3>
+                  <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
+                    Take our{" "}
+                    <Link href="/healthcheck" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
+                      free DevOps health check
+                    </Link>
+                    {" "}to score your team across seven key areas in 2 minutes.
+                  </p>
+                </div>
+              </FadeIn>
+            </div>
           </div>
         </Container>
       </section>
@@ -219,7 +233,7 @@ export default function DevOpsConsultingPage() {
         <Container>
           <div className="max-w-[640px] mx-auto">
             <FadeIn>
-              <p className="text-label uppercase tracking-[0.25em] text-muted mb-32 md:mb-40 font-light text-center">
+              <p className="text-label uppercase tracking-[0.25em] text-muted mb-16 md:mb-20 font-light text-center">
                 WHY KENI
               </p>
             </FadeIn>
@@ -235,7 +249,7 @@ export default function DevOpsConsultingPage() {
                     <h3 className="text-body text-foreground font-light tracking-wide mb-3">
                       {item.title}
                     </h3>
-                    <p className="text-sm text-foreground leading-loose font-light">
+                    <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                       {item.description}
                     </p>
                   </div>
@@ -257,20 +271,20 @@ export default function DevOpsConsultingPage() {
             </FadeIn>
             <FadeIn delay={0.1}>
               <div className="space-y-8">
-                <p className="text-sm text-foreground leading-loose font-light">
-                  <Link href="/blog/why-smbs-need-devops" className="text-foreground/80 hover:text-foreground transition-colors underline underline-offset-4 decoration-foreground/20 hover:decoration-foreground/60">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
+                  <Link href="/blog/why-smbs-need-devops" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                     Why 53% of SMBs still don&apos;t have DevOps
                   </Link>
                   {" "}: the real cost of not having a proper deployment process, and what a realistic fix looks like.
                 </p>
-                <p className="text-sm text-foreground leading-loose font-light">
-                  <Link href="/blog/github-actions-vs-gitlab-ci-vs-jenkins" className="text-foreground/80 hover:text-foreground transition-colors underline underline-offset-4 decoration-foreground/20 hover:decoration-foreground/60">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
+                  <Link href="/blog/github-actions-vs-gitlab-ci-vs-jenkins" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                     GitHub Actions vs GitLab CI vs Jenkins
                   </Link>
                   {" "}: a practical comparison of CI tools for small to mid-sized teams.
                 </p>
-                <p className="text-sm text-foreground leading-loose font-light">
-                  <Link href="/blog/devops-audit-what-to-expect" className="text-foreground/80 hover:text-foreground transition-colors underline underline-offset-4 decoration-foreground/20 hover:decoration-foreground/60">
+                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
+                  <Link href="/blog/devops-audit-what-to-expect" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                     What happens during a DevOps infrastructure audit
                   </Link>
                   {" "}: a step-by-step breakdown of our audit process and what the report looks like.

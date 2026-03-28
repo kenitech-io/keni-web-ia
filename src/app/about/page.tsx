@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
 import CTASection from "@/components/CTASection";
@@ -22,21 +21,6 @@ export const metadata: Metadata = {
     type: "website",
   },
 };
-
-const values = [
-  {
-    title: "Boring is beautiful",
-    text: "The best deploy is the one nobody notices. When shipping is boring and alerts are quiet, we've done our job.",
-  },
-  {
-    title: "Open standards, always",
-    text: "We use battle-tested technologies and open tools. No lock-in, no proprietary frameworks. Your stack stays yours.",
-  },
-  {
-    title: "We leave you stronger",
-    text: "We work alongside your team and make sure that when we step back, your team feels capable and in control.",
-  },
-];
 
 const breadcrumbJsonLd = {
   "@context": "https://schema.org",
@@ -64,98 +48,71 @@ export default function AboutPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      {/* Hero with logo */}
-      {/* Statement */}
+
+      {/* Hero */}
       <section className="py-32 md:py-48">
         <Container>
           <div className="max-w-[800px] mx-auto text-center">
             <FadeIn>
-              <div className="flex justify-center mb-12">
-                <Image
-                  src="/logo.png"
-                  alt="Keni Engineering"
-                  width={104}
-                  height={104}
-                  className="w-[104px] h-[104px]"
-                />
-              </div>
+              <Image
+                src="/logo.png"
+                alt="Keni Engineering"
+                width={56}
+                height={56}
+                className="w-14 h-14 mx-auto mb-20"
+              />
             </FadeIn>
             <FadeIn delay={0.08}>
-              <h1
-                className="text-foreground font-light tracking-wide"
-                style={{
-                  fontSize: "clamp(1.3rem, 2.2vw, 1.8rem)",
-                  lineHeight: 1.4,
-                }}
-              >
-                Obsessed with building, refining, and perfecting
-                <br />
-                <span className="text-muted">internal development platforms.</span>
-              </h1>
+              <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-8">
+                Keni Engineering
+              </p>
             </FadeIn>
           </div>
         </Container>
       </section>
 
-      {/* Story */}
+      {/* Origin */}
       <section className="py-32 md:py-48">
         <Container>
-          <div className="max-w-[640px] mx-auto text-center">
+          <div className="max-w-[640px] mx-auto">
             <FadeIn>
-              <h2 className="text-heading text-foreground font-light tracking-wide mb-8">
-                So your team can breathe
-              </h2>
+              <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
+                Born from years of building internal development platforms across companies in the US and Europe.
+              </p>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
-                We&apos;ve spent years setting up pipelines, automating deploys, and
-                keeping production running. We understand what it&apos;s like when
-                your team is stuck firefighting instead of shipping. Because
-                we&apos;ve been there.
+              <p className="text-sm text-foreground-secondary/70 leading-loose font-light mt-10">
+                We have designed CI/CD pipelines for mission-critical systems, managed infrastructure serving millions of users, and rebuilt legacy platforms from the ground up. The environments change. The problems do not.
               </p>
             </FadeIn>
             <FadeIn delay={0.15}>
-              <p className="text-sm text-foreground-secondary/70 leading-loose font-light mt-8">
-                That is why we offer{" "}
-                <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground transition-colors">
-                  DevOps consulting for small teams
-                </Link>
-                {" "}and a focused{" "}
-                <Link href="/infrastructure-audit" className="text-foreground/80 hover:text-foreground transition-colors">
-                  infrastructure audit
-                </Link>
-                {" "}that tells you exactly where you stand and what to fix first.
+              <p className="text-sm text-foreground-secondary/70 leading-loose font-light mt-10">
+                Manual deploys. No monitoring. Infrastructure knowledge locked in one person&apos;s head. Cloud costs growing with no explanation. We have seen it at every scale, from 5-person startups to Fortune 500 companies. The fix is always more straightforward than people expect.
               </p>
             </FadeIn>
           </div>
         </Container>
       </section>
 
-      {/* Values */}
+      {/* How we work */}
       <section className="py-32 md:py-48">
         <Container>
-          <div className="max-w-[900px] mx-auto">
+          <div className="max-w-[640px] mx-auto">
             <FadeIn>
-              <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-20 md:mb-24 font-light text-center">
-                WHAT WE BELIEVE
+              <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
+                Every engagement starts with a deep review of your repositories, pipelines, cloud accounts, and workflows. No assumptions. No templates. Just your system, understood completely before anything is changed.
               </p>
             </FadeIn>
-            <div>
-              {values.map((value, index) => (
-                <FadeIn key={value.title} delay={index * 0.1}>
-                  <div className={`grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-4 md:gap-16 py-10 ${
-                    index < values.length - 1 ? "border-b border-border-color" : ""
-                  }`}>
-                    <h3 className="text-body text-foreground font-light tracking-wide">
-                      {value.title}
-                    </h3>
-                    <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
-                      {value.text}
-                    </p>
-                  </div>
-                </FadeIn>
-              ))}
-            </div>
+            <FadeIn delay={0.1}>
+              <p className="text-sm text-foreground-secondary/70 leading-loose font-light mt-10">
+                We deliver fixed-price engagements with senior engineers only. The people on the call are the people doing the work. No handoffs, no juniors learning on your time, no hourly billing designed to extend the project.
+              </p>
+            </FadeIn>
+            <FadeIn delay={0.15}>
+              <p className="text-sm text-foreground-secondary/70 leading-loose font-light mt-10">
+                When we step back, your team owns everything. Open tools, documented systems, no vendor lock-in. The goal is not a dependency on us. The goal is an infrastructure your team can run with confidence.
+              </p>
+            </FadeIn>
           </div>
         </Container>
       </section>

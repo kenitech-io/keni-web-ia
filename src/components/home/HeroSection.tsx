@@ -25,7 +25,7 @@ function HeroContent() {
       >
         Let&apos;s talk
       </a>
-      <div className="mt-12 pt-10 border-t border-border-color w-[130%] -ml-[15%]">
+      <div className="mt-12 pt-10 border-t border-border-color w-full md:w-[130%] md:-ml-[15%]">
         <a href="/infrastructure-audit">
           <p className="text-sm tracking-wide font-semibold mb-1 hover:opacity-70 transition-opacity">
             <span className="text-[#C65100]">FREE</span> <span className="text-foreground">INFRASTRUCTURE AUDIT</span>

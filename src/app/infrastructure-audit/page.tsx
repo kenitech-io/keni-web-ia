@@ -52,7 +52,7 @@ const faqJsonLd = {
       name: "How much does an infrastructure audit cost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Pricing depends on the size and complexity of your infrastructure. We price audits based on ROI share, so the cost scales with the value we find. Get in touch and we will scope it together.",
+        text: "The infrastructure audit is free. We review your systems, deliver the report, and you decide what to do next. No commitment, no hidden fees.",
       },
     },
   ],
@@ -293,7 +293,7 @@ export default function InfrastructureAuditPage() {
               <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-8">
                 The report is yours. You can implement the recommendations
                 in-house, or our{" "}
-                <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground transition-colors">
+                <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                   DevOps consulting team
                 </Link>
                 {" "}can handle it for you. Fixed pricing, no surprises, no lock-in.
@@ -315,13 +315,13 @@ export default function InfrastructureAuditPage() {
             <FadeIn delay={0.1}>
               <div className="space-y-8">
                 <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
-                  <Link href="/blog/devops-audit-what-to-expect" className="text-foreground/80 hover:text-foreground transition-colors">
+                  <Link href="/blog/devops-audit-what-to-expect" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                     What happens during a DevOps infrastructure audit
                   </Link>
                   {" "}: a step-by-step walkthrough of our audit process and what the deliverable looks like.
                 </p>
                 <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
-                  <Link href="/blog/why-smbs-need-devops" className="text-foreground/80 hover:text-foreground transition-colors">
+                  <Link href="/blog/why-smbs-need-devops" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                     Why 53% of SMBs still don&apos;t have DevOps
                   </Link>
                   {" "}: the data behind why small teams struggle with infrastructure, and what it costs them.

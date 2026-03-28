@@ -295,7 +295,7 @@ export default function DevOpsAuditWhatToExpect() {
                 <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   The report is yours. You can implement the recommendations
                   in-house, hire someone else to do it, or ask our{" "}
-                  <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground transition-colors">
+                  <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                     DevOps consulting team
                   </Link>
                   {" "}to handle it. There is no lock-in and no obligation.
@@ -315,7 +315,7 @@ export default function DevOpsAuditWhatToExpect() {
                   If you want the full picture of where your infrastructure stands, our audit covers all seven areas in 72 hours.{" "}
                   <Link
                     href="/infrastructure-audit"
-                    className="text-foreground/80 hover:text-foreground transition-colors"
+                    className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors"
                   >
                     Learn more about our infrastructure audit
                   </Link>
@@ -329,14 +329,14 @@ export default function DevOpsAuditWhatToExpect() {
                     Curious where your team would score?{" "}
                     <Link
                       href="/healthcheck"
-                      className="text-foreground/80 hover:text-foreground transition-colors"
+                      className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors"
                     >
                       Take our free DevOps health check
                     </Link>
                     {" "}for a quick self-assessment across all seven areas. Or{" "}
                     <Link
                       href="/infrastructure-audit"
-                      className="text-foreground/80 hover:text-foreground transition-colors"
+                      className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors"
                     >
                       learn more about our full audit service
                     </Link>
@@ -346,7 +346,7 @@ export default function DevOpsAuditWhatToExpect() {
                     For background on why this matters for small teams, read{" "}
                     <Link
                       href="/blog/why-smbs-need-devops"
-                      className="text-foreground/80 hover:text-foreground transition-colors"
+                      className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors"
                     >
                       why 53% of SMBs still don&apos;t have DevOps
                     </Link>

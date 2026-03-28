@@ -138,7 +138,7 @@ export default function ProcessSection() {
     <section className="py-32 md:py-48">
       <Container>
         <FadeIn>
-          <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-32 md:mb-40 font-light text-center">
+          <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-16 md:mb-20 font-light text-center">
             What we do
           </p>
         </FadeIn>

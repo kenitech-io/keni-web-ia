@@ -251,15 +251,15 @@ export default function DevOpsChecklistForStartups() {
               <FadeIn delay={0.2}>
                 <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   Not sure where your team stands on this checklist? Our{" "}
-                  <Link href="/infrastructure-audit" className="text-foreground/80 hover:text-foreground transition-colors">
+                  <Link href="/infrastructure-audit" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                     infrastructure audit
                   </Link>
                   {" "}evaluates your setup against these foundations and more. Or try our{" "}
-                  <Link href="/healthcheck" className="text-foreground/80 hover:text-foreground transition-colors">
+                  <Link href="/healthcheck" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                     free healthcheck
                   </Link>
                   {" "}to get a quick score. Need hands-on help implementing? That is what our{" "}
-                  <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground transition-colors">
+                  <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                     DevOps consulting
                   </Link>
                   {" "}is for.

@@ -9,7 +9,7 @@ export default function SolutionSection() {
     <section className="py-32 md:py-48">
       <Container>
         <FadeIn>
-          <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-32 md:mb-40 text-center font-light">
+          <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-16 md:mb-20 text-center font-light">
             The solution
           </p>
         </FadeIn>
@@ -29,11 +29,11 @@ export default function SolutionSection() {
               For software teams with 2-30 developers who ship a product but don&apos;t have dedicated DevOps.
             </p>
             <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
-              <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground transition-colors">
+              <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                 See our consulting services
               </Link>
               {" "}or{" "}
-              <Link href="/infrastructure-audit" className="text-foreground/80 hover:text-foreground transition-colors">
+              <Link href="/infrastructure-audit" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                 start with an infrastructure audit
               </Link>
               .

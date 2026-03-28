@@ -267,7 +267,7 @@ export default function WhySMBsNeedDevOps() {
               <FadeIn delay={0.2}>
                 <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   An{" "}
-                  <Link href="/infrastructure-audit" className="text-foreground/80 hover:text-foreground transition-colors">
+                  <Link href="/infrastructure-audit" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                     infrastructure audit
                   </Link>
                   , depending on the size and complexity
@@ -283,7 +283,7 @@ export default function WhySMBsNeedDevOps() {
                   The question is not whether your team needs DevOps. The
                   question is whether you build the capability in-house or
                   bring in someone who has done it dozens of times before. That is exactly what{" "}
-                  <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground transition-colors">
+                  <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                     our DevOps consulting
                   </Link>
                   {" "}is built for.
@@ -295,7 +295,7 @@ export default function WhySMBsNeedDevOps() {
                   Not sure where your team stands? Our free self-assessment takes 2 minutes and covers all the fundamentals.{" "}
                   <Link
                     href="/healthcheck"
-                    className="text-foreground/80 hover:text-foreground transition-colors"
+                    className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors"
                   >
                     Take the DevOps health check
                   </Link>
@@ -309,7 +309,7 @@ export default function WhySMBsNeedDevOps() {
                     Related reading:{" "}
                     <Link
                       href="/blog/devops-audit-what-to-expect"
-                      className="text-foreground/80 hover:text-foreground transition-colors"
+                      className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors"
                     >
                       What happens during a DevOps infrastructure audit
                     </Link>

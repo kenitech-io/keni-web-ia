@@ -338,11 +338,11 @@ export default function TraefikVsNginxVsHAProxy() {
               <FadeIn delay={0.2}>
                 <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                   We help teams set up and configure their infrastructure, including reverse proxies, as part of our consulting engagements. Our{" "}
-                  <Link href="/infrastructure-audit" className="text-foreground/80 hover:text-foreground transition-colors">
+                  <Link href="/infrastructure-audit" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                     infrastructure audit
                   </Link>
                   {" "}evaluates your current proxy setup alongside the rest of your stack, or you can go directly to{" "}
-                  <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground transition-colors">
+                  <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                     our DevOps consulting
                   </Link>
                   .
@@ -354,14 +354,14 @@ export default function TraefikVsNginxVsHAProxy() {
                   <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                     Want to see how a reverse proxy fits into a full internal
                     development platform?{" "}
-                    <Link href="/platform" className="text-foreground/80 hover:text-foreground transition-colors">
+                    <Link href="/platform" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                       Explore our reference architecture
                     </Link>
                     .
                   </p>
                   <p className="text-sm text-foreground-secondary/70 leading-loose font-light mt-4">
                     Your proxy sits in front of containers. If you are still choosing a runtime, read our comparison of{" "}
-                    <Link href="/blog/docker-vs-podman" className="text-foreground/80 hover:text-foreground transition-colors">
+                    <Link href="/blog/docker-vs-podman" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                       Docker vs Podman
                     </Link>
                     .
