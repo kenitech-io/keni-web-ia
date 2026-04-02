@@ -7,6 +7,15 @@ import FadeIn from "@/components/ui/FadeIn";
 
 const cards = [
   {
+    label: "DEDICATED EXPERTS",
+    headline: "A team of specialists in constant innovation, at your service.",
+    image: "/help-innovation.png",
+    alt: "Abstract 3D blocks representing innovation and teamwork",
+    href: "/about",
+    dark: true,
+    labelColor: "text-[#C65100]",
+  },
+  {
     label: "KENI SPECIALISTS",
     headline: "Build with the help of Specialists, online or on a call.",
     image: "/help-meet-us.png",
@@ -34,15 +43,6 @@ const cards = [
     dark: false,
     glowBlue: true,
     icon: "automation",
-  },
-  {
-    label: "DEDICATED EXPERTS",
-    headline: "A team of specialists in constant innovation, at your service.",
-    image: "/help-innovation.png",
-    alt: "Abstract 3D blocks representing innovation and teamwork",
-    href: "/about",
-    dark: true,
-    labelColor: "text-[#C65100]",
   },
   {
     label: "SEE THE RESULTS",
