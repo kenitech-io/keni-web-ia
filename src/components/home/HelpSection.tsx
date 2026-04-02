@@ -83,7 +83,7 @@ export default function HelpSection() {
                     card.dark
                       ? "bg-black text-white"
                       : "bgWhite" in card && card.bgWhite
-                      ? "bg-white text-foreground"
+                      ? "bg-white text-black"
                       : "bg-surface text-foreground"
                   }`}
                 >
