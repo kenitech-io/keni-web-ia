@@ -113,6 +113,15 @@ html {
   }
 }
 
+/* Hide scrollbar for horizontal card scroll */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Form input styles */
 input, textarea, select {
   outline: none;

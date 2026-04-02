@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import HeroSection from "@/components/home/HeroSection";
 import ProblemSection from "@/components/home/ProblemSection";
 import ProcessSection from "@/components/home/ProcessSection";
+import HelpSection from "@/components/home/HelpSection";
 import HomeCTA from "@/components/home/HomeCTA";
 import LiveScreen from "@/components/LiveScreen";
 import Container from "@/components/ui/Container";
@@ -76,6 +77,8 @@ export default function HomeContent() {
 
       <ProcessSection />
 
+      <HelpSection />
+
       {/* Explore links */}
       <section className="py-32 md:py-48">
         <Container>
@@ -119,7 +122,6 @@ export default function HomeContent() {
           </div>
         </Container>
       </section>
-
       <HomeCTA />
       <InteractiveDiagram
         isOpen={diagramOpen}
