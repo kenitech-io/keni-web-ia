@@ -177,11 +177,10 @@ export default function HelpSection() {
                       <div className="absolute inset-0 flex items-center justify-center pt-20">
                         {"icon" in card && card.icon === "rocket" && (
                           <svg
-                            className="w-28 h-28 md:w-36 md:h-36"
+                            className="w-28 h-28 md:w-36 md:h-36 text-muted"
                             viewBox="0 0 24 24"
                             fill="none"
                             stroke="currentColor"
-                            className="text-muted"
                             strokeWidth="1"
                             strokeLinecap="round"
                             strokeLinejoin="round"
