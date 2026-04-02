@@ -182,6 +182,7 @@ interface Props {
   emailStatus: "idle" | "sending" | "sent" | "error" | "blocked";
   onEmailSubmit: (email: string, note: string) => void;
   submittedEmail?: string;
+  inline?: boolean;
 }
 
 const ENGAGEMENT_THRESHOLD = 1;
@@ -192,6 +193,7 @@ export default function InteractiveDiagram({
   emailStatus,
   onEmailSubmit,
   submittedEmail,
+  inline,
 }: Props) {
   const [activeZone, setActiveZone] = useState<string | null>(null);
   const [email, setEmail] = useState("");
@@ -204,6 +206,7 @@ export default function InteractiveDiagram({
   const showForm = exploredCount >= ENGAGEMENT_THRESHOLD;
 
   useEffect(() => {
+    if (inline) return;
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
@@ -215,7 +218,7 @@ export default function InteractiveDiagram({
       document.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "";
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, onClose, inline]);
 
   const zoneStyle = useCallback(
     (id: string): React.CSSProperties => ({
@@ -261,28 +264,32 @@ export default function InteractiveDiagram({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="fixed inset-0 z-50 bg-background"
+          className={inline ? "relative bg-background h-[calc(100vh-64px)]" : "fixed inset-0 z-50 bg-background"}
         >
-          <div className="absolute top-0 left-0 right-0 z-10 h-[64px] flex items-center px-6 md:px-8 mx-auto max-w-content w-full" style={{ left: "50%", transform: "translateX(-50%)" }}>
-            <a href="/" className="text-xs font-medium text-foreground tracking-tight">Keni</a>
-          </div>
-          <button
-            onClick={onClose}
-            className="absolute top-5 right-6 z-10 w-8 h-8 flex items-center justify-center text-muted hover:text-foreground transition-colors"
-            aria-label="Close"
-          >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path
-                d="M1 1L15 15M15 1L1 15"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              />
-            </svg>
-          </button>
+          {!inline && (
+            <>
+              <div className="absolute top-0 left-0 right-0 z-10 h-[64px] flex items-center px-6 md:px-8 mx-auto max-w-content w-full" style={{ left: "50%", transform: "translateX(-50%)" }}>
+                <a href="/" className="text-xs font-medium text-foreground tracking-tight">Keni</a>
+              </div>
+              <button
+                onClick={onClose}
+                className="absolute top-5 right-6 z-10 w-8 h-8 flex items-center justify-center text-muted hover:text-foreground transition-colors"
+                aria-label="Close"
+              >
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path
+                    d="M1 1L15 15M15 1L1 15"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  />
+                </svg>
+              </button>
+            </>
+          )}
 
           <div className="h-full flex flex-row relative">
             {/* Diagram */}
-            <div className="flex-1 flex items-start justify-center p-2 pt-[40px] md:p-8 md:pt-[64px] lg:p-12 lg:pt-[72px] min-h-0 overflow-hidden">
+            <div className={inline ? "flex-1 flex items-start justify-center p-2 md:p-8 lg:p-12 min-h-0 overflow-hidden" : "flex-1 flex items-start justify-center p-2 pt-[40px] md:p-8 md:pt-[64px] lg:p-12 lg:pt-[72px] min-h-0 overflow-hidden"}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 960 760"
@@ -1314,7 +1321,7 @@ export default function InteractiveDiagram({
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 20 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute bottom-0 left-0 right-0 lg:relative lg:bottom-auto lg:left-auto lg:right-auto lg:w-[380px] shrink-0 border-t lg:border-t-0 lg:border-l border-border-color bg-background p-4 pb-6 md:p-10 flex flex-col justify-start overflow-y-auto max-h-[50vh] lg:max-h-none text-sm lg:text-base overscroll-contain"
+                  className={`absolute bottom-0 left-0 right-0 lg:relative lg:bottom-auto lg:left-auto lg:right-auto lg:w-[380px] shrink-0 border-t lg:border-t-0 lg:border-l border-border-color bg-background p-4 pb-6 md:p-10 flex flex-col justify-start overflow-y-auto max-h-[50vh] lg:max-h-none text-sm lg:text-base overscroll-contain ${inline ? "lg:mt-16" : ""}`}
                 >
                   {/* Component description */}
                   <div className="flex-1 flex items-center min-h-0 lg:min-w-[320px]">

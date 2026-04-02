@@ -3,7 +3,14 @@
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 
-const footerLinks: { name: string; href: string }[] = [];
+const footerLinks: { name: string; href: string }[] = [
+  { name: "DevOps Consulting", href: "/devops-consulting" },
+  { name: "Infrastructure Audit", href: "/infrastructure-audit" },
+  { name: "Managed DevOps", href: "/managed-devops" },
+  { name: "Platform Engineering", href: "/platform-engineering" },
+  { name: "CI/CD Consulting", href: "/ci-cd-consulting" },
+  { name: "Blog", href: "/blog" },
+];
 
 const socialLinks = [
   { name: "LinkedIn", href: "https://www.linkedin.com/company/keniengineering/" },

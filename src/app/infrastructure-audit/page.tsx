@@ -5,7 +5,7 @@ import FadeIn from "@/components/ui/FadeIn";
 import CTASection from "@/components/CTASection";
 
 export const metadata: Metadata = {
-  title: "DevOps Infrastructure Audit in 72 Hours | Keni Engineering",
+  title: "DevOps Infrastructure Audit in 72 Hours",
   description:
     "Get a full infrastructure audit in 72 hours. We review your CI/CD, deployments, monitoring, secrets, and disaster recovery. Prioritized roadmap included.",
   alternates: {

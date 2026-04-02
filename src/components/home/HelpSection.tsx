@@ -5,7 +5,24 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
 
-const cards = [
+interface Card {
+  label: string;
+  headline: string;
+  image: string | null;
+  alt: string;
+  href: string;
+  dark: boolean;
+  labelColor?: string;
+  portrait?: boolean;
+  bgWhite?: boolean;
+  icon?: string;
+  fullBleed?: boolean;
+  bgHex?: string;
+  glowBlue?: boolean;
+  glowGreen?: boolean;
+}
+
+const cards: Card[] = [
   {
     label: "DEDICATED EXPERTS",
     headline: "Always learning. Always building.",
@@ -82,18 +99,18 @@ export default function HelpSection() {
               >
                 <div
                   className={`relative rounded-2xl overflow-hidden h-[380px] md:h-[440px] transition-all duration-500 ease-out group-hover:-translate-y-1 group-hover:shadow-2xl ${
-                    "bgHex" in card
+                    card.bgHex
                       ? "text-white"
                       : card.dark
                       ? "bg-black text-white"
-                      : "bgWhite" in card && card.bgWhite
+                      : card.bgWhite
                       ? "bg-[#F5F5F5] dark:bg-[#F5F5F5] text-black"
                       : "bg-surface text-foreground"
                   }`}
-                  style={"bgHex" in card ? { backgroundColor: card.bgHex } : undefined}
+                  style={card.bgHex ? { backgroundColor: card.bgHex } : undefined}
                 >
                   {/* Blue glow effect */}
-                  {"glowBlue" in card && card.glowBlue && (
+                  {card.glowBlue && (
                     <div
                       className="absolute inset-0 pointer-events-none"
                       style={{
@@ -103,7 +120,7 @@ export default function HelpSection() {
                   )}
 
                   {/* Green glow effect */}
-                  {"glowGreen" in card && card.glowGreen && (
+                  {card.glowGreen && (
                     <div
                       className="absolute inset-0 pointer-events-none"
                       style={{
@@ -113,7 +130,7 @@ export default function HelpSection() {
                   )}
 
                   {/* Full-bleed background image */}
-                  {"fullBleed" in card && card.fullBleed && card.image && (
+                  {card.fullBleed && card.image && (
                     <Image
                       src={card.image}
                       alt={card.alt}
@@ -126,9 +143,9 @@ export default function HelpSection() {
                   <div className="relative z-10 p-6 md:p-7">
                     <p
                       className={`text-xs font-semibold tracking-[0.08em] mb-3 ${
-                        "labelColor" in card && card.labelColor
+                        card.labelColor
                           ? card.labelColor
-                          : "fullBleed" in card && card.fullBleed
+                          : card.fullBleed
                           ? card.dark ? "text-white/70" : "text-muted"
                           : card.dark
                           ? "text-blue-400"
@@ -143,7 +160,7 @@ export default function HelpSection() {
                   </div>
 
                   {/* Portrait image (Apple style, no gradient) */}
-                  {"portrait" in card && card.portrait && card.image && (
+                  {card.portrait && card.image && (
                     <div className="absolute bottom-0 left-0 right-0 h-[68%] flex justify-center">
                       <div className="relative w-[90%] h-full">
                         <Image
@@ -158,7 +175,7 @@ export default function HelpSection() {
                   )}
 
                   {/* Partial image (non full-bleed, non portrait) */}
-                  {card.image && !("fullBleed" in card && card.fullBleed) && !("portrait" in card && card.portrait) && (
+                  {card.image && !(card.fullBleed) && !(card.portrait) && (
                     <div className="absolute bottom-0 left-0 right-0 h-[65%]">
                       <Image
                         src={card.image}

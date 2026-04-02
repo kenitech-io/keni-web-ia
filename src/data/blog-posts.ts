@@ -107,4 +107,76 @@ export const blogPosts: BlogPost[] = [
     readTime: "9 min read",
     category: "Containers",
   },
+  {
+    slug: "why-your-team-doesnt-need-kubernetes",
+    title: "Why Your 10-Person Dev Team Doesn't Need Kubernetes (And What to Use Instead)",
+    description:
+      "Kubernetes is overkill for most teams under 30 developers. The real cost of K8s, what to use instead, and when to actually migrate.",
+    date: "2026-04-02",
+    readTime: "10 min read",
+    category: "Infrastructure",
+  },
+  {
+    slug: "internal-developer-platforms-for-small-teams",
+    title: "Internal Developer Platforms for Small Teams: A Practical Guide",
+    description:
+      "Most IDP content targets enterprises with 100+ engineers. Here is the right-sized version for teams with 2-30 developers. Components, tools, and a phased build plan.",
+    date: "2026-04-02",
+    readTime: "11 min read",
+    category: "Platform Engineering",
+  },
+  {
+    slug: "docker-compose-in-production",
+    title: "Docker Compose in Production: A Guide for Small Teams",
+    description:
+      "Docker Compose is not just for development. Health checks, zero-downtime deploys, monitoring, backups, and everything you need to run Compose in production.",
+    date: "2026-04-02",
+    readTime: "12 min read",
+    category: "Containers",
+  },
+  {
+    slug: "replace-heroku-with-self-hosted",
+    title: "Replace Heroku with a Self-Hosted Platform (And Cut Your Bill by 80%)",
+    description:
+      "Heroku pricing is brutal for growing teams. Here is how to migrate to a self-hosted stack with Docker, Traefik, and CI/CD for a fraction of the cost.",
+    date: "2026-04-02",
+    readTime: "10 min read",
+    category: "Infrastructure",
+  },
+  {
+    slug: "devops-audit-before-hiring",
+    title: "DevOps Audit: What to Check Before Hiring a Consultant",
+    description:
+      "A self-assessment checklist, red flags to watch for, and what a professional audit delivers. Know where you stand before you invest.",
+    date: "2026-04-02",
+    readTime: "9 min read",
+    category: "DevOps",
+  },
+  {
+    slug: "migrate-single-server-to-containers",
+    title: "How to Migrate from a Single Server to Containers Without Downtime",
+    description:
+      "Step-by-step guide to containerizing your bare-metal or VM-based app. Dockerfile, Docker Compose, Traefik, database migration, and zero-downtime cutover.",
+    date: "2026-04-02",
+    readTime: "11 min read",
+    category: "Containers",
+  },
+  {
+    slug: "platform-engineering-without-kubernetes",
+    title: "Platform Engineering Without Kubernetes: A Simpler Path for Small Teams",
+    description:
+      "You do not need Kubernetes to build a great developer platform. The K8s-free stack, cost comparison, and how to get started with Docker, Traefik, and Grafana.",
+    date: "2026-04-02",
+    readTime: "10 min read",
+    category: "Platform Engineering",
+  },
+  {
+    slug: "devops-as-a-service-for-smbs",
+    title: "DevOps as a Service: What SMBs Actually Need in 2026",
+    description:
+      "The three DaaS models, cost comparison vs full-time hire, what to look for in a provider, and red flags to avoid.",
+    date: "2026-04-02",
+    readTime: "9 min read",
+    category: "DevOps",
+  },
 ];

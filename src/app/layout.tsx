@@ -28,20 +28,6 @@ export const metadata: Metadata = {
   },
   description:
     "DevOps consulting and platform engineering for US software teams with 2-30 developers. We set up CI/CD, automate deploys, and keep your infrastructure running so your team ships faster.",
-  keywords: [
-    "DevOps consulting",
-    "DevOps consulting for startups",
-    "platform engineering",
-    "internal developer platform",
-    "CI/CD pipeline setup",
-    "infrastructure as code consulting",
-    "cloud infrastructure management",
-    "DevOps audit",
-    "infrastructure audit",
-    "DevOps for small teams",
-    "automated deployments",
-    "DevOps outsourcing",
-  ],
   openGraph: {
     type: "website",
     locale: "en_US",

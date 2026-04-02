@@ -31,6 +31,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${BASE_URL}/managed-devops`,
+      lastModified: new Date("2026-04-02"),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/platform-engineering`,
+      lastModified: new Date("2026-04-02"),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/ci-cd-consulting`,
+      lastModified: new Date("2026-04-02"),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: `${BASE_URL}/platform`,
       lastModified: new Date("2026-03-20"),
       changeFrequency: "monthly",
