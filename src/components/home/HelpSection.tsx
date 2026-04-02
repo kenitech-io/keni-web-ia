@@ -7,6 +7,16 @@ import FadeIn from "@/components/ui/FadeIn";
 
 const cards = [
   {
+    label: "KENI SPECIALISTS",
+    headline: "Build with the help of Specialists, online or on a call.",
+    image: "/help-meet-us.png",
+    alt: "Mikel, co-founder of Keni Engineering",
+    href: "/about",
+    dark: false,
+    portrait: true,
+    bgWhite: true,
+  },
+  {
     label: "SMALL TEAMS",
     headline: "Simple solutions for every kind of workflow.",
     image: "/help-team.png",
@@ -44,15 +54,6 @@ const cards = [
     icon: "rocket",
     glowGreen: true,
   },
-  {
-    label: "KENI SPECIALISTS",
-    headline: "Build with the help of Specialists, online or on a call.",
-    image: "/help-meet-us.png",
-    alt: "Mikel, co-founder of Keni Engineering",
-    href: "/about",
-    dark: false,
-    portrait: true,
-  },
 ];
 
 export default function HelpSection() {
@@ -81,6 +82,8 @@ export default function HelpSection() {
                   className={`relative rounded-2xl overflow-hidden h-[380px] md:h-[440px] ${
                     card.dark
                       ? "bg-black text-white"
+                      : "bgWhite" in card && card.bgWhite
+                      ? "bg-white text-foreground"
                       : "bg-surface text-foreground"
                   }`}
                 >
@@ -106,16 +109,13 @@ export default function HelpSection() {
 
                   {/* Full-bleed background image */}
                   {"fullBleed" in card && card.fullBleed && card.image && (
-                    <>
-                      <Image
-                        src={card.image}
-                        alt={card.alt}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 320px, 420px"
-                      />
-                      <div className="absolute inset-0 bg-black/5" />
-                    </>
+                    <Image
+                      src={card.image}
+                      alt={card.alt}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 320px, 420px"
+                    />
                   )}
 
                   <div className="relative z-10 p-6 md:p-7">
