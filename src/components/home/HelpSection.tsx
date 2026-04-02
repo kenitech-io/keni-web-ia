@@ -60,9 +60,13 @@ export default function HelpSection() {
     <section className="py-32 md:py-48">
       <Container>
         <FadeIn>
-          <h2 className="text-heading text-foreground font-light tracking-wide text-center">
-            <strong>We help you.</strong>{" "}
-            <span className="text-muted">When, how and where you want.</span>
+          <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-16 md:mb-20 font-light text-center">
+            We help you
+          </p>
+        </FadeIn>
+        <FadeIn delay={0.1}>
+          <h2 className="text-heading text-foreground font-light tracking-wide mb-16 text-center">
+            When, how and where you want
           </h2>
         </FadeIn>
 
@@ -71,10 +75,10 @@ export default function HelpSection() {
             <FadeIn key={card.label} delay={i * 0.1}>
               <Link
                 href={card.href}
-                className="group block flex-shrink-0 w-[320px] md:w-[420px] snap-start"
+                className="group block flex-shrink-0 w-[280px] md:w-[340px] snap-start"
               >
                 <div
-                  className={`relative rounded-2xl overflow-hidden h-[480px] md:h-[560px] ${
+                  className={`relative rounded-2xl overflow-hidden h-[380px] md:h-[440px] ${
                     card.dark
                       ? "bg-black text-white"
                       : "bg-white text-foreground"
@@ -114,7 +118,7 @@ export default function HelpSection() {
                     </>
                   )}
 
-                  <div className="relative z-10 p-7 md:p-9">
+                  <div className="relative z-10 p-6 md:p-7">
                     <p
                       className={`text-xs font-semibold tracking-[0.08em] mb-3 ${
                         "labelColor" in card && card.labelColor
@@ -128,7 +132,7 @@ export default function HelpSection() {
                     >
                       {card.label}
                     </p>
-                    <h3 className="text-[1.5rem] md:text-[1.75rem] font-semibold leading-tight">
+                    <h3 className="text-[1.2rem] md:text-[1.35rem] font-semibold leading-tight">
                       {card.headline}
                     </h3>
                   </div>
