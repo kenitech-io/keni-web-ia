@@ -70,7 +70,7 @@ export default function HelpSection() {
           </h2>
         </FadeIn>
 
-        <div className="mt-12 md:mt-16 flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 md:mx-0 md:px-0">
+        <div className="mt-12 md:mt-16 flex gap-5 overflow-x-auto overflow-y-hidden pb-4 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 md:mx-0 md:px-0 touch-pan-x">
           {cards.map((card, i) => (
             <FadeIn key={card.label} delay={i * 0.1}>
               <Link
