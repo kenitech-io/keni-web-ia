@@ -81,7 +81,7 @@ export default function HelpSection() {
                   className={`relative rounded-2xl overflow-hidden h-[380px] md:h-[440px] ${
                     card.dark
                       ? "bg-black text-white"
-                      : "bg-white text-foreground"
+                      : "bg-surface text-foreground"
                   }`}
                 >
                   {/* Blue glow effect */}
@@ -180,7 +180,8 @@ export default function HelpSection() {
                             className="w-28 h-28 md:w-36 md:h-36"
                             viewBox="0 0 24 24"
                             fill="none"
-                            stroke="#444444"
+                            stroke="currentColor"
+                            className="text-muted"
                             strokeWidth="1"
                             strokeLinecap="round"
                             strokeLinejoin="round"

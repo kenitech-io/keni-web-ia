@@ -186,9 +186,9 @@ export default function AboutPage() {
             {/* Card 1 */}
             <FadeIn delay={0}>
               <Link href="/blog/why-smbs-need-devops" className="group block">
-                <div className="bg-[#f0f4e8] rounded-xl aspect-[4/3] mb-4 transition-transform duration-300 group-hover:scale-[1.02] flex items-center justify-center p-8">
-                  <svg className="w-full h-full max-w-[180px]" viewBox="0 0 200 200" fill="none" stroke="#2d3a1d" strokeWidth="1.5" strokeLinecap="round" strokeDasharray="8 6">
-                    <circle cx="100" cy="100" r="8" fill="#2d3a1d" strokeDasharray="0" />
+                <div className="bg-[#f0f4e8] dark:bg-[#1a2410] rounded-xl aspect-[4/3] mb-4 transition-transform duration-300 group-hover:scale-[1.02] flex items-center justify-center p-8">
+                  <svg className="w-full h-full max-w-[180px] text-[#2d3a1d] dark:text-[#a0b890]" viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeDasharray="8 6">
+                    <circle cx="100" cy="100" r="8" fill="currentColor" strokeDasharray="0" />
                     <path d="M100 100L40 60" /><path d="M100 100L160 60" />
                     <path d="M100 100L40 140" /><path d="M100 100L160 140" />
                     <path d="M100 100L100 30" /><path d="M100 100L100 170" />
@@ -205,8 +205,8 @@ export default function AboutPage() {
             {/* Card 2 */}
             <FadeIn delay={0.08}>
               <Link href="/blog/devops-audit-what-to-expect" className="group block">
-                <div className="bg-[#f0f4e8] rounded-xl aspect-[4/3] mb-4 transition-transform duration-300 group-hover:scale-[1.02] flex items-center justify-center p-8">
-                  <svg className="w-full h-full max-w-[140px]" viewBox="0 0 200 200" fill="none" stroke="#2d3a1d" strokeWidth="1.5" strokeLinecap="round">
+                <div className="bg-[#f0f4e8] dark:bg-[#1a2410] rounded-xl aspect-[4/3] mb-4 transition-transform duration-300 group-hover:scale-[1.02] flex items-center justify-center p-8">
+                  <svg className="w-full h-full max-w-[140px] text-[#2d3a1d] dark:text-[#a0b890]" viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
                     <rect x="40" y="30" width="120" height="140" rx="4" strokeDasharray="6 4" />
                     <circle cx="100" cy="100" r="35" strokeDasharray="0" />
                     <circle cx="100" cy="100" r="20" strokeDasharray="4 4" />
@@ -221,18 +221,18 @@ export default function AboutPage() {
             {/* Card 3 */}
             <FadeIn delay={0.16}>
               <Link href="/blog/how-much-does-devops-cost" className="group block">
-                <div className="bg-[#e8eef4] rounded-xl aspect-[4/3] mb-4 transition-transform duration-300 group-hover:scale-[1.02] flex items-center justify-center p-8">
-                  <svg className="w-full h-full max-w-[160px]" viewBox="0 0 200 200" fill="none" stroke="#1d2d3a" strokeWidth="1.5" strokeLinecap="round">
+                <div className="bg-[#e8eef4] dark:bg-[#101a24] rounded-xl aspect-[4/3] mb-4 transition-transform duration-300 group-hover:scale-[1.02] flex items-center justify-center p-8">
+                  <svg className="w-full h-full max-w-[160px] text-[#1d2d3a] dark:text-[#90a8b8]" viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
                     <path d="M40 160L40 80" strokeDasharray="0" />
                     <path d="M80 160L80 60" strokeDasharray="0" />
                     <path d="M120 160L120 100" strokeDasharray="0" />
                     <path d="M160 160L160 45" strokeDasharray="0" />
                     <path d="M30 160L170 160" strokeDasharray="0" strokeWidth="1" />
                     <path d="M40 80L80 60L120 100L160 45" strokeDasharray="6 4" strokeWidth="1" />
-                    <circle cx="40" cy="80" r="4" fill="#1d2d3a" strokeDasharray="0" />
-                    <circle cx="80" cy="60" r="4" fill="#1d2d3a" strokeDasharray="0" />
-                    <circle cx="120" cy="100" r="4" fill="#1d2d3a" strokeDasharray="0" />
-                    <circle cx="160" cy="45" r="4" fill="#1d2d3a" strokeDasharray="0" />
+                    <circle cx="40" cy="80" r="4" fill="currentColor" strokeDasharray="0" />
+                    <circle cx="80" cy="60" r="4" fill="currentColor" strokeDasharray="0" />
+                    <circle cx="120" cy="100" r="4" fill="currentColor" strokeDasharray="0" />
+                    <circle cx="160" cy="45" r="4" fill="currentColor" strokeDasharray="0" />
                   </svg>
                 </div>
                 <h3 className="text-sm font-medium text-foreground leading-snug mb-2">How Much Does DevOps Cost in 2026?</h3>
@@ -243,8 +243,8 @@ export default function AboutPage() {
             {/* Card 4 */}
             <FadeIn delay={0.24}>
               <Link href="/blog/devops-checklist-for-startups" className="group block">
-                <div className="bg-[#eee8f4] rounded-xl aspect-[4/3] mb-4 transition-transform duration-300 group-hover:scale-[1.02] flex items-center justify-center p-8">
-                  <svg className="w-full h-full max-w-[140px]" viewBox="0 0 200 200" fill="none" stroke="#2d1d3a" strokeWidth="1.5" strokeLinecap="round">
+                <div className="bg-[#eee8f4] dark:bg-[#1a1024] rounded-xl aspect-[4/3] mb-4 transition-transform duration-300 group-hover:scale-[1.02] flex items-center justify-center p-8">
+                  <svg className="w-full h-full max-w-[140px] text-[#2d1d3a] dark:text-[#b090c0]" viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
                     <rect x="50" y="35" width="100" height="130" rx="6" strokeDasharray="0" />
                     <path d="M72 70l6 6 14-14" strokeWidth="2" strokeDasharray="0" />
                     <path d="M100 72L140 72" strokeDasharray="0" />
