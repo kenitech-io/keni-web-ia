@@ -150,7 +150,7 @@ export default function ProcessSection() {
         <div className="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {services.map((service, index) => (
             <FadeIn key={service.title} delay={index * 0.08}>
-              <div className="bg-surface rounded-2xl p-8 h-full flex flex-col shadow-[0_4px_30px_rgba(0,0,0,0.08)]">
+              <div className="bg-[#F6F6F6] dark:bg-[#F6F6F6] rounded-2xl p-8 h-full flex flex-col text-black shadow-lg shadow-black/5">
                 <h3 className="text-body text-foreground font-light tracking-wide mb-4">
                   {service.title}
                 </h3>

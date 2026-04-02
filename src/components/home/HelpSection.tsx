@@ -8,7 +8,7 @@ import FadeIn from "@/components/ui/FadeIn";
 const cards = [
   {
     label: "DEDICATED EXPERTS",
-    headline: "A team of specialists in constant innovation, at your service.",
+    headline: "Always learning. Always building.",
     image: "/help-innovation.png",
     alt: "Abstract 3D blocks representing innovation and teamwork",
     href: "/about",
@@ -17,7 +17,7 @@ const cards = [
   },
   {
     label: "KENI SPECIALISTS",
-    headline: "Build with the help of Specialists, online or on a call.",
+    headline: "Real experts. Real conversations.",
     image: "/help-meet-us.png",
     alt: "Mikel, co-founder of Keni Engineering",
     href: "/about",
@@ -26,8 +26,19 @@ const cards = [
     bgWhite: true,
   },
   {
+    label: "AUTOMATION",
+    headline: "Push code. We handle the rest.",
+    image: null,
+    alt: "",
+    href: "/platform",
+    dark: false,
+    icon: "automation",
+    bgWhite: true,
+    labelColor: "text-muted",
+  },
+  {
     label: "SMALL TEAMS",
-    headline: "Simple solutions for every kind of workflow.",
+    headline: "Built for teams like yours.",
     image: "/help-team.png",
     alt: "Team collaborating on infrastructure",
     href: "/devops-consulting",
@@ -35,24 +46,15 @@ const cards = [
     fullBleed: true,
   },
   {
-    label: "AUTOMATION",
-    headline: "One platform. Every workflow automated. Every deploy zero-touch.",
-    image: null,
-    alt: "",
-    href: "/platform",
-    dark: false,
-    glowBlue: true,
-    icon: "automation",
-  },
-  {
     label: "SEE THE RESULTS",
-    headline: "From manual deploys to fully automated in under 30 days.",
+    headline: "30 days to fully automated.",
     image: null,
     alt: "",
     href: "/devops-consulting",
     dark: false,
     icon: "rocket",
-    glowGreen: true,
+    bgWhite: true,
+    labelColor: "text-green-800",
   },
 ];
 
@@ -71,7 +73,7 @@ export default function HelpSection() {
           </h2>
         </FadeIn>
 
-        <div className="mt-12 md:mt-16 flex gap-5 overflow-x-auto overflow-y-hidden pb-4 snap-x snap-mandatory scrollbar-hide -mx-6 px-6 md:mx-0 md:px-0 touch-pan-x">
+        <div className="mt-12 md:mt-16 flex gap-5 overflow-x-auto overflow-y-visible pb-16 pt-6 snap-x snap-mandatory scrollbar-hide -mx-10 px-10 md:-mx-8 md:px-8 touch-pan-x">
           {cards.map((card, i) => (
             <FadeIn key={card.label} delay={i * 0.1}>
               <Link
@@ -79,20 +81,23 @@ export default function HelpSection() {
                 className="group block flex-shrink-0 w-[280px] md:w-[340px] snap-start"
               >
                 <div
-                  className={`relative rounded-2xl overflow-hidden h-[380px] md:h-[440px] ${
-                    card.dark
+                  className={`relative rounded-2xl overflow-hidden h-[380px] md:h-[440px] transition-all duration-500 ease-out group-hover:-translate-y-1 group-hover:shadow-2xl ${
+                    "bgHex" in card
+                      ? "text-white"
+                      : card.dark
                       ? "bg-black text-white"
                       : "bgWhite" in card && card.bgWhite
-                      ? "bg-white text-black"
+                      ? "bg-[#F5F5F5] dark:bg-[#F5F5F5] text-black"
                       : "bg-surface text-foreground"
                   }`}
+                  style={"bgHex" in card ? { backgroundColor: card.bgHex } : undefined}
                 >
                   {/* Blue glow effect */}
                   {"glowBlue" in card && card.glowBlue && (
                     <div
                       className="absolute inset-0 pointer-events-none"
                       style={{
-                        background: "linear-gradient(135deg, rgba(59, 130, 246, 0.25) 0%, rgba(100, 160, 255, 0.1) 40%, transparent 70%)",
+                        background: "linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(100, 160, 255, 0.05) 40%, transparent 70%)",
                       }}
                     />
                   )}
@@ -102,7 +107,7 @@ export default function HelpSection() {
                     <div
                       className="absolute inset-0 pointer-events-none"
                       style={{
-                        background: "linear-gradient(135deg, rgba(34, 197, 94, 0.25) 0%, rgba(74, 222, 128, 0.1) 40%, transparent 70%)",
+                        background: "linear-gradient(135deg, rgba(34, 197, 94, 0.12) 0%, rgba(74, 222, 128, 0.05) 40%, transparent 70%)",
                       }}
                     />
                   )}
@@ -124,7 +129,7 @@ export default function HelpSection() {
                         "labelColor" in card && card.labelColor
                           ? card.labelColor
                           : "fullBleed" in card && card.fullBleed
-                          ? "text-white/70"
+                          ? card.dark ? "text-white/70" : "text-muted"
                           : card.dark
                           ? "text-blue-400"
                           : "text-muted"
@@ -132,7 +137,7 @@ export default function HelpSection() {
                     >
                       {card.label}
                     </p>
-                    <h3 className="text-[1.2rem] md:text-[1.35rem] font-semibold leading-tight">
+                    <h3 className="text-[1.1rem] md:text-[1.2rem] font-normal leading-snug tracking-wide">
                       {card.headline}
                     </h3>
                   </div>
@@ -177,37 +182,45 @@ export default function HelpSection() {
                       <div className="absolute inset-0 flex items-center justify-center pt-20">
                         {"icon" in card && card.icon === "rocket" && (
                           <svg
-                            className="w-28 h-28 md:w-36 md:h-36 text-muted"
-                            viewBox="0 0 24 24"
+                            className="w-28 h-28 md:w-36 md:h-36"
+                            viewBox="0 0 64 64"
                             fill="none"
-                            stroke="currentColor"
-                            strokeWidth="1"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
                           >
-                            <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
-                            <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
-                            <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
-                            <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+                            {/* Base line */}
+                            <line x1="4" y1="38" x2="16" y2="38" stroke="#166534" strokeWidth="1" strokeLinecap="round" opacity="0.3" />
+                            {/* Pulse down */}
+                            <path d="M16 38 L20 38 L23 46 L28 28 L33 42 L36 34 L39 38" stroke="#166534" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.7" />
+                            {/* Peak spike upward */}
+                            <path d="M39 38 L42 20 L45 38" stroke="#166534" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.9" />
+                            {/* Trailing line */}
+                            <line x1="45" y1="38" x2="60" y2="38" stroke="#166534" strokeWidth="1" strokeLinecap="round" opacity="0.3" />
+                            {/* Glow dot at peak */}
+                            <circle cx="42" cy="20" r="2" fill="#166534" opacity="0.4" />
+                            <circle cx="42" cy="20" r="4" fill="#166534" opacity="0.1" />
                           </svg>
                         )}
                         {"icon" in card && card.icon === "automation" && (
                           <svg
                             className="w-28 h-28 md:w-36 md:h-36"
-                            viewBox="0 0 24 24"
+                            viewBox="0 0 64 64"
                             fill="none"
-                            stroke="#3b82f6"
-                            strokeWidth="1"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
                           >
-                            {/* Workflow/automation: connected nodes (Lucide Workflow) */}
-                            <rect x="3" y="3" width="6" height="6" rx="1" />
-                            <rect x="15" y="3" width="6" height="6" rx="1" />
-                            <rect x="9" y="15" width="6" height="6" rx="1" />
-                            <path d="M6 9v3a1 1 0 0 0 1 1h2" />
-                            <path d="M18 9v3a1 1 0 0 1-1 1h-2" />
-                            <path d="M12 12v3" />
+                            {/* Outer ring */}
+                            <circle cx="32" cy="32" r="28" stroke="#2563eb" strokeWidth="0.5" opacity="0.3" />
+                            {/* Inner ring with dash */}
+                            <circle cx="32" cy="32" r="20" stroke="#2563eb" strokeWidth="0.5" strokeDasharray="3 5" opacity="0.2" />
+                            {/* Flowing arc - top */}
+                            <path d="M32 4a28 28 0 0 1 24.2 14" stroke="#2563eb" strokeWidth="1.5" strokeLinecap="round" opacity="0.8" />
+                            {/* Flowing arc - bottom */}
+                            <path d="M32 60a28 28 0 0 1-24.2-14" stroke="#2563eb" strokeWidth="1.5" strokeLinecap="round" opacity="0.8" />
+                            {/* Center dot */}
+                            <circle cx="32" cy="32" r="2" fill="#2563eb" opacity="0.6" />
+                            {/* Node dots on the arcs */}
+                            <circle cx="56" cy="18" r="2.5" fill="#2563eb" opacity="0.5" />
+                            <circle cx="8" cy="46" r="2.5" fill="#2563eb" opacity="0.5" />
+                            {/* Connecting lines through center */}
+                            <line x1="10" y1="45" x2="30" y2="33" stroke="#2563eb" strokeWidth="0.5" opacity="0.25" />
+                            <line x1="34" y1="31" x2="54" y2="19" stroke="#2563eb" strokeWidth="0.5" opacity="0.25" />
                           </svg>
                         )}
                       </div>
