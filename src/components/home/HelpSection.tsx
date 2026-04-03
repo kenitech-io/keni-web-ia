@@ -1,8 +1,8 @@
 "use client";
 
+import { useState, useCallback, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
 
 interface Card {
@@ -14,13 +14,14 @@ interface Card {
   dark: boolean;
   labelColor?: string;
   portrait?: boolean;
-  bgWhite?: boolean;
-  icon?: string;
-  fullBleed?: boolean;
   bgHex?: string;
-  glowBlue?: boolean;
-  glowGreen?: boolean;
+  icon?: string;
+  objectPosition?: string;
+  objectFit?: "cover" | "contain";
+  textTop?: boolean;
+  imageWidth?: string;
   imageOffset?: string;
+  labelColor2?: string;
 }
 
 const cards: Card[] = [
@@ -31,7 +32,18 @@ const cards: Card[] = [
     alt: "Team collaborating on infrastructure",
     href: "/devops-consulting",
     dark: true,
-    fullBleed: true,
+    objectPosition: "center top",
+    textTop: true,
+  },
+  {
+    label: "OUR SERVICES",
+    headline: "We handle it all.",
+    image: null,
+    alt: "",
+    href: "/devops-consulting",
+    dark: false,
+    bgHex: "#f0f0f0",
+    icon: "devops",
   },
   {
     label: "AUTOMATION",
@@ -39,21 +51,19 @@ const cards: Card[] = [
     image: null,
     alt: "",
     href: "/platform",
-    dark: false,
+    dark: true,
     icon: "automation",
-    bgWhite: true,
-    bgHex: "#F4F5F9",
-    labelColor: "text-muted",
+    bgHex: "#000000",
   },
   {
     label: "CASE STUDIES",
     headline: "Eyes on everything.",
-    image: "/help-dashboard.png",
-    alt: "Keni dashboard showing real-time infrastructure metrics",
+    image: null,
+    alt: "",
     href: "/devops-consulting",
-    dark: false,
-    bgWhite: true,
-    bgHex: "#FFFFFF",
+    dark: true,
+    bgHex: "#000000",
+    icon: "dashboard",
   },
   {
     label: "KENI SPECIALISTS",
@@ -62,8 +72,10 @@ const cards: Card[] = [
     alt: "Mikel, co-founder of Keni Engineering",
     href: "/about",
     dark: false,
-    portrait: true,
-    bgWhite: true,
+    bgHex: "#f0f0f0",
+    objectFit: "contain",
+    objectPosition: "center top",
+    textTop: true,
   },
   {
     label: "DEDICATED EXPERTS",
@@ -72,8 +84,12 @@ const cards: Card[] = [
     alt: "Abstract 3D blocks representing innovation and teamwork",
     href: "/about",
     dark: true,
+    bgHex: "#000000",
     labelColor: "text-[#C65100]",
-    imageOffset: "30%",
+    objectFit: "contain",
+    textTop: true,
+    imageWidth: "200%",
+    imageOffset: "0",
   },
   {
     label: "SEE THE RESULTS",
@@ -81,249 +97,449 @@ const cards: Card[] = [
     image: null,
     alt: "",
     href: "/devops-consulting",
-    dark: false,
+    dark: true,
     icon: "rocket",
-    bgWhite: true,
-    bgHex: "#F4F7F4",
-    labelColor: "text-green-800",
+    bgHex: "#000000",
+    labelColor: "text-green-500",
   },
 ];
 
+const AUTOPLAY_MS = 2500;
+// Apple's signature easing: fast start, long deceleration
+const EASE = "cubic-bezier(0.42, 0, 0.58, 1)";
+
 export default function HelpSection() {
+  const [current, setCurrent] = useState(cards.length * 10); // start in the middle
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState(0);
+  const [dragOffset, setDragOffset] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const autoplayRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const total = cards.length;
+
+  // Many copies for seamless infinite loop
+  const repeatedCards = Array.from({ length: 20 }, () => cards).flat();
+  const startOffset = total * 10; // start in the middle
+
+  const goTo = useCallback(
+    (index: number) => {
+      setCurrent(index);
+    },
+    []
+  );
+
+  const next = useCallback(() => setCurrent((c) => c + 1), []);
+  const prev = useCallback(() => setCurrent((c) => c - 1), []);
+
+
+  // Autoplay
+  useEffect(() => {
+    if (isPaused || isDragging) return;
+    autoplayRef.current = setInterval(next, AUTOPLAY_MS);
+    return () => {
+      if (autoplayRef.current) clearInterval(autoplayRef.current);
+    };
+  }, [next, isPaused, isDragging]);
+
+  // Keyboard nav
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") prev();
+      if (e.key === "ArrowRight") next();
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [next, prev]);
+
+  // Drag / swipe
+  const handlePointerDown = (e: React.PointerEvent) => {
+    setIsDragging(true);
+    setDragStart(e.clientX);
+    setDragOffset(0);
+    (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
+  };
+  const handlePointerMove = (e: React.PointerEvent) => {
+    if (!isDragging) return;
+    setDragOffset(e.clientX - dragStart);
+  };
+  const handlePointerUp = () => {
+    if (!isDragging) return;
+    setIsDragging(false);
+    if (dragOffset < -60) next();
+    else if (dragOffset > 60) prev();
+    setDragOffset(0);
+  };
+
+  // Apple arrow button component
+  const ArrowButton = ({
+    direction,
+    onClick,
+  }: {
+    direction: "left" | "right";
+    onClick: () => void;
+  }) => (
+    <button
+      onClick={onClick}
+      aria-label={direction === "left" ? "Previous" : "Next"}
+      className="absolute top-1/2 -translate-y-1/2 z-20 w-9 h-9 flex items-center justify-center rounded-full bg-white/70 backdrop-blur-sm hover:bg-white/90 transition-all duration-200 shadow-sm"
+      style={{
+        [direction === "left" ? "left" : "right"]: 20,
+      }}
+    >
+      <svg
+        className="w-4 h-4 text-black/70"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={2.5}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d={direction === "left" ? "M15 19l-7-7 7-7" : "M9 5l7 7-7 7"}
+        />
+      </svg>
+    </button>
+  );
+
   return (
-    <section className="py-32 md:py-48">
-      <Container>
-        <FadeIn>
-          <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-16 md:mb-20 font-light text-center">
-            We help you
-          </p>
-        </FadeIn>
-        <FadeIn delay={0.1}>
-          <h2 className="text-heading text-foreground font-light tracking-wide mb-16 text-center">
-            When, how and where you want
-          </h2>
-        </FadeIn>
+    <section
+      className="py-32 md:py-48"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      <FadeIn>
+        <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-16 md:mb-20 font-light text-center">
+          We help you
+        </p>
+      </FadeIn>
+      <FadeIn delay={0.1}>
+        <h2 className="text-heading text-foreground font-light tracking-wide mb-16 text-center">
+          When, how and where you want
+        </h2>
+      </FadeIn>
 
-        <div className="mt-12 md:mt-16 flex gap-5 overflow-x-auto overflow-y-visible pb-16 pt-6 snap-x snap-mandatory scrollbar-hide -mx-10 px-10 md:-mx-8 md:px-8 touch-pan-x">
-          {cards.map((card, i) => (
-            <FadeIn key={card.label} delay={i * 0.1}>
-              <Link
-                href={card.href}
-                className="group block flex-shrink-0 w-[300px] md:w-[360px] snap-start"
+      {/* Carousel - Apple style */}
+      <div className="relative mt-12 md:mt-16 group/carousel">
+        {/* Arrow buttons - visible on hover */}
+        <div className="opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300">
+          <ArrowButton direction="left" onClick={prev} />
+          <ArrowButton direction="right" onClick={next} />
+        </div>
+
+        {/* Track */}
+        <div
+          ref={scrollRef}
+          className="overflow-hidden select-none touch-pan-y"
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={handlePointerUp}
+          onPointerCancel={handlePointerUp}
+        >
+          <div
+            className="flex"
+            style={{
+              gap: 12,
+              paddingLeft: "max(24px, calc((100vw - 1200px) / 2))",
+              paddingRight: "max(24px, calc((100vw - 1200px) / 2))",
+              transform: `translateX(calc(${-current * (100 / 3)}% - ${current * 12}px + ${dragOffset}px))`,
+              transition: isDragging ? "none" : `transform 0.65s ${EASE}`,
+            }}
+          >
+            {repeatedCards.map((card, i) => (
+              <div
+                key={`${card.label}-${i}`}
+                className="flex-shrink-0"
+                style={{
+                  width: "calc(33.333% - 8px)",
+                }}
               >
-                <div
-                  className={`relative rounded-2xl overflow-hidden h-[420px] md:h-[500px] transition-all duration-500 ease-out group-hover:-translate-y-1 group-hover:shadow-2xl ${
-                    card.dark
-                      ? "bg-black text-white"
-                      : card.bgWhite
-                      ? "bg-[#F5F5F5] dark:bg-[#F5F5F5] text-black"
-                      : card.bgHex
-                      ? "text-white"
-                      : "bg-surface text-foreground"
-                  }`}
-                  style={card.bgHex ? { backgroundColor: card.bgHex } : undefined}
+                <Link
+                  href={card.href}
+                  className="group block"
+                  draggable={false}
                 >
-                  {/* Blue glow effect */}
-                  {card.glowBlue && (
-                    <div
-                      className="absolute inset-0 pointer-events-none"
-                      style={{
-                        background: "linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(100, 160, 255, 0.05) 40%, transparent 70%)",
-                      }}
-                    />
-                  )}
-
-                  {/* Green glow effect */}
-                  {card.glowGreen && (
-                    <div
-                      className="absolute inset-0 pointer-events-none"
-                      style={{
-                        background: "linear-gradient(135deg, rgba(34, 197, 94, 0.12) 0%, rgba(74, 222, 128, 0.05) 40%, transparent 70%)",
-                      }}
-                    />
-                  )}
-
-                  {/* Full-bleed background image */}
-                  {card.fullBleed && card.image && (
-                    <Image
-                      src={card.image}
-                      alt={card.alt}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 320px, 420px"
-                    />
-                  )}
-
-                  <div className="relative z-10 p-8 md:p-10">
-                    <p
-                      className={`text-[0.65rem] font-semibold tracking-[0.15em] mb-4 ${
-                        card.labelColor
-                          ? card.labelColor
-                          : card.fullBleed
-                          ? card.dark ? "text-white/70" : "text-muted"
-                          : card.dark
-                          ? "text-blue-400"
-                          : "text-muted"
-                      }`}
-                    >
-                      {card.label}
-                    </p>
-                    <h3 className="text-[1.4rem] md:text-[1.6rem] font-medium leading-tight tracking-wide">
-                      {card.headline}
-                    </h3>
-                  </div>
-
-                  {/* Portrait image (Apple style, no gradient) */}
-                  {card.portrait && card.image && (
-                    <div className="absolute -bottom-4 left-0 right-0 h-[70%] flex justify-center">
-                      <div className="relative w-[85%] h-full">
-                        <Image
-                          src={card.image}
-                          alt={card.alt}
-                          fill
-                          className="object-cover object-center"
-                          sizes="(max-width: 768px) 240px, 315px"
-                        />
+                  <div
+                    className="relative overflow-hidden"
+                    style={{
+                      aspectRatio: "3 / 4",
+                      backgroundColor: card.bgHex || (card.dark ? "#111" : "#F5F5F5"),
+                    }}
+                  >
+                    {/* Card image */}
+                    {card.image && card.objectFit === "contain" ? (
+                      <div
+                        className={`absolute inset-0 flex justify-center px-[5%] transition-transform duration-500 group-hover:scale-[1.03] ${card.textTop ? "items-end" : "items-start pt-[8%]"}`}
+                        style={{ marginBottom: card.imageOffset || "0" }}
+                      >
+                        <div className="relative" style={{ width: card.imageWidth || "100%", aspectRatio: "1 / 1" }}>
+                          <Image
+                            src={card.image}
+                            alt={card.alt}
+                            fill
+                            className="object-contain object-bottom"
+                            sizes="(max-width: 768px) 80vw, 33vw"
+                            draggable={false}
+                            priority
+                          />
+                        </div>
                       </div>
-                    </div>
-                  )}
-
-                  {/* Partial image (non full-bleed, non portrait) */}
-                  {card.image && !card.fullBleed && !card.portrait && (
-                    <div className="absolute left-0 right-0 bottom-0" style={{ top: card.imageOffset || "-40%" }}>
+                    ) : card.image ? (
                       <Image
                         src={card.image}
                         alt={card.alt}
                         fill
-                        className={`${card.imageOffset ? "object-cover" : "object-contain"} object-bottom ${card.dark ? "" : "mix-blend-multiply"}`}
-                        sizes="(max-width: 768px) 320px, 420px"
+                        className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                        style={{ objectPosition: card.objectPosition || "center center" }}
+                        sizes="(max-width: 768px) 80vw, 33vw"
+                        draggable={false}
+                        priority
                       />
-                      <div
-                        className={`absolute inset-0 bg-gradient-to-b ${
-                          card.dark
-                            ? "from-black via-transparent to-transparent"
-                            : "from-[#F5F5F5] via-transparent to-transparent"
-                        }`}
-                      />
-                    </div>
-                  )}
+                    ) : null}
 
-                  {!card.image && (
-                    <>
-                      <div className="absolute inset-0 flex items-center justify-center pt-20">
-                        {"icon" in card && card.icon === "rocket" && (
-                          <svg
-                            className="w-36 h-36 md:w-44 md:h-44"
-                            viewBox="0 0 64 64"
-                            fill="none"
-                          >
-                            {/* Base line */}
-                            <line x1="4" y1="38" x2="16" y2="38" stroke="#166534" strokeWidth="1" strokeLinecap="round" opacity="0.3" />
-                            {/* Pulse down */}
-                            <path d="M16 38 L20 38 L23 46 L28 28 L33 42 L36 34 L39 38" stroke="#166534" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.7" />
-                            {/* Peak spike upward */}
-                            <path d="M39 38 L42 20 L45 38" stroke="#166534" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.9" />
-                            {/* Trailing line */}
-                            <line x1="45" y1="38" x2="60" y2="38" stroke="#166534" strokeWidth="1" strokeLinecap="round" opacity="0.3" />
-                            {/* Glow dot at peak */}
-                            <circle cx="42" cy="20" r="2" fill="#166534" opacity="0.4" />
-                            <circle cx="42" cy="20" r="4" fill="#166534" opacity="0.1" />
-                          </svg>
-                        )}
-                        {"icon" in card && card.icon === "scan" && (
-                          <span className="text-xs font-medium tracking-widest text-black/30 uppercase">Click here</span>
-                        )}
-                        {"icon" in card && card.icon === "chart" && (
-                          <svg
-                            className="w-44 h-36 md:w-56 md:h-44"
-                            viewBox="0 0 120 80"
-                            fill="none"
-                          >
-                            {/* Laptop body */}
-                            <rect x="15" y="4" width="90" height="58" rx="4" stroke="#1a1a1a" strokeWidth="2" fill="#111" />
-                            {/* Screen */}
-                            <rect x="19" y="8" width="82" height="50" rx="1" fill="#0d1117" />
-                            {/* Screen content - dark dashboard */}
-                            {/* Top bar */}
-                            <rect x="22" y="11" width="20" height="2" rx="1" fill="#30363d" />
-                            <circle cx="94" cy="12" r="1.5" fill="#238636" opacity="0.8" />
-                            {/* Left panel - metric cards */}
-                            <rect x="22" y="16" width="18" height="10" rx="1.5" fill="#161b22" />
-                            <rect x="24" y="18" width="8" height="2" rx="0.5" fill="#238636" opacity="0.6" />
-                            <rect x="24" y="22" width="14" height="1.5" rx="0.5" fill="#30363d" />
-                            <rect x="22" y="29" width="18" height="10" rx="1.5" fill="#161b22" />
-                            <rect x="24" y="31" width="10" height="2" rx="0.5" fill="#1f6feb" opacity="0.6" />
-                            <rect x="24" y="35" width="12" height="1.5" rx="0.5" fill="#30363d" />
-                            {/* Main chart area */}
-                            <rect x="43" y="16" width="55" height="36" rx="1.5" fill="#161b22" />
-                            {/* Chart line */}
-                            <path d="M48 44 L55 40 L62 42 L69 35 L76 32 L83 28 L90 24 L94 20" stroke="#238636" strokeWidth="1.2" strokeLinecap="round" opacity="0.8" />
-                            {/* Chart area fill */}
-                            <path d="M48 44 L55 40 L62 42 L69 35 L76 32 L83 28 L90 24 L94 20 L94 48 L48 48 Z" fill="#238636" opacity="0.08" />
-                            {/* Bottom stats */}
-                            <rect x="22" y="42" width="18" height="10" rx="1.5" fill="#161b22" />
-                            <rect x="24" y="44" width="6" height="2" rx="0.5" fill="#f0883e" opacity="0.6" />
-                            <rect x="24" y="48" width="14" height="1.5" rx="0.5" fill="#30363d" />
-                            {/* Laptop base */}
-                            <path d="M10 62 L15 62 Q15 66 12 66 L108 66 Q105 66 105 62 L110 62" stroke="#1a1a1a" strokeWidth="1.5" fill="#222" />
-                            <line x1="12" y1="66" x2="108" y2="66" stroke="#1a1a1a" strokeWidth="1.5" />
-                            {/* Trackpad hint */}
-                            <rect x="50" y="63" width="20" height="2" rx="1" fill="#333" opacity="0.5" />
-                          </svg>
-                        )}
-                        {"icon" in card && card.icon === "automation" && (
-                          <svg
-                            className="w-36 h-36 md:w-44 md:h-44"
-                            viewBox="0 0 64 64"
-                            fill="none"
-                          >
-                            {/* Pipeline flow: three nodes connected by curved lines */}
-                            {/* Node 1 - left */}
-                            <rect x="6" y="26" width="12" height="12" rx="3" stroke="#2563eb" strokeWidth="1" opacity="0.4" />
-                            <rect x="9" y="29" width="6" height="6" rx="1.5" fill="#2563eb" opacity="0.15" />
-                            {/* Connection 1-2 */}
-                            <path d="M18 32 C24 32, 22 20, 28 20" stroke="#2563eb" strokeWidth="1" strokeLinecap="round" opacity="0.3" />
-                            {/* Node 2 - center top */}
-                            <rect x="26" y="14" width="12" height="12" rx="3" stroke="#2563eb" strokeWidth="1" opacity="0.5" />
-                            <rect x="29" y="17" width="6" height="6" rx="1.5" fill="#2563eb" opacity="0.25" />
-                            {/* Connection 2-3 */}
-                            <path d="M38 20 C44 20, 42 38, 48 38" stroke="#2563eb" strokeWidth="1" strokeLinecap="round" opacity="0.3" />
-                            {/* Node 3 - right */}
-                            <rect x="46" y="32" width="12" height="12" rx="3" stroke="#2563eb" strokeWidth="1" opacity="0.6" />
-                            <rect x="49" y="35" width="6" height="6" rx="1.5" fill="#2563eb" opacity="0.35" />
-                            {/* Arrow at end */}
-                            <path d="M58 38 L62 38" stroke="#2563eb" strokeWidth="1" strokeLinecap="round" opacity="0.4" />
-                            <path d="M60 36 L63 38 L60 40" stroke="#2563eb" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round" opacity="0.4" />
-                          </svg>
-                        )}
+                    {/* Icon cards */}
+                    {!card.image && card.icon === "automation" && (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <svg
+                          className="w-32 h-32 md:w-40 md:h-40"
+                          viewBox="0 0 64 64"
+                          fill="none"
+                        >
+                          <rect x="6" y="26" width="12" height="12" rx="3" stroke="#60a5fa" strokeWidth="1" opacity="0.4" />
+                          <rect x="9" y="29" width="6" height="6" rx="1.5" fill="#60a5fa" opacity="0.15" />
+                          <path d="M18 32 C24 32, 22 20, 28 20" stroke="#60a5fa" strokeWidth="1" strokeLinecap="round" opacity="0.3" />
+                          <rect x="26" y="14" width="12" height="12" rx="3" stroke="#60a5fa" strokeWidth="1" opacity="0.5" />
+                          <rect x="29" y="17" width="6" height="6" rx="1.5" fill="#60a5fa" opacity="0.25" />
+                          <path d="M38 20 C44 20, 42 38, 48 38" stroke="#60a5fa" strokeWidth="1" strokeLinecap="round" opacity="0.3" />
+                          <rect x="46" y="32" width="12" height="12" rx="3" stroke="#60a5fa" strokeWidth="1" opacity="0.6" />
+                          <rect x="49" y="35" width="6" height="6" rx="1.5" fill="#60a5fa" opacity="0.35" />
+                          <path d="M58 38 L62 38" stroke="#60a5fa" strokeWidth="1" strokeLinecap="round" opacity="0.4" />
+                          <path d="M60 36 L63 38 L60 40" stroke="#60a5fa" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round" opacity="0.4" />
+                        </svg>
                       </div>
-                      {/* CTA */}
-                      <div className="absolute bottom-8 left-7 right-7 md:left-9 md:right-9">
-                        <div className="flex items-center gap-2 text-sm font-medium text-muted group-hover:text-foreground transition-colors duration-300">
-                          See how we do it
-                          <svg
-                            className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M9 5l7 7-7 7"
-                            />
-                          </svg>
-                        </div>
+                    )}
+
+                    {!card.image && card.icon === "dashboard" && (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <svg
+                          className="w-[85%] h-[65%]"
+                          viewBox="0 0 320 200"
+                          fill="none"
+                        >
+                          {/* Outer frame */}
+                          <rect x="0" y="0" width="320" height="200" rx="8" fill="white" opacity="0.03" />
+                          <rect x="0" y="0" width="320" height="200" rx="8" stroke="white" strokeWidth="0.5" opacity="0.06" />
+
+                          {/* Sidebar */}
+                          <rect x="0" y="0" width="44" height="200" rx="8" fill="white" opacity="0.02" />
+                          <line x1="44" y1="12" x2="44" y2="188" stroke="white" strokeWidth="0.3" opacity="0.06" />
+                          {/* Sidebar icons */}
+                          <rect x="14" y="18" width="16" height="3" rx="1.5" fill="white" opacity="0.15" />
+                          <rect x="16" y="40" width="12" height="2" rx="1" fill="white" opacity="0.08" />
+                          <rect x="16" y="52" width="12" height="2" rx="1" fill="white" opacity="0.08" />
+                          <rect x="15" y="64" width="14" height="2.5" rx="1" fill="#4ade80" opacity="0.3" />
+                          <rect x="16" y="76" width="12" height="2" rx="1" fill="white" opacity="0.08" />
+                          <rect x="16" y="88" width="12" height="2" rx="1" fill="white" opacity="0.08" />
+
+                          {/* Top header bar */}
+                          <line x1="56" y1="30" x2="308" y2="30" stroke="white" strokeWidth="0.3" opacity="0.06" />
+                          <text x="56" y="22" fill="white" opacity="0.4" fontSize="7" fontFamily="system-ui" fontWeight="600" letterSpacing="0.5">Overview</text>
+                          <rect x="264" y="14" width="44" height="12" rx="6" fill="#4ade80" opacity="0.12" />
+                          <text x="286" y="22.5" fill="#4ade80" opacity="0.5" fontSize="5" fontFamily="system-ui" textAnchor="middle">Live</text>
+                          <circle cx="270" cy="20.5" r="1.5" fill="#4ade80" opacity="0.6" />
+
+                          {/* KPI Cards Row */}
+                          {/* Card 1 */}
+                          <rect x="56" y="38" width="60" height="36" rx="4" fill="white" opacity="0.025" />
+                          <rect x="56" y="38" width="60" height="36" rx="4" stroke="white" strokeWidth="0.3" opacity="0.05" />
+                          <text x="64" y="50" fill="white" opacity="0.25" fontSize="4" fontFamily="system-ui">Deployments</text>
+                          <text x="64" y="62" fill="white" opacity="0.7" fontSize="10" fontFamily="system-ui" fontWeight="700">247</text>
+                          <text x="94" y="62" fill="#4ade80" opacity="0.5" fontSize="4" fontFamily="system-ui">+18%</text>
+
+                          {/* Card 2 */}
+                          <rect x="122" y="38" width="60" height="36" rx="4" fill="white" opacity="0.025" />
+                          <rect x="122" y="38" width="60" height="36" rx="4" stroke="white" strokeWidth="0.3" opacity="0.05" />
+                          <text x="130" y="50" fill="white" opacity="0.25" fontSize="4" fontFamily="system-ui">Uptime</text>
+                          <text x="130" y="62" fill="white" opacity="0.7" fontSize="10" fontFamily="system-ui" fontWeight="700">99.98%</text>
+
+                          {/* Card 3 */}
+                          <rect x="188" y="38" width="60" height="36" rx="4" fill="white" opacity="0.025" />
+                          <rect x="188" y="38" width="60" height="36" rx="4" stroke="white" strokeWidth="0.3" opacity="0.05" />
+                          <text x="196" y="50" fill="white" opacity="0.25" fontSize="4" fontFamily="system-ui">MTTR</text>
+                          <text x="196" y="62" fill="white" opacity="0.7" fontSize="10" fontFamily="system-ui" fontWeight="700">4.2m</text>
+                          <text x="224" y="62" fill="#4ade80" opacity="0.5" fontSize="4" fontFamily="system-ui">-32%</text>
+
+                          {/* Card 4 */}
+                          <rect x="254" y="38" width="56" height="36" rx="4" fill="white" opacity="0.025" />
+                          <rect x="254" y="38" width="56" height="36" rx="4" stroke="white" strokeWidth="0.3" opacity="0.05" />
+                          <text x="262" y="50" fill="white" opacity="0.25" fontSize="4" fontFamily="system-ui">Error rate</text>
+                          <text x="262" y="62" fill="white" opacity="0.7" fontSize="10" fontFamily="system-ui" fontWeight="700">0.02%</text>
+
+                          {/* Main chart area */}
+                          <rect x="56" y="82" width="186" height="106" rx="4" fill="white" opacity="0.025" />
+                          <rect x="56" y="82" width="186" height="106" rx="4" stroke="white" strokeWidth="0.3" opacity="0.05" />
+                          <text x="64" y="96" fill="white" opacity="0.3" fontSize="5" fontFamily="system-ui" fontWeight="500">Request throughput</text>
+                          <text x="230" y="96" fill="white" opacity="0.15" fontSize="4" fontFamily="system-ui" textAnchor="end">24h</text>
+
+                          {/* Y-axis labels */}
+                          <text x="62" y="110" fill="white" opacity="0.1" fontSize="3" fontFamily="system-ui">15k</text>
+                          <text x="62" y="130" fill="white" opacity="0.1" fontSize="3" fontFamily="system-ui">10k</text>
+                          <text x="62" y="150" fill="white" opacity="0.1" fontSize="3" fontFamily="system-ui">5k</text>
+                          <text x="62" y="170" fill="white" opacity="0.1" fontSize="3" fontFamily="system-ui">0</text>
+
+                          {/* Grid */}
+                          <line x1="72" y1="108" x2="234" y2="108" stroke="white" strokeWidth="0.2" opacity="0.04" />
+                          <line x1="72" y1="128" x2="234" y2="128" stroke="white" strokeWidth="0.2" opacity="0.04" />
+                          <line x1="72" y1="148" x2="234" y2="148" stroke="white" strokeWidth="0.2" opacity="0.04" />
+                          <line x1="72" y1="168" x2="234" y2="168" stroke="white" strokeWidth="0.2" opacity="0.04" />
+
+                          {/* Area fill */}
+                          <path d="M72 160 C82 158, 92 152, 102 148 C112 144, 122 140, 132 132 C142 124, 148 118, 158 114 C168 110, 178 112, 188 108 C198 104, 208 106, 218 102 C228 98, 232 96, 234 94 L234 172 L72 172 Z" fill="url(#chartGrad)" />
+                          <defs>
+                            <linearGradient id="chartGrad" x1="0" y1="94" x2="0" y2="172" gradientUnits="userSpaceOnUse">
+                              <stop offset="0%" stopColor="#4ade80" stopOpacity="0.15" />
+                              <stop offset="100%" stopColor="#4ade80" stopOpacity="0" />
+                            </linearGradient>
+                          </defs>
+                          {/* Line */}
+                          <path d="M72 160 C82 158, 92 152, 102 148 C112 144, 122 140, 132 132 C142 124, 148 118, 158 114 C168 110, 178 112, 188 108 C198 104, 208 106, 218 102 C228 98, 232 96, 234 94" stroke="#4ade80" strokeWidth="1.2" opacity="0.6" fill="none" strokeLinecap="round" />
+                          {/* Current dot */}
+                          <circle cx="234" cy="94" r="2.5" fill="#1c1c1e" stroke="#4ade80" strokeWidth="1" opacity="0.7" />
+
+                          {/* Right sidebar: recent deploys */}
+                          <rect x="248" y="82" width="62" height="106" rx="4" fill="white" opacity="0.025" />
+                          <rect x="248" y="82" width="62" height="106" rx="4" stroke="white" strokeWidth="0.3" opacity="0.05" />
+                          <text x="256" y="96" fill="white" opacity="0.3" fontSize="5" fontFamily="system-ui" fontWeight="500">Activity</text>
+
+                          {/* Deploy entries */}
+                          <circle cx="258" cy="108" r="2" fill="#4ade80" opacity="0.3" />
+                          <text x="264" y="110" fill="white" opacity="0.25" fontSize="3.5" fontFamily="system-ui">Deploy #247</text>
+                          <text x="264" y="116" fill="white" opacity="0.12" fontSize="3" fontFamily="system-ui">2m ago</text>
+
+                          <circle cx="258" cy="126" r="2" fill="#60a5fa" opacity="0.3" />
+                          <text x="264" y="128" fill="white" opacity="0.25" fontSize="3.5" fontFamily="system-ui">Scale up x3</text>
+                          <text x="264" y="134" fill="white" opacity="0.12" fontSize="3" fontFamily="system-ui">14m ago</text>
+
+                          <circle cx="258" cy="144" r="2" fill="#4ade80" opacity="0.3" />
+                          <text x="264" y="146" fill="white" opacity="0.25" fontSize="3.5" fontFamily="system-ui">Deploy #246</text>
+                          <text x="264" y="152" fill="white" opacity="0.12" fontSize="3" fontFamily="system-ui">1h ago</text>
+
+                          <circle cx="258" cy="162" r="2" fill="#f59e0b" opacity="0.3" />
+                          <text x="264" y="164" fill="white" opacity="0.25" fontSize="3.5" fontFamily="system-ui">Alert resolved</text>
+                          <text x="264" y="170" fill="white" opacity="0.12" fontSize="3" fontFamily="system-ui">2h ago</text>
+                        </svg>
                       </div>
-                    </>
-                  )}
-                </div>
-              </Link>
-            </FadeIn>
+                    )}
+
+                    {!card.image && card.icon === "devops" && (
+                      <div className="absolute inset-0 flex items-center justify-center -mt-[10%]">
+                        <span className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#4ade80]">
+                          DevOps
+                        </span>
+                      </div>
+                    )}
+
+                    {!card.image && card.icon === "rocket" && (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <svg
+                          className="w-40 h-28 md:w-48 md:h-36"
+                          viewBox="0 0 64 64"
+                          fill="none"
+                        >
+                          <line x1="4" y1="38" x2="16" y2="38" stroke="#4ade80" strokeWidth="1" strokeLinecap="round" opacity="0.3" />
+                          <path d="M16 38 L20 38 L23 46 L28 28 L33 42 L36 34 L39 38" stroke="#4ade80" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.7" />
+                          <path d="M39 38 L42 20 L45 38" stroke="#4ade80" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.9" />
+                          <line x1="45" y1="38" x2="60" y2="38" stroke="#4ade80" strokeWidth="1" strokeLinecap="round" opacity="0.3" />
+                          <circle cx="42" cy="20" r="2" fill="#4ade80" opacity="0.4" />
+                          <circle cx="42" cy="20" r="4" fill="#4ade80" opacity="0.1" />
+                        </svg>
+                      </div>
+                    )}
+
+                    {/* Gradient overlays */}
+                    {card.image && !card.objectFit && !card.textTop && (
+                      <div className={`absolute inset-0 bg-gradient-to-t ${card.dark ? "from-black/80 via-black/20" : "from-white/80 via-transparent"} to-transparent`} />
+                    )}
+                    {card.image && !card.objectFit && card.textTop && (
+                      <div className={`absolute inset-0 bg-gradient-to-b ${card.dark ? "from-black/80 via-black/20" : "from-white/80 via-transparent"} to-transparent`} />
+                    )}
+
+                    {/* Content */}
+                    <div className={`absolute left-0 right-0 p-6 md:p-8 z-10 ${card.textTop ? "top-0" : "bottom-0"}`}>
+                      <p
+                        className={`text-[0.6rem] font-semibold tracking-[0.15em] mb-2 ${
+                          card.labelColor
+                            ? card.labelColor
+                            : card.dark
+                            ? "text-white/60"
+                            : "text-black/50"
+                        }`}
+                      >
+                        {card.label}
+                      </p>
+                      <h3
+                        className={`text-xl md:text-2xl lg:text-3xl font-medium leading-tight tracking-wide ${
+                          card.dark ? "text-white" : "text-black"
+                        }`}
+                      >
+                        {card.headline}
+                      </h3>
+                      <div
+                        className={`mt-3 flex items-center gap-1.5 text-xs font-medium transition-colors duration-300 ${
+                          card.dark
+                            ? "text-white/50 group-hover:text-white"
+                            : "text-black/40 group-hover:text-black"
+                        }`}
+                      >
+                        Learn more
+                        <svg
+                          className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform duration-300"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Dot indicators */}
+        <div className="flex items-center justify-center gap-2 mt-8">
+          {cards.map((card, i) => (
+            <button
+              key={card.label}
+              onClick={() => setCurrent(startOffset + i)}
+              aria-label={`Go to slide ${i + 1}`}
+              style={{
+                width: 7,
+                height: 7,
+                borderRadius: "50%",
+                backgroundColor:
+                  ((current % total) + total) % total === i
+                    ? "rgba(0,0,0,0.5)"
+                    : "rgba(0,0,0,0.12)",
+                border: "none",
+                padding: 0,
+                cursor: "pointer",
+                transition: "background-color 0.3s ease",
+              }}
+            />
           ))}
         </div>
-      </Container>
+      </div>
     </section>
   );
 }
