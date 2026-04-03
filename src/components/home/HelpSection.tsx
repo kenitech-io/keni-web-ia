@@ -123,13 +123,6 @@ export default function HelpSection() {
   const repeatedCards = Array.from({ length: 20 }, () => cards).flat();
   const startOffset = total * 10; // start in the middle
 
-  const goTo = useCallback(
-    (index: number) => {
-      setCurrent(index);
-    },
-    []
-  );
-
   const next = useCallback(() => setCurrent((c) => c + 1), []);
   const prev = useCallback(() => setCurrent((c) => c - 1), []);
 
