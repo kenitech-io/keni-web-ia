@@ -21,7 +21,7 @@ function HeroContent() {
         href={BOOKING_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-block bg-foreground hover:bg-foreground/85 text-background px-10 py-3 text-base font-light tracking-wide rounded-full transition-colors"
+        className="inline-block bg-foreground hover:bg-foreground/85 text-background px-10 py-2.5 text-sm font-light tracking-wide rounded-full transition-colors"
       >
         Let&apos;s talk
       </a>

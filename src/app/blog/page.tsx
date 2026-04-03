@@ -1,8 +1,8 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
 import CTASection from "@/components/CTASection";
+import BlogList from "@/components/blog/BlogList";
 import { blogPosts } from "@/data/blog-posts";
 
 export const metadata: Metadata = {
@@ -90,33 +90,7 @@ export default function BlogPage() {
       <section className="py-32 md:py-48">
         <Container>
           <div className="max-w-[640px] mx-auto">
-            <div className="space-y-20">
-              {blogPosts.map((post, index) => (
-                <FadeIn key={post.slug} delay={index * 0.1}>
-                  <article>
-                    <Link href={`/blog/${post.slug}`} prefetch={false} className="group block">
-                      <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-4">
-                        {post.category}
-                      </p>
-                      <h2 className="text-heading text-foreground font-light tracking-wide group-hover:text-foreground/60 transition-colors mb-6">
-                        {post.title}
-                      </h2>
-                      <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-4">
-                        {post.description}
-                      </p>
-                      <p className="text-label text-muted/60 font-light">
-                        {new Date(post.date).toLocaleDateString("en-US", {
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric",
-                        })}{" "}
-                        &middot; {post.readTime}
-                      </p>
-                    </Link>
-                  </article>
-                </FadeIn>
-              ))}
-            </div>
+            <BlogList posts={blogPosts} />
           </div>
         </Container>
       </section>
