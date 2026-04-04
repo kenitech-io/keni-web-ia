@@ -24,14 +24,50 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [exploreOpen, setExploreOpen] = useState(false);
+  const [onDark, setOnDark] = useState(false);
   const pathname = usePathname();
   const exploreRef = useRef<HTMLDivElement>(null);
 
-  const handleScroll = useCallback(() => {
-    setScrolled(window.scrollY > 20);
+  const navRef = useRef<HTMLElement>(null);
+
+  const checkDarkBackground = useCallback(() => {
+    // Method 1: Check data-dark-section elements
+    const darkSections = Array.from(document.querySelectorAll("[data-dark-section]"));
+    for (let i = 0; i < darkSections.length; i++) {
+      const rect = darkSections[i].getBoundingClientRect();
+      if (rect.top < 64 && rect.bottom > 0) {
+        return true;
+      }
+    }
+    // Method 2: Fallback - hide nav and check elementFromPoint
+    const navEl = navRef.current;
+    if (!navEl) return false;
+    navEl.style.display = "none";
+    const el = document.elementFromPoint(window.innerWidth / 2, 32);
+    navEl.style.display = "";
+    if (!el) return false;
+    let current: HTMLElement | null = el as HTMLElement;
+    while (current && current !== document.body && current !== document.documentElement) {
+      const bg = window.getComputedStyle(current).backgroundColor;
+      if (bg && bg !== "transparent" && bg !== "rgba(0, 0, 0, 0)") {
+        const match = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+        if (match) {
+          const brightness = (parseInt(match[1]) * 299 + parseInt(match[2]) * 587 + parseInt(match[3]) * 114) / 1000;
+          return brightness < 80;
+        }
+      }
+      current = current.parentElement;
+    }
+    return false;
   }, []);
 
+  const handleScroll = useCallback(() => {
+    setScrolled(window.scrollY > 20);
+    setOnDark(checkDarkBackground());
+  }, [checkDarkBackground]);
+
   useEffect(() => {
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
@@ -68,6 +104,7 @@ export default function Navbar() {
   return (
     <>
       <nav
+        ref={navRef}
         className={`fixed top-0 left-0 right-0 z-50 h-[64px] flex items-center transition-all duration-300 ${
           scrolled
             ? "backdrop-blur-md bg-background/80 border-b border-border-color"
@@ -76,16 +113,16 @@ export default function Navbar() {
       >
         <Container>
           <div className="flex items-center justify-between">
-            <Link href="/" className="text-xs font-medium tracking-tight text-foreground">
+            <Link href="/" className={`text-xs font-medium tracking-tight transition-colors duration-300 ${onDark ? "text-white" : "text-foreground"}`}>
               Keni
             </Link>
 
             {/* Desktop */}
             <div className="hidden md:flex items-baseline gap-8">
-              <Link href="/platform" className="text-xs font-medium transition-colors duration-200 text-foreground hover:text-foreground/70">
+              <Link href="/platform" className={`text-xs font-medium transition-colors duration-300 ${onDark ? "text-white hover:text-white/70" : "text-foreground hover:text-foreground/70"}`}>
                 Platform
               </Link>
-              <Link href="/healthcheck" className="text-xs font-medium transition-colors duration-200 text-foreground hover:text-foreground/70">
+              <Link href="/healthcheck" className={`text-xs font-medium transition-colors duration-300 ${onDark ? "text-white hover:text-white/70" : "text-foreground hover:text-foreground/70"}`}>
                 Health Check
               </Link>
               {/* Explore dropdown */}
@@ -95,7 +132,7 @@ export default function Navbar() {
                 onMouseEnter={() => setExploreOpen(true)}
                 onMouseLeave={() => setExploreOpen(false)}
               >
-                <button className="text-xs font-medium transition-colors duration-200 text-foreground hover:text-foreground/70">
+                <button className={`text-xs font-medium transition-colors duration-300 ${onDark ? "text-white hover:text-white/70" : "text-foreground hover:text-foreground/70"}`}>
                   Explore
                 </button>
 
@@ -124,7 +161,7 @@ export default function Navbar() {
 
               <Link
                 href="/contact"
-                className="text-xs font-medium transition-all duration-300 bg-foreground hover:bg-charcoal text-background px-3 py-1 rounded-full"
+                className={`text-xs font-medium transition-all duration-300 px-3 py-1 rounded-full ${onDark ? "bg-white hover:bg-white/85 text-black" : "bg-foreground hover:bg-charcoal text-background"}`}
               >
                 Contact
               </Link>
@@ -140,17 +177,17 @@ export default function Navbar() {
                 <motion.span
                   animate={mobileOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
                   transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="block h-[1px] w-full origin-center bg-foreground"
+                  className={`block h-[1px] w-full origin-center transition-colors duration-300 ${onDark ? "bg-white" : "bg-foreground"}`}
                 />
                 <motion.span
                   animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
                   transition={{ duration: 0.2 }}
-                  className="block h-[1px] w-full bg-foreground"
+                  className={`block h-[1px] w-full transition-colors duration-300 ${onDark ? "bg-white" : "bg-foreground"}`}
                 />
                 <motion.span
                   animate={mobileOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
                   transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="block h-[1px] w-full origin-center bg-foreground"
+                  className={`block h-[1px] w-full origin-center transition-colors duration-300 ${onDark ? "bg-white" : "bg-foreground"}`}
                 />
               </div>
             </button>
