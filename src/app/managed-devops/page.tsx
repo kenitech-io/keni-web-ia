@@ -127,7 +127,7 @@ export default function ManagedDevOpsPage() {
       {/* The Problem */}
       <section className="px-3">
         <FadeIn>
-          <div data-dark-section className="py-24 md:py-32 px-8" style={{ background: "linear-gradient(180deg, #0a1a10 0%, #0d1f14 50%, #091208 100%)" }}>
+          <div data-dark-section className="py-16 md:py-32 px-4 md:px-8" style={{ background: "linear-gradient(180deg, #0a1a10 0%, #0d1f14 50%, #091208 100%)" }}>
             <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light text-center">
               THE PROBLEM
             </p>
@@ -137,7 +137,7 @@ export default function ManagedDevOpsPage() {
             <p className="text-sm text-white/70 font-light text-center mb-20 max-w-[500px] mx-auto">
               Every hour your developers spend on infrastructure is an hour not spent on product.
             </p>
-            <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-20">
+            <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-20">
               <div className="text-center">
                 <p className="text-[0.55rem] font-mono tracking-[0.3em] text-[#C65100] mb-4">COST</p>
                 <h3 className="text-3xl md:text-4xl font-bold text-white leading-none mb-2">$130K+</h3>
@@ -177,7 +177,7 @@ export default function ManagedDevOpsPage() {
             <h2 className="text-3xl md:text-5xl font-semibold text-black dark:text-white tracking-tight mb-20 text-center">
               Everything your infrastructure needs
             </h2>
-            <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-12">
               {included.map((item, index) => (
                 <FadeIn key={item.title} delay={index * 0.06}>
                   <div>
@@ -198,14 +198,14 @@ export default function ManagedDevOpsPage() {
       {/* How It Works */}
       <section className="px-3 pt-3">
         <FadeIn>
-          <div data-dark-section className="py-24 md:py-32 px-8" style={{ background: "linear-gradient(180deg, #0f1520 0%, #131d2a 50%, #0c1318 100%)" }}>
+          <div data-dark-section className="py-16 md:py-32 px-4 md:px-8" style={{ background: "linear-gradient(180deg, #0f1520 0%, #131d2a 50%, #0c1318 100%)" }}>
             <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light text-center">
               HOW IT WORKS
             </p>
             <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight mb-20 text-center">
               Three steps to managed infrastructure
             </h2>
-            <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-20">
+            <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-20">
               {steps.map((step, index) => (
                 <FadeIn key={step.number} delay={index * 0.1}>
                   <div className="text-center">
@@ -234,7 +234,7 @@ export default function ManagedDevOpsPage() {
             <h2 className="text-3xl md:text-5xl font-semibold text-black dark:text-white tracking-tight mb-20 text-center">
               A team for a fraction of one hire
             </h2>
-            <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-x-20 md:gap-y-16">
+            <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-20 md:gap-y-16">
               <div>
                 <h3 className="text-body text-black dark:text-white font-light tracking-wide mb-3">No recruiting</h3>
                 <p className="text-sm text-black/50 dark:text-white/50 leading-relaxed font-light">
@@ -267,7 +267,7 @@ export default function ManagedDevOpsPage() {
       {/* Free Audit */}
       <section className="px-3 pt-3">
         <FadeIn>
-          <div data-dark-section className="py-24 md:py-32 px-8" style={{ background: "linear-gradient(180deg, #1a1008 0%, #201510 50%, #1a1008 100%)" }}>
+          <div data-dark-section className="py-16 md:py-32 px-4 md:px-8" style={{ background: "linear-gradient(180deg, #1a1008 0%, #201510 50%, #1a1008 100%)" }}>
             <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light text-center">
               NOT SURE WHERE TO START?
             </p>
@@ -293,7 +293,7 @@ export default function ManagedDevOpsPage() {
             <p className="text-label uppercase tracking-[0.25em] text-black/30 dark:text-white/30 mb-8 font-light text-center">
               FROM THE BLOG
             </p>
-            <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 mt-16">
+            <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 mt-16">
               <FadeIn delay={0.1}>
                 <Link href="/blog/how-much-does-devops-cost" className="group block">
                   <h3 className="text-base font-light tracking-wide text-black dark:text-white group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors mb-3">
@@ -322,7 +322,7 @@ export default function ManagedDevOpsPage() {
       {/* CTA */}
       <section className="px-3 pt-3 pb-3">
         <FadeIn>
-          <div data-dark-section className="py-24 md:py-32 px-8 bg-black text-center">
+          <div data-dark-section className="py-16 md:py-32 px-4 md:px-8 bg-black text-center">
             <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light">
               READY?
             </p>

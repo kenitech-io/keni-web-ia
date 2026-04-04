@@ -114,6 +114,14 @@ export default function HelpSection() {
   const [dragStart, setDragStart] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [visibleCards, setVisibleCards] = useState(3);
+
+  useEffect(() => {
+    const update = () => setVisibleCards(window.innerWidth < 768 ? 1 : 3);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
   const scrollRef = useRef<HTMLDivElement>(null);
   const autoplayRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -235,9 +243,9 @@ export default function HelpSection() {
             className="flex"
             style={{
               gap: 12,
-              paddingLeft: "max(24px, calc((100vw - 1200px) / 2))",
-              paddingRight: "max(24px, calc((100vw - 1200px) / 2))",
-              transform: `translateX(calc(${-current * (100 / 3)}% - ${current * 12}px + ${dragOffset}px))`,
+              paddingLeft: visibleCards === 1 ? "7.5%" : "max(24px, calc((100vw - 1200px) / 2))",
+              paddingRight: visibleCards === 1 ? "7.5%" : "max(24px, calc((100vw - 1200px) / 2))",
+              transform: `translateX(calc(${-current * (100 / visibleCards)}% - ${current * 12}px + ${dragOffset}px))`,
               transition: isDragging ? "none" : `transform 0.65s ${EASE}`,
             }}
           >
@@ -246,7 +254,7 @@ export default function HelpSection() {
                 key={`${card.label}-${i}`}
                 className="flex-shrink-0"
                 style={{
-                  width: "calc(33.333% - 8px)",
+                  width: visibleCards === 1 ? "calc(85% - 8px)" : "calc(33.333% - 8px)",
                 }}
               >
                 <Link

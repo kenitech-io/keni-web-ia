@@ -131,14 +131,14 @@ export default function InfrastructureAuditPage() {
       {/* 72 Hours */}
       <section className="px-3">
         <FadeIn>
-          <div data-dark-section className="py-24 md:py-32 px-8" style={{ background: "linear-gradient(180deg, #0f1520 0%, #131d2a 50%, #0c1318 100%)" }}>
+          <div data-dark-section className="py-16 md:py-32 px-4 md:px-8" style={{ background: "linear-gradient(180deg, #0f1520 0%, #131d2a 50%, #0c1318 100%)" }}>
             <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light text-center">
               72 HOURS
             </p>
             <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight mb-20 text-center">
               Three days, full picture
             </h2>
-            <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-20">
+            <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-20">
               <div className="text-center">
                 <p className="text-[0.55rem] font-mono tracking-[0.3em] text-[#C65100] mb-4">DAY 1</p>
                 <h3 className="text-2xl md:text-3xl font-bold text-white leading-none mb-3">Discovery</h3>
@@ -175,7 +175,7 @@ export default function InfrastructureAuditPage() {
             <h2 className="text-3xl md:text-5xl font-semibold text-black dark:text-white tracking-tight mb-20 text-center">
               Nine areas, zero blind spots
             </h2>
-            <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12">
               {auditAreas.map((area, index) => (
                 <FadeIn key={area.title} delay={index * 0.06}>
                   <div>
@@ -196,14 +196,14 @@ export default function InfrastructureAuditPage() {
       {/* What You Get */}
       <section className="px-3 pt-3">
         <FadeIn>
-          <div data-dark-section className="py-24 md:py-32 px-8" style={{ background: "linear-gradient(180deg, #0a1a10 0%, #0d1f14 50%, #091208 100%)" }}>
+          <div data-dark-section className="py-16 md:py-32 px-4 md:px-8" style={{ background: "linear-gradient(180deg, #0a1a10 0%, #0d1f14 50%, #091208 100%)" }}>
             <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light text-center">
               WHAT YOU GET
             </p>
             <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight mb-20 text-center">
               A report your CTO can act on Monday morning
             </h2>
-            <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-x-20 md:gap-y-16">
+            <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-20 md:gap-y-16">
               {deliverables.map((item, index) => (
                 <FadeIn key={item.title} delay={index * 0.1}>
                   <div>
@@ -249,7 +249,7 @@ export default function InfrastructureAuditPage() {
             <p className="text-label uppercase tracking-[0.25em] text-black/30 dark:text-white/30 mb-8 font-light text-center">
               FROM THE BLOG
             </p>
-            <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 mt-16">
+            <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 mt-16">
               <FadeIn delay={0.1}>
                 <Link href="/blog/devops-audit-what-to-expect" className="group block">
                   <h3 className="text-base font-light tracking-wide text-black dark:text-white group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors mb-3">
@@ -278,7 +278,7 @@ export default function InfrastructureAuditPage() {
       {/* Health Check */}
       <section className="px-3 pt-3">
         <FadeIn>
-          <div data-dark-section className="py-24 md:py-32 px-8" style={{ background: "linear-gradient(180deg, #1a1008 0%, #201510 50%, #1a1008 100%)" }}>
+          <div data-dark-section className="py-16 md:py-32 px-4 md:px-8" style={{ background: "linear-gradient(180deg, #1a1008 0%, #201510 50%, #1a1008 100%)" }}>
             <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light text-center">
               NOT SURE YET?
             </p>
@@ -300,7 +300,7 @@ export default function InfrastructureAuditPage() {
       {/* CTA */}
       <section className="px-3 pt-3 pb-3">
         <FadeIn>
-          <div data-dark-section className="py-24 md:py-32 px-8 bg-black text-center">
+          <div data-dark-section className="py-16 md:py-32 px-4 md:px-8 bg-black text-center">
             <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light">
               READY?
             </p>

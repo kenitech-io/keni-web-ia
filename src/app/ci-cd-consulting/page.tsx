@@ -90,7 +90,7 @@ export default function CiCdConsultingPage() {
       {/* The Problem */}
       <section className="px-3">
         <FadeIn>
-          <div data-dark-section className="py-24 md:py-32 px-8" style={{ background: "linear-gradient(180deg, #0a1a10 0%, #0d1f14 50%, #091208 100%)" }}>
+          <div data-dark-section className="py-16 md:py-32 px-4 md:px-8" style={{ background: "linear-gradient(180deg, #0a1a10 0%, #0d1f14 50%, #091208 100%)" }}>
             <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light text-center">
               THE PROBLEM
             </p>
@@ -100,7 +100,7 @@ export default function CiCdConsultingPage() {
             <p className="text-sm text-white/70 font-light text-center mb-20 max-w-[500px] mx-auto">
               Teams without CI/CD deploy less often, ship larger changesets, and break more things.
             </p>
-            <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-20">
+            <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-20">
               <div className="text-center">
                 <p className="text-[0.55rem] font-mono tracking-[0.3em] text-[#C65100] mb-4">ELITE TEAMS</p>
                 <h3 className="text-3xl md:text-4xl font-bold text-white leading-none mb-2">Multiple</h3>
@@ -140,7 +140,7 @@ export default function CiCdConsultingPage() {
             <h2 className="text-3xl md:text-5xl font-semibold text-black dark:text-white tracking-tight mb-20 text-center">
               Everything your pipeline needs
             </h2>
-            <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-12">
               {pipelineItems.map((item, index) => (
                 <FadeIn key={item.title} delay={index * 0.06}>
                   <div>
@@ -161,7 +161,7 @@ export default function CiCdConsultingPage() {
       {/* Tools */}
       <section className="px-3 pt-3">
         <FadeIn>
-          <div data-dark-section className="py-24 md:py-32 px-8" style={{ background: "linear-gradient(180deg, #0f1520 0%, #131d2a 50%, #0c1318 100%)" }}>
+          <div data-dark-section className="py-16 md:py-32 px-4 md:px-8" style={{ background: "linear-gradient(180deg, #0f1520 0%, #131d2a 50%, #0c1318 100%)" }}>
             <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light text-center">
               TOOLS WE WORK WITH
             </p>
@@ -196,7 +196,7 @@ export default function CiCdConsultingPage() {
             <h2 className="text-3xl md:text-5xl font-semibold text-black dark:text-white tracking-tight mb-20 text-center">
               Running in 1-2 weeks
             </h2>
-            <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-x-20 md:gap-y-16">
+            <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-20 md:gap-y-16">
               <div>
                 <h3 className="text-body text-black dark:text-white font-light tracking-wide mb-3">Week one</h3>
                 <p className="text-sm text-black/50 dark:text-white/50 leading-relaxed font-light">
@@ -241,7 +241,7 @@ export default function CiCdConsultingPage() {
             <p className="text-label uppercase tracking-[0.25em] text-black/30 dark:text-white/30 mb-8 font-light text-center">
               FROM THE BLOG
             </p>
-            <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 mt-16">
+            <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 mt-16">
               <FadeIn delay={0.1}>
                 <Link href="/blog/github-actions-vs-gitlab-ci-vs-jenkins" className="group block">
                   <h3 className="text-base font-light tracking-wide text-black dark:text-white group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors mb-3">
