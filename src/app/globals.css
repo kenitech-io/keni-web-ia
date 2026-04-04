@@ -100,12 +100,31 @@ html {
   overflow-x: hidden;
 }
 
-/* Hide scrollbar on nested elements but keep scrollability */
-*::-webkit-scrollbar {
+/* Thin elegant scrollbar on main page */
+html::-webkit-scrollbar {
+  width: 6px;
+}
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+html::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+}
+html::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
+}
+
+/* Hide scrollbars on nested elements */
+*:not(html)::-webkit-scrollbar {
   width: 0;
   height: 0;
 }
-* {
+*:not(html) {
   scrollbar-width: none;
 }
 
