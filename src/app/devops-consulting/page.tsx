@@ -104,7 +104,7 @@ const differentiators = [
 
 export default function DevOpsConsultingPage() {
   return (
-    <main className="bg-[#f5f5f7] text-foreground overflow-x-hidden">
+    <main className="bg-[#f5f5f7] dark:bg-[#0A0A0A] text-foreground overflow-x-hidden">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
@@ -219,21 +219,21 @@ export default function DevOpsConsultingPage() {
       {/* Why Keni */}
       <section className="px-3 pt-3">
         <FadeIn>
-          <div className="bg-white py-24 md:py-32 px-8">
-            <p className="text-label uppercase tracking-[0.25em] text-black/30 mb-8 font-light text-center">
+          <div className="bg-white dark:bg-[#1c1c1e] py-24 md:py-32 px-8">
+            <p className="text-label uppercase tracking-[0.25em] text-black/30 dark:text-white/30 mb-8 font-light text-center">
               WHY KENI
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-black tracking-tight mb-20 text-center">
+            <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white tracking-tight mb-20 text-center">
               Built different from the big firms
             </h2>
             <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-x-20 md:gap-y-16">
               {differentiators.map((item, index) => (
                 <FadeIn key={item.title} delay={index * 0.1}>
                   <div>
-                    <h3 className="text-lg font-bold tracking-tight text-black mb-3">
+                    <h3 className="text-lg font-bold tracking-tight text-black dark:text-white mb-3">
                       {item.title}
                     </h3>
-                    <p className="text-sm text-black/50 leading-relaxed font-light">
+                    <p className="text-sm text-black/50 dark:text-white/50 leading-relaxed font-light">
                       {item.description}
                     </p>
                   </div>
@@ -247,37 +247,37 @@ export default function DevOpsConsultingPage() {
       {/* Related reading */}
       <section className="px-3 pt-3">
         <FadeIn>
-          <div className="py-24 md:py-32 px-8" style={{ background: "linear-gradient(180deg, #f0f0f0 0%, #e8e8e8 100%)" }}>
-            <p className="text-label uppercase tracking-[0.25em] text-black/30 mb-8 font-light text-center">
+          <div className="py-24 md:py-32 px-8 bg-light-gradient">
+            <p className="text-label uppercase tracking-[0.25em] text-black/30 dark:text-white/30 mb-8 font-light text-center">
               FROM THE BLOG
             </p>
             <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mt-16">
               <FadeIn delay={0.1}>
                 <Link href="/blog/why-smbs-need-devops" className="group block">
-                  <h3 className="text-base font-bold tracking-tight text-black group-hover:text-black/60 transition-colors mb-3">
+                  <h3 className="text-base font-bold tracking-tight text-black dark:text-white group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors mb-3">
                     Why 53% of SMBs still don&apos;t have DevOps
                   </h3>
-                  <p className="text-xs text-black/40 leading-relaxed font-light">
+                  <p className="text-xs text-black/40 dark:text-white/40 leading-relaxed font-light">
                     The real cost of not having a proper deployment process, and what a realistic fix looks like.
                   </p>
                 </Link>
               </FadeIn>
               <FadeIn delay={0.2}>
                 <Link href="/blog/github-actions-vs-gitlab-ci-vs-jenkins" className="group block">
-                  <h3 className="text-base font-bold tracking-tight text-black group-hover:text-black/60 transition-colors mb-3">
+                  <h3 className="text-base font-bold tracking-tight text-black dark:text-white group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors mb-3">
                     GitHub Actions vs GitLab CI vs Jenkins
                   </h3>
-                  <p className="text-xs text-black/40 leading-relaxed font-light">
+                  <p className="text-xs text-black/40 dark:text-white/40 leading-relaxed font-light">
                     A practical comparison of CI tools for small to mid-sized teams.
                   </p>
                 </Link>
               </FadeIn>
               <FadeIn delay={0.3}>
                 <Link href="/blog/devops-audit-what-to-expect" className="group block">
-                  <h3 className="text-base font-bold tracking-tight text-black group-hover:text-black/60 transition-colors mb-3">
+                  <h3 className="text-base font-bold tracking-tight text-black dark:text-white group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors mb-3">
                     What happens during a DevOps audit
                   </h3>
-                  <p className="text-xs text-black/40 leading-relaxed font-light">
+                  <p className="text-xs text-black/40 dark:text-white/40 leading-relaxed font-light">
                     A step-by-step breakdown of our audit process and what the report looks like.
                   </p>
                 </Link>

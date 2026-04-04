@@ -255,7 +255,7 @@ export default function HelpSection() {
                   draggable={false}
                 >
                   <div
-                    className="relative overflow-hidden"
+                    className={`relative overflow-hidden ${card.dark ? "dark:!bg-[#1c1c1e]" : ""}`}
                     style={{
                       aspectRatio: "3 / 4",
                       backgroundColor: card.bgHex || (card.dark ? "#111" : "#F5F5F5"),
