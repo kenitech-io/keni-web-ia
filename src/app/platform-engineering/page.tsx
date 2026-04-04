@@ -120,7 +120,7 @@ export default function PlatformEngineeringPage() {
       {/* What is an IDP */}
       <section className="px-3">
         <FadeIn>
-          <div className="py-24 md:py-32 px-8" style={{ background: "linear-gradient(180deg, #0f1520 0%, #131d2a 50%, #0c1318 100%)" }}>
+          <div data-dark-section className="py-24 md:py-32 px-8" style={{ background: "linear-gradient(180deg, #0f1520 0%, #131d2a 50%, #0c1318 100%)" }}>
             <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light text-center">
               WHAT IS AN IDP
             </p>
@@ -188,7 +188,7 @@ export default function PlatformEngineeringPage() {
       {/* How It Works */}
       <section className="px-3 pt-3">
         <FadeIn>
-          <div className="py-24 md:py-32 px-8" style={{ background: "linear-gradient(180deg, #0a1a10 0%, #0d1f14 50%, #091208 100%)" }}>
+          <div data-dark-section className="py-24 md:py-32 px-8" style={{ background: "linear-gradient(180deg, #0a1a10 0%, #0d1f14 50%, #091208 100%)" }}>
             <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light text-center">
               HOW IT WORKS
             </p>
@@ -257,7 +257,7 @@ export default function PlatformEngineeringPage() {
       {/* After the Platform */}
       <section className="px-3 pt-3">
         <FadeIn>
-          <div className="py-24 md:py-32 px-8" style={{ background: "linear-gradient(180deg, #1a1008 0%, #201510 50%, #1a1008 100%)" }}>
+          <div data-dark-section className="py-24 md:py-32 px-8" style={{ background: "linear-gradient(180deg, #1a1008 0%, #201510 50%, #1a1008 100%)" }}>
             <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light text-center">
               WHAT HAPPENS NEXT
             </p>
@@ -311,7 +311,7 @@ export default function PlatformEngineeringPage() {
       {/* CTA */}
       <section className="px-3 pt-3 pb-3">
         <FadeIn>
-          <div className="py-24 md:py-32 px-8 bg-black text-center">
+          <div data-dark-section className="py-24 md:py-32 px-8 bg-black text-center">
             <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light">
               READY?
             </p>
