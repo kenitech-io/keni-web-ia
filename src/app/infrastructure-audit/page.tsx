@@ -98,7 +98,7 @@ const deliverables = [
 
 export default function InfrastructureAuditPage() {
   return (
-    <main className="bg-[#f5f5f7] text-foreground overflow-x-hidden">
+    <main className="bg-[#f5f5f7] dark:bg-[#0A0A0A] text-foreground overflow-x-hidden">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
@@ -168,21 +168,21 @@ export default function InfrastructureAuditPage() {
       {/* What We Audit */}
       <section className="px-3 pt-3">
         <FadeIn>
-          <div className="bg-white py-24 md:py-32 px-8">
-            <p className="text-label uppercase tracking-[0.25em] text-black/30 mb-8 font-light text-center">
+          <div className="bg-white dark:bg-[#1c1c1e] py-24 md:py-32 px-8">
+            <p className="text-label uppercase tracking-[0.25em] text-black/30 dark:text-white/30 mb-8 font-light text-center">
               WHAT WE AUDIT
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-black tracking-tight mb-20 text-center">
+            <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white tracking-tight mb-20 text-center">
               Nine areas, zero blind spots
             </h2>
             <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
               {auditAreas.map((area, index) => (
                 <FadeIn key={area.title} delay={index * 0.06}>
                   <div>
-                    <h3 className="text-lg font-bold tracking-tight text-black mb-3">
+                    <h3 className="text-lg font-bold tracking-tight text-black dark:text-white mb-3">
                       {area.title}
                     </h3>
-                    <p className="text-sm text-black/50 leading-relaxed font-light">
+                    <p className="text-sm text-black/50 dark:text-white/50 leading-relaxed font-light">
                       {area.description}
                     </p>
                   </div>
@@ -224,16 +224,16 @@ export default function InfrastructureAuditPage() {
       {/* After the audit */}
       <section className="px-3 pt-3">
         <FadeIn>
-          <div className="bg-white py-24 md:py-32 px-8 text-center">
-            <p className="text-label uppercase tracking-[0.25em] text-black/30 mb-8 font-light">
+          <div className="bg-white dark:bg-[#1c1c1e] py-24 md:py-32 px-8 text-center">
+            <p className="text-label uppercase tracking-[0.25em] text-black/30 dark:text-white/30 mb-8 font-light">
               WHAT HAPPENS NEXT
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-black tracking-tight mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white tracking-tight mb-6">
               The report is yours
             </h2>
-            <p className="text-sm text-black/50 font-light mb-8 max-w-[480px] mx-auto leading-relaxed">
+            <p className="text-sm text-black/50 dark:text-white/50 font-light mb-8 max-w-[480px] mx-auto leading-relaxed">
               Implement the recommendations in-house, or our{" "}
-              <Link href="/devops-consulting" className="text-black/80 hover:text-black underline decoration-black/20 hover:decoration-black/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
+              <Link href="/devops-consulting" className="text-black/80 dark:text-white/80 hover:text-black dark:hover:text-white underline decoration-black/20 dark:decoration-white/20 hover:decoration-black/50 dark:hover:decoration-white/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
                 DevOps consulting team
               </Link>
               {" "}can handle it for you. Fixed pricing, no surprises, no lock-in.
@@ -245,27 +245,27 @@ export default function InfrastructureAuditPage() {
       {/* Related reading */}
       <section className="px-3 pt-3">
         <FadeIn>
-          <div className="py-24 md:py-32 px-8" style={{ background: "linear-gradient(180deg, #f0f0f0 0%, #e8e8e8 100%)" }}>
-            <p className="text-label uppercase tracking-[0.25em] text-black/30 mb-8 font-light text-center">
+          <div className="py-24 md:py-32 px-8 bg-light-gradient">
+            <p className="text-label uppercase tracking-[0.25em] text-black/30 dark:text-white/30 mb-8 font-light text-center">
               FROM THE BLOG
             </p>
             <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 mt-16">
               <FadeIn delay={0.1}>
                 <Link href="/blog/devops-audit-what-to-expect" className="group block">
-                  <h3 className="text-base font-bold tracking-tight text-black group-hover:text-black/60 transition-colors mb-3">
+                  <h3 className="text-base font-bold tracking-tight text-black dark:text-white group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors mb-3">
                     What happens during a DevOps audit
                   </h3>
-                  <p className="text-xs text-black/40 leading-relaxed font-light">
+                  <p className="text-xs text-black/40 dark:text-white/40 leading-relaxed font-light">
                     A step-by-step walkthrough of our audit process and what the deliverable looks like.
                   </p>
                 </Link>
               </FadeIn>
               <FadeIn delay={0.2}>
                 <Link href="/blog/why-smbs-need-devops" className="group block">
-                  <h3 className="text-base font-bold tracking-tight text-black group-hover:text-black/60 transition-colors mb-3">
+                  <h3 className="text-base font-bold tracking-tight text-black dark:text-white group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors mb-3">
                     Why 53% of SMBs still don&apos;t have DevOps
                   </h3>
-                  <p className="text-xs text-black/40 leading-relaxed font-light">
+                  <p className="text-xs text-black/40 dark:text-white/40 leading-relaxed font-light">
                     The data behind why small teams struggle with infrastructure, and what it costs them.
                   </p>
                 </Link>

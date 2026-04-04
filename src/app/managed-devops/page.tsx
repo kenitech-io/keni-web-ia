@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
-import CTASection from "@/components/CTASection";
+import { BOOKING_URL } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Managed DevOps for Small Development Teams",
@@ -44,7 +44,7 @@ const faqJsonLd = {
       name: "What is included in managed DevOps?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A managed DevOps service typically includes CI/CD pipeline management, monitoring and alerting, security patching and updates, backup and disaster recovery, performance optimization, and incident response. The goal is to keep your infrastructure healthy so your developers can focus on shipping features.",
+        text: "A managed DevOps service typically includes CI/CD pipeline management, monitoring and alerting, security patching and updates, backup and disaster recovery, performance optimization, and incident response.",
       },
     },
     {
@@ -52,7 +52,7 @@ const faqJsonLd = {
       name: "How is managed DevOps different from hiring a DevOps engineer?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A managed DevOps service gives you a team of senior engineers for a fraction of the cost of one full-time hire. You get broader expertise, no PTO gaps, no recruiting overhead, and no ramp-up time. For teams with 2-30 developers, managed DevOps covers the same scope at 20-40% of the cost.",
+        text: "A managed DevOps service gives you a team of senior engineers for a fraction of the cost of one full-time hire. You get broader expertise, no PTO gaps, no recruiting overhead, and no ramp-up time.",
       },
     },
   ],
@@ -78,62 +78,23 @@ const breadcrumbJsonLd = {
 };
 
 const included = [
-  {
-    title: "CI/CD pipeline management",
-    description:
-      "We build, maintain, and optimize your deployment pipelines. Automated builds, tests, and deploys to staging and production. When something breaks in the pipeline, we fix it.",
-  },
-  {
-    title: "Monitoring and alerting",
-    description:
-      "Prometheus, Grafana, and structured alerting configured for your stack. You get dashboards that show what matters and alerts that wake up the right people, not noise that everyone ignores.",
-  },
-  {
-    title: "Security patching and updates",
-    description:
-      "OS patches, container base image updates, dependency vulnerability scanning, and TLS certificate management. Applied on a regular schedule with zero downtime.",
-  },
-  {
-    title: "Backup and disaster recovery",
-    description:
-      "Encrypted daily backups with automated restore testing. Documented recovery procedures your team can execute if needed. We verify backups actually work, not just that they ran.",
-  },
-  {
-    title: "Performance optimization",
-    description:
-      "Ongoing review of resource usage, response times, and infrastructure costs. We right-size your servers, tune your databases, and eliminate bottlenecks before they become incidents.",
-  },
-  {
-    title: "Incident response",
-    description:
-      "When production goes down, we respond. Root cause analysis, fix, and a post-mortem documenting what happened and what we changed to prevent it from happening again.",
-  },
+  { title: "CI/CD pipeline management", description: "We build, maintain, and optimize your deployment pipelines. Automated builds, tests, and deploys. When something breaks, we fix it." },
+  { title: "Monitoring and alerting", description: "Prometheus, Grafana, and structured alerting. Dashboards that show what matters and alerts that wake up the right people." },
+  { title: "Security patching and updates", description: "OS patches, container image updates, dependency scanning, TLS certificate management. Applied regularly with zero downtime." },
+  { title: "Backup and disaster recovery", description: "Encrypted daily backups with automated restore testing. Documented recovery procedures. We verify backups actually work." },
+  { title: "Performance optimization", description: "Ongoing review of resource usage, response times, and costs. We right-size servers, tune databases, and eliminate bottlenecks." },
+  { title: "Incident response", description: "When production goes down, we respond. Root cause analysis, fix, and a post-mortem documenting what happened and how we prevent it." },
 ];
 
 const steps = [
-  {
-    number: "01",
-    title: "Audit",
-    description:
-      "We start with a 72-hour infrastructure audit. We review your CI/CD, monitoring, security posture, backup strategy, and deployment process. You get a detailed report with findings and a prioritized remediation plan.",
-  },
-  {
-    number: "02",
-    title: "Setup",
-    description:
-      "We implement the internal developer platform your team needs. CI/CD pipelines, monitoring dashboards, automated backups, security hardening. Everything is infrastructure as code, documented, and reproducible.",
-  },
-  {
-    number: "03",
-    title: "Ongoing management",
-    description:
-      "Once the platform is running, we manage it. Security patches, dependency updates, performance tuning, incident response. Your developers push code and it goes to production. We handle everything underneath.",
-  },
+  { number: "01", title: "Audit", description: "We start with a 72-hour infrastructure audit. We review your CI/CD, monitoring, security, backup strategy, and deployment process. You get a detailed report with findings and a prioritized plan." },
+  { number: "02", title: "Setup", description: "We implement the internal developer platform your team needs. CI/CD pipelines, monitoring, automated backups, security hardening. Everything as code, documented, reproducible." },
+  { number: "03", title: "Ongoing management", description: "Once the platform is running, we manage it. Security patches, dependency updates, performance tuning, incident response. You push code, it goes to production. We handle everything underneath." },
 ];
 
 export default function ManagedDevOpsPage() {
   return (
-    <main className="bg-background text-foreground">
+    <main className="bg-[#f5f5f7] dark:bg-[#0A0A0A] text-foreground overflow-x-hidden">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
@@ -156,8 +117,7 @@ export default function ManagedDevOpsPage() {
               <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
                 CI/CD pipelines, monitoring, security updates, backups, and
                 incident response. We handle the infrastructure so your team
-                ships product, not fights servers. Managed DevOps for companies
-                with 2-30 developers.
+                ships product, not fights servers.
               </p>
             </FadeIn>
           </div>
@@ -165,65 +125,66 @@ export default function ManagedDevOpsPage() {
       </section>
 
       {/* The Problem */}
-      <section className="py-32 md:py-48">
-        <Container>
-          <div className="max-w-[640px] mx-auto text-center">
-            <FadeIn>
-              <p className="text-label uppercase tracking-[0.25em] text-muted mb-16 md:mb-20 font-light text-center">
-                THE PROBLEM
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <h2 className="text-heading text-foreground font-light tracking-wide mb-8">
-                Infrastructure does not maintain itself
-              </h2>
-            </FadeIn>
-            <FadeIn delay={0.2}>
-              <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-2">
-                Every week there are security patches to apply, certificates to
-                renew, dependencies to update, and alerts to tune. Your
-                developers can do this work. But every hour they spend on
-                infrastructure is an hour they are not spending on your product.
-              </p>
-              <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-6">
-                Most teams ignore maintenance until something breaks. Then it is
-                a fire drill: production is down, customers are affected, and
-                your best engineer spends two days debugging a problem that
-                proper monitoring would have caught in five minutes.
-              </p>
-              <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
-                Hiring a full-time DevOps engineer costs $130K-$220K per year in
-                the US. For a team of 5-15 developers, that is a big commitment
-                for a role that may not need to be full-time. Managed DevOps
-                gives you the same coverage at a fraction of the cost.
-              </p>
-            </FadeIn>
+      <section className="px-3">
+        <FadeIn>
+          <div className="py-24 md:py-32 px-8" style={{ background: "linear-gradient(180deg, #0a1a10 0%, #0d1f14 50%, #091208 100%)" }}>
+            <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light text-center">
+              THE PROBLEM
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6 text-center">
+              Infrastructure does not maintain itself
+            </h2>
+            <p className="text-sm text-white/70 font-light text-center mb-20 max-w-[500px] mx-auto">
+              Every hour your developers spend on infrastructure is an hour not spent on product.
+            </p>
+            <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-20">
+              <div className="text-center">
+                <p className="text-[0.55rem] font-mono tracking-[0.3em] text-[#C65100] mb-4">COST</p>
+                <h3 className="text-3xl md:text-4xl font-bold text-white leading-none mb-2">$130K+</h3>
+                <p className="text-sm text-white/70 font-light mb-4">per year for one hire</p>
+                <p className="text-sm text-white/70 leading-relaxed font-light max-w-[260px] mx-auto">
+                  Salary, benefits, recruiting, onboarding. For a role that may not need to be full-time.
+                </p>
+              </div>
+              <div className="text-center">
+                <p className="text-[0.55rem] font-mono tracking-[0.3em] text-[#C65100] mb-4">RISK</p>
+                <h3 className="text-3xl md:text-4xl font-bold text-white leading-none mb-2">2 days</h3>
+                <p className="text-sm text-white/70 font-light mb-4">average fire drill</p>
+                <p className="text-sm text-white/70 leading-relaxed font-light max-w-[260px] mx-auto">
+                  Production down, customers affected. A problem proper monitoring would catch in five minutes.
+                </p>
+              </div>
+              <div className="text-center">
+                <p className="text-[0.55rem] font-mono tracking-[0.3em] text-[#C65100] mb-4">DEBT</p>
+                <h3 className="text-3xl md:text-4xl font-bold text-white leading-none mb-2">Ignored</h3>
+                <p className="text-sm text-white/70 font-light mb-4">until it breaks</p>
+                <p className="text-sm text-white/70 leading-relaxed font-light max-w-[260px] mx-auto">
+                  Security patches, certificate renewals, dependency updates. Most teams skip until it is too late.
+                </p>
+              </div>
+            </div>
           </div>
-        </Container>
+        </FadeIn>
       </section>
 
       {/* What's Included */}
-      <section className="py-32 md:py-48">
-        <Container>
-          <div className="max-w-[900px] mx-auto">
-            <FadeIn>
-              <p className="text-label uppercase tracking-[0.25em] text-muted mb-16 md:mb-20 font-light text-center">
-                WHAT&apos;S INCLUDED
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <h2 className="text-heading text-foreground font-light tracking-wide mb-16 text-center">
-                Everything your infrastructure needs to stay healthy
-              </h2>
-            </FadeIn>
-            <div className="grid md:grid-cols-2 gap-8">
+      <section className="px-3 pt-3">
+        <FadeIn>
+          <div className="bg-white dark:bg-[#1c1c1e] py-24 md:py-32 px-8">
+            <p className="text-label uppercase tracking-[0.25em] text-black/30 dark:text-white/30 mb-8 font-light text-center">
+              WHAT&apos;S INCLUDED
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white tracking-tight mb-20 text-center">
+              Everything your infrastructure needs
+            </h2>
+            <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
               {included.map((item, index) => (
-                <FadeIn key={item.title} delay={index * 0.05}>
-                  <div className="bg-surface rounded-2xl p-8 shadow-[0_4px_30px_rgba(0,0,0,0.08)]">
-                    <h3 className="text-body text-foreground font-light tracking-wide mb-3">
+                <FadeIn key={item.title} delay={index * 0.06}>
+                  <div>
+                    <h3 className="text-lg font-bold tracking-tight text-black dark:text-white mb-3">
                       {item.title}
                     </h3>
-                    <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
+                    <p className="text-sm text-black/50 dark:text-white/50 leading-relaxed font-light">
                       {item.description}
                     </p>
                   </div>
@@ -231,29 +192,28 @@ export default function ManagedDevOpsPage() {
               ))}
             </div>
           </div>
-        </Container>
+        </FadeIn>
       </section>
 
       {/* How It Works */}
-      <section className="py-32 md:py-48">
-        <Container>
-          <div className="max-w-[640px] mx-auto">
-            <FadeIn>
-              <p className="text-label uppercase tracking-[0.25em] text-muted mb-16 md:mb-20 font-light text-center">
-                HOW IT WORKS
-              </p>
-            </FadeIn>
-            <div className="space-y-16">
+      <section className="px-3 pt-3">
+        <FadeIn>
+          <div className="py-24 md:py-32 px-8" style={{ background: "linear-gradient(180deg, #0f1520 0%, #131d2a 50%, #0c1318 100%)" }}>
+            <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light text-center">
+              HOW IT WORKS
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-20 text-center">
+              Three steps to managed infrastructure
+            </h2>
+            <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-20">
               {steps.map((step, index) => (
                 <FadeIn key={step.number} delay={index * 0.1}>
-                  <div>
-                    <p className="text-sm text-muted/60 font-light mb-2">
-                      {step.number}
-                    </p>
-                    <h3 className="text-body text-foreground font-light tracking-wide mb-3">
+                  <div className="text-center">
+                    <p className="text-[0.55rem] font-mono tracking-[0.3em] text-[#C65100] mb-4">{step.number}</p>
+                    <h3 className="text-2xl md:text-3xl font-bold text-white leading-none mb-3">
                       {step.title}
                     </h3>
-                    <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
+                    <p className="text-sm text-white/70 leading-relaxed font-light max-w-[300px] mx-auto">
                       {step.description}
                     </p>
                   </div>
@@ -261,146 +221,128 @@ export default function ManagedDevOpsPage() {
               ))}
             </div>
           </div>
-        </Container>
+        </FadeIn>
       </section>
 
       {/* Why Not Hire */}
-      <section className="py-32 md:py-48">
-        <Container>
-          <div className="max-w-[640px] mx-auto text-center">
-            <FadeIn>
-              <p className="text-label uppercase tracking-[0.25em] text-muted mb-16 md:mb-20 font-light text-center">
-                WHY NOT JUST HIRE?
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <h2 className="text-heading text-foreground font-light tracking-wide mb-8">
-                A team for the price of a fraction of one hire
-              </h2>
-            </FadeIn>
-            <FadeIn delay={0.2}>
-              <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-6">
-                A full-time DevOps engineer in the US costs $130K-$220K per year
-                including benefits and overhead. Recruiting takes 2-4 months.
-                Onboarding takes another month. If they leave, you start over.
-              </p>
-              <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-6">
-                With managed DevOps, you get a team of senior engineers who
-                already know the tools, the patterns, and the failure modes. No
-                recruiting. No ramp-up. No PTO gaps. Coverage starts in weeks,
-                not months.
-              </p>
-              <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
-                For most teams with 2-30 developers, managed infrastructure
-                covers the same scope as a full-time hire at 20-40% of the
-                total cost. The math is straightforward. Our{" "}
-                <Link
-                  href="/devops-consulting"
-                  className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors"
-                >
-                  consulting services
-                </Link>{" "}
-                page covers our full engagement model.
-              </p>
-            </FadeIn>
+      <section className="px-3 pt-3">
+        <FadeIn>
+          <div className="bg-white dark:bg-[#1c1c1e] py-24 md:py-32 px-8">
+            <p className="text-label uppercase tracking-[0.25em] text-black/30 dark:text-white/30 mb-8 font-light text-center">
+              WHY NOT JUST HIRE?
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white tracking-tight mb-20 text-center">
+              A team for a fraction of one hire
+            </h2>
+            <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-x-20 md:gap-y-16">
+              <div>
+                <h3 className="text-lg font-bold tracking-tight text-black dark:text-white mb-3">No recruiting</h3>
+                <p className="text-sm text-black/50 dark:text-white/50 leading-relaxed font-light">
+                  Skip the 2-4 months of hiring and another month of onboarding. Coverage starts in weeks.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-lg font-bold tracking-tight text-black dark:text-white mb-3">No single point of failure</h3>
+                <p className="text-sm text-black/50 dark:text-white/50 leading-relaxed font-light">
+                  A team of senior engineers, not one person. No PTO gaps, no knowledge silos, no starting over if someone leaves.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-lg font-bold tracking-tight text-black dark:text-white mb-3">20-40% of the cost</h3>
+                <p className="text-sm text-black/50 dark:text-white/50 leading-relaxed font-light">
+                  Same scope as a full-time hire at a fraction of the total cost. The math is straightforward.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-lg font-bold tracking-tight text-black dark:text-white mb-3">Broader expertise</h3>
+                <p className="text-sm text-black/50 dark:text-white/50 leading-relaxed font-light">
+                  Engineers who have seen dozens of stacks, not just yours. Patterns and solutions from real production environments.
+                </p>
+              </div>
+            </div>
           </div>
-        </Container>
+        </FadeIn>
       </section>
 
-      {/* Not sure where to start */}
-      <section className="py-32 md:py-48">
-        <Container>
-          <div className="max-w-[640px] mx-auto">
-            <FadeIn>
-              <p className="text-label uppercase tracking-[0.25em] text-muted mb-16 md:mb-20 font-light text-center">
-                NOT SURE WHERE TO START?
-              </p>
-            </FadeIn>
-            <div className="space-y-16">
+      {/* Free Audit */}
+      <section className="px-3 pt-3">
+        <FadeIn>
+          <div className="py-24 md:py-32 px-8" style={{ background: "linear-gradient(180deg, #1a1008 0%, #201510 50%, #1a1008 100%)" }}>
+            <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light text-center">
+              NOT SURE WHERE TO START?
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6 text-center">
+              <span className="text-[#C65100]">Free</span> Infrastructure Audit
+            </h2>
+            <p className="text-sm text-white/70 font-light mb-10 max-w-[480px] mx-auto text-center leading-relaxed">
+              Full review of your CI/CD, security, and infrastructure in 72 hours. You get a prioritized roadmap your team can act on immediately.
+            </p>
+            <div className="text-center">
+              <Link href="/infrastructure-audit" className="inline-block bg-white text-black px-6 py-2.5 text-xs font-light tracking-wide rounded-full hover:bg-white/85 transition-colors">
+                Learn more
+              </Link>
+            </div>
+          </div>
+        </FadeIn>
+      </section>
+
+      {/* From the Blog */}
+      <section className="px-3 pt-3">
+        <FadeIn>
+          <div className="py-24 md:py-32 px-8 bg-light-gradient">
+            <p className="text-label uppercase tracking-[0.25em] text-black/30 dark:text-white/30 mb-8 font-light text-center">
+              FROM THE BLOG
+            </p>
+            <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 mt-16">
               <FadeIn delay={0.1}>
-                <div>
-                  <h3 className="text-body text-foreground font-light tracking-wide mb-3">
-                    Infrastructure audit
+                <Link href="/blog/how-much-does-devops-cost" className="group block">
+                  <h3 className="text-base font-bold tracking-tight text-black dark:text-white group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors mb-3">
+                    How much does DevOps cost?
                   </h3>
-                  <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
-                    Our{" "}
-                    <Link
-                      href="/infrastructure-audit"
-                      className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors"
-                    >
-                      72-hour infrastructure audit
-                    </Link>{" "}
-                    gives you a complete picture of your CI/CD, monitoring,
-                    security, and infrastructure. You get a prioritized roadmap
-                    your team can act on immediately.
+                  <p className="text-xs text-black/40 dark:text-white/40 leading-relaxed font-light">
+                    A breakdown of what companies actually spend on DevOps, from in-house hires to managed services.
                   </p>
-                </div>
+                </Link>
               </FadeIn>
               <FadeIn delay={0.2}>
-                <div>
-                  <h3 className="text-body text-foreground font-light tracking-wide mb-3">
-                    Quick self-assessment
+                <Link href="/blog/why-smbs-need-devops" className="group block">
+                  <h3 className="text-base font-bold tracking-tight text-black dark:text-white group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors mb-3">
+                    Why 53% of SMBs still don&apos;t have DevOps
                   </h3>
-                  <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
-                    Take our{" "}
-                    <Link
-                      href="/healthcheck"
-                      className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors"
-                    >
-                      free DevOps health check
-                    </Link>{" "}
-                    to score your team across seven key areas in 2 minutes.
+                  <p className="text-xs text-black/40 dark:text-white/40 leading-relaxed font-light">
+                    The real cost of not having a proper deployment process, and what a realistic fix looks like.
                   </p>
-                </div>
+                </Link>
               </FadeIn>
             </div>
           </div>
-        </Container>
+        </FadeIn>
       </section>
 
-      {/* Related reading */}
-      <section className="py-32 md:py-48">
-        <Container>
-          <div className="max-w-[640px] mx-auto">
-            <FadeIn>
-              <p className="text-label uppercase tracking-[0.25em] text-muted mb-16 md:mb-20 font-light text-center">
-                FROM THE BLOG
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <div className="space-y-8">
-                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
-                  <Link
-                    href="/blog/how-much-does-devops-cost"
-                    className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors"
-                  >
-                    How much does DevOps cost?
-                  </Link>
-                  {" "}: a breakdown of what companies actually spend on DevOps,
-                  from in-house hires to managed services.
-                </p>
-                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
-                  <Link
-                    href="/blog/why-smbs-need-devops"
-                    className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors"
-                  >
-                    Why 53% of SMBs still don&apos;t have DevOps
-                  </Link>
-                  {" "}: the real cost of not having a proper deployment process,
-                  and what a realistic fix looks like.
-                </p>
-              </div>
-            </FadeIn>
+      {/* CTA */}
+      <section className="px-3 pt-3 pb-3">
+        <FadeIn>
+          <div className="py-24 md:py-32 px-8 bg-black text-center">
+            <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light">
+              READY?
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6">
+              Ready to hand off your infrastructure?
+            </h2>
+            <p className="text-sm text-white/70 font-light mb-10 max-w-[360px] mx-auto leading-relaxed">
+              Tell us what you&apos;re running. We&apos;ll tell you<br />what it takes to manage it properly.
+            </p>
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-white text-black px-8 py-2.5 text-xs font-light tracking-wide rounded-full hover:bg-white/85 transition-colors"
+            >
+              Let&apos;s talk
+            </a>
           </div>
-        </Container>
+        </FadeIn>
       </section>
-
-      <CTASection
-        headline="Ready to hand off your infrastructure?"
-        subtext="Tell us what you're running. We'll tell you what it takes to manage it properly."
-        buttonText="Let's talk"
-        buttonHref="/contact"
-      />
     </main>
   );
 }

@@ -113,6 +113,16 @@ html {
   }
 }
 
+/* Light gradient section — dark mode override */
+.bg-light-gradient {
+  background: linear-gradient(180deg, #f0f0f0 0%, #e8e8e8 100%);
+}
+@media (prefers-color-scheme: dark) {
+  .bg-light-gradient {
+    background: #1c1c1e;
+  }
+}
+
 /* Hide scrollbar for horizontal card scroll */
 .scrollbar-hide {
   -ms-overflow-style: none;

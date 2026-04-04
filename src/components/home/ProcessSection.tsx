@@ -136,11 +136,11 @@ export default function ProcessSection() {
   return (
     <section className="px-3 pt-3">
       <FadeIn>
-        <div className="py-24 md:py-32 px-8 bg-white">
-          <p className="text-label uppercase tracking-[0.25em] text-black/30 mb-8 font-light text-center">
+        <div className="py-24 md:py-32 px-8 bg-white dark:bg-black">
+          <p className="text-label uppercase tracking-[0.25em] text-black/30 dark:text-white/30 mb-8 font-light text-center">
             What we do
           </p>
-          <h2 className="text-3xl md:text-5xl font-bold text-black tracking-tight mb-20 text-center">
+          <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white tracking-tight mb-20 text-center">
             Everything your team needs to ship with confidence
           </h2>
           <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 md:gap-12">
@@ -149,15 +149,15 @@ export default function ProcessSection() {
                 <div>
                   <div className="flex items-center gap-3 mb-5">
                     {service.tools.map((tool) => (
-                      <span key={tool} className="text-black/40">
+                      <span key={tool} className="text-black/40 dark:text-white/40">
                         <ToolIcon name={tool} />
                       </span>
                     ))}
                   </div>
-                  <h3 className="text-lg font-bold tracking-tight text-black mb-3">
+                  <h3 className="text-lg font-bold tracking-tight text-black dark:text-white mb-3">
                     {service.title}
                   </h3>
-                  <p className="text-sm leading-relaxed font-light text-black/50">
+                  <p className="text-sm leading-relaxed font-light text-black/50 dark:text-white/50">
                     {service.description}
                   </p>
                 </div>
