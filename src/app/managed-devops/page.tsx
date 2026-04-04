@@ -131,7 +131,7 @@ export default function ManagedDevOpsPage() {
             <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light text-center">
               THE PROBLEM
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6 text-center">
+            <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight mb-6 text-center">
               Infrastructure does not maintain itself
             </h2>
             <p className="text-sm text-white/70 font-light text-center mb-20 max-w-[500px] mx-auto">
@@ -174,14 +174,14 @@ export default function ManagedDevOpsPage() {
             <p className="text-label uppercase tracking-[0.25em] text-black/30 dark:text-white/30 mb-8 font-light text-center">
               WHAT&apos;S INCLUDED
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white tracking-tight mb-20 text-center">
+            <h2 className="text-3xl md:text-5xl font-semibold text-black dark:text-white tracking-tight mb-20 text-center">
               Everything your infrastructure needs
             </h2>
             <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
               {included.map((item, index) => (
                 <FadeIn key={item.title} delay={index * 0.06}>
                   <div>
-                    <h3 className="text-lg font-bold tracking-tight text-black dark:text-white mb-3">
+                    <h3 className="text-body text-black dark:text-white font-light tracking-wide mb-3">
                       {item.title}
                     </h3>
                     <p className="text-sm text-black/50 dark:text-white/50 leading-relaxed font-light">
@@ -202,7 +202,7 @@ export default function ManagedDevOpsPage() {
             <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light text-center">
               HOW IT WORKS
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-20 text-center">
+            <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight mb-20 text-center">
               Three steps to managed infrastructure
             </h2>
             <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-20">
@@ -231,30 +231,30 @@ export default function ManagedDevOpsPage() {
             <p className="text-label uppercase tracking-[0.25em] text-black/30 dark:text-white/30 mb-8 font-light text-center">
               WHY NOT JUST HIRE?
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white tracking-tight mb-20 text-center">
+            <h2 className="text-3xl md:text-5xl font-semibold text-black dark:text-white tracking-tight mb-20 text-center">
               A team for a fraction of one hire
             </h2>
             <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-x-20 md:gap-y-16">
               <div>
-                <h3 className="text-lg font-bold tracking-tight text-black dark:text-white mb-3">No recruiting</h3>
+                <h3 className="text-body text-black dark:text-white font-light tracking-wide mb-3">No recruiting</h3>
                 <p className="text-sm text-black/50 dark:text-white/50 leading-relaxed font-light">
                   Skip the 2-4 months of hiring and another month of onboarding. Coverage starts in weeks.
                 </p>
               </div>
               <div>
-                <h3 className="text-lg font-bold tracking-tight text-black dark:text-white mb-3">No single point of failure</h3>
+                <h3 className="text-body text-black dark:text-white font-light tracking-wide mb-3">No single point of failure</h3>
                 <p className="text-sm text-black/50 dark:text-white/50 leading-relaxed font-light">
                   A team of senior engineers, not one person. No PTO gaps, no knowledge silos, no starting over if someone leaves.
                 </p>
               </div>
               <div>
-                <h3 className="text-lg font-bold tracking-tight text-black dark:text-white mb-3">20-40% of the cost</h3>
+                <h3 className="text-body text-black dark:text-white font-light tracking-wide mb-3">20-40% of the cost</h3>
                 <p className="text-sm text-black/50 dark:text-white/50 leading-relaxed font-light">
                   Same scope as a full-time hire at a fraction of the total cost. The math is straightforward.
                 </p>
               </div>
               <div>
-                <h3 className="text-lg font-bold tracking-tight text-black dark:text-white mb-3">Broader expertise</h3>
+                <h3 className="text-body text-black dark:text-white font-light tracking-wide mb-3">Broader expertise</h3>
                 <p className="text-sm text-black/50 dark:text-white/50 leading-relaxed font-light">
                   Engineers who have seen dozens of stacks, not just yours. Patterns and solutions from real production environments.
                 </p>
@@ -271,7 +271,7 @@ export default function ManagedDevOpsPage() {
             <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light text-center">
               NOT SURE WHERE TO START?
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6 text-center">
+            <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight mb-6 text-center">
               <span className="text-[#C65100]">Free</span> Infrastructure Audit
             </h2>
             <p className="text-sm text-white/70 font-light mb-10 max-w-[480px] mx-auto text-center leading-relaxed">
@@ -296,7 +296,7 @@ export default function ManagedDevOpsPage() {
             <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 mt-16">
               <FadeIn delay={0.1}>
                 <Link href="/blog/how-much-does-devops-cost" className="group block">
-                  <h3 className="text-base font-bold tracking-tight text-black dark:text-white group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors mb-3">
+                  <h3 className="text-base font-light tracking-wide text-black dark:text-white group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors mb-3">
                     How much does DevOps cost?
                   </h3>
                   <p className="text-xs text-black/40 dark:text-white/40 leading-relaxed font-light">
@@ -306,7 +306,7 @@ export default function ManagedDevOpsPage() {
               </FadeIn>
               <FadeIn delay={0.2}>
                 <Link href="/blog/why-smbs-need-devops" className="group block">
-                  <h3 className="text-base font-bold tracking-tight text-black dark:text-white group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors mb-3">
+                  <h3 className="text-base font-light tracking-wide text-black dark:text-white group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors mb-3">
                     Why 53% of SMBs still don&apos;t have DevOps
                   </h3>
                   <p className="text-xs text-black/40 dark:text-white/40 leading-relaxed font-light">
@@ -326,7 +326,7 @@ export default function ManagedDevOpsPage() {
             <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light">
               READY?
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6">
+            <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight mb-6">
               Ready to hand off your infrastructure?
             </h2>
             <p className="text-sm text-white/70 font-light mb-10 max-w-[360px] mx-auto leading-relaxed">
