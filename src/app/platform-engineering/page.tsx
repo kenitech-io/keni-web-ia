@@ -124,7 +124,7 @@ export default function PlatformEngineeringPage() {
             <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light text-center">
               WHAT IS AN IDP
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6 text-center">
+            <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight mb-6 text-center">
               The infrastructure your developers actually use
             </h2>
             <p className="text-sm text-white/70 font-light text-center mb-20 max-w-[520px] mx-auto leading-relaxed">
@@ -164,14 +164,14 @@ export default function PlatformEngineeringPage() {
             <p className="text-label uppercase tracking-[0.25em] text-black/30 dark:text-white/30 mb-8 font-light text-center">
               WHAT WE BUILD
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white tracking-tight mb-20 text-center">
+            <h2 className="text-3xl md:text-5xl font-semibold text-black dark:text-white tracking-tight mb-20 text-center">
               Eight components, one platform
             </h2>
             <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
               {platformComponents.map((component, index) => (
                 <FadeIn key={component.title} delay={index * 0.06}>
                   <div>
-                    <h3 className="text-base font-bold tracking-tight text-black dark:text-white mb-3">
+                    <h3 className="text-base font-light tracking-wide text-black dark:text-white mb-3">
                       {component.title}
                     </h3>
                     <p className="text-sm text-black/50 dark:text-white/50 leading-relaxed font-light">
@@ -192,7 +192,7 @@ export default function PlatformEngineeringPage() {
             <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light text-center">
               HOW IT WORKS
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-20 text-center">
+            <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight mb-20 text-center">
               Four steps to your platform
             </h2>
             <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 md:gap-12">
@@ -221,30 +221,30 @@ export default function PlatformEngineeringPage() {
             <p className="text-label uppercase tracking-[0.25em] text-black/30 dark:text-white/30 mb-8 font-light text-center">
               WHY NOT KUBERNETES
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white tracking-tight mb-20 text-center">
+            <h2 className="text-3xl md:text-5xl font-semibold text-black dark:text-white tracking-tight mb-20 text-center">
               You probably don&apos;t need Kubernetes
             </h2>
             <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-x-20 md:gap-y-16">
               <div>
-                <h3 className="text-lg font-bold tracking-tight text-black dark:text-white mb-3">Built for a different scale</h3>
+                <h3 className="text-body text-black dark:text-white font-light tracking-wide mb-3">Built for a different scale</h3>
                 <p className="text-sm text-black/50 dark:text-white/50 leading-relaxed font-light">
                   K8s is designed for hundreds of microservices across data centers. For 2-30 developers with a handful of services, it is the wrong tool.
                 </p>
               </div>
               <div>
-                <h3 className="text-lg font-bold tracking-tight text-black dark:text-white mb-3">A full-time job to operate</h3>
+                <h3 className="text-body text-black dark:text-white font-light tracking-wide mb-3">A full-time job to operate</h3>
                 <p className="text-sm text-black/50 dark:text-white/50 leading-relaxed font-light">
                   Networking, ingress, RBAC, persistent volumes, cluster upgrades. That complexity needs a dedicated person your team may not have.
                 </p>
               </div>
               <div>
-                <h3 className="text-lg font-bold tracking-tight text-black dark:text-white mb-3">Docker gives you 90%</h3>
+                <h3 className="text-body text-black dark:text-white font-light tracking-wide mb-3">Docker gives you 90%</h3>
                 <p className="text-sm text-black/50 dark:text-white/50 leading-relaxed font-light">
                   Docker Compose with good tooling gives you 90% of the benefits at 10% of the complexity. A single server handles more traffic than most startups see in five years.
                 </p>
               </div>
               <div>
-                <h3 className="text-lg font-bold tracking-tight text-black dark:text-white mb-3">Migration-ready</h3>
+                <h3 className="text-body text-black dark:text-white font-light tracking-wide mb-3">Migration-ready</h3>
                 <p className="text-sm text-black/50 dark:text-white/50 leading-relaxed font-light">
                   When you outgrow it, the containerized architecture makes migration straightforward. Start simple, scale when you need to.
                 </p>
@@ -261,7 +261,7 @@ export default function PlatformEngineeringPage() {
             <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light text-center">
               WHAT HAPPENS NEXT
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6 text-center">
+            <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight mb-6 text-center">
               The platform is yours
             </h2>
             <p className="text-sm text-white/70 font-light mb-8 max-w-[480px] mx-auto text-center leading-relaxed">
@@ -285,7 +285,7 @@ export default function PlatformEngineeringPage() {
             <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 mt-16">
               <FadeIn delay={0.1}>
                 <Link href="/blog/kubernetes-vs-docker-compose" className="group block">
-                  <h3 className="text-base font-bold tracking-tight text-black dark:text-white group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors mb-3">
+                  <h3 className="text-base font-light tracking-wide text-black dark:text-white group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors mb-3">
                     Kubernetes vs Docker Compose for small teams
                   </h3>
                   <p className="text-xs text-black/40 dark:text-white/40 leading-relaxed font-light">
@@ -295,7 +295,7 @@ export default function PlatformEngineeringPage() {
               </FadeIn>
               <FadeIn delay={0.2}>
                 <Link href="/blog/devops-checklist-for-startups" className="group block">
-                  <h3 className="text-base font-bold tracking-tight text-black dark:text-white group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors mb-3">
+                  <h3 className="text-base font-light tracking-wide text-black dark:text-white group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors mb-3">
                     The DevOps checklist for startups
                   </h3>
                   <p className="text-xs text-black/40 dark:text-white/40 leading-relaxed font-light">
@@ -315,7 +315,7 @@ export default function PlatformEngineeringPage() {
             <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light">
               READY?
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6">
+            <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight mb-6">
               Ready to give your team a real platform?
             </h2>
             <p className="text-sm text-white/70 font-light mb-10 max-w-[400px] mx-auto leading-relaxed">

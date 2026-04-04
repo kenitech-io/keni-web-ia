@@ -140,7 +140,7 @@ export default function DevOpsConsultingPage() {
             <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light text-center">
               THE PROBLEM
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6 text-center">
+            <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight mb-6 text-center">
               53% of SMBs have no DevOps
             </h2>
             <p className="text-sm text-white/70 font-light text-center mb-20 max-w-[500px] mx-auto">
@@ -183,7 +183,7 @@ export default function DevOpsConsultingPage() {
             <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light text-center">
               HOW WE WORK
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-20 text-center">
+            <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight mb-20 text-center">
               Four steps to production
             </h2>
             <PhaseCarousel />
@@ -201,7 +201,7 @@ export default function DevOpsConsultingPage() {
             <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light text-center">
               NOT SURE WHERE TO START?
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6 text-center">
+            <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight mb-6 text-center">
               <span className="text-[#C65100]">Free</span> Infrastructure Audit
             </h2>
             <p className="text-sm text-white/50 font-light mb-8 max-w-[480px] mx-auto text-center">
@@ -223,14 +223,14 @@ export default function DevOpsConsultingPage() {
             <p className="text-label uppercase tracking-[0.25em] text-black/30 dark:text-white/30 mb-8 font-light text-center">
               WHY KENI
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white tracking-tight mb-20 text-center">
+            <h2 className="text-3xl md:text-5xl font-semibold text-black dark:text-white tracking-tight mb-20 text-center">
               Built different from the big firms
             </h2>
             <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-x-20 md:gap-y-16">
               {differentiators.map((item, index) => (
                 <FadeIn key={item.title} delay={index * 0.1}>
                   <div>
-                    <h3 className="text-lg font-bold tracking-tight text-black dark:text-white mb-3">
+                    <h3 className="text-body text-black dark:text-white font-light tracking-wide mb-3">
                       {item.title}
                     </h3>
                     <p className="text-sm text-black/50 dark:text-white/50 leading-relaxed font-light">
@@ -254,7 +254,7 @@ export default function DevOpsConsultingPage() {
             <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mt-16">
               <FadeIn delay={0.1}>
                 <Link href="/blog/why-smbs-need-devops" className="group block">
-                  <h3 className="text-base font-bold tracking-tight text-black dark:text-white group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors mb-3">
+                  <h3 className="text-base font-light tracking-wide text-black dark:text-white group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors mb-3">
                     Why 53% of SMBs still don&apos;t have DevOps
                   </h3>
                   <p className="text-xs text-black/40 dark:text-white/40 leading-relaxed font-light">
@@ -264,7 +264,7 @@ export default function DevOpsConsultingPage() {
               </FadeIn>
               <FadeIn delay={0.2}>
                 <Link href="/blog/github-actions-vs-gitlab-ci-vs-jenkins" className="group block">
-                  <h3 className="text-base font-bold tracking-tight text-black dark:text-white group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors mb-3">
+                  <h3 className="text-base font-light tracking-wide text-black dark:text-white group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors mb-3">
                     GitHub Actions vs GitLab CI vs Jenkins
                   </h3>
                   <p className="text-xs text-black/40 dark:text-white/40 leading-relaxed font-light">
@@ -274,7 +274,7 @@ export default function DevOpsConsultingPage() {
               </FadeIn>
               <FadeIn delay={0.3}>
                 <Link href="/blog/devops-audit-what-to-expect" className="group block">
-                  <h3 className="text-base font-bold tracking-tight text-black dark:text-white group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors mb-3">
+                  <h3 className="text-base font-light tracking-wide text-black dark:text-white group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors mb-3">
                     What happens during a DevOps audit
                   </h3>
                   <p className="text-xs text-black/40 dark:text-white/40 leading-relaxed font-light">
@@ -290,21 +290,21 @@ export default function DevOpsConsultingPage() {
       {/* CTA */}
       <section className="px-3 pt-3 pb-3">
         <FadeIn>
-          <div data-dark-section className="py-24 md:py-32 px-8 bg-black text-center">
-            <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light">
+          <div className="py-24 md:py-32 px-8 bg-white dark:bg-[#1c1c1e] text-center">
+            <p className="text-label uppercase tracking-[0.25em] text-black/30 dark:text-white/30 mb-8 font-light">
               READY?
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6">
+            <h2 className="text-3xl md:text-5xl font-semibold text-black dark:text-white tracking-tight mb-6">
               Ready to stop firefighting?
             </h2>
-            <p className="text-sm text-white/70 font-light mb-10 max-w-[360px] mx-auto leading-relaxed">
+            <p className="text-sm text-black/50 dark:text-white/50 font-light mb-10 max-w-[360px] mx-auto leading-relaxed">
               Just a conversation about what&apos;s slowing your team<br />down and how to fix it.
             </p>
             <a
               href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-white text-black px-8 py-2.5 text-xs font-light tracking-wide rounded-full hover:bg-white/85 transition-colors"
+              className="inline-block bg-black dark:bg-white text-white dark:text-black px-8 py-2.5 text-xs font-light tracking-wide rounded-full hover:bg-black/85 dark:hover:bg-white/85 transition-colors"
             >
               Let&apos;s talk
             </a>

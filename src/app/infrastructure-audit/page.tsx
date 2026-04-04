@@ -135,7 +135,7 @@ export default function InfrastructureAuditPage() {
             <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light text-center">
               72 HOURS
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-20 text-center">
+            <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight mb-20 text-center">
               Three days, full picture
             </h2>
             <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-20">
@@ -172,14 +172,14 @@ export default function InfrastructureAuditPage() {
             <p className="text-label uppercase tracking-[0.25em] text-black/30 dark:text-white/30 mb-8 font-light text-center">
               WHAT WE AUDIT
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white tracking-tight mb-20 text-center">
+            <h2 className="text-3xl md:text-5xl font-semibold text-black dark:text-white tracking-tight mb-20 text-center">
               Nine areas, zero blind spots
             </h2>
             <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
               {auditAreas.map((area, index) => (
                 <FadeIn key={area.title} delay={index * 0.06}>
                   <div>
-                    <h3 className="text-lg font-bold tracking-tight text-black dark:text-white mb-3">
+                    <h3 className="text-body text-black dark:text-white font-light tracking-wide mb-3">
                       {area.title}
                     </h3>
                     <p className="text-sm text-black/50 dark:text-white/50 leading-relaxed font-light">
@@ -200,14 +200,14 @@ export default function InfrastructureAuditPage() {
             <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light text-center">
               WHAT YOU GET
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-20 text-center">
+            <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight mb-20 text-center">
               A report your CTO can act on Monday morning
             </h2>
             <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-x-20 md:gap-y-16">
               {deliverables.map((item, index) => (
                 <FadeIn key={item.title} delay={index * 0.1}>
                   <div>
-                    <h3 className="text-lg font-bold tracking-tight text-white mb-3">
+                    <h3 className="text-body text-white font-light tracking-wide mb-3">
                       {item.title}
                     </h3>
                     <p className="text-sm text-white/70 leading-relaxed font-light">
@@ -228,7 +228,7 @@ export default function InfrastructureAuditPage() {
             <p className="text-label uppercase tracking-[0.25em] text-black/30 dark:text-white/30 mb-8 font-light">
               WHAT HAPPENS NEXT
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white tracking-tight mb-6">
+            <h2 className="text-3xl md:text-5xl font-semibold text-black dark:text-white tracking-tight mb-6">
               The report is yours
             </h2>
             <p className="text-sm text-black/50 dark:text-white/50 font-light mb-8 max-w-[480px] mx-auto leading-relaxed">
@@ -252,7 +252,7 @@ export default function InfrastructureAuditPage() {
             <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 mt-16">
               <FadeIn delay={0.1}>
                 <Link href="/blog/devops-audit-what-to-expect" className="group block">
-                  <h3 className="text-base font-bold tracking-tight text-black dark:text-white group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors mb-3">
+                  <h3 className="text-base font-light tracking-wide text-black dark:text-white group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors mb-3">
                     What happens during a DevOps audit
                   </h3>
                   <p className="text-xs text-black/40 dark:text-white/40 leading-relaxed font-light">
@@ -262,7 +262,7 @@ export default function InfrastructureAuditPage() {
               </FadeIn>
               <FadeIn delay={0.2}>
                 <Link href="/blog/why-smbs-need-devops" className="group block">
-                  <h3 className="text-base font-bold tracking-tight text-black dark:text-white group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors mb-3">
+                  <h3 className="text-base font-light tracking-wide text-black dark:text-white group-hover:text-black/60 dark:group-hover:text-white/60 transition-colors mb-3">
                     Why 53% of SMBs still don&apos;t have DevOps
                   </h3>
                   <p className="text-xs text-black/40 dark:text-white/40 leading-relaxed font-light">
@@ -282,7 +282,7 @@ export default function InfrastructureAuditPage() {
             <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light text-center">
               NOT SURE YET?
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6 text-center">
+            <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight mb-6 text-center">
               Take the Health Check first
             </h2>
             <p className="text-sm text-white/70 font-light mb-10 max-w-[400px] mx-auto text-center leading-relaxed">
@@ -304,7 +304,7 @@ export default function InfrastructureAuditPage() {
             <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light">
               READY?
             </p>
-            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6">
+            <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight mb-6">
               Ready to see the full picture?
             </h2>
             <p className="text-sm text-white/70 font-light mb-10 max-w-[360px] mx-auto leading-relaxed">
