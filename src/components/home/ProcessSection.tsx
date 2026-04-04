@@ -143,7 +143,7 @@ export default function ProcessSection() {
           <h2 className="text-3xl md:text-5xl font-semibold text-black dark:text-white tracking-tight mb-20 text-center">
             Ship with confidence
           </h2>
-          <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 md:gap-12">
+          <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
             {services.map((service, index) => (
               <FadeIn key={service.title} delay={index * 0.08}>
                 <div>

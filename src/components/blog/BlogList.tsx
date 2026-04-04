@@ -20,7 +20,7 @@ export default function BlogList({ posts }: { posts: BlogPost[] }) {
 
   return (
     <>
-      <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mb-24">
+      <div className="flex flex-wrap items-center justify-center gap-x-4 md:gap-x-6 gap-y-2 mb-24">
         <button
           onClick={() => setActive(null)}
           className={`text-xs font-light transition-all pb-1 border-b ${
