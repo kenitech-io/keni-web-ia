@@ -29,47 +29,73 @@ export default function Navbar() {
   const exploreRef = useRef<HTMLDivElement>(null);
 
   const navRef = useRef<HTMLElement>(null);
+  const darkRangesRef = useRef<{ top: number; bottom: number }[]>([]);
+  const rafRef = useRef<number>(0);
 
-  const checkDarkBackground = useCallback(() => {
-    // Method 1: Check data-dark-section elements
-    const darkSections = Array.from(document.querySelectorAll("[data-dark-section]"));
-    for (let i = 0; i < darkSections.length; i++) {
-      const rect = darkSections[i].getBoundingClientRect();
-      if (rect.top < 64 && rect.bottom > 0) {
-        return true;
-      }
-    }
-    // Method 2: Fallback - hide nav and check elementFromPoint
-    const navEl = navRef.current;
-    if (!navEl) return false;
-    navEl.style.display = "none";
-    const el = document.elementFromPoint(window.innerWidth / 2, 32);
-    navEl.style.display = "";
-    if (!el) return false;
-    let current: HTMLElement | null = el as HTMLElement;
-    while (current && current !== document.body && current !== document.documentElement) {
-      const bg = window.getComputedStyle(current).backgroundColor;
+  // Cache dark section positions on mount and resize
+  const cacheDarkSections = useCallback(() => {
+    const scrollY = window.scrollY;
+    // data-dark-section elements
+    const sections = Array.from(document.querySelectorAll("[data-dark-section]"));
+    const ranges = sections.map((el) => {
+      const rect = el.getBoundingClientRect();
+      return { top: rect.top + scrollY, bottom: rect.bottom + scrollY };
+    });
+    // Also detect elements with dark computed backgrounds (for homepage)
+    const candidates = Array.from(document.querySelectorAll("[class*='bg-[#0'], [class*='bg-[#1'], [class*='bg-black']"));
+    candidates.forEach((el) => {
+      const bg = window.getComputedStyle(el).backgroundColor;
       if (bg && bg !== "transparent" && bg !== "rgba(0, 0, 0, 0)") {
         const match = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
         if (match) {
           const brightness = (parseInt(match[1]) * 299 + parseInt(match[2]) * 587 + parseInt(match[3]) * 114) / 1000;
-          return brightness < 80;
+          if (brightness < 80) {
+            const rect = el.getBoundingClientRect();
+            ranges.push({ top: rect.top + scrollY, bottom: rect.bottom + scrollY });
+          }
         }
       }
-      current = current.parentElement;
-    }
-    return false;
+    });
+    darkRangesRef.current = ranges;
   }, []);
 
+  useEffect(() => {
+    // Initial cache after a short delay to let page render
+    const timer = setTimeout(cacheDarkSections, 100);
+    window.addEventListener("resize", cacheDarkSections);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", cacheDarkSections);
+    };
+  }, [cacheDarkSections, pathname]);
+
   const handleScroll = useCallback(() => {
-    setScrolled(window.scrollY > 20);
-    setOnDark(checkDarkBackground());
-  }, [checkDarkBackground]);
+    cancelAnimationFrame(rafRef.current);
+    rafRef.current = requestAnimationFrame(() => {
+      const y = window.scrollY;
+      setScrolled(y > 20);
+      // Check if navbar (0-64px from top) overlaps any dark section
+      const navTop = y;
+      const navBottom = y + 64;
+      let dark = false;
+      const ranges = darkRangesRef.current;
+      for (let i = 0; i < ranges.length; i++) {
+        if (ranges[i].top < navBottom && ranges[i].bottom > navTop) {
+          dark = true;
+          break;
+        }
+      }
+      setOnDark(dark);
+    });
+  }, []);
 
   useEffect(() => {
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      cancelAnimationFrame(rafRef.current);
+    };
   }, [handleScroll]);
 
   useEffect(() => {
