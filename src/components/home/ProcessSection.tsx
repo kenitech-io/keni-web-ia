@@ -1,6 +1,5 @@
 "use client";
 
-import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
 
 const services = [
@@ -135,38 +134,38 @@ function ToolIcon({ name }: { name: string }) {
 
 export default function ProcessSection() {
   return (
-    <section className="py-32 md:py-48">
-      <Container>
-        <FadeIn>
-          <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-16 md:mb-20 font-light text-center">
+    <section className="px-3 pt-3">
+      <FadeIn>
+        <div className="py-24 md:py-32 px-8 bg-white">
+          <p className="text-label uppercase tracking-[0.25em] text-black/30 mb-8 font-light text-center">
             What we do
           </p>
-        </FadeIn>
-        <FadeIn delay={0.1}>
-          <h2 className="text-heading text-foreground font-light tracking-wide mb-16 text-center">
+          <h2 className="text-3xl md:text-5xl font-bold text-black tracking-tight mb-20 text-center">
             Everything your team needs to ship with confidence
           </h2>
-        </FadeIn>
-        <div className="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {services.map((service, index) => (
-            <FadeIn key={service.title} delay={index * 0.08}>
-              <div className="bg-[#F6F6F6] dark:bg-[#F6F6F6] rounded-2xl p-8 h-full flex flex-col text-black shadow-lg shadow-black/5">
-                <h3 className="text-body text-foreground font-light tracking-wide mb-4">
-                  {service.title}
-                </h3>
-                <p className="text-sm text-foreground-secondary/70 leading-relaxed font-light mb-8 flex-1">
-                  {service.description}
-                </p>
-                <div className="flex items-center gap-3 mt-auto">
-                  {service.tools.map((tool) => (
-                    <ToolIcon key={tool} name={tool} />
-                  ))}
+          <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 md:gap-12">
+            {services.map((service, index) => (
+              <FadeIn key={service.title} delay={index * 0.08}>
+                <div>
+                  <div className="flex items-center gap-3 mb-5">
+                    {service.tools.map((tool) => (
+                      <span key={tool} className="text-black/40">
+                        <ToolIcon name={tool} />
+                      </span>
+                    ))}
+                  </div>
+                  <h3 className="text-lg font-bold tracking-tight text-black mb-3">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed font-light text-black/50">
+                    {service.description}
+                  </p>
                 </div>
-              </div>
-            </FadeIn>
-          ))}
+              </FadeIn>
+            ))}
+          </div>
         </div>
-      </Container>
+      </FadeIn>
     </section>
   );
 }

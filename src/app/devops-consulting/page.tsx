@@ -1,9 +1,8 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import Container from "@/components/ui/Container";
+import { BOOKING_URL } from "@/lib/config";
 import FadeIn from "@/components/ui/FadeIn";
-import CTASection from "@/components/CTASection";
 import ProcessSection from "@/components/home/ProcessSection";
 import PhaseCarousel from "@/components/PhaseCarousel";
 
@@ -135,70 +134,60 @@ export default function DevOpsConsultingPage() {
       </section>
 
       {/* The Problem */}
-      <section className="py-32 md:py-48">
-        <Container>
-          <FadeIn>
-            <p className="text-label uppercase tracking-[0.25em] text-muted mb-16 md:mb-20 font-light text-center">
+      <section className="px-3">
+        <FadeIn>
+          <div className="py-24 md:py-32 px-8" style={{ background: "linear-gradient(180deg, #0a1a10 0%, #0d1f14 50%, #091208 100%)" }}>
+            <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light text-center">
               THE PROBLEM
             </p>
-          </FadeIn>
-          <FadeIn delay={0.1}>
-            <h2 className="text-heading text-foreground font-light tracking-wide mb-20 text-center">
+            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6 text-center">
               53% of SMBs have no DevOps
             </h2>
-          </FadeIn>
-          <div className="max-w-[1100px] mx-auto px-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-              <FadeIn delay={0.2}>
-                <div className="bg-black rounded-2xl p-8 md:p-10 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between" style={{ aspectRatio: "4 / 3" }}>
-                  <div>
-                    <p className="text-[0.55rem] font-mono tracking-[0.3em] text-[#C65100] mb-6">COST</p>
-                    <h3 className="text-3xl md:text-4xl font-bold text-white leading-none">$130K</h3>
-                    <p className="text-sm text-white/50 font-light mt-1">to $220K/year</p>
-                  </div>
-                  <p className="text-xs text-white/80 leading-relaxed font-light">
-                    The real cost of one DevOps engineer. For 5-30 devs, that is a big bet on a role that might not need to be full-time.
-                  </p>
-                </div>
-              </FadeIn>
-              <FadeIn delay={0.3}>
-                <div className="bg-black rounded-2xl p-8 md:p-10 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between" style={{ aspectRatio: "4 / 3" }}>
-                  <div>
-                    <p className="text-[0.55rem] font-mono tracking-[0.3em] text-[#C65100] mb-6">TIME</p>
-                    <h3 className="text-3xl md:text-4xl font-bold text-white leading-none">50%</h3>
-                    <p className="text-sm text-white/50 font-light mt-1">of engineering time</p>
-                  </div>
-                  <p className="text-xs text-white/80 leading-relaxed font-light">
-                    Spent on manual deploys, debugging servers, and firefighting production. Not building features.
-                  </p>
-                </div>
-              </FadeIn>
-              <FadeIn delay={0.4}>
-                <div className="bg-black rounded-2xl p-8 md:p-10 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between" style={{ aspectRatio: "4 / 3" }}>
-                  <div>
-                    <p className="text-[0.55rem] font-mono tracking-[0.3em] text-[#C65100] mb-6">RISK</p>
-                    <h3 className="text-3xl md:text-4xl font-bold text-white leading-none">Zero</h3>
-                    <p className="text-sm text-white/50 font-light mt-1">visibility</p>
-                  </div>
-                  <p className="text-xs text-white/80 leading-relaxed font-light">
-                    No CI/CD, no monitoring, no IaC. When something breaks, everyone stops.
-                  </p>
-                </div>
-              </FadeIn>
+            <p className="text-sm text-white/70 font-light text-center mb-20 max-w-[500px] mx-auto">
+              Most small teams still operate without proper DevOps practices. The cost of inaction is real.
+            </p>
+            <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-20">
+              <div className="text-center">
+                <p className="text-[0.55rem] font-mono tracking-[0.3em] text-[#C65100] mb-4">COST</p>
+                <h3 className="text-3xl md:text-4xl font-bold text-white leading-none mb-2">$130K</h3>
+                <p className="text-sm text-white/70 font-light mb-4">to $220K/year</p>
+                <p className="text-xs text-white/70 leading-relaxed font-light max-w-[260px] mx-auto">
+                  The real cost of one DevOps engineer. A big bet for a role that might not need to be full-time.
+                </p>
+              </div>
+              <div className="text-center">
+                <p className="text-[0.55rem] font-mono tracking-[0.3em] text-[#C65100] mb-4">TIME</p>
+                <h3 className="text-3xl md:text-4xl font-bold text-white leading-none mb-2">50%</h3>
+                <p className="text-sm text-white/70 font-light mb-4">of engineering time</p>
+                <p className="text-xs text-white/70 leading-relaxed font-light max-w-[260px] mx-auto">
+                  Spent on manual deploys, debugging servers, and firefighting production. Not building features.
+                </p>
+              </div>
+              <div className="text-center">
+                <p className="text-[0.55rem] font-mono tracking-[0.3em] text-[#C65100] mb-4">RISK</p>
+                <h3 className="text-3xl md:text-4xl font-bold text-white leading-none mb-2">Zero</h3>
+                <p className="text-sm text-white/70 font-light mb-4">visibility</p>
+                <p className="text-xs text-white/70 leading-relaxed font-light max-w-[260px] mx-auto">
+                  No CI/CD, no monitoring, no IaC. When something breaks, everyone stops.
+                </p>
+              </div>
             </div>
           </div>
-        </Container>
+        </FadeIn>
       </section>
 
       {/* How We Work */}
-      <section className="py-32 md:py-48">
+      <section className="px-3 pt-3">
         <FadeIn>
-          <p className="text-label uppercase tracking-[0.25em] text-muted mb-16 md:mb-20 text-center font-light">
-            HOW WE WORK
-          </p>
-        </FadeIn>
-        <FadeIn delay={0.1}>
-          <PhaseCarousel />
+          <div className="py-24 md:py-32 px-8" style={{ background: "linear-gradient(180deg, #0f1520 0%, #131d2a 50%, #0c1318 100%)" }}>
+            <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light text-center">
+              HOW WE WORK
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-20 text-center">
+              Four steps to production
+            </h2>
+            <PhaseCarousel />
+          </div>
         </FadeIn>
       </section>
 
@@ -206,112 +195,45 @@ export default function DevOpsConsultingPage() {
       <ProcessSection />
 
       {/* Not sure where to start */}
-      <section className="py-32 md:py-48">
+      <section className="px-3 pt-3">
         <FadeIn>
-          <p className="text-label uppercase tracking-[0.25em] text-muted mb-16 md:mb-20 font-light text-center">
-            NOT SURE WHERE TO START?
-          </p>
-        </FadeIn>
-        <div className="px-3">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <FadeIn delay={0.1}>
-                <div className="overflow-hidden flex flex-col" style={{ aspectRatio: "4 / 3", backgroundColor: "#050503" }}>
-                  <div className="text-center pt-[8%] px-8">
-                    <h3 className="text-2xl md:text-4xl font-bold tracking-tight text-white mb-2">
-                      Infrastructure Audit
-                    </h3>
-                    <p className="text-sm text-white/40 font-light mb-5">
-                      Full review of your CI/CD, security, and infra in 72 hours.
-                    </p>
-                    <div className="flex items-center justify-center gap-3">
-                      <Link href="/infrastructure-audit" className="inline-block bg-white text-black px-5 py-2 text-xs font-light tracking-wide rounded-full hover:bg-white/85 transition-colors">
-                        Learn more
-                      </Link>
-                      <Link href="/contact" className="inline-block border border-white/20 text-white px-5 py-2 text-xs font-light tracking-wide rounded-full hover:border-white/50 transition-colors">
-                        Get started
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="flex-1 flex items-center justify-center overflow-hidden">
-                    <Image
-                      src="/audit-radar.png"
-                      alt="Radar scanning infrastructure"
-                      width={700}
-                      height={400}
-                      className="object-contain w-[85%]"
-                      draggable={false}
-                    />
-                  </div>
-                </div>
-              </FadeIn>
-              <FadeIn delay={0.2}>
-                <div className="overflow-hidden flex flex-col" style={{ aspectRatio: "4 / 3", background: "linear-gradient(180deg, #d4e2f0 0%, #e2ebf4 50%, #eef2f7 100%)" }}>
-                  <div className="text-center pt-[8%] px-8">
-                    <h3 className="text-2xl md:text-4xl font-bold tracking-tight text-black mb-2">
-                      Health Check
-                    </h3>
-                    <p className="text-sm text-black/40 font-light mb-5">
-                      Score your DevOps across 7 areas in 2 minutes. Free.
-                    </p>
-                    <div className="flex items-center justify-center gap-3">
-                      <Link href="/healthcheck" className="inline-block bg-black text-white px-5 py-2 text-xs font-light tracking-wide rounded-full hover:bg-black/85 transition-colors">
-                        Take the test
-                      </Link>
-                      <Link href="/contact" className="inline-block border border-black/20 text-black px-5 py-2 text-xs font-light tracking-wide rounded-full hover:border-black/50 transition-colors">
-                        Talk to us
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="flex-1 flex items-center justify-center overflow-hidden relative">
-                    <div className="relative w-full h-full">
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <Image
-                          src="/healthcheck-hero3.png"
-                          alt="Laptop showing health check diagnostics"
-                          width={500}
-                          height={300}
-                          className="object-contain w-[82%] absolute left-[-3%]"
-                          draggable={false}
-                        />
-                        <Image
-                          src="/healthcheck-hero4.png"
-                          alt="Laptop showing health check diagnostics"
-                          width={500}
-                          height={300}
-                          className="object-contain w-[82%] absolute right-[-7%]"
-                          draggable={false}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </FadeIn>
+          <div className="py-24 md:py-32 px-8" style={{ background: "linear-gradient(180deg, #1a1008 0%, #201510 50%, #1a1008 100%)" }}>
+            <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light text-center">
+              NOT SURE WHERE TO START?
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6 text-center">
+              <span className="text-[#C65100]">Free</span> Infrastructure Audit
+            </h2>
+            <p className="text-sm text-white/50 font-light mb-8 max-w-[480px] mx-auto text-center">
+              Full review of your CI/CD, security, and infrastructure in 72 hours. You get a prioritized roadmap your team can act on immediately.
+            </p>
+            <div className="flex items-center justify-center">
+              <Link href="/infrastructure-audit" className="inline-block bg-white text-black px-6 py-2 text-xs font-light tracking-wide rounded-full hover:bg-white/85 transition-colors">
+                Learn more
+              </Link>
             </div>
           </div>
+        </FadeIn>
       </section>
 
       {/* Why Keni */}
-      <section className="py-32 md:py-48">
-        <Container>
-          <div className="max-w-[640px] mx-auto">
-            <FadeIn>
-              <p className="text-label uppercase tracking-[0.25em] text-muted mb-16 md:mb-20 font-light text-center">
-                WHY KENI
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <h2 className="text-heading text-foreground font-light tracking-wide mb-16 text-center">
-                Built different from the big firms
-              </h2>
-            </FadeIn>
-            <div className="space-y-16">
+      <section className="px-3 pt-3">
+        <FadeIn>
+          <div className="bg-white py-24 md:py-32 px-8">
+            <p className="text-label uppercase tracking-[0.25em] text-black/30 mb-8 font-light text-center">
+              WHY KENI
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold text-black tracking-tight mb-20 text-center">
+              Built different from the big firms
+            </h2>
+            <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-x-20 md:gap-y-16">
               {differentiators.map((item, index) => (
                 <FadeIn key={item.title} delay={index * 0.1}>
                   <div>
-                    <h3 className="text-body text-foreground font-light tracking-wide mb-3 text-center">
+                    <h3 className="text-lg font-bold tracking-tight text-black mb-3">
                       {item.title}
                     </h3>
-                    <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
+                    <p className="text-sm text-black/50 leading-relaxed font-light">
                       {item.description}
                     </p>
                   </div>
@@ -319,50 +241,76 @@ export default function DevOpsConsultingPage() {
               ))}
             </div>
           </div>
-        </Container>
+        </FadeIn>
       </section>
 
       {/* Related reading */}
-      <section className="py-32 md:py-48">
-        <Container>
-          <div className="max-w-[640px] mx-auto">
-            <FadeIn>
-              <p className="text-label uppercase tracking-[0.25em] text-muted mb-16 md:mb-20 font-light text-center">
-                FROM THE BLOG
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <div className="space-y-8">
-                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
-                  <Link href="/blog/why-smbs-need-devops" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
+      <section className="px-3 pt-3">
+        <FadeIn>
+          <div className="py-24 md:py-32 px-8" style={{ background: "linear-gradient(180deg, #f0f0f0 0%, #e8e8e8 100%)" }}>
+            <p className="text-label uppercase tracking-[0.25em] text-black/30 mb-8 font-light text-center">
+              FROM THE BLOG
+            </p>
+            <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mt-16">
+              <FadeIn delay={0.1}>
+                <Link href="/blog/why-smbs-need-devops" className="group block">
+                  <h3 className="text-base font-bold tracking-tight text-black group-hover:text-black/60 transition-colors mb-3">
                     Why 53% of SMBs still don&apos;t have DevOps
-                  </Link>
-                  {" "}: the real cost of not having a proper deployment process, and what a realistic fix looks like.
-                </p>
-                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
-                  <Link href="/blog/github-actions-vs-gitlab-ci-vs-jenkins" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
+                  </h3>
+                  <p className="text-xs text-black/40 leading-relaxed font-light">
+                    The real cost of not having a proper deployment process, and what a realistic fix looks like.
+                  </p>
+                </Link>
+              </FadeIn>
+              <FadeIn delay={0.2}>
+                <Link href="/blog/github-actions-vs-gitlab-ci-vs-jenkins" className="group block">
+                  <h3 className="text-base font-bold tracking-tight text-black group-hover:text-black/60 transition-colors mb-3">
                     GitHub Actions vs GitLab CI vs Jenkins
-                  </Link>
-                  {" "}: a practical comparison of CI tools for small to mid-sized teams.
-                </p>
-                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
-                  <Link href="/blog/devops-audit-what-to-expect" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
-                    What happens during a DevOps infrastructure audit
-                  </Link>
-                  {" "}: a step-by-step breakdown of our audit process and what the report looks like.
-                </p>
-              </div>
-            </FadeIn>
+                  </h3>
+                  <p className="text-xs text-black/40 leading-relaxed font-light">
+                    A practical comparison of CI tools for small to mid-sized teams.
+                  </p>
+                </Link>
+              </FadeIn>
+              <FadeIn delay={0.3}>
+                <Link href="/blog/devops-audit-what-to-expect" className="group block">
+                  <h3 className="text-base font-bold tracking-tight text-black group-hover:text-black/60 transition-colors mb-3">
+                    What happens during a DevOps audit
+                  </h3>
+                  <p className="text-xs text-black/40 leading-relaxed font-light">
+                    A step-by-step breakdown of our audit process and what the report looks like.
+                  </p>
+                </Link>
+              </FadeIn>
+            </div>
           </div>
-        </Container>
+        </FadeIn>
       </section>
 
-      <CTASection
-        headline="Ready to stop firefighting?"
-        subtext="Just a conversation about what's slowing your team down and how to fix it."
-        buttonText="Let's talk"
-        buttonHref="/contact"
-      />
+      {/* CTA */}
+      <section className="px-3 pt-3 pb-3">
+        <FadeIn>
+          <div className="py-24 md:py-32 px-8 bg-black text-center">
+            <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light">
+              READY?
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6">
+              Ready to stop firefighting?
+            </h2>
+            <p className="text-sm text-white/70 font-light mb-10 max-w-[360px] mx-auto leading-relaxed">
+              Just a conversation about what&apos;s slowing your team<br />down and how to fix it.
+            </p>
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-white text-black px-8 py-2.5 text-xs font-light tracking-wide rounded-full hover:bg-white/85 transition-colors"
+            >
+              Let&apos;s talk
+            </a>
+          </div>
+        </FadeIn>
+      </section>
     </main>
   );
 }

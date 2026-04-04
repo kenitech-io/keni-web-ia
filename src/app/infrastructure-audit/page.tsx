@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
-import CTASection from "@/components/CTASection";
+import { BOOKING_URL } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "DevOps Infrastructure Audit in 72 Hours",
@@ -78,79 +78,27 @@ const breadcrumbJsonLd = {
 };
 
 const auditAreas = [
-  {
-    title: "Deployment Process",
-    description:
-      "How code gets from a developer's machine to production. Manual steps, automation gaps, rollback capabilities.",
-  },
-  {
-    title: "CI/CD Pipelines",
-    description:
-      "Build times, test coverage, pipeline reliability. Whether failures block merges, how fast feedback reaches developers.",
-  },
-  {
-    title: "Infrastructure as Code",
-    description:
-      "How your servers, networks, and services are configured. IaC adoption, drift detection, reproducibility.",
-  },
-  {
-    title: "Monitoring & Observability",
-    description:
-      "What you can see when something goes wrong. Logging, metrics, dashboards, alerting, and incident response.",
-  },
-  {
-    title: "Secrets Management",
-    description:
-      "Where credentials live, who has access, how they rotate. Whether API keys are in code or a proper vault.",
-  },
-  {
-    title: "Disaster Recovery",
-    description:
-      "Backup strategy, restore testing, recovery time objectives. What happens if your database disappears right now.",
-  },
-  {
-    title: "Security Posture",
-    description:
-      "Network segmentation, access controls, dependency scanning, container security. The basics that prevent breaches.",
-  },
-  {
-    title: "Cost Efficiency",
-    description:
-      "Cloud spend analysis, unused resources, right-sizing opportunities. Where you're overpaying and where to optimize.",
-  },
-  {
-    title: "Developer Experience",
-    description:
-      "Onboarding friction, local dev setup, documentation gaps. How fast a new engineer can ship their first feature.",
-  },
+  { title: "Deployment Process", description: "How code gets from a developer's machine to production. Manual steps, automation gaps, rollback capabilities." },
+  { title: "CI/CD Pipelines", description: "Build times, test coverage, pipeline reliability. Whether failures block merges, how fast feedback reaches developers." },
+  { title: "Infrastructure as Code", description: "How your servers, networks, and services are configured. IaC adoption, drift detection, reproducibility." },
+  { title: "Monitoring & Observability", description: "What you can see when something goes wrong. Logging, metrics, dashboards, alerting, and incident response." },
+  { title: "Secrets Management", description: "Where credentials live, who has access, how they rotate. Whether API keys are in code or a proper vault." },
+  { title: "Disaster Recovery", description: "Backup strategy, restore testing, recovery time objectives. What happens if your database disappears right now." },
+  { title: "Security Posture", description: "Network segmentation, access controls, dependency scanning, container security. The basics that prevent breaches." },
+  { title: "Cost Efficiency", description: "Cloud spend analysis, unused resources, right-sizing opportunities. Where you're overpaying and where to optimize." },
+  { title: "Developer Experience", description: "Onboarding friction, local dev setup, documentation gaps. How fast a new engineer can ship their first feature." },
 ];
 
 const deliverables = [
-  {
-    title: "Maturity scorecard",
-    description:
-      "A clear score across every area, so you know exactly where you stand compared to industry standards.",
-  },
-  {
-    title: "Risk assessment",
-    description:
-      "Critical vulnerabilities and risks ranked by impact. What needs fixing now vs. what can wait.",
-  },
-  {
-    title: "Prioritized roadmap",
-    description:
-      "A concrete plan with recommended changes ordered by impact and effort. Quick wins first, then structural improvements.",
-  },
-  {
-    title: "Cost analysis",
-    description:
-      "What each fix costs to implement and what it saves you. Real numbers, not vague estimates.",
-  },
+  { title: "Maturity scorecard", description: "A clear score across every area, so you know exactly where you stand compared to industry standards." },
+  { title: "Risk assessment", description: "Critical vulnerabilities and risks ranked by impact. What needs fixing now vs. what can wait." },
+  { title: "Prioritized roadmap", description: "A concrete plan with recommended changes ordered by impact and effort. Quick wins first, then structural improvements." },
+  { title: "Cost analysis", description: "What each fix costs to implement and what it saves you. Real numbers, not vague estimates." },
 ];
 
 export default function InfrastructureAuditPage() {
   return (
-    <main>
+    <main className="bg-[#f5f5f7] text-foreground overflow-x-hidden">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
@@ -159,6 +107,7 @@ export default function InfrastructureAuditPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
+
       {/* Hero */}
       <section className="py-32 md:py-48">
         <Container>
@@ -179,97 +128,89 @@ export default function InfrastructureAuditPage() {
         </Container>
       </section>
 
-      {/* How it works — 3 days timeline */}
-      <section className="py-32 md:py-48">
-        <Container>
-          <FadeIn>
-            <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-16 md:mb-20 font-light text-center">
+      {/* 72 Hours */}
+      <section className="px-3">
+        <FadeIn>
+          <div className="py-24 md:py-32 px-8" style={{ background: "linear-gradient(180deg, #0f1520 0%, #131d2a 50%, #0c1318 100%)" }}>
+            <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light text-center">
               72 HOURS
             </p>
-          </FadeIn>
-          <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
-            {[
-              {
-                day: "Day 1",
-                title: "Discovery",
-                desc: "We get read-only access to your repos, pipelines, cloud accounts, and monitoring. No admin needed.",
-              },
-              {
-                day: "Day 2",
-                title: "Evaluation",
-                desc: "We audit all seven areas systematically. Every finding documented, every risk scored.",
-              },
-              {
-                day: "Day 3",
-                title: "Report",
-                desc: "You get the full report: scores, risks, roadmap, and cost analysis. Ready to act on.",
-              },
-            ].map((step, i) => (
-              <FadeIn key={step.day} delay={i * 0.1}>
-                <div className="bg-surface rounded-2xl p-8 h-full shadow-[0_4px_30px_rgba(0,0,0,0.08)]">
-                  <span className="text-xs text-muted font-mono block mb-4">{step.day}</span>
-                  <h3 className="text-body text-foreground font-medium tracking-wide mb-3">
-                    {step.title}
-                  </h3>
-                  <p className="text-sm text-foreground-secondary/70 leading-relaxed font-light">
-                    {step.desc}
-                  </p>
-                </div>
-              </FadeIn>
-            ))}
+            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-20 text-center">
+              Three days, full picture
+            </h2>
+            <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-20">
+              <div className="text-center">
+                <p className="text-[0.55rem] font-mono tracking-[0.3em] text-[#C65100] mb-4">DAY 1</p>
+                <h3 className="text-2xl md:text-3xl font-bold text-white leading-none mb-3">Discovery</h3>
+                <p className="text-sm text-white/70 leading-relaxed font-light max-w-[260px] mx-auto">
+                  We get read-only access to your repos, pipelines, cloud accounts, and monitoring. No admin needed.
+                </p>
+              </div>
+              <div className="text-center">
+                <p className="text-[0.55rem] font-mono tracking-[0.3em] text-[#C65100] mb-4">DAY 2</p>
+                <h3 className="text-2xl md:text-3xl font-bold text-white leading-none mb-3">Evaluation</h3>
+                <p className="text-sm text-white/70 leading-relaxed font-light max-w-[260px] mx-auto">
+                  We audit all nine areas systematically. Every finding documented, every risk scored.
+                </p>
+              </div>
+              <div className="text-center">
+                <p className="text-[0.55rem] font-mono tracking-[0.3em] text-[#C65100] mb-4">DAY 3</p>
+                <h3 className="text-2xl md:text-3xl font-bold text-white leading-none mb-3">Report</h3>
+                <p className="text-sm text-white/70 leading-relaxed font-light max-w-[260px] mx-auto">
+                  You get the full report: scores, risks, roadmap, and cost analysis. Ready to act on.
+                </p>
+              </div>
+            </div>
           </div>
-        </Container>
+        </FadeIn>
       </section>
 
-      {/* What We Audit — cards */}
-      <section className="py-32 md:py-48">
-        <Container>
-          <FadeIn>
-            <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-16 md:mb-20 font-light text-center">
+      {/* What We Audit */}
+      <section className="px-3 pt-3">
+        <FadeIn>
+          <div className="bg-white py-24 md:py-32 px-8">
+            <p className="text-label uppercase tracking-[0.25em] text-black/30 mb-8 font-light text-center">
               WHAT WE AUDIT
             </p>
-          </FadeIn>
-          <div className="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {auditAreas.map((area, index) => (
-              <FadeIn key={area.title} delay={index * 0.06}>
-                <div className="bg-surface rounded-2xl p-8 h-full shadow-[0_4px_30px_rgba(0,0,0,0.08)]">
-                  <h3 className="text-body text-foreground font-light tracking-wide mb-3">
-                    {area.title}
-                  </h3>
-                  <p className="text-sm text-foreground-secondary/70 leading-relaxed font-light">
-                    {area.description}
-                  </p>
-                </div>
-              </FadeIn>
-            ))}
+            <h2 className="text-3xl md:text-5xl font-bold text-black tracking-tight mb-20 text-center">
+              Nine areas, zero blind spots
+            </h2>
+            <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+              {auditAreas.map((area, index) => (
+                <FadeIn key={area.title} delay={index * 0.06}>
+                  <div>
+                    <h3 className="text-lg font-bold tracking-tight text-black mb-3">
+                      {area.title}
+                    </h3>
+                    <p className="text-sm text-black/50 leading-relaxed font-light">
+                      {area.description}
+                    </p>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
           </div>
-        </Container>
+        </FadeIn>
       </section>
 
-      {/* What You Get — horizontal grid */}
-      <section className="py-32 md:py-48">
-        <Container>
-          <div className="max-w-[900px] mx-auto">
-            <FadeIn>
-              <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-16 md:mb-20 font-light text-center">
-                WHAT YOU GET
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <h2 className="text-heading text-foreground font-light tracking-wide mb-12 text-center">
-                A report your CTO can act on Monday morning
-              </h2>
-            </FadeIn>
-            <div>
+      {/* What You Get */}
+      <section className="px-3 pt-3">
+        <FadeIn>
+          <div className="py-24 md:py-32 px-8" style={{ background: "linear-gradient(180deg, #0a1a10 0%, #0d1f14 50%, #091208 100%)" }}>
+            <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light text-center">
+              WHAT YOU GET
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-20 text-center">
+              A report your CTO can act on Monday morning
+            </h2>
+            <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-x-20 md:gap-y-16">
               {deliverables.map((item, index) => (
-                <FadeIn key={item.title} delay={index * 0.08}>
-                  <div className={`grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-4 md:gap-16 py-10 ${
-                    index < deliverables.length - 1 ? "border-b border-border-color" : ""
-                  }`}>
-                    <h3 className="text-body text-foreground font-light tracking-wide">
+                <FadeIn key={item.title} delay={index * 0.1}>
+                  <div>
+                    <h3 className="text-lg font-bold tracking-tight text-white mb-3">
                       {item.title}
                     </h3>
-                    <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
+                    <p className="text-sm text-white/70 leading-relaxed font-light">
                       {item.description}
                     </p>
                   </div>
@@ -277,92 +218,109 @@ export default function InfrastructureAuditPage() {
               ))}
             </div>
           </div>
-        </Container>
+        </FadeIn>
       </section>
 
       {/* After the audit */}
-      <section className="py-32 md:py-48">
-        <Container>
-          <div className="max-w-[640px] mx-auto text-center">
-            <FadeIn>
-              <h2 className="text-heading text-foreground font-light tracking-wide mb-6">
-                What happens after the audit
-              </h2>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-8">
-                The report is yours. You can implement the recommendations
-                in-house, or our{" "}
-                <Link href="/devops-consulting" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
-                  DevOps consulting team
-                </Link>
-                {" "}can handle it for you. Fixed pricing, no surprises, no lock-in.
-              </p>
-            </FadeIn>
+      <section className="px-3 pt-3">
+        <FadeIn>
+          <div className="bg-white py-24 md:py-32 px-8 text-center">
+            <p className="text-label uppercase tracking-[0.25em] text-black/30 mb-8 font-light">
+              WHAT HAPPENS NEXT
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold text-black tracking-tight mb-6">
+              The report is yours
+            </h2>
+            <p className="text-sm text-black/50 font-light mb-8 max-w-[480px] mx-auto leading-relaxed">
+              Implement the recommendations in-house, or our{" "}
+              <Link href="/devops-consulting" className="text-black/80 hover:text-black underline decoration-black/20 hover:decoration-black/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
+                DevOps consulting team
+              </Link>
+              {" "}can handle it for you. Fixed pricing, no surprises, no lock-in.
+            </p>
           </div>
-        </Container>
+        </FadeIn>
       </section>
 
       {/* Related reading */}
-      <section className="py-32 md:py-48">
-        <Container>
-          <div className="max-w-[640px] mx-auto">
-            <FadeIn>
-              <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-16 md:mb-20 font-light text-center">
-                RELATED READING
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <div className="space-y-8">
-                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
-                  <Link href="/blog/devops-audit-what-to-expect" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
-                    What happens during a DevOps infrastructure audit
-                  </Link>
-                  {" "}: a step-by-step walkthrough of our audit process and what the deliverable looks like.
-                </p>
-                <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
-                  <Link href="/blog/why-smbs-need-devops" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
+      <section className="px-3 pt-3">
+        <FadeIn>
+          <div className="py-24 md:py-32 px-8" style={{ background: "linear-gradient(180deg, #f0f0f0 0%, #e8e8e8 100%)" }}>
+            <p className="text-label uppercase tracking-[0.25em] text-black/30 mb-8 font-light text-center">
+              FROM THE BLOG
+            </p>
+            <div className="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 mt-16">
+              <FadeIn delay={0.1}>
+                <Link href="/blog/devops-audit-what-to-expect" className="group block">
+                  <h3 className="text-base font-bold tracking-tight text-black group-hover:text-black/60 transition-colors mb-3">
+                    What happens during a DevOps audit
+                  </h3>
+                  <p className="text-xs text-black/40 leading-relaxed font-light">
+                    A step-by-step walkthrough of our audit process and what the deliverable looks like.
+                  </p>
+                </Link>
+              </FadeIn>
+              <FadeIn delay={0.2}>
+                <Link href="/blog/why-smbs-need-devops" className="group block">
+                  <h3 className="text-base font-bold tracking-tight text-black group-hover:text-black/60 transition-colors mb-3">
                     Why 53% of SMBs still don&apos;t have DevOps
-                  </Link>
-                  {" "}: the data behind why small teams struggle with infrastructure, and what it costs them.
-                </p>
-              </div>
-            </FadeIn>
+                  </h3>
+                  <p className="text-xs text-black/40 leading-relaxed font-light">
+                    The data behind why small teams struggle with infrastructure, and what it costs them.
+                  </p>
+                </Link>
+              </FadeIn>
+            </div>
           </div>
-        </Container>
+        </FadeIn>
       </section>
 
-      {/* Health Check CTA */}
-      <section className="py-32 md:py-48">
-        <Container>
-          <div className="max-w-[640px] mx-auto text-center">
-            <FadeIn>
-              <h2 className="text-heading text-foreground font-light tracking-wide mb-6">
-                Not sure if you need an audit?
-              </h2>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-8">
-                Take our free DevOps health check. 7 questions, 2 minutes. You
-                will get an instant score and see where your team stands.
-              </p>
-              <Link
-                href="/healthcheck"
-                className="inline-block bg-foreground hover:bg-foreground/85 text-background px-8 py-3 text-sm font-light tracking-wide rounded-full transition-colors"
-              >
+      {/* Health Check */}
+      <section className="px-3 pt-3">
+        <FadeIn>
+          <div className="py-24 md:py-32 px-8" style={{ background: "linear-gradient(180deg, #1a1008 0%, #201510 50%, #1a1008 100%)" }}>
+            <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light text-center">
+              NOT SURE YET?
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6 text-center">
+              Take the Health Check first
+            </h2>
+            <p className="text-sm text-white/70 font-light mb-10 max-w-[400px] mx-auto text-center leading-relaxed">
+              7 questions, 2 minutes. Instant score across key DevOps areas. Free, no email required.
+            </p>
+            <div className="text-center">
+              <Link href="/healthcheck" className="inline-block bg-white text-black px-8 py-2.5 text-xs font-light tracking-wide rounded-full hover:bg-white/85 transition-colors">
                 Take the Health Check
               </Link>
-            </FadeIn>
+            </div>
           </div>
-        </Container>
+        </FadeIn>
       </section>
 
-      <CTASection
-        headline="Ready to see the full picture?"
-        subtext="We will walk you through how the audit works and whether it makes sense for your team."
-        buttonText="Let's talk"
-        buttonHref="/contact"
-      />
+      {/* CTA */}
+      <section className="px-3 pt-3 pb-3">
+        <FadeIn>
+          <div className="py-24 md:py-32 px-8 bg-black text-center">
+            <p className="text-label uppercase tracking-[0.25em] text-white/50 mb-8 font-light">
+              READY?
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6">
+              Ready to see the full picture?
+            </h2>
+            <p className="text-sm text-white/70 font-light mb-10 max-w-[360px] mx-auto leading-relaxed">
+              We&apos;ll walk you through how the audit works<br />and whether it makes sense for your team.
+            </p>
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-white text-black px-8 py-2.5 text-xs font-light tracking-wide rounded-full hover:bg-white/85 transition-colors"
+            >
+              Let&apos;s talk
+            </a>
+          </div>
+        </FadeIn>
+      </section>
     </main>
   );
 }
