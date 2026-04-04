@@ -94,7 +94,7 @@ const steps = [
 
 export default function ManagedDevOpsPage() {
   return (
-    <main className="bg-[#f5f5f7] dark:bg-[#0A0A0A] text-foreground overflow-x-hidden">
+    <main className="bg-[#f5f5f7] dark:bg-[#0A0A0A] text-foreground">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}

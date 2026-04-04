@@ -384,7 +384,7 @@ export default function LiveScreen() {
               {["monitoring", "CI pipeline", "CD pipeline"][activeScreen]}
             </span>
           </div>
-          <div className="p-5 md:p-6 h-[420px] overflow-y-auto">
+          <div className="p-5 md:p-6 h-[420px] overflow-hidden">
             {activeScreen === 0 && <ServerDashboard />}
             {activeScreen === 1 && <CIPipeline />}
             {activeScreen === 2 && <CDPipeline />}
