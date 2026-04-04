@@ -1,10 +1,11 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
 import CTASection from "@/components/CTASection";
 import ProcessSection from "@/components/home/ProcessSection";
-import PhaseScreen from "@/components/PhaseScreen";
+import PhaseCarousel from "@/components/PhaseCarousel";
 
 export const metadata: Metadata = {
   title: "DevOps Consulting Services for Small Teams",
@@ -104,7 +105,7 @@ const differentiators = [
 
 export default function DevOpsConsultingPage() {
   return (
-    <main className="bg-background text-foreground">
+    <main className="bg-[#f5f5f7] text-foreground overflow-x-hidden">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
@@ -136,50 +137,69 @@ export default function DevOpsConsultingPage() {
       {/* The Problem */}
       <section className="py-32 md:py-48">
         <Container>
-          <div className="max-w-[640px] mx-auto text-center">
-            <FadeIn>
-              <p className="text-label uppercase tracking-[0.25em] text-muted mb-16 md:mb-20 font-light text-center">
-                THE PROBLEM
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <h2 className="text-heading text-foreground font-light tracking-wide mb-8">
-                Only 47% of SMBs use DevOps tools
-              </h2>
-            </FadeIn>
-            <FadeIn delay={0.2}>
-              <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-2">
-                According to Statista, the majority of small and mid-sized
-                businesses still operate without proper DevOps practices.
-              </p>
-              <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-6">
-                Hiring a full-time DevOps engineer in the US costs $130K-$220K
-                per year when you include benefits and overhead. For a team of
-                5-30 developers, that&apos;s a significant investment for a role that
-                might not need to be full-time.
-              </p>
-              <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
-                Meanwhile, your developers are spending half their time on
-                manual deploys, debugging servers, and firefighting production
-                issues instead of building features.
-              </p>
-            </FadeIn>
+          <FadeIn>
+            <p className="text-label uppercase tracking-[0.25em] text-muted mb-16 md:mb-20 font-light text-center">
+              THE PROBLEM
+            </p>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <h2 className="text-heading text-foreground font-light tracking-wide mb-20 text-center">
+              53% of SMBs have no DevOps
+            </h2>
+          </FadeIn>
+          <div className="max-w-[1100px] mx-auto px-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              <FadeIn delay={0.2}>
+                <div className="bg-black rounded-2xl p-8 md:p-10 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between" style={{ aspectRatio: "4 / 3" }}>
+                  <div>
+                    <p className="text-[0.55rem] font-mono tracking-[0.3em] text-[#C65100] mb-6">COST</p>
+                    <h3 className="text-3xl md:text-4xl font-bold text-white leading-none">$130K</h3>
+                    <p className="text-sm text-white/50 font-light mt-1">to $220K/year</p>
+                  </div>
+                  <p className="text-xs text-white/80 leading-relaxed font-light">
+                    The real cost of one DevOps engineer. For 5-30 devs, that is a big bet on a role that might not need to be full-time.
+                  </p>
+                </div>
+              </FadeIn>
+              <FadeIn delay={0.3}>
+                <div className="bg-black rounded-2xl p-8 md:p-10 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between" style={{ aspectRatio: "4 / 3" }}>
+                  <div>
+                    <p className="text-[0.55rem] font-mono tracking-[0.3em] text-[#C65100] mb-6">TIME</p>
+                    <h3 className="text-3xl md:text-4xl font-bold text-white leading-none">50%</h3>
+                    <p className="text-sm text-white/50 font-light mt-1">of engineering time</p>
+                  </div>
+                  <p className="text-xs text-white/80 leading-relaxed font-light">
+                    Spent on manual deploys, debugging servers, and firefighting production. Not building features.
+                  </p>
+                </div>
+              </FadeIn>
+              <FadeIn delay={0.4}>
+                <div className="bg-black rounded-2xl p-8 md:p-10 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between" style={{ aspectRatio: "4 / 3" }}>
+                  <div>
+                    <p className="text-[0.55rem] font-mono tracking-[0.3em] text-[#C65100] mb-6">RISK</p>
+                    <h3 className="text-3xl md:text-4xl font-bold text-white leading-none">Zero</h3>
+                    <p className="text-sm text-white/50 font-light mt-1">visibility</p>
+                  </div>
+                  <p className="text-xs text-white/80 leading-relaxed font-light">
+                    No CI/CD, no monitoring, no IaC. When something breaks, everyone stops.
+                  </p>
+                </div>
+              </FadeIn>
+            </div>
           </div>
         </Container>
       </section>
 
       {/* How We Work */}
       <section className="py-32 md:py-48">
-        <Container>
-          <FadeIn>
-            <p className="text-label uppercase tracking-[0.25em] text-muted mb-16 md:mb-20 text-center font-light">
-              HOW WE WORK
-            </p>
-          </FadeIn>
-          <FadeIn delay={0.1}>
-            <PhaseScreen />
-          </FadeIn>
-        </Container>
+        <FadeIn>
+          <p className="text-label uppercase tracking-[0.25em] text-muted mb-16 md:mb-20 text-center font-light">
+            HOW WE WORK
+          </p>
+        </FadeIn>
+        <FadeIn delay={0.1}>
+          <PhaseCarousel />
+        </FadeIn>
       </section>
 
       {/* What We Do */}
@@ -187,45 +207,87 @@ export default function DevOpsConsultingPage() {
 
       {/* Not sure where to start */}
       <section className="py-32 md:py-48">
-        <Container>
-          <div className="max-w-[640px] mx-auto">
-            <FadeIn>
-              <p className="text-label uppercase tracking-[0.25em] text-muted mb-16 md:mb-20 font-light text-center">
-                NOT SURE WHERE TO START?
-              </p>
-            </FadeIn>
-            <div className="space-y-16">
+        <FadeIn>
+          <p className="text-label uppercase tracking-[0.25em] text-muted mb-16 md:mb-20 font-light text-center">
+            NOT SURE WHERE TO START?
+          </p>
+        </FadeIn>
+        <div className="px-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <FadeIn delay={0.1}>
-                <div>
-                  <h3 className="text-body text-foreground font-light tracking-wide mb-3">
-                    Infrastructure audit
-                  </h3>
-                  <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
-                    Our{" "}
-                    <Link href="/infrastructure-audit" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
-                      72-hour infrastructure audit
-                    </Link>
-                    {" "}gives you a complete picture of your CI/CD, monitoring, security, and infrastructure. You get a prioritized roadmap your team can act on immediately.
-                  </p>
+                <div className="overflow-hidden flex flex-col" style={{ aspectRatio: "4 / 3", backgroundColor: "#050503" }}>
+                  <div className="text-center pt-[8%] px-8">
+                    <h3 className="text-2xl md:text-4xl font-bold tracking-tight text-white mb-2">
+                      Infrastructure Audit
+                    </h3>
+                    <p className="text-sm text-white/40 font-light mb-5">
+                      Full review of your CI/CD, security, and infra in 72 hours.
+                    </p>
+                    <div className="flex items-center justify-center gap-3">
+                      <Link href="/infrastructure-audit" className="inline-block bg-white text-black px-5 py-2 text-xs font-light tracking-wide rounded-full hover:bg-white/85 transition-colors">
+                        Learn more
+                      </Link>
+                      <Link href="/contact" className="inline-block border border-white/20 text-white px-5 py-2 text-xs font-light tracking-wide rounded-full hover:border-white/50 transition-colors">
+                        Get started
+                      </Link>
+                    </div>
+                  </div>
+                  <div className="flex-1 flex items-center justify-center overflow-hidden">
+                    <Image
+                      src="/audit-radar.png"
+                      alt="Radar scanning infrastructure"
+                      width={700}
+                      height={400}
+                      className="object-contain w-[85%]"
+                      draggable={false}
+                    />
+                  </div>
                 </div>
               </FadeIn>
               <FadeIn delay={0.2}>
-                <div>
-                  <h3 className="text-body text-foreground font-light tracking-wide mb-3">
-                    Quick self-assessment
-                  </h3>
-                  <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
-                    Take our{" "}
-                    <Link href="/healthcheck" className="text-foreground/80 hover:text-foreground underline decoration-foreground/20 hover:decoration-foreground/50 underline-offset-[0.2em] decoration-[0.08em] transition-colors">
-                      free DevOps health check
-                    </Link>
-                    {" "}to score your team across seven key areas in 2 minutes.
-                  </p>
+                <div className="overflow-hidden flex flex-col" style={{ aspectRatio: "4 / 3", background: "linear-gradient(180deg, #d4e2f0 0%, #e2ebf4 50%, #eef2f7 100%)" }}>
+                  <div className="text-center pt-[8%] px-8">
+                    <h3 className="text-2xl md:text-4xl font-bold tracking-tight text-black mb-2">
+                      Health Check
+                    </h3>
+                    <p className="text-sm text-black/40 font-light mb-5">
+                      Score your DevOps across 7 areas in 2 minutes. Free.
+                    </p>
+                    <div className="flex items-center justify-center gap-3">
+                      <Link href="/healthcheck" className="inline-block bg-black text-white px-5 py-2 text-xs font-light tracking-wide rounded-full hover:bg-black/85 transition-colors">
+                        Take the test
+                      </Link>
+                      <Link href="/contact" className="inline-block border border-black/20 text-black px-5 py-2 text-xs font-light tracking-wide rounded-full hover:border-black/50 transition-colors">
+                        Talk to us
+                      </Link>
+                    </div>
+                  </div>
+                  <div className="flex-1 flex items-center justify-center overflow-hidden relative">
+                    <div className="relative w-full h-full">
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <Image
+                          src="/healthcheck-hero3.png"
+                          alt="Laptop showing health check diagnostics"
+                          width={500}
+                          height={300}
+                          className="object-contain w-[82%] absolute left-[-3%]"
+                          draggable={false}
+                        />
+                        <Image
+                          src="/healthcheck-hero4.png"
+                          alt="Laptop showing health check diagnostics"
+                          width={500}
+                          height={300}
+                          className="object-contain w-[82%] absolute right-[-7%]"
+                          draggable={false}
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </FadeIn>
             </div>
           </div>
-        </Container>
       </section>
 
       {/* Why Keni */}
@@ -246,7 +308,7 @@ export default function DevOpsConsultingPage() {
               {differentiators.map((item, index) => (
                 <FadeIn key={item.title} delay={index * 0.1}>
                   <div>
-                    <h3 className="text-body text-foreground font-light tracking-wide mb-3">
+                    <h3 className="text-body text-foreground font-light tracking-wide mb-3 text-center">
                       {item.title}
                     </h3>
                     <p className="text-sm text-foreground-secondary/70 leading-loose font-light">

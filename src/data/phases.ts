@@ -21,12 +21,12 @@ export const phases: Phase[] = [
     number: "03",
     name: "Implementation",
     description:
-      "We build it. Pipelines, environments, IaC, the whole thing. When we're done, your devs push code and it goes to production. No manual steps, no\u00A0SSH.",
+      "We build it. Pipelines, environments, IaC, the whole thing. When we're done, your devs push code and it goes to production. No manual steps, no\u00A0SSH. Fully tested before handoff.",
   },
   {
     number: "04",
     name: "Maintenance",
     description:
-      "A dedicated engineer keeps everything running. Dependency updates, monitoring, incident response, scaling. You focus on shipping features.",
+      "A dedicated engineer keeps everything running. Dependency updates, monitoring, incident response, scaling. You focus on shipping features, we handle the rest.",
   },
 ];
