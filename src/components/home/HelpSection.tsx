@@ -22,6 +22,7 @@ interface Card {
   imageWidth?: string;
   imageOffset?: string;
   labelColor2?: string;
+  keepBlackDark?: boolean;
 }
 
 const cards: Card[] = [
@@ -85,6 +86,7 @@ const cards: Card[] = [
     href: "/about",
     dark: true,
     bgHex: "#000000",
+    keepBlackDark: true,
     labelColor: "text-[#C65100]",
     objectFit: "contain",
     textTop: true,
@@ -263,7 +265,7 @@ export default function HelpSection() {
                   draggable={false}
                 >
                   <div
-                    className={`relative overflow-hidden ${card.dark ? "dark:!bg-[#1c1c1e]" : ""}`}
+                    className={`relative overflow-hidden ${card.dark && !card.keepBlackDark ? "dark:!bg-[#1c1c1e]" : ""}`}
                     style={{
                       aspectRatio: "3 / 4",
                       backgroundColor: card.bgHex || (card.dark ? "#111" : "#F5F5F5"),
