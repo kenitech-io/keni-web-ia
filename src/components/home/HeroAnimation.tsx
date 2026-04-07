@@ -27,9 +27,8 @@ export default function HeroAnimation({ children }: { children: ReactNode }) {
     const t1 = setTimeout(() => {
       sessionStorage.setItem("intro-seen", "true");
       setPhase("transition");
-      window.dispatchEvent(new Event("resize"));
     }, 1400);
-    const t2 = setTimeout(() => { setPhase("hero"); window.dispatchEvent(new Event("resize")); }, 2100);
+    const t2 = setTimeout(() => setPhase("hero"), 2100);
     return () => { clearTimeout(s1); clearTimeout(s2); clearTimeout(t1); clearTimeout(t2); };
   }, [skip]);
 
@@ -41,7 +40,6 @@ export default function HeroAnimation({ children }: { children: ReactNode }) {
       {/* Orange background overlay */}
       <div
         className="absolute inset-0"
-        {...(phase === "intro" || phase === "loading" ? { "data-dark-section": true } : {})}
         style={{
           backgroundColor: "#C65100",
           opacity: phase === "intro" || phase === "loading" ? 1 : 0,
