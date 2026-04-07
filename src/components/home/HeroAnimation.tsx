@@ -22,6 +22,7 @@ export default function HeroAnimation({ children }: { children: ReactNode }) {
       return;
     }
     setPhase("intro");
+    requestAnimationFrame(() => window.dispatchEvent(new Event("resize")));
     const s1 = setTimeout(() => setShowTitle(true), 200);
     const s2 = setTimeout(() => setShowSubtitle(true), 550);
     const t1 = setTimeout(() => {
