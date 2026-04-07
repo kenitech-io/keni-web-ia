@@ -59,7 +59,7 @@ export default function HeroAnimation({ children }: { children: ReactNode }) {
         }}
       >
         <span
-          className="font-semibold text-white"
+          className="font-semibold text-foreground"
           style={{
             fontSize: "clamp(2rem, 3.5vw, 3.5rem)",
             lineHeight: 1,
@@ -70,7 +70,7 @@ export default function HeroAnimation({ children }: { children: ReactNode }) {
           DEVOPS
         </span>
         <span
-          className="font-light text-white/70 tracking-[0.3em] uppercase mt-4"
+          className="font-light text-foreground/70 tracking-[0.3em] uppercase mt-4"
           style={{
             fontSize: "clamp(0.5rem, 0.8vw, 0.7rem)",
             opacity: showSubtitle ? 1 : 0,
