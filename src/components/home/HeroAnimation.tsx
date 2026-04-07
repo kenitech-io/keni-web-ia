@@ -27,12 +27,9 @@ export default function HeroAnimation({ children }: { children: ReactNode }) {
     const t1 = setTimeout(() => {
       sessionStorage.setItem("intro-seen", "true");
       setPhase("transition");
-      requestAnimationFrame(() => window.dispatchEvent(new Event("resize")));
+      window.dispatchEvent(new Event("resize"));
     }, 1400);
-    const t2 = setTimeout(() => {
-      setPhase("hero");
-      requestAnimationFrame(() => window.dispatchEvent(new Event("resize")));
-    }, 2100);
+    const t2 = setTimeout(() => { setPhase("hero"); window.dispatchEvent(new Event("resize")); }, 2100);
     return () => { clearTimeout(s1); clearTimeout(s2); clearTimeout(t1); clearTimeout(t2); };
   }, [skip]);
 
