@@ -9,7 +9,7 @@ export default function PhaseCarousel() {
         {phases.map((phase) => (
           <div
             key={phase.number}
-            className="group bg-white/10 backdrop-blur-sm hover:bg-white/15 transition-all duration-300 flex flex-col justify-between p-6 md:p-10 pt-8 md:pt-16"
+            className="group bg-white/10 backdrop-blur-sm hover:bg-white/15 transition-all duration-300 flex flex-col justify-between p-6 md:p-10 pt-8 md:pt-16 rounded-lg"
             style={{ aspectRatio: "4 / 3" }}
           >
             <div className="mt-2 h-[80px] md:h-[90px]">
