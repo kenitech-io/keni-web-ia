@@ -30,6 +30,7 @@ export default function Navbar() {
   const navRef = useRef<HTMLElement>(null);
   const darkRangesRef = useRef<{ top: number; bottom: number }[]>([]);
   const rafRef = useRef<number>(0);
+  const lastDarkChange = useRef<number>(0);
 
   // Cache dark section positions on mount and resize
   const cacheDarkSections = useCallback(() => {
@@ -72,18 +73,23 @@ export default function Navbar() {
     cancelAnimationFrame(rafRef.current);
     rafRef.current = requestAnimationFrame(() => {
       const y = window.scrollY;
-      // Check if navbar (0-64px from top) overlaps any dark section
-      const navTop = y;
-      const navBottom = y + 64;
+      const navMid = y + 32;
       let dark = false;
       const ranges = darkRangesRef.current;
       for (let i = 0; i < ranges.length; i++) {
-        if (ranges[i].top < navBottom && ranges[i].bottom > navTop) {
+        if (ranges[i].top < navMid && ranges[i].bottom > navMid) {
           dark = true;
           break;
         }
       }
-      setOnDark(dark);
+      // Debounce dark/light transitions to prevent flickering at section edges
+      const now = Date.now();
+      setOnDark((prev) => {
+        if (dark === prev) return prev;
+        if (now - lastDarkChange.current < 150) return prev;
+        lastDarkChange.current = now;
+        return dark;
+      });
     });
   }, []);
 

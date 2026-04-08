@@ -26,7 +26,7 @@ export default function FadeIn({
   className,
   type = "up",
   delay = 0,
-  once = false,
+  once = true,
 }: FadeInProps) {
   const selectedVariant = variants[type];
 
