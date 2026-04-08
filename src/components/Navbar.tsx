@@ -21,7 +21,6 @@ const mobileLinks = [
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [exploreOpen, setExploreOpen] = useState(false);
   const [onDark, setOnDark] = useState(false);
@@ -73,7 +72,6 @@ export default function Navbar() {
     cancelAnimationFrame(rafRef.current);
     rafRef.current = requestAnimationFrame(() => {
       const y = window.scrollY;
-      setScrolled(y > 20);
       // Check if navbar (0-64px from top) overlaps any dark section
       const navTop = y;
       const navBottom = y + 64;
