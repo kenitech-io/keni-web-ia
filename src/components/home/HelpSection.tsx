@@ -106,12 +106,12 @@ const cards: Card[] = [
   },
 ];
 
-const AUTOPLAY_MS = 2500;
+const AUTOPLAY_MS = 4000;
 // Apple's signature easing: fast start, long deceleration
-const EASE = "cubic-bezier(0.42, 0, 0.58, 1)";
+const EASE = "cubic-bezier(0.4, 0, 0.2, 1)";
 
 export default function HelpSection() {
-  const [current, setCurrent] = useState(cards.length * 10); // start in the middle
+  const [current, setCurrent] = useState(cards.length * 3); // start in the middle
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
@@ -129,13 +129,34 @@ export default function HelpSection() {
 
   const total = cards.length;
 
-  // Many copies for seamless infinite loop
-  const repeatedCards = Array.from({ length: 20 }, () => cards).flat();
-  const startOffset = total * 10; // start in the middle
+  // Just enough copies to cover the loop (3 before + current + 3 after)
+  const repeatedCards = Array.from({ length: 7 }, () => cards).flat();
+  const startOffset = total * 3; // start in the middle
 
   const next = useCallback(() => setCurrent((c) => c + 1), []);
   const prev = useCallback(() => setCurrent((c) => c - 1), []);
 
+  // After each transition ends, silently snap back to the center equivalent
+  useEffect(() => {
+    const el = scrollRef.current?.firstElementChild as HTMLElement | null;
+    if (!el) return;
+    const handleTransitionEnd = () => {
+      const midpoint = total * 3;
+      const posInCycle = ((current % total) + total) % total;
+      const target = midpoint + posInCycle;
+      if (current !== target) {
+        el.style.transition = "none";
+        setCurrent(target);
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            el.style.transition = "";
+          });
+        });
+      }
+    };
+    el.addEventListener("transitionend", handleTransitionEnd);
+    return () => el.removeEventListener("transitionend", handleTransitionEnd);
+  }, [current, total]);
 
   // Autoplay
   useEffect(() => {
@@ -186,9 +207,9 @@ export default function HelpSection() {
     <button
       onClick={onClick}
       aria-label={direction === "left" ? "Previous" : "Next"}
-      className="absolute top-1/2 -translate-y-1/2 z-20 w-9 h-9 flex items-center justify-center rounded-full bg-white/70 backdrop-blur-sm hover:bg-white/90 transition-all duration-200 shadow-sm"
+      className="absolute top-1/2 -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-sm hover:bg-white transition-all duration-200 shadow-md"
       style={{
-        [direction === "left" ? "left" : "right"]: 20,
+        [direction === "left" ? "left" : "right"]: 24,
       }}
     >
       <svg
@@ -210,8 +231,6 @@ export default function HelpSection() {
   return (
     <section
       className="py-32 md:py-48"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
     >
       <FadeIn>
         <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-16 md:mb-20 font-light text-center">
@@ -219,13 +238,17 @@ export default function HelpSection() {
         </p>
       </FadeIn>
       <FadeIn delay={0.1}>
-        <h2 className="text-heading text-foreground font-light tracking-wide mb-16 text-center">
+        <h2 className="text-[clamp(1.25rem,2vw,1.75rem)] text-foreground font-light tracking-wide mb-16 text-center">
           When, how and where you want
         </h2>
       </FadeIn>
 
       {/* Carousel - Apple style */}
-      <div className="relative mt-12 md:mt-16 group/carousel">
+      <div
+        className="relative mt-12 md:mt-16 group/carousel"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
         {/* Arrow buttons - visible on hover */}
         <div className="opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300">
           <ArrowButton direction="left" onClick={prev} />
@@ -235,7 +258,7 @@ export default function HelpSection() {
         {/* Track */}
         <div
           ref={scrollRef}
-          className="overflow-hidden select-none touch-pan-y"
+          className="overflow-hidden select-none touch-pan-y relative py-6 -my-6"
           onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}
@@ -244,11 +267,11 @@ export default function HelpSection() {
           <div
             className="flex"
             style={{
-              gap: 12,
-              paddingLeft: visibleCards === 1 ? "7.5%" : "max(24px, calc((100vw - 1200px) / 2))",
-              paddingRight: visibleCards === 1 ? "7.5%" : "max(24px, calc((100vw - 1200px) / 2))",
-              transform: `translateX(calc(${-current * (100 / visibleCards)}% - ${current * 12}px + ${dragOffset}px))`,
-              transition: isDragging ? "none" : `transform 0.65s ${EASE}`,
+              gap: 14,
+              paddingLeft: "max(24px, calc((100vw - 1320px) / 2 + 24px))",
+              paddingRight: "max(24px, calc((100vw - 1320px) / 2 + 24px))",
+              transform: `translateX(calc(${-current * (100 / visibleCards)}% - ${current * 14}px + ${dragOffset}px))`,
+              transition: isDragging ? "none" : `transform 1.2s ${EASE}`,
             }}
           >
             {repeatedCards.map((card, i) => (
@@ -256,7 +279,7 @@ export default function HelpSection() {
                 key={`${card.label}-${i}`}
                 className="flex-shrink-0"
                 style={{
-                  width: visibleCards === 1 ? "calc(85% - 8px)" : "calc(33.333% - 8px)",
+                  width: visibleCards === 1 ? "calc(85% - 8px)" : "calc(30% - 8px)",
                 }}
               >
                 <Link
@@ -265,10 +288,11 @@ export default function HelpSection() {
                   draggable={false}
                 >
                   <div
-                    className={`relative overflow-hidden ${card.dark && !card.keepBlackDark ? "dark:!bg-[#1c1c1e]" : ""}`}
+                    className={`relative overflow-hidden rounded-lg transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-1 ${card.dark && !card.keepBlackDark ? "dark:!bg-[#1c1c1e]" : ""}`}
                     style={{
                       aspectRatio: "3 / 4",
                       backgroundColor: card.bgHex || (card.dark ? "#111" : "#F5F5F5"),
+                      boxShadow: "0 6px 20px -4px rgba(0,0,0,0.15), 0 2px 6px -2px rgba(0,0,0,0.1)",
                     }}
                   >
                     {/* Card image */}
@@ -472,7 +496,7 @@ export default function HelpSection() {
                     {/* Content */}
                     <div className={`absolute left-0 right-0 p-6 md:p-8 z-10 ${card.textTop ? "top-0" : "bottom-0"}`}>
                       <p
-                        className={`text-[0.6rem] font-semibold tracking-[0.15em] mb-2 ${
+                        className={`text-[0.5rem] font-medium tracking-[0.25em] mb-3 ${
                           card.labelColor
                             ? card.labelColor
                             : card.dark
@@ -483,7 +507,7 @@ export default function HelpSection() {
                         {card.label}
                       </p>
                       <h3
-                        className={`text-xl md:text-2xl lg:text-3xl font-medium leading-tight tracking-wide ${
+                        className={`text-lg md:text-xl lg:text-2xl font-medium leading-tight tracking-wide ${
                           card.dark ? "text-white" : "text-black"
                         }`}
                       >
