@@ -115,7 +115,6 @@ export default function HelpSection() {
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
   const [visibleCards, setVisibleCards] = useState(3);
 
   useEffect(() => {
@@ -160,12 +159,12 @@ export default function HelpSection() {
 
   // Autoplay
   useEffect(() => {
-    if (isPaused || isDragging) return;
+    if (isDragging) return;
     autoplayRef.current = setInterval(next, AUTOPLAY_MS);
     return () => {
       if (autoplayRef.current) clearInterval(autoplayRef.current);
     };
-  }, [next, isPaused, isDragging]);
+  }, [next, isDragging]);
 
   // Keyboard nav
   useEffect(() => {
