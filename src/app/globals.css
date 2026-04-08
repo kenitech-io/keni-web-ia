@@ -9,7 +9,7 @@
   --foreground: #000000;
   --foreground-secondary: #444444;
   --muted: #737373;
-  --border-color: #E5E5E5;
+  --border-color: rgba(0, 0, 0, 0.08);
   --charcoal: #1A1A1A;
   /* Pipeline colors */
   --pipe-purple-bg: #EDE7F6;
