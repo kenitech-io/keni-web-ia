@@ -246,8 +246,6 @@ export default function HelpSection() {
       {/* Carousel - Apple style */}
       <div
         className="relative mt-12 md:mt-16 group/carousel"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
       >
         {/* Arrow buttons - visible on hover */}
         <div className="opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300">
