@@ -131,11 +131,7 @@ export default function Navbar() {
     <>
       <nav
         ref={navRef}
-        className={`fixed top-0 left-0 right-0 z-50 h-[64px] flex items-center transition-all duration-300 ${
-          scrolled
-            ? "backdrop-blur-md bg-background/80 border-b border-border-color"
-            : "bg-transparent"
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 h-[64px] flex items-center bg-transparent"
       >
         <Container>
           <div className="flex items-center justify-between">
