@@ -418,7 +418,7 @@ export default function HealthCheckContent() {
     <main>
       {/* Fixed progress bar */}
       {!showResults && (
-        <div className="fixed top-[64px] left-0 right-0 z-40 h-px bg-border-color">
+        <div className="fixed top-[64px] left-0 right-0 z-40 h-px">
           <motion.div
             className="h-full bg-foreground"
             animate={{
@@ -443,23 +443,20 @@ export default function HealthCheckContent() {
                   {currentQuestion.title}
                 </h2>
 
-                <div className="space-y-4">
+                <div className="space-y-3">
                   {currentQuestion.options.map((option, idx) => {
                     const isSelected =
                       answers[currentQuestion.id] === option.score;
                     return (
                       <motion.button
                         key={option.label}
-                        initial={{ opacity: 0, y: 12 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
                         transition={{
                           duration: 0.3,
                           delay: idx * 0.06,
                           ease: [0.25, 0.1, 0.25, 1],
                         }}
-                        whileHover={{ scale: 1.01, transition: { type: "tween", duration: 0.1 } }}
-                        whileTap={{ scale: 0.99, transition: { type: "tween", duration: 0.05 } }}
-                        style={{ transition: "transform 0s" }}
                         onClick={() =>
                           selectAnswer(
                             currentQuestion.id,
@@ -467,17 +464,17 @@ export default function HealthCheckContent() {
                             option.insight
                           )
                         }
-                        className={`w-full text-left px-8 py-5 border rounded-lg transition-colors duration-300 ${
+                        className={`w-full text-left px-7 py-5 border transition-all duration-300 rounded ${
                           isSelected
-                            ? "border-foreground/40 bg-[#ececec] dark:bg-[#1e1e1e] hover:bg-[#e0e0e0] dark:hover:bg-[#262626]"
-                            : "border-foreground/[0.08] hover:border-foreground/20 hover:bg-[#ececec] dark:hover:bg-[#1e1e1e]"
+                            ? "border-foreground/30 bg-foreground/[0.03]"
+                            : "border-foreground/[0.06] hover:border-foreground/15 hover:bg-[#f5f5f5] dark:hover:bg-[#1a1a1a]"
                         }`}
                       >
                         <p
                           className={`text-sm font-light leading-relaxed transition-colors duration-300 ${
                             isSelected
                               ? "text-foreground"
-                              : "text-foreground-secondary/70"
+                              : "text-foreground-secondary/60 hover:text-foreground-secondary/80"
                           }`}
                         >
                           {option.label}
