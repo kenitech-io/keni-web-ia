@@ -51,33 +51,29 @@ export default function ContactPageContent() {
         <Container>
           <FadeIn>
             <div className="text-center mb-16">
-              <p className="text-label uppercase tracking-[0.25em] text-muted font-light text-center mb-6">
-                CONTACT
-              </p>
               <h1 className="text-heading text-foreground font-light tracking-wide mb-8">
                 Let&apos;s take this off your plate
               </h1>
               <p className="text-sm text-foreground-secondary leading-loose font-light max-w-[480px] mx-auto">
-                Pick a time that works for you.
-                A calm conversation about what&apos;s keeping you up at night.
+                A calm conversation about what&apos;s slowing your team down.
               </p>
             </div>
           </FadeIn>
 
           <FadeIn delay={0.15}>
-            <div className="max-w-[480px] mx-auto mb-24 -mt-4">
-              <div className="p-12 text-center">
-                <div className="flex justify-center items-center gap-16 mb-12">
+            <div className="max-w-[520px] mx-auto mb-16">
+              <div className="text-center">
+                <div className="flex justify-center items-center gap-16 mb-14">
                   <div className="flex flex-col items-center">
-                    <div className="w-32 h-32 rounded-2xl overflow-hidden mb-4">
-                      <Image src="/team/ane.jpg" alt="Ane Ugarte" width={128} height={128} className="w-full h-full object-cover" />
+                    <div className="w-48 h-48 rounded overflow-hidden mb-4">
+                      <Image src="/team/ane.jpg" alt="Ane Ugarte" width={192} height={192} className="w-full h-full object-cover " />
                     </div>
                     <a href="https://www.linkedin.com/in/aneugarte/" target="_blank" rel="noopener noreferrer" className="text-sm text-foreground font-medium mt-1">Ane Ugarte</a>
                     <span className="text-xs text-muted font-light">CEO</span>
                   </div>
                   <div className="flex flex-col items-center">
-                    <div className="w-32 h-32 rounded-2xl overflow-hidden mb-4">
-                      <Image src="/team/mikel.jpg" alt="Mikel Martin" width={128} height={128} className="w-full h-full object-cover" />
+                    <div className="w-48 h-48 rounded overflow-hidden mb-4">
+                      <Image src="/team/mikel.jpg" alt="Mikel Martin" width={192} height={192} className="w-full h-full object-cover " />
                     </div>
                     <a href="https://www.linkedin.com/in/mikelm20/" target="_blank" rel="noopener noreferrer" className="text-sm text-foreground font-medium mt-1">Mikel Martin</a>
                     <span className="text-xs text-muted font-light">CTO</span>
@@ -95,7 +91,7 @@ export default function ContactPageContent() {
             </div>
           </FadeIn>
 
-          <FadeIn delay={0.05}>
+          <FadeIn delay={0.25}>
             <div className="text-center">
               <button
                 onClick={() => setShowForm(true)}
