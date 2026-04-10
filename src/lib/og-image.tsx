@@ -28,20 +28,13 @@ const themes = {
 
 export function resolveTheme(title: string, category: string): OgTheme {
   const t = title.toLowerCase();
-  // Orange: bold opinions, provocative statements
   if (t.startsWith("why ") || t.includes("doesn't need") || t.includes("don't"))
     return "orange";
   if (t.includes("replace") || t.includes("without")) return "orange";
-  // Dark: comparisons, data-driven, audits
   if (t.includes(" vs ")) return "dark";
   if (t.includes("how much") || t.includes("cost")) return "dark";
   if (t.includes("audit") || t.includes("what happens")) return "dark";
-  // Light: guides, checklists, educational
-  if (
-    t.includes("checklist") ||
-    t.includes("guide") ||
-    t.includes("how to")
-  )
+  if (t.includes("checklist") || t.includes("guide") || t.includes("how to"))
     return "light";
   if (category === "Platform Engineering") return "light";
   if (category === "DevOps") return "light";
@@ -64,8 +57,8 @@ export function generateBlogOgImage(opts: {
     (
       <div
         style={{
-          width: "100%",
-          height: "100%",
+          width: "1200px",
+          height: "630px",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -76,59 +69,53 @@ export function generateBlogOgImage(opts: {
         <div
           style={{
             display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
+            fontSize: 14,
+            fontWeight: 500,
+            color: t.label,
+            letterSpacing: "0.2em",
+            marginBottom: 32,
           }}
         >
-          <div
-            style={{
-              display: "flex",
-              fontSize: 14,
-              fontWeight: 500,
-              color: t.label,
-              letterSpacing: "0.2em",
-              marginBottom: 32,
-            }}
-          >
-            KENI ENGINEERING BLOG
-          </div>
-          <div
-            style={{
-              display: "flex",
-              fontSize: 48,
-              fontWeight: 300,
-              color: t.title,
-              lineHeight: 1.2,
-              maxWidth: 960,
-            }}
-          >
-            {opts.title}
-          </div>
-          <div
-            style={{
-              display: "flex",
-              fontSize: 20,
-              fontWeight: 300,
-              color: t.subtitle,
-              marginTop: 28,
-              maxWidth: 760,
-              lineHeight: 1.6,
-            }}
-          >
-            {opts.subtitle}
-          </div>
+          KENI ENGINEERING BLOG
         </div>
         <div
           style={{
-            position: "absolute",
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: isOrange ? 0 : 3,
             display: "flex",
-            backgroundColor: isOrange ? "transparent" : t.accent,
+            fontSize: 48,
+            fontWeight: 300,
+            color: t.title,
+            lineHeight: 1.2,
+            maxWidth: 960,
           }}
-        />
+        >
+          {opts.title}
+        </div>
+        <div
+          style={{
+            display: "flex",
+            fontSize: 20,
+            fontWeight: 300,
+            color: t.subtitle,
+            marginTop: 28,
+            maxWidth: 760,
+            lineHeight: 1.6,
+          }}
+        >
+          {opts.subtitle}
+        </div>
+        {!isOrange && (
+          <div
+            style={{
+              position: "absolute",
+              bottom: 0,
+              left: 0,
+              width: "1200px",
+              height: "3px",
+              display: "flex",
+              backgroundColor: t.accent,
+            }}
+          />
+        )}
       </div>
     ),
     { ...ogSize }
