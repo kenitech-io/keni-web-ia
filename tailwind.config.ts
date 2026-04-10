@@ -37,6 +37,15 @@ const config: Config = {
         "content": "1320px",
         "narrow": "640px",
       },
+      keyframes: {
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+      },
+      animation: {
+        marquee: "marquee 60s linear infinite",
+      },
     },
   },
   plugins: [],

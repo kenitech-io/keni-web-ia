@@ -8,32 +8,30 @@ function HeroContent() {
       <h1
         className="text-foreground font-bold tracking-tight"
         style={{
-          fontSize: "clamp(2.2rem, 4.5vw, 4rem)",
+          fontSize: "clamp(2.5rem, 8vw, 4rem)",
           lineHeight: 1.1,
         }}
       >
-        Push. Build. Deploy.
+        Push code, we handle the rest.
       </h1>
-      <p className="text-foreground-secondary text-base md:text-lg font-light mt-5 mb-9 max-w-[520px] mx-auto leading-relaxed">
-        We automate everything so your team can focus on product.
+      <p className="text-foreground-secondary text-base md:text-lg font-normal md:font-light mt-5 mb-10 max-w-[520px] mx-auto leading-relaxed">
+        DevOps expertise for your team,<br className="md:hidden" /> without the $200K hire.
       </p>
-      <a
-        href={BOOKING_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-block bg-foreground hover:bg-foreground/85 text-background px-10 py-2.5 text-sm font-light tracking-wide rounded-full transition-colors"
-      >
-        Let&apos;s talk
-      </a>
-      <div className="mt-12 pt-10 border-t border-border-color w-full md:w-[130%] md:-ml-[15%]">
-        <a href="/infrastructure-audit">
-          <p className="text-sm tracking-wide font-semibold mb-1 hover:opacity-70 transition-opacity">
-            <span className="text-[#C65100]">FREE</span> <span className="text-foreground">INFRASTRUCTURE AUDIT</span>
-          </p>
+      <div className="flex flex-row items-center justify-center gap-3 md:gap-4">
+        <a
+          href="/infrastructure-audit"
+          className="inline-block bg-foreground hover:bg-foreground/85 text-background px-6 py-3 md:px-10 md:py-2.5 text-sm font-light tracking-wide rounded-full transition-colors"
+        >
+          Get a free audit
         </a>
-        <p className="text-sm text-muted font-light">
-          CI/CD review, security audit, cost analysis, architecture report & actionable roadmap
-        </p>
+        <a
+          href={BOOKING_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block border border-border-color hover:border-foreground/40 text-foreground px-6 py-3 md:px-10 md:py-2.5 text-sm font-light tracking-wide rounded-full transition-colors"
+        >
+          Schedule a call
+        </a>
       </div>
     </>
   );
