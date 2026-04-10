@@ -47,7 +47,7 @@ export default function ContactPageContent() {
 
   return (
     <main className="bg-background min-h-screen">
-      <section className="py-32 md:py-48">
+      <section className="py-20 md:py-48">
         <Container>
           <FadeIn>
             <div className="text-center mb-16">
@@ -63,17 +63,17 @@ export default function ContactPageContent() {
           <FadeIn delay={0.15}>
             <div className="max-w-[520px] mx-auto mb-16">
               <div className="text-center">
-                <div className="flex justify-center items-center gap-16 mb-14">
+                <div className="flex justify-center items-center gap-8 md:gap-16 mb-14">
                   <div className="flex flex-col items-center">
-                    <div className="w-48 h-48 rounded overflow-hidden mb-4">
-                      <Image src="/team/ane.jpg" alt="Ane Ugarte" width={192} height={192} className="w-full h-full object-cover " />
+                    <div className="w-32 h-32 md:w-48 md:h-48 rounded overflow-hidden mb-4">
+                      <Image src="/team/ane.jpg" alt="Ane Ugarte" width={192} height={192} className="w-full h-full object-cover" />
                     </div>
                     <a href="https://www.linkedin.com/in/aneugarte/" target="_blank" rel="noopener noreferrer" className="text-sm text-foreground font-medium mt-1">Ane Ugarte</a>
                     <span className="text-xs text-muted font-light">CEO</span>
                   </div>
                   <div className="flex flex-col items-center">
-                    <div className="w-48 h-48 rounded overflow-hidden mb-4">
-                      <Image src="/team/mikel.jpg" alt="Mikel Martin" width={192} height={192} className="w-full h-full object-cover " />
+                    <div className="w-32 h-32 md:w-48 md:h-48 rounded overflow-hidden mb-4">
+                      <Image src="/team/mikel.jpg" alt="Mikel Martin" width={192} height={192} className="w-full h-full object-cover" />
                     </div>
                     <a href="https://www.linkedin.com/in/mikelm20/" target="_blank" rel="noopener noreferrer" className="text-sm text-foreground font-medium mt-1">Mikel Martin</a>
                     <span className="text-xs text-muted font-light">CTO</span>
@@ -163,13 +163,13 @@ function MessageModal({
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0 }}
-      className="fixed inset-0 z-50 flex items-center justify-center p-6"
+      className="fixed inset-0 z-50 flex items-end md:items-center justify-center p-0 md:p-6"
     >
       {/* Backdrop */}
       <div className="absolute inset-0 bg-background/90 backdrop-blur-sm" onClick={onClose} />
 
       {/* Modal */}
-      <div className="relative w-full max-w-[400px] max-h-[90vh] overflow-y-auto border border-border-color bg-background rounded-lg p-10">
+      <div className="relative w-full max-w-[400px] max-h-[85vh] overflow-y-auto border border-border-color bg-background rounded-t-2xl md:rounded-lg p-6 md:p-10">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-muted hover:text-foreground transition-colors"
