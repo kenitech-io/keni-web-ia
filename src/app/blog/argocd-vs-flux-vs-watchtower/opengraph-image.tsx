@@ -1,20 +1,13 @@
-import { ImageResponse } from "next/og";
+import { generateBlogOgImage, ogSize } from "@/lib/og-image";
 
 export const runtime = "edge";
 export const alt = "Argo CD vs Flux vs Watchtower | Keni Engineering";
-export const size = { width: 1200, height: 630 };
+export const size = ogSize;
 export const contentType = "image/png";
 
 export default async function Image() {
-  return new ImageResponse(
-    (
-      <div style={{ background: "#000000", width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", padding: "80px" }}>
-        <div style={{ fontSize: 18, color: "#999999", letterSpacing: "0.15em", marginBottom: 24 }}>KENI ENGINEERING BLOG</div>
-        <div style={{ fontSize: 48, fontWeight: 300, color: "#FAFAFA", lineHeight: 1.2, maxWidth: 900 }}>Argo CD vs Flux vs Watchtower: CD tools for automated deployments</div>
-        <div style={{ fontSize: 20, color: "#999999", marginTop: 32, maxWidth: 700, lineHeight: 1.6 }}>GitOps vs image watching, Kubernetes vs Docker Compose, and which fits your team.</div>
-        <div style={{ fontSize: 16, color: "#666666", marginTop: "auto", display: "flex", justifyContent: "space-between", width: "100%" }}><span>kenitech.io</span><span>8 min read</span></div>
-      </div>
-    ),
-    { ...size }
-  );
+  return generateBlogOgImage({
+    title: "Argo CD vs Flux vs Watchtower: CD Tools for Automated Deployments in 2026",
+    subtitle: "GitOps vs image watching, Kubernetes vs Docker Compose, and which fits your team.",
+  });
 }

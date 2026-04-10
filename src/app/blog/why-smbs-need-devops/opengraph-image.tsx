@@ -1,74 +1,13 @@
-import { ImageResponse } from "next/og";
+import { generateBlogOgImage, ogSize } from "@/lib/og-image";
 
 export const runtime = "edge";
-export const alt =
-  "Why 53% of SMBs Still Don't Have DevOps | Keni Engineering";
-export const size = { width: 1200, height: 630 };
+export const alt = "Why SMBs Need DevOps | Keni Engineering";
+export const size = ogSize;
 export const contentType = "image/png";
 
 export default async function Image() {
-  return new ImageResponse(
-    (
-      <div
-        style={{
-          background: "#000000",
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          padding: "80px",
-        }}
-      >
-        <div
-          style={{
-            fontSize: 18,
-            color: "#999999",
-            letterSpacing: "0.15em",
-            marginBottom: 24,
-          }}
-        >
-          KENI ENGINEERING BLOG
-        </div>
-        <div
-          style={{
-            fontSize: 48,
-            fontWeight: 300,
-            color: "#FAFAFA",
-            lineHeight: 1.2,
-            maxWidth: 900,
-          }}
-        >
-          Why 53% of SMBs still don&apos;t have DevOps (and what it&apos;s
-          costing them)
-        </div>
-        <div
-          style={{
-            fontSize: 20,
-            color: "#999999",
-            marginTop: 32,
-            maxWidth: 700,
-            lineHeight: 1.6,
-          }}
-        >
-          The real cost of manual deployments, the hiring problem, and what a
-          realistic fix looks like.
-        </div>
-        <div
-          style={{
-            fontSize: 16,
-            color: "#666666",
-            marginTop: "auto",
-            display: "flex",
-            justifyContent: "space-between",
-            width: "100%",
-          }}
-        >
-          <span>kenitech.io</span>
-          <span>6 min read</span>
-        </div>
-      </div>
-    ),
-    { ...size }
-  );
+  return generateBlogOgImage({
+    title: "Why 53% of SMBs still don\'t have DevOps (and what it\'s costing them)",
+    subtitle: "The real cost of manual deployments, the hiring problem, and what a realistic fix looks like.",
+  });
 }
