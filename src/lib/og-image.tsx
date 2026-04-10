@@ -18,7 +18,7 @@ const themes = {
     accent: "#F97316",
   },
   orange: {
-    background: "#F97316",
+    background: "#EA580C",
     title: "#FFFFFF",
     subtitle: "rgba(255,255,255,0.8)",
     label: "rgba(255,255,255,0.6)",
@@ -66,43 +66,43 @@ export function generateBlogOgImage(opts: {
           backgroundColor: t.background,
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            fontSize: 14,
-            fontWeight: 500,
-            color: t.label,
-            letterSpacing: "0.2em",
-            marginBottom: 32,
-          }}
-        >
-          KENI ENGINEERING BLOG
-        </div>
-        <div
-          style={{
-            display: "flex",
-            fontSize: 48,
-            fontWeight: 300,
-            color: t.title,
-            lineHeight: 1.2,
-            maxWidth: 960,
-          }}
-        >
-          {opts.title}
-        </div>
-        <div
-          style={{
-            display: "flex",
-            fontSize: 20,
-            fontWeight: 300,
-            color: t.subtitle,
-            marginTop: 28,
-            maxWidth: 760,
-            lineHeight: 1.6,
-          }}
-        >
-          {opts.subtitle}
-        </div>
+            <div
+              style={{
+                display: "flex",
+                fontSize: 14,
+                fontWeight: 500,
+                color: t.label,
+                letterSpacing: "0.2em",
+                marginBottom: 32,
+              }}
+            >
+              KENI ENGINEERING BLOG
+            </div>
+            <div
+              style={{
+                display: "flex",
+                fontSize: 48,
+                fontWeight: 300,
+                color: t.title,
+                lineHeight: 1.2,
+                maxWidth: 960,
+              }}
+            >
+              {opts.title}
+            </div>
+            <div
+              style={{
+                display: "flex",
+                fontSize: 20,
+                fontWeight: 300,
+                color: t.subtitle,
+                marginTop: 28,
+                maxWidth: 760,
+                lineHeight: 1.6,
+              }}
+            >
+              {opts.subtitle}
+            </div>
         {!isOrange && (
           <div
             style={{
