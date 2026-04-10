@@ -106,12 +106,12 @@ const cards: Card[] = [
   },
 ];
 
-const AUTOPLAY_MS = 4000;
-// Apple's signature easing: fast start, long deceleration
-const EASE = "cubic-bezier(0.4, 0, 0.2, 1)";
+const AUTOPLAY_MS = 5500;
+// Smooth exponential ease-out: gentle start, very gradual deceleration
+const EASE = "cubic-bezier(0.16, 1, 0.3, 1)";
 
 export default function HelpSection() {
-  const [current, setCurrent] = useState(cards.length * 3); // start in the middle
+  const [current, setCurrent] = useState(cards.length * 10); // start in the middle of 20 copies
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
@@ -128,34 +128,44 @@ export default function HelpSection() {
 
   const total = cards.length;
 
-  // Just enough copies to cover the loop (3 before + current + 3 after)
-  const repeatedCards = Array.from({ length: 7 }, () => cards).flat();
-  const startOffset = total * 3; // start in the middle
+  // Plenty of copies so we never visibly run out
+  const COPIES = 20;
+  const repeatedCards = Array.from({ length: COPIES }, () => cards).flat();
+  const startOffset = total * Math.floor(COPIES / 2);
 
-  const next = useCallback(() => setCurrent((c) => c + 1), []);
-  const prev = useCallback(() => setCurrent((c) => c - 1), []);
+  const resetAutoplay = useCallback(() => {
+    if (autoplayRef.current) clearInterval(autoplayRef.current);
+    autoplayRef.current = setInterval(() => setCurrent((c) => c + 1), AUTOPLAY_MS);
+  }, []);
 
-  // After each transition ends, silently snap back to the center equivalent
+  const next = useCallback(() => { setCurrent((c) => c + 1); resetAutoplay(); }, [resetAutoplay]);
+  const prev = useCallback(() => { setCurrent((c) => c - 1); resetAutoplay(); }, [resetAutoplay]);
+
+  // After each transition, silently snap back to the center equivalent
+  // Since both positions show the exact same card, the snap is invisible
+  const midpoint = total * Math.floor(COPIES / 2);
   useEffect(() => {
     const el = scrollRef.current?.firstElementChild as HTMLElement | null;
     if (!el) return;
-    const handleTransitionEnd = () => {
-      const midpoint = total * 3;
+    const handleTransitionEnd = (e: TransitionEvent) => {
+      if (e.target !== el || e.propertyName !== "transform") return;
       const posInCycle = ((current % total) + total) % total;
       const target = midpoint + posInCycle;
-      if (current !== target) {
-        el.style.transition = "none";
-        setCurrent(target);
+      if (current === target) return;
+      // Disable transition, snap to equivalent center position, re-enable
+      el.style.transition = "none";
+      // Force layout so the browser applies the no-transition state
+      void el.offsetHeight;
+      setCurrent(target);
+      requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            el.style.transition = "";
-          });
+          el.style.transition = "";
         });
-      }
+      });
     };
     el.addEventListener("transitionend", handleTransitionEnd);
     return () => el.removeEventListener("transitionend", handleTransitionEnd);
-  }, [current, total]);
+  }, [current, total, midpoint]);
 
   // Autoplay
   useEffect(() => {
@@ -190,8 +200,9 @@ export default function HelpSection() {
   const handlePointerUp = () => {
     if (!isDragging) return;
     setIsDragging(false);
-    if (dragOffset < -60) next();
-    else if (dragOffset > 60) prev();
+    const threshold = window.innerWidth < 768 ? 30 : 60;
+    if (dragOffset < -threshold) next();
+    else if (dragOffset > threshold) prev();
     setDragOffset(0);
   };
 
@@ -206,10 +217,7 @@ export default function HelpSection() {
     <button
       onClick={onClick}
       aria-label={direction === "left" ? "Previous" : "Next"}
-      className="absolute top-1/2 -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-sm hover:bg-white transition-all duration-200 shadow-md"
-      style={{
-        [direction === "left" ? "left" : "right"]: 24,
-      }}
+      className={`absolute top-1/2 -translate-y-1/2 z-20 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-sm hover:bg-white transition-all duration-200 shadow-md ${direction === "left" ? "left-2 md:left-6" : "right-2 md:right-6"}`}
     >
       <svg
         className="w-4 h-4 text-black/70"
@@ -246,8 +254,8 @@ export default function HelpSection() {
       <div
         className="relative mt-12 md:mt-16 group/carousel"
       >
-        {/* Arrow buttons - visible on hover */}
-        <div className="opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300">
+        {/* Arrow buttons - always visible on mobile, hover on desktop */}
+        <div className="md:opacity-0 md:group-hover/carousel:opacity-100 transition-opacity duration-300">
           <ArrowButton direction="left" onClick={prev} />
           <ArrowButton direction="right" onClick={next} />
         </div>
@@ -264,11 +272,11 @@ export default function HelpSection() {
           <div
             className="flex"
             style={{
-              gap: 14,
-              paddingLeft: "max(24px, calc((100vw - 1320px) / 2 + 24px))",
-              paddingRight: "max(24px, calc((100vw - 1320px) / 2 + 24px))",
-              transform: `translateX(calc(${-current * (100 / visibleCards)}% - ${current * 14}px + ${dragOffset}px))`,
-              transition: isDragging ? "none" : `transform 1.2s ${EASE}`,
+              gap: visibleCards === 1 ? 10 : 14,
+              paddingLeft: visibleCards === 1 ? 16 : "max(24px, calc((100vw - 1320px) / 2 + 24px))",
+              paddingRight: visibleCards === 1 ? 16 : "max(24px, calc((100vw - 1320px) / 2 + 24px))",
+              transform: `translateX(calc(${-current * (100 / visibleCards)}% - ${current * (visibleCards === 1 ? 10 : 14)}px + ${dragOffset}px))`,
+              transition: isDragging ? "none" : `transform 1.8s ${EASE}`,
             }}
           >
             {repeatedCards.map((card, i) => (
@@ -276,7 +284,7 @@ export default function HelpSection() {
                 key={`${card.label}-${i}`}
                 className="flex-shrink-0"
                 style={{
-                  width: visibleCards === 1 ? "calc(85% - 8px)" : "calc(30% - 8px)",
+                  width: visibleCards === 1 ? "calc(88% - 6px)" : "calc(30% - 8px)",
                 }}
               >
                 <Link
@@ -545,7 +553,7 @@ export default function HelpSection() {
           {cards.map((card, i) => (
             <button
               key={card.label}
-              onClick={() => setCurrent(startOffset + i)}
+              onClick={() => { setCurrent(startOffset + i); resetAutoplay(); }}
               aria-label={`Go to slide ${i + 1}`}
               style={{
                 width: 7,
