@@ -20,7 +20,7 @@ const themes = {
   orange: {
     background: "#F97316",
     title: "#FFFFFF",
-    subtitle: "rgba(255,255,255,0.75)",
+    subtitle: "rgba(255,255,255,0.8)",
     label: "rgba(255,255,255,0.6)",
     accent: "transparent",
   },
@@ -70,29 +70,14 @@ export function generateBlogOgImage(opts: {
           flexDirection: "column",
           justifyContent: "center",
           padding: "56px 80px",
-          backgroundColor: isOrange ? "#EA580C" : t.background,
+          backgroundColor: t.background,
         }}
       >
-        {isOrange && (
-          <div
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              display: "flex",
-              backgroundImage:
-                "linear-gradient(135deg, #F97316 0%, #EA580C 100%)",
-            }}
-          />
-        )}
         <div
           style={{
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            zIndex: 1,
           }}
         >
           <div
