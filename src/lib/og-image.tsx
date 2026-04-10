@@ -34,7 +34,12 @@ export function resolveTheme(title: string, category: string): OgTheme {
 
 export const ogSize = { width: 1200, height: 630 };
 
-export function generateBlogOgImage(opts: {
+async function loadInter(): Promise<ArrayBuffer> {
+  const res = await fetch("https://kenitech.io/fonts/Inter-Medium.ttf");
+  return res.arrayBuffer();
+}
+
+export async function generateBlogOgImage(opts: {
   title: string;
   subtitle: string;
   theme?: OgTheme;
@@ -42,6 +47,7 @@ export function generateBlogOgImage(opts: {
 }) {
   const theme = opts.theme ?? resolveTheme(opts.title, opts.category ?? "");
   const t = themes[theme];
+  const interFont = await loadInter();
 
   return new ImageResponse(
     (
@@ -55,6 +61,7 @@ export function generateBlogOgImage(opts: {
           alignItems: "center",
           padding: "80px 120px",
           backgroundColor: t.background,
+          fontFamily: "Inter",
         }}
       >
         <div
@@ -72,6 +79,16 @@ export function generateBlogOgImage(opts: {
         </div>
       </div>
     ),
-    { ...ogSize }
+    {
+      ...ogSize,
+      fonts: [
+        {
+          name: "Inter",
+          data: interFont,
+          weight: 500,
+          style: "normal",
+        },
+      ],
+    }
   );
 }
