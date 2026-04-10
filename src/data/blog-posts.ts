@@ -9,6 +9,15 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "kubernetes-yaml-sprawl",
+    title: "62 Lines of Kubernetes YAML vs 16 Lines of Docker Compose: A Visual Comparison",
+    description:
+      "Side-by-side code comparison showing how Kubernetes YAML sprawl compares to Docker Compose for the same workloads. Three real scenarios, from simple to full platform.",
+    date: "2026-04-10",
+    readTime: "5 min read",
+    category: "Containers",
+  },
+  {
     slug: "github-actions-vs-gitlab-ci-vs-jenkins",
     title: "GitHub Actions vs GitLab CI vs Jenkins: CI Tools Compared in 2026",
     description:
