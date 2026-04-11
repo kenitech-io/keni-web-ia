@@ -12,7 +12,8 @@ function HeroContent() {
           lineHeight: 1.1,
         }}
       >
-        Push code, we handle the rest.
+        <span className="block">Push code,</span>
+        <span className="block font-light">we handle the rest.</span>
       </h1>
       <p className="text-foreground-secondary text-base md:text-lg font-normal md:font-light mt-5 mb-10 max-w-[520px] mx-auto leading-relaxed">
         DevOps expertise for your team,<br className="md:hidden" /> without the $200K hire.
