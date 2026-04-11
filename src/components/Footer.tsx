@@ -56,7 +56,7 @@ export default function Footer() {
                           href={link.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-xs text-muted hover:text-foreground transition-colors duration-200"
+                          className="text-xs text-muted hover:text-foreground transition-colors duration-200 visited:text-muted"
                         >
                           {link.name}
                         </a>
@@ -75,12 +75,9 @@ export default function Footer() {
             ))}
           </div>
 
-          <div className="mt-16 pt-8 border-t border-border-color flex items-center justify-between">
-            <p className="text-[0.65rem] text-muted/40">
-              Keni Engineering &copy; {new Date().getFullYear()}
-            </p>
-            <p className="text-[0.65rem] text-muted/40">
-              Washington, USA
+          <div className="mt-12">
+            <p className="text-xs text-muted">
+              &copy; {new Date().getFullYear()} Keni Engineering
             </p>
           </div>
         </div>
