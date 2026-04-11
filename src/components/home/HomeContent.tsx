@@ -79,8 +79,8 @@ export default function HomeContent() {
 
       <HelpSection />
 
-      {/* Explore links */}
-      <section className="py-32 md:py-48">
+      {/* Explore links - hidden on mobile */}
+      <section className="hidden md:block py-32 md:py-48">
         <Container>
           <div className="max-w-[640px] mx-auto text-center">
             <FadeIn>
