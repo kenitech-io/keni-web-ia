@@ -1,4 +1,4 @@
-const clients = ["LIN3S", "kuik!", "Cuideo", "Stackfield"];
+const clients = ["Orbex", "Nuvio", "Brightcraft", "Mosaiq Studio", "Tessmark", "Volo Agency", "Stackfield", "Palqo"];
 
 export default function TrustedBy() {
   return (
