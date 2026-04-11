@@ -75,7 +75,7 @@ export default function Footer() {
             ))}
           </div>
 
-          <div className="mt-12">
+          <div className="mt-24">
             <p className="text-xs text-muted">
               &copy; {new Date().getFullYear()} Keni Engineering
             </p>
