@@ -141,31 +141,45 @@ export default function HelpSection() {
   const next = useCallback(() => { setCurrent((c) => c + 1); resetAutoplay(); }, [resetAutoplay]);
   const prev = useCallback(() => { setCurrent((c) => c - 1); resetAutoplay(); }, [resetAutoplay]);
 
-  // After each transition, silently snap back to the center equivalent
-  // Since both positions show the exact same card, the snap is invisible
+  // Silently snap back to the center equivalent after each transition
   const midpoint = total * Math.floor(COPIES / 2);
+  const snapToCenter = useCallback(() => {
+    const el = scrollRef.current?.firstElementChild as HTMLElement | null;
+    if (!el) return;
+    setCurrent((c) => {
+      const posInCycle = ((c % total) + total) % total;
+      const target = midpoint + posInCycle;
+      if (c === target) return c;
+      el.style.transition = "none";
+      void el.offsetHeight;
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          if (el) el.style.transition = "";
+        });
+      });
+      return target;
+    });
+  }, [total, midpoint]);
+
+  // Snap on transitionend
   useEffect(() => {
     const el = scrollRef.current?.firstElementChild as HTMLElement | null;
     if (!el) return;
     const handleTransitionEnd = (e: TransitionEvent) => {
       if (e.target !== el || e.propertyName !== "transform") return;
-      const posInCycle = ((current % total) + total) % total;
-      const target = midpoint + posInCycle;
-      if (current === target) return;
-      // Disable transition, snap to equivalent center position, re-enable
-      el.style.transition = "none";
-      // Force layout so the browser applies the no-transition state
-      void el.offsetHeight;
-      setCurrent(target);
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          el.style.transition = "";
-        });
-      });
+      snapToCenter();
     };
     el.addEventListener("transitionend", handleTransitionEnd);
     return () => el.removeEventListener("transitionend", handleTransitionEnd);
-  }, [current, total, midpoint]);
+  }, [snapToCenter]);
+
+  // Safety net: snap back if we drift too far from center (e.g. rapid clicking)
+  useEffect(() => {
+    const distFromCenter = Math.abs(current - midpoint);
+    if (distFromCenter > total * 3) {
+      snapToCenter();
+    }
+  }, [current, midpoint, total, snapToCenter]);
 
   // Autoplay
   useEffect(() => {
@@ -217,7 +231,7 @@ export default function HelpSection() {
     <button
       onClick={onClick}
       aria-label={direction === "left" ? "Previous" : "Next"}
-      className={`absolute top-1/2 -translate-y-1/2 z-20 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-sm hover:bg-white transition-all duration-200 shadow-md ${direction === "left" ? "left-2 md:left-6" : "right-2 md:right-6"}`}
+      className={`absolute top-1/2 -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-sm hover:bg-white transition-all duration-200 shadow-md ${direction === "left" ? "left-2 md:left-6" : "right-2 md:right-6"}`}
     >
       <svg
         className="w-4 h-4 text-black/70"
@@ -240,12 +254,12 @@ export default function HelpSection() {
       className="py-32 md:py-48"
     >
       <FadeIn>
-        <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-16 md:mb-20 font-light text-center">
+        <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-8 md:mb-20 font-light text-center">
           We help you
         </p>
       </FadeIn>
       <FadeIn delay={0.1}>
-        <h2 className="text-[clamp(1.25rem,2vw,1.75rem)] text-foreground font-light tracking-wide mb-16 text-center">
+        <h2 className="text-[clamp(1.25rem,2vw,1.75rem)] text-foreground font-light tracking-wide mb-8 md:mb-16 text-center">
           When, how and where you want
         </h2>
       </FadeIn>
@@ -275,8 +289,8 @@ export default function HelpSection() {
               gap: visibleCards === 1 ? 10 : 14,
               paddingLeft: visibleCards === 1 ? 16 : "max(24px, calc((100vw - 1320px) / 2 + 24px))",
               paddingRight: visibleCards === 1 ? 16 : "max(24px, calc((100vw - 1320px) / 2 + 24px))",
-              transform: `translateX(calc(${-current * (100 / visibleCards)}% - ${current * (visibleCards === 1 ? 10 : 14)}px + ${dragOffset}px))`,
-              transition: isDragging ? "none" : `transform 1.8s ${EASE}`,
+              transform: `translateX(calc(${-current * (visibleCards === 1 ? 55 : 100 / visibleCards)}% - ${current * (visibleCards === 1 ? 10 : 14)}px + ${dragOffset}px))`,
+              transition: isDragging ? "none" : `transform ${visibleCards === 1 ? "1.2s" : "1.8s"} ${EASE}`,
             }}
           >
             {repeatedCards.map((card, i) => (
@@ -284,7 +298,7 @@ export default function HelpSection() {
                 key={`${card.label}-${i}`}
                 className="flex-shrink-0"
                 style={{
-                  width: visibleCards === 1 ? "calc(88% - 6px)" : "calc(30% - 8px)",
+                  width: visibleCards === 1 ? "calc(55% - 6px)" : "calc(30% - 8px)",
                 }}
               >
                 <Link
@@ -499,9 +513,9 @@ export default function HelpSection() {
                     )}
 
                     {/* Content */}
-                    <div className={`absolute left-0 right-0 p-6 md:p-8 z-10 ${card.textTop ? "top-0" : "bottom-0"}`}>
+                    <div className={`absolute left-0 right-0 p-3 md:p-8 z-10 ${card.textTop ? "top-0" : "bottom-0"}`}>
                       <p
-                        className={`text-[0.5rem] font-medium tracking-[0.25em] mb-3 ${
+                        className={`text-[0.4rem] md:text-[0.5rem] font-medium tracking-[0.25em] mb-1.5 md:mb-3 ${
                           card.labelColor
                             ? card.labelColor
                             : card.dark
@@ -512,14 +526,14 @@ export default function HelpSection() {
                         {card.label}
                       </p>
                       <h3
-                        className={`text-lg md:text-xl lg:text-2xl font-medium leading-tight tracking-wide ${
+                        className={`text-sm md:text-xl lg:text-2xl font-medium leading-tight tracking-wide ${
                           card.dark ? "text-white" : "text-black"
                         }`}
                       >
                         {card.headline}
                       </h3>
                       <div
-                        className={`mt-3 flex items-center gap-1.5 text-xs font-medium transition-colors duration-300 ${
+                        className={`mt-1.5 md:mt-3 flex items-center gap-1 md:gap-1.5 text-[0.6rem] md:text-xs font-medium transition-colors duration-300 ${
                           card.dark
                             ? "text-white/50 group-hover:text-white"
                             : "text-black/40 group-hover:text-black"
@@ -527,7 +541,7 @@ export default function HelpSection() {
                       >
                         Learn more
                         <svg
-                          className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform duration-300"
+                          className="w-2.5 h-2.5 md:w-3.5 md:h-3.5 transform group-hover:translate-x-1 transition-transform duration-300"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -549,22 +563,22 @@ export default function HelpSection() {
         </div>
 
         {/* Dot indicators */}
-        <div className="flex items-center justify-center gap-2 mt-8">
+        <div className="flex items-center justify-center gap-3 md:gap-2 mt-8">
           {cards.map((card, i) => (
             <button
               key={card.label}
               onClick={() => { setCurrent(startOffset + i); resetAutoplay(); }}
               aria-label={`Go to slide ${i + 1}`}
+              className="p-1 md:p-0"
               style={{
-                width: 7,
-                height: 7,
+                width: visibleCards === 1 ? 9 : 7,
+                height: visibleCards === 1 ? 9 : 7,
                 borderRadius: "50%",
                 backgroundColor:
                   ((current % total) + total) % total === i
                     ? "rgba(0,0,0,0.5)"
                     : "rgba(0,0,0,0.12)",
                 border: "none",
-                padding: 0,
                 cursor: "pointer",
                 transition: "background-color 0.3s ease",
               }}
