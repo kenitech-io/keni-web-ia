@@ -34,6 +34,9 @@ function HeroContent() {
           Schedule a call
         </a>
       </div>
+      <p className="md:hidden text-xs text-muted/50 font-light mt-8 max-w-[280px] mx-auto text-center leading-relaxed">
+        Deploy time cut by 90% on average. CI/CD, infrastructure, monitoring, and security, all handled.
+      </p>
     </>
   );
 }
