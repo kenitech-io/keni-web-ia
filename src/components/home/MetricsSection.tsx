@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
 
 const metrics = [
@@ -19,8 +18,7 @@ const metrics = [
 
 export default function MetricsSection() {
   return (
-    <section>
-      <Container>
+    <section className="px-6 md:px-[10%]">
         <div className="py-16 md:py-24 pb-32 md:pb-48">
           <FadeIn>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
@@ -46,7 +44,6 @@ export default function MetricsSection() {
             </div>
           </FadeIn>
         </div>
-      </Container>
     </section>
   );
 }

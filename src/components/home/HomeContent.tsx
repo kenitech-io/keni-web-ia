@@ -71,14 +71,10 @@ export default function HomeContent() {
       <MetricsSection />
 
       {/* Pipeline + Terminals */}
-      <section className="py-32 md:py-48">
-        <Container>
-          {/* Terminals */}
+      <section className="py-32 md:py-48 px-6 md:px-[10%]">
           <FadeIn>
             <LiveScreen />
           </FadeIn>
-
-        </Container>
       </section>
 
       <GlobeSection />

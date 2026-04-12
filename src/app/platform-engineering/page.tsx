@@ -160,7 +160,7 @@ export default function PlatformEngineeringPage() {
       {/* What We Build */}
       <section className="px-3 pt-3">
         <FadeIn>
-          <div className="bg-white dark:bg-[#1c1c1e] py-24 md:py-32 px-8">
+          <div className="bg-white dark:bg-[#1c1c1e] py-16 md:py-32 px-5 md:px-8">
             <p className="text-label uppercase tracking-[0.25em] text-black/30 dark:text-white/30 mb-8 font-light text-center">
               WHAT WE BUILD
             </p>
@@ -217,7 +217,7 @@ export default function PlatformEngineeringPage() {
       {/* Why Not Kubernetes */}
       <section className="px-3 pt-3">
         <FadeIn>
-          <div className="bg-white dark:bg-[#1c1c1e] py-24 md:py-32 px-8">
+          <div className="bg-white dark:bg-[#1c1c1e] py-16 md:py-32 px-5 md:px-8">
             <p className="text-label uppercase tracking-[0.25em] text-black/30 dark:text-white/30 mb-8 font-light text-center">
               WHY NOT KUBERNETES
             </p>
@@ -278,7 +278,7 @@ export default function PlatformEngineeringPage() {
       {/* Related Reading */}
       <section className="px-3 pt-3">
         <FadeIn>
-          <div className="py-24 md:py-32 px-8 bg-light-gradient">
+          <div className="py-16 md:py-32 px-5 md:px-8 bg-light-gradient">
             <p className="text-label uppercase tracking-[0.25em] text-black/30 dark:text-white/30 mb-8 font-light text-center">
               FROM THE BLOG
             </p>

@@ -335,7 +335,7 @@ function TerminalWindow({ title, lines }: { title: string; lines: string[] }) {
         </div>
         <span className="text-[10px] text-[#484f58] font-mono ml-2">{title}</span>
       </div>
-      <div className="p-5 md:p-6 h-[420px] overflow-hidden">
+      <div className="p-5 md:p-6 h-[420px] md:h-[520px] overflow-hidden">
         <Terminal lines={lines} />
       </div>
     </div>
@@ -346,14 +346,14 @@ export default function LiveScreen() {
   const [activeScreen, setActiveScreen] = useState(0);
 
   return (
-    <div className="w-full max-w-[1100px] mx-auto">
+    <div className="w-full mx-auto">
       {/* Tabs top-left */}
       <div className="flex gap-2 mb-6">
         {screens.map((screen, i) => (
           <button
             key={screen.label}
             onClick={() => setActiveScreen(i)}
-            className={`px-4 py-2 text-xs font-light tracking-wide rounded transition-colors ${
+            className={`px-3 py-1.5 text-[0.65rem] font-light tracking-wide rounded transition-colors ${
               i === activeScreen
                 ? "bg-foreground text-background"
                 : "text-foreground-secondary/70 hover:text-foreground border border-foreground/[0.08]"
@@ -384,7 +384,7 @@ export default function LiveScreen() {
               {["monitoring", "CI pipeline", "CD pipeline"][activeScreen]}
             </span>
           </div>
-          <div className="p-5 md:p-6 h-[420px] overflow-hidden">
+          <div className="p-5 md:p-6 h-[420px] md:h-[520px] overflow-hidden">
             {activeScreen === 0 && <ServerDashboard />}
             {activeScreen === 1 && <CIPipeline />}
             {activeScreen === 2 && <CDPipeline />}
@@ -392,21 +392,7 @@ export default function LiveScreen() {
         </div>
       </div>
 
-      {/* Pipeline diagram synced with active tab */}
-      <div className="bg-[#0d1117] rounded-2xl overflow-hidden border border-[#30363d]/50 px-6 py-5 mt-4">
-        <div className="flex items-center gap-2">
-          {pipelines[activeScreen].map((step, i, arr) => (
-            <div key={step.label} className="flex items-center gap-2 flex-1 min-w-0">
-              <span className={`flex-1 text-center py-2 text-[10px] md:text-xs font-mono rounded ${step.style}`}>
-                {step.label}
-              </span>
-              {i < arr.length - 1 && (
-                <span className="text-[#30363d] text-xs shrink-0">→</span>
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
+      {/* Pipeline diagram hidden */}
     </div>
   );
 }
