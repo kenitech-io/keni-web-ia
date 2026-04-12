@@ -6,9 +6,9 @@ import FadeIn from "@/components/ui/FadeIn";
 
 export default function ProblemSection() {
   return (
-    <section className="py-40 md:py-48">
-      <Container>
-        <div className="max-w-[640px] mx-auto text-center">
+    <section className="py-40 md:py-0 md:min-h-screen md:flex md:items-center">
+      <Container className="w-full">
+        <div className="max-w-[640px] mx-auto text-center md:mt-12">
           <FadeIn>
             <h2 className="text-heading text-foreground font-normal md:font-light tracking-wide mb-6 md:mb-8">
               An <strong>internal development platform</strong> built for your team

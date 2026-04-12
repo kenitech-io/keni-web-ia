@@ -140,7 +140,7 @@ export default function ProcessSection() {
           <p className="text-label uppercase tracking-[0.25em] text-black/30 dark:text-white/30 mb-8 font-light text-center">
             What we do
           </p>
-          <h2 className="text-3xl md:text-5xl font-semibold text-black dark:text-white tracking-tight mb-10 md:mb-20 text-center">
+          <h2 className="text-3xl md:text-3xl font-medium text-black dark:text-white tracking-tight mb-10 md:mb-20 text-center" style={{ fontWeight: 550 }}>
             Ship with confidence
           </h2>
           <div className="max-w-[1000px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-12">

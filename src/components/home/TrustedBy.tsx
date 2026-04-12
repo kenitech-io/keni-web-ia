@@ -5,13 +5,14 @@ const clients = ["Orbex", "Nuvio", "Brightcraft", "Mosaiq Studio", "Tessmark", "
 export default function TrustedBy() {
   return (
     <section className="bg-[#fafafa] dark:bg-[#0a0a0a]">
-      <div className="max-w-content mx-auto px-6 py-14 md:py-20">
+      <div className="max-w-content mx-auto px-6 py-7 md:py-10">
         <FadeIn>
-          <p className="text-sm md:text-base text-foreground/20 font-medium text-center mb-10 md:mb-14">
+          <p className="text-xs md:text-sm text-muted font-medium text-center mb-5 md:mb-7">
             Trusted by
           </p>
         </FadeIn>
         <FadeIn delay={0.1}>
+
           <div className="relative overflow-hidden">
             <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[#fafafa] dark:from-[#0a0a0a] to-transparent z-10" />
             <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#fafafa] dark:from-[#0a0a0a] to-transparent z-10" />
@@ -20,7 +21,7 @@ export default function TrustedBy() {
                 clients.map((client, i) => (
                   <span
                     key={`${setIndex}-${i}`}
-                    className="flex-shrink-0 px-8 md:px-12 text-sm md:text-base font-medium tracking-wide text-foreground"
+                    className="flex-shrink-0 px-8 md:px-12 text-xs md:text-sm font-medium tracking-wide text-foreground"
                   >
                     {client}
                   </span>
