@@ -87,7 +87,7 @@ export default function WhySMBsNeedDevOps() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <article>
-        <section className="py-32 md:py-48">
+        <section className="py-20 md:py-48">
           <Container>
             <div className="max-w-[640px] mx-auto">
               <FadeIn>
