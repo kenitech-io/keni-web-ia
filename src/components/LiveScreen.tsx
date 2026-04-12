@@ -290,39 +290,6 @@ const screens = [
   { label: "OPS", logs: deployLogs },
 ];
 
-const s = {
-  muted: "text-[#8b949e] border border-[#30363d]",
-  purple: "text-[#ce93d8] bg-[#4a148c]/20 border border-[#4a148c]/40",
-  green: "text-[#80cbc4] bg-[#004d40]/20 border border-[#004d40]/40",
-  yellow: "text-[#fff176] bg-[#f9a825]/10 border border-[#f9a825]/30",
-  blue: "text-[#90caf9] bg-[#0d47a1]/20 border border-[#0d47a1]/40",
-  orange: "text-[#ffb74d] bg-[#e65100]/20 border border-[#e65100]/40",
-};
-
-const pipelines = [
-  // DevOps: DevOps → Repo → Core / Dev / Prod
-  [
-    { label: "DevOps", style: s.muted },
-    { label: "Repo", style: s.muted },
-    { label: "keni-core", style: s.orange },
-    { label: "keni-dev", style: s.orange },
-    { label: "keni-prod", style: s.orange },
-  ],
-  // DEV: dev → Repo → Build → Test → Store
-  [
-    { label: "dev", style: s.muted },
-    { label: "Repo", style: s.muted },
-    { label: "Build", style: s.purple },
-    { label: "Test", style: s.green },
-    { label: "Store", style: s.yellow },
-  ],
-  // OPS: Store → Secrets → Deploy
-  [
-    { label: "Store", style: s.yellow },
-    { label: "Secrets", style: s.blue },
-    { label: "Deploy", style: s.orange },
-  ],
-];
 
 function TerminalWindow({ title, lines }: { title: string; lines: string[] }) {
   return (

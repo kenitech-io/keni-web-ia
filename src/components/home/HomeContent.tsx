@@ -8,11 +8,9 @@ import ProcessSection from "@/components/home/ProcessSection";
 import HelpSection from "@/components/home/HelpSection";
 import HomeCTA from "@/components/home/HomeCTA";
 import MetricsSection from "@/components/home/MetricsSection";
-import PillHeadline from "@/components/home/PillHeadline";
 import TrustedBy from "@/components/home/TrustedBy";
 import GlobeSection from "@/components/home/GlobeSection";
 import LiveScreen from "@/components/LiveScreen";
-import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
 import { BLOCKED_DOMAINS } from "@/lib/config";
 
