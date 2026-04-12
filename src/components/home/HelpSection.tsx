@@ -81,8 +81,8 @@ const cards: Card[] = [
   {
     label: "DEDICATED EXPERTS",
     headline: "Always learning. Always building.",
-    image: "/help-innovation.png",
-    alt: "Abstract 3D blocks representing innovation and teamwork",
+    image: "/help-cube.png",
+    alt: "Abstract 3D crystal cube representing innovation",
     href: "/about",
     dark: true,
     bgHex: "#000000",
@@ -90,7 +90,7 @@ const cards: Card[] = [
     labelColor: "text-[#C65100]",
     objectFit: "contain",
     textTop: true,
-    imageWidth: "200%",
+    imageWidth: "220%",
     imageOffset: "0",
   },
   {
@@ -258,12 +258,6 @@ export default function HelpSection() {
           We help you
         </p>
       </FadeIn>
-      <FadeIn delay={0.1}>
-        <h2 className="text-[clamp(1.25rem,2vw,1.75rem)] text-foreground font-light tracking-wide mb-8 md:mb-16 text-center">
-          When, how and where you want
-        </h2>
-      </FadeIn>
-
       {/* Carousel - Apple style */}
       <div
         className="relative mt-12 md:mt-16 group/carousel"
@@ -309,7 +303,7 @@ export default function HelpSection() {
                   <div
                     className={`relative overflow-hidden rounded-lg transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-1 ${card.dark && !card.keepBlackDark ? "dark:!bg-[#1c1c1e]" : ""}`}
                     style={{
-                      aspectRatio: "3 / 4",
+                      aspectRatio: "3 / 5",
                       backgroundColor: card.bgHex || (card.dark ? "#111" : "#F5F5F5"),
                       boxShadow: "0 6px 20px -4px rgba(0,0,0,0.15), 0 2px 6px -2px rgba(0,0,0,0.1)",
                     }}

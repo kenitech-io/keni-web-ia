@@ -2,8 +2,8 @@ import FadeIn from "@/components/ui/FadeIn";
 
 function Pill({ icon, label }: { icon: React.ReactNode; label: string }) {
   return (
-    <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border-color bg-background text-sm font-medium text-foreground align-middle mx-1">
-      <span className="w-4 h-4 text-muted">{icon}</span>
+    <span className="inline-flex items-center gap-1.5 md:gap-2 px-3 py-1 md:px-4 md:py-1.5 rounded-full border border-border-color bg-background text-xs md:text-sm font-medium text-foreground align-middle mx-0.5 md:mx-1">
+      <span className="w-3.5 h-3.5 md:w-4 md:h-4 text-muted">{icon}</span>
       {label}
     </span>
   );
@@ -11,9 +11,9 @@ function Pill({ icon, label }: { icon: React.ReactNode; label: string }) {
 
 export default function PillHeadline() {
   return (
-    <section className="py-20 md:py-32 bg-[#fafafa] dark:bg-[#0a0a0a]">
+    <section className="py-12 md:py-32 bg-[#fafafa] dark:bg-[#0a0a0a]">
       <FadeIn>
-        <p className="text-center text-[clamp(1rem,2.5vw,1.5rem)] font-semibold tracking-tight text-foreground leading-relaxed max-w-[1000px] mx-auto px-6 whitespace-nowrap">
+        <p className="text-center text-[clamp(0.9rem,2.5vw,1.5rem)] font-semibold tracking-tight text-foreground leading-loose max-w-[1000px] mx-auto px-6 md:whitespace-nowrap">
           Scale your{" "}
           <Pill
             icon={

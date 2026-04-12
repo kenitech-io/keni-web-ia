@@ -23,10 +23,10 @@ export default function GlobeSection() {
   }, []);
 
   return (
-    <section className="py-20 md:py-32 overflow-hidden">
+    <section className="py-16 md:py-32 overflow-hidden">
       <FadeIn>
         <div className="text-center max-w-[700px] mx-auto px-6">
-          <p className="text-[clamp(1.25rem,3vw,1.75rem)] leading-relaxed text-foreground">
+          <p className="text-[clamp(1.1rem,3vw,1.75rem)] leading-relaxed text-foreground">
             <strong className="font-semibold">Your deploys cost hours. Ours cost seconds.</strong>
             <br />
             <span className="text-foreground-secondary/70 font-light">
@@ -36,13 +36,13 @@ export default function GlobeSection() {
           <div className="flex items-center justify-center gap-3 mt-8">
             <Link
               href="/devops-consulting"
-              className="inline-block bg-foreground hover:bg-foreground/85 text-background px-6 py-2.5 text-sm font-light tracking-wide rounded-full transition-colors"
+              className="inline-block bg-foreground hover:bg-foreground/85 text-background px-5 py-2 md:px-6 md:py-2.5 text-xs md:text-sm font-light tracking-wide rounded-full transition-colors"
             >
               More about services
             </Link>
             <Link
               href="/infrastructure-audit"
-              className="inline-block border border-border-color hover:border-foreground/40 text-foreground px-6 py-2.5 text-sm font-light tracking-wide rounded-full transition-colors"
+              className="inline-block border border-border-color hover:border-foreground/40 text-foreground px-5 py-2 md:px-6 md:py-2.5 text-xs md:text-sm font-light tracking-wide rounded-full transition-colors"
             >
               Get a free audit
             </Link>
@@ -51,7 +51,7 @@ export default function GlobeSection() {
       </FadeIn>
 
       <FadeIn delay={0.15}>
-        <div className="relative mt-16 md:mt-20 max-w-[500px] mx-auto px-6">
+        <div className="relative mt-10 md:mt-20 max-w-[500px] mx-auto px-6">
           <div className="flex items-center justify-between">
             {steps.map((step, i) => (
               <div key={step.label} className="flex items-center flex-1 last:flex-none">
