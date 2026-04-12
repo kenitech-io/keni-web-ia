@@ -302,7 +302,7 @@ function TerminalWindow({ title, lines }: { title: string; lines: string[] }) {
         </div>
         <span className="text-[10px] text-[#484f58] font-mono ml-2">{title}</span>
       </div>
-      <div className="p-5 md:p-6 h-[420px] md:h-[600px] overflow-hidden">
+      <div className="p-5 md:p-6 h-[420px] md:h-[520px] overflow-hidden">
         <Terminal lines={lines} />
       </div>
     </div>
@@ -351,7 +351,7 @@ export default function LiveScreen() {
               {["monitoring", "CI pipeline", "CD pipeline"][activeScreen]}
             </span>
           </div>
-          <div className="p-5 md:p-6 h-[420px] md:h-[600px] overflow-hidden">
+          <div className="p-5 md:p-6 h-[420px] md:h-[520px] overflow-hidden">
             {activeScreen === 0 && <ServerDashboard />}
             {activeScreen === 1 && <CIPipeline />}
             {activeScreen === 2 && <CDPipeline />}
