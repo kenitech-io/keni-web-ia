@@ -84,8 +84,6 @@ export default function HomeContent() {
 
       <HelpSection />
 
-      <PillHeadline />
-
       <HomeCTA />
       <InteractiveDiagram
         isOpen={diagramOpen}
