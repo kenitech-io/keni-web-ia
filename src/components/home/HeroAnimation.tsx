@@ -50,7 +50,7 @@ export default function HeroAnimation({ children }: { children: ReactNode }) {
 
       {/* Intro content (animation-only, not SEO-critical) */}
       <div
-        className="absolute flex flex-col items-center text-center"
+        className="absolute inset-0 flex flex-col items-center justify-center text-center"
         aria-hidden="true"
         style={{
           opacity: phase === "intro" ? 1 : 0,
