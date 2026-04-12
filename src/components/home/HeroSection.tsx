@@ -15,10 +15,10 @@ function HeroContent() {
         <span className="block">Push code,</span>
         <span className="block font-light">we handle the rest.</span>
       </h1>
-      <p className="text-foreground-secondary text-base md:text-lg font-normal md:font-light mt-5 mb-10 max-w-[520px] mx-auto leading-relaxed">
+      <p className="text-foreground-secondary text-base md:text-lg font-normal md:font-light mt-5 mb-10 max-w-[520px] mx-auto md:mx-0 leading-relaxed">
         DevOps expertise for your team,<br className="md:hidden" /> without the $200K hire.
       </p>
-      <div className="flex flex-row items-center justify-center gap-3 md:gap-4">
+      <div className="flex flex-row items-center justify-center md:justify-start gap-3 md:gap-4">
         <a
           href="/infrastructure-audit"
           className="inline-block bg-foreground hover:bg-foreground/85 text-background px-6 py-3 md:px-10 md:py-2.5 text-sm font-light tracking-wide rounded-full transition-colors"
@@ -34,7 +34,7 @@ function HeroContent() {
           Schedule a call
         </a>
       </div>
-      <p className="text-xs md:text-[0.7rem] text-muted/50 md:text-muted/30 font-light mt-8 md:mt-10 max-w-[280px] md:max-w-[360px] mx-auto text-center leading-relaxed">
+      <p className="text-xs md:text-[0.7rem] text-muted/50 md:text-muted/30 font-light mt-8 md:mt-10 max-w-[280px] md:max-w-[360px] mx-auto md:mx-0 text-center md:text-left leading-relaxed">
         Deploy time cut by 90% on average. CI/CD, infrastructure, monitoring, and security, all handled.
       </p>
     </>
