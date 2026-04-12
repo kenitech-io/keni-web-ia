@@ -2,7 +2,6 @@
 
 import { useState, useEffect, type ReactNode } from "react";
 import { useSearchParams } from "next/navigation";
-import TrustedBy from "@/components/home/TrustedBy";
 
 type Phase = "loading" | "intro" | "transition" | "hero";
 
@@ -94,16 +93,6 @@ export default function HeroAnimation({ children }: { children: ReactNode }) {
         {children}
       </div>
 
-      {/* Trusted by - pinned to bottom */}
-      <div
-        className="absolute bottom-8 md:bottom-12 left-0 right-0"
-        style={{
-          opacity: phase === "hero" ? 1 : 0,
-          transition: "opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1)",
-        }}
-      >
-        <TrustedBy />
-      </div>
     </section>
   );
 }

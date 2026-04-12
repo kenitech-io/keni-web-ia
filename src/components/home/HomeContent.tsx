@@ -1,13 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import dynamic from "next/dynamic";
 import HeroSection from "@/components/home/HeroSection";
 import ProblemSection from "@/components/home/ProblemSection";
 import ProcessSection from "@/components/home/ProcessSection";
 import HelpSection from "@/components/home/HelpSection";
 import HomeCTA from "@/components/home/HomeCTA";
+import PillHeadline from "@/components/home/PillHeadline";
+import TrustedBy from "@/components/home/TrustedBy";
+import GlobeSection from "@/components/home/GlobeSection";
 import LiveScreen from "@/components/LiveScreen";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
@@ -62,6 +64,7 @@ export default function HomeContent() {
   return (
     <>
       <HeroSection />
+      <TrustedBy />
       <ProblemSection />
 
       {/* Pipeline + Terminals */}
@@ -75,53 +78,14 @@ export default function HomeContent() {
         </Container>
       </section>
 
+      <GlobeSection />
+
       <ProcessSection />
 
       <HelpSection />
 
-      {/* Explore links - hidden on mobile */}
-      <section className="hidden md:block py-32 md:py-48">
-        <Container>
-          <div className="max-w-[640px] mx-auto text-center">
-            <FadeIn>
-              <p className="text-label uppercase tracking-[0.25em] text-muted/60 mb-16 md:mb-20 font-light">
-                EXPLORE
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-4">
-                <Link
-                  href="/healthcheck"
-                  className="text-sm text-foreground font-light underline underline-offset-4 decoration-border-color hover:decoration-foreground transition-all duration-300"
-                >
-                  Free health check
-                </Link>
-                <span className="text-border-color">·</span>
-                <Link
-                  href="/platform"
-                  className="text-sm text-foreground font-light underline underline-offset-4 decoration-border-color hover:decoration-foreground transition-all duration-300"
-                >
-                  Platform architecture
-                </Link>
-                <span className="text-border-color">·</span>
-                <Link
-                  href="/blog"
-                  className="text-sm text-foreground font-light underline underline-offset-4 decoration-border-color hover:decoration-foreground transition-all duration-300"
-                >
-                  Blog
-                </Link>
-                <span className="text-border-color">·</span>
-                <Link
-                  href="/about"
-                  className="text-sm text-foreground font-light underline underline-offset-4 decoration-border-color hover:decoration-foreground transition-all duration-300"
-                >
-                  About us
-                </Link>
-              </div>
-            </FadeIn>
-          </div>
-        </Container>
-      </section>
+      <PillHeadline />
+
       <HomeCTA />
       <InteractiveDiagram
         isOpen={diagramOpen}
