@@ -49,7 +49,7 @@ function HeroContent() {
             </div>
           </div>
           <Link
-            href="/contact"
+            href="/takeover"
             className="block text-center bg-[#C65100] hover:bg-[#a84400] text-white px-6 py-3 text-sm font-light tracking-wide rounded-full transition-colors"
           >
             Claim your slot
