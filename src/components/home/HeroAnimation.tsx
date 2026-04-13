@@ -83,7 +83,7 @@ export default function HeroAnimation({ children }: { children: ReactNode }) {
 
       {/* Main hero content, server-rendered children with animation wrapper */}
       <div
-        className="w-full max-w-[1200px] text-center md:text-left pb-24 md:pb-8"
+        className="w-full max-w-[1200px] text-center md:text-left pb-16 md:pb-8"
         style={{
           opacity: phase === "hero" ? 1 : 0,
           transform: phase === "hero" ? "translateY(0)" : "translateY(6px)",
