@@ -17,15 +17,37 @@ function HeroContent() {
           <span className="block">Push code,</span>
           <span className="block font-light">we handle the rest.</span>
         </h1>
-        <p className="text-foreground-secondary text-base md:text-lg font-normal md:font-light mt-5 mb-10 max-w-[520px] mx-auto md:mx-0 leading-relaxed">
+        <p className="text-foreground-secondary text-base md:text-lg font-normal md:font-light mt-5 mb-6 md:mb-10 max-w-[520px] mx-auto md:mx-0 leading-relaxed">
           DevOps expertise for your team,<br className="md:hidden" /> without the $200K hire.
         </p>
-        <p className="text-xs md:text-[0.7rem] text-muted/50 md:text-muted/30 font-light mt-8 md:mt-10 max-w-[280px] md:max-w-[360px] mx-auto md:mx-0 text-center md:text-left leading-relaxed">
+
+        {/* Mobile: offer card */}
+        <div className="md:hidden mb-6">
+          <div className="border border-border-color rounded-lg px-5 py-5">
+            <p className="text-[0.6rem] uppercase tracking-[0.2em] text-[#C65100] font-medium mb-3">
+              Limited slots
+            </p>
+            <p className="text-sm font-medium text-foreground tracking-tight mb-1">
+              14-Day DevOps Takeover. <span className="text-[#C65100]">Free.</span>
+            </p>
+            <p className="text-xs text-muted font-light mb-4">
+              We rebuild your DevOps in 14 days. You owe nothing.
+            </p>
+            <Link
+              href="/takeover"
+              className="block text-center bg-[#C65100] hover:bg-[#a84400] text-white px-5 py-1.5 text-[11px] font-light tracking-wide rounded-full transition-colors"
+            >
+              Claim your slot
+            </Link>
+          </div>
+        </div>
+
+        <p className="hidden md:block text-[0.7rem] text-muted/30 font-light max-w-[360px] md:mx-0 text-left leading-relaxed">
           Deploy time cut by 90% on average. CI/CD, infrastructure, monitoring, and security, all handled.
         </p>
       </div>
 
-      {/* Right: 14-Day Takeover offer */}
+      {/* Right: desktop card */}
       <div className="hidden md:block flex-shrink-0 w-[340px]">
         <div className="border border-border-color rounded-lg p-8">
           <p className="text-[0.65rem] uppercase tracking-[0.2em] text-[#C65100] font-medium mb-4">

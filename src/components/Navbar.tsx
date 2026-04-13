@@ -17,6 +17,7 @@ const exploreLinks = [
 const mobileLinks = [
   { name: "Platform", href: "/platform" },
   { name: "Health Check", href: "/healthcheck" },
+  { name: "Pricing", href: "/takeover" },
   ...exploreLinks,
 ];
 
@@ -150,6 +151,9 @@ export default function Navbar() {
               </Link>
               <Link href="/healthcheck" className={`text-xs font-medium transition-colors duration-300 ${onDark ? "text-white hover:text-white/70" : "text-foreground hover:text-foreground/70"}`}>
                 Health Check
+              </Link>
+              <Link href="/takeover" className={`text-xs font-medium transition-colors duration-300 ${onDark ? "text-white hover:text-white/70" : "text-foreground hover:text-foreground/70"}`}>
+                Pricing
               </Link>
               {/* Explore dropdown */}
               <div
