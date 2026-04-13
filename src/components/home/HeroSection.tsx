@@ -4,9 +4,9 @@ import HeroAnimation from "@/components/home/HeroAnimation";
 
 function HeroContent() {
   return (
-    <div className="flex flex-col md:flex-row md:items-center md:gap-20 w-full">
+    <div className="flex flex-col md:flex-row md:items-start md:gap-20 w-full">
       {/* Left: headline + CTAs */}
-      <div className="flex-1">
+      <div className="flex-1 flex flex-col justify-center">
         <h1
           className="text-foreground font-bold tracking-tight"
           style={{
@@ -42,37 +42,37 @@ function HeroContent() {
           </div>
         </div>
 
-        <p className="hidden md:block text-[0.7rem] text-muted/30 font-light max-w-[360px] md:mx-0 text-left leading-relaxed">
-          Deploy time cut by 90% on average. CI/CD, infrastructure, monitoring, and security, all handled.
+        <p className="text-xs md:text-[0.7rem] text-muted/50 md:text-muted/30 font-light max-w-[300px] md:max-w-[400px] mx-auto md:mx-0 text-center md:text-left leading-relaxed">
+          We set up your CI/CD, infrastructure, monitoring, and security. Your team pushes code, everything else happens automatically. No more SSH into servers, no more broken deploys on Friday.
         </p>
       </div>
 
       {/* Right: desktop card */}
-      <div className="hidden md:block flex-shrink-0 w-[340px]">
-        <div className="border border-border-color rounded-lg p-8">
-          <p className="text-[0.65rem] uppercase tracking-[0.2em] text-[#C65100] font-medium mb-4">
+      <div className="hidden md:block flex-shrink-0 w-[400px]">
+        <div className="border border-foreground/40 rounded-lg p-6">
+          <p className="text-[0.6rem] uppercase tracking-[0.2em] text-[#C65100] font-medium mb-3">
             Limited slots
           </p>
-          <h3 className="text-xl tracking-tight mb-3">
+          <h3 className="text-lg tracking-tight mb-2">
             <span className="font-medium">14-Day DevOps Takeover.</span> <span className="font-bold text-[#C65100]">Free.</span>
           </h3>
-          <p className="text-sm text-foreground-secondary/70 font-light leading-relaxed mb-6">
+          <p className="text-[13px] text-foreground-secondary/70 font-light leading-relaxed mb-4">
             We rebuild your DevOps in 14 days. Keep us on retainer, or walk away with everything documented.
           </p>
-          <div className="space-y-2.5 mb-8">
-            <div className="flex items-center gap-2.5 text-sm text-foreground/80 font-light">
+          <div className="space-y-2 mb-5">
+            <div className="flex items-center gap-2 text-[13px] text-foreground/80 font-light">
               <span className="text-[#C65100]">&#10003;</span> Full IDP deployed in your environment
             </div>
-            <div className="flex items-center gap-2.5 text-sm text-foreground/80 font-light">
+            <div className="flex items-center gap-2 text-[13px] text-foreground/80 font-light">
               <span className="text-[#C65100]">&#10003;</span> One service building and deploying
             </div>
-            <div className="flex items-center gap-2.5 text-sm text-foreground/80 font-light">
+            <div className="flex items-center gap-2 text-[13px] text-foreground/80 font-light">
               <span className="text-[#C65100]">&#10003;</span> Fully documented. You owe nothing.
             </div>
           </div>
           <Link
             href="/takeover"
-            className="block text-center bg-[#C65100] hover:bg-[#a84400] text-white px-6 py-3 text-sm font-light tracking-wide rounded-full transition-colors"
+            className="block text-center bg-[#C65100] hover:bg-[#a84400] text-white px-5 py-2 text-[13px] font-light tracking-wide rounded-full transition-colors"
           >
             Claim your slot
           </Link>

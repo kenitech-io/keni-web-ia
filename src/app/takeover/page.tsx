@@ -41,8 +41,8 @@ export default function TakeoverPage() {
             <h1 className="text-[clamp(1.5rem,4vw,2.25rem)] font-semibold text-foreground/85 tracking-tight text-center mb-3">
               From 1 deploy a week to 7 a day.
             </h1>
-            <p className="text-sm text-muted text-center max-w-[500px] mx-auto font-light leading-relaxed">
-              Not because your devs are slow. Because deploying is. Manual SSH, brittle scripts, setup docs nobody trusts. In 14 days we give you a platform that does it all on autopilot. For free.
+            <p className="text-xs text-muted text-center max-w-[480px] mx-auto font-light leading-relaxed">
+              Your deploys are slow, not your devs. In 14 days we give you a platform that does it all on autopilot. For free.
             </p>
           </FadeIn>
         </Container>
@@ -64,33 +64,6 @@ export default function TakeoverPage() {
         </Container>
       </section>
 
-      {/* Timeline */}
-      <section className="pb-20 md:pb-32">
-        <Container>
-          <FadeIn delay={0.1}>
-            <div className="max-w-[640px] mx-auto">
-              <p className="text-[10px] font-medium uppercase tracking-[0.15em] text-muted mb-6">What happens in 14 days</p>
-              <table className="w-full">
-                <tbody className="text-[13px]">
-                  {[
-                    ["Day 0", "You send us whatever documentation you have on your infrastructure and deploy process."],
-                    ["Day 1", "Kickoff call. We align on scope and set everything up on our side."],
-                    ["Day 4", "Your new platform is deployed: CI/CD, deployment orchestration, reverse proxy with TLS, observability, private registry, automated backups. Fully IaC, GitOps from day one."],
-                    ["Day 8", "We integrate the platform with your existing tools: SSO, secrets manager, whatever you already use."],
-                    ["Day 10", "One of your services is already being developed through the platform on dev or staging. Zero production touch during the pilot."],
-                    ["Day 14", "Decision call. You pick a tier, or we walk and you keep what we built."],
-                  ].map(([day, desc], i, arr) => (
-                    <tr key={day} className={i < arr.length - 1 ? "border-b border-[#f0f0f0] dark:border-[#222]" : ""}>
-                      <td className="py-3 pr-6 text-foreground font-medium whitespace-nowrap align-top w-[18%]">{day}</td>
-                      <td className="py-3 text-foreground/60 leading-relaxed">{desc}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </FadeIn>
-        </Container>
-      </section>
 
       {/* Pricing cards */}
       <section className="pb-20 md:pb-32">
