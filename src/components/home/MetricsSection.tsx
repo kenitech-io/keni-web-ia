@@ -21,6 +21,10 @@ export default function MetricsSection() {
     <section className="px-6 md:px-[10%]">
         <div className="py-16 md:py-24 pb-32 md:pb-48">
           <FadeIn>
+            <p className="text-[10px] font-medium uppercase tracking-[0.15em] text-muted mb-2 text-center">Results</p>
+            <p className="text-sm md:text-base text-foreground font-light mb-10 max-w-[480px] mx-auto text-center">
+              Real numbers from teams running on the Keni platform.
+            </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
               {metrics.map((metric) => (
                 <p key={metric.headline} className="text-sm md:text-base text-foreground leading-relaxed">
