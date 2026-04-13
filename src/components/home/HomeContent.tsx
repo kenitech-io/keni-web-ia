@@ -63,7 +63,6 @@ export default function HomeContent() {
   return (
     <>
       <HeroSection />
-      <TrustedBy />
       <ProblemSection />
 
       <MetricsSection />
@@ -76,8 +75,6 @@ export default function HomeContent() {
       </section>
 
       <GlobeSection />
-
-      <ProcessSection />
 
       <HelpSection />
 
