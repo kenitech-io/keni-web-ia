@@ -23,7 +23,7 @@ function HeroContent() {
 
         {/* Mobile: offer card */}
         <div className="md:hidden mb-6">
-          <div className="border border-border-color rounded-lg px-5 py-5">
+          <div className="border border-border-color dark:border-[#333] rounded-lg px-5 py-5">
             <p className="text-[0.6rem] uppercase tracking-[0.2em] text-[#C65100] font-medium mb-3">
               Limited slots
             </p>
@@ -49,7 +49,7 @@ function HeroContent() {
 
       {/* Right: desktop card */}
       <div className="hidden md:block flex-shrink-0 w-[400px]">
-        <div className="border border-foreground/40 rounded-lg p-6">
+        <div className="border border-foreground/40 dark:border-[#333] rounded-lg p-6">
           <p className="text-[0.6rem] uppercase tracking-[0.2em] text-[#C65100] font-medium mb-3">
             Limited slots
           </p>

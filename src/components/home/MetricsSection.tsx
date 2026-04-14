@@ -1,50 +1,53 @@
 import Link from "next/link";
 import FadeIn from "@/components/ui/FadeIn";
 
-const metrics = [
+const results = [
   {
-    headline: "90% less time deploying.",
-    description: "Developers got their time back. 20 hours recovered per week.",
+    company: "Digital agency, 63 clients",
+    metric: "45min → 60s",
+    description: "Deploy time reduced from 45 minutes of manual work to 60 seconds, fully automated.",
   },
   {
-    headline: "20 hours/week recovered.",
-    description: "Your engineers build features, not fix pipelines.",
+    company: "5-developer team",
+    metric: "20h/week recovered",
+    description: "Engineers stopped managing servers and went back to building product features.",
   },
   {
-    headline: "Zero deploy failures.",
-    description: "No manual steps means no human error. Every deploy is automated.",
+    company: "220 services, 18 servers",
+    metric: "0 failures",
+    description: "Zero deploy failures from human error. One engineer manages everything.",
   },
 ];
 
 export default function MetricsSection() {
   return (
     <section className="px-6 md:px-[10%]">
-        <div className="py-16 md:py-24 pb-32 md:pb-48">
-          <FadeIn>
-            <p className="text-[10px] font-medium uppercase tracking-[0.15em] text-muted mb-14 text-center">Results</p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 max-w-[800px] mx-auto">
-              {metrics.map((metric) => (
-                <p key={metric.headline} className="text-sm md:text-base text-foreground leading-relaxed">
-                  <strong className="font-semibold">{metric.headline}</strong>{" "}
-                  <span className="text-foreground-secondary/70 font-light">{metric.description}</span>
-                </p>
-              ))}
-            </div>
-          </FadeIn>
-          <FadeIn delay={0.1}>
-            <div className="flex flex-col md:flex-row items-center justify-between mt-14 md:mt-20 max-w-[800px] mx-auto">
-              <p className="text-base md:text-lg text-foreground font-light tracking-tight">
-                Keni clients ship <strong className="font-semibold">10x faster</strong> from day one.
-              </p>
-              <Link
-                href="/devops-consulting"
-                className="inline-block mt-6 md:mt-0 bg-foreground hover:bg-foreground/85 text-background px-6 py-2.5 text-sm font-light tracking-wide rounded-full transition-colors"
-              >
-                Learn more
-              </Link>
-            </div>
-          </FadeIn>
-        </div>
+      <div className="py-16 md:py-24 pb-32 md:pb-48">
+        <FadeIn>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 max-w-[900px] mx-auto">
+            {results.map((r) => (
+              <div key={r.company} className="text-center">
+                <p className="text-[11px] text-muted font-light mb-3">{r.company}</p>
+                <p className="text-2xl md:text-3xl font-bold text-foreground tracking-tight mb-3">{r.metric}</p>
+                <p className="text-xs text-foreground-secondary/70 font-light leading-relaxed">{r.description}</p>
+              </div>
+            ))}
+          </div>
+        </FadeIn>
+        <FadeIn delay={0.1}>
+          <div className="flex flex-col md:flex-row items-center justify-center mt-14 md:mt-20 max-w-[800px] mx-auto gap-4">
+            <p className="text-xs md:text-sm text-foreground font-light tracking-tight">
+              Real results. Real infrastructure.
+            </p>
+            <Link
+              href="/takeover"
+              className="inline-block bg-foreground hover:bg-foreground/85 text-background px-5 py-1.5 text-xs font-light tracking-wide rounded-full transition-colors"
+            >
+              See how it works
+            </Link>
+          </div>
+        </FadeIn>
+      </div>
     </section>
   );
 }
