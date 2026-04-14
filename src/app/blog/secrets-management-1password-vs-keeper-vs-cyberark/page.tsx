@@ -29,7 +29,7 @@ const jsonLd = {
   datePublished: "2026-03-13",
   dateModified: "2026-03-13",
   image: "https://kenitech.io/blog/secrets-management-1password-vs-keeper-vs-cyberark/opengraph-image",
-  author: { "@type": "Person", name: "Mikel Martin", url: "https://www.linkedin.com/in/mikelmartin/" },
+  author: { "@type": "Person", name: "Mikel Martin", url: "https://www.linkedin.com/in/mikelm20/" },
   publisher: {
     "@type": "Organization",
     name: "Keni Engineering",
@@ -57,23 +57,19 @@ export default function SecretsManagementComparison() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <article>
-        <section className="py-20 md:py-48">
+        <section className="pt-28 pb-14 md:pt-36 md:pb-16">
           <Container>
             <div className="max-w-[640px] mx-auto">
               <FadeIn>
-                <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-6">SECURITY</p>
-                <h1 className="text-heading text-foreground font-light tracking-wide mb-8">
+                <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-4">SECURITY</p>
+                <h1 className="text-heading text-foreground font-light tracking-wide mb-4">
                   Secrets management: 1Password vs Keeper vs CyberArk vs Vault
                 </h1>
                 <p className="text-label text-muted/60 font-light">March 13, 2026 &middot; 8 min read</p>
-                <div className="flex items-center gap-3 mt-6">
-                  <div>
-                    <p className="text-sm text-foreground font-light">
-                      <a href="https://www.linkedin.com/in/mikelmartin/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground/80 transition-colors">Mikel Martin</a>
-                    </p>
-                    <p className="text-xs text-muted/60 font-light">CTO, Keni Engineering</p>
-                  </div>
-                </div>
+                <a href="https://www.linkedin.com/in/mikelm20/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 mt-3 group">
+                  <img src="/team/mikel.jpg" alt="Mikel Martin" className="w-6 h-6 rounded-full object-cover" />
+                  <span className="text-xs text-foreground font-light group-hover:text-foreground/70 transition-colors">Mikel Martin</span>
+                </a>
               </FadeIn>
             </div>
           </Container>
