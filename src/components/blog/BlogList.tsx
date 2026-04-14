@@ -20,21 +20,26 @@ export default function BlogList({ posts }: { posts: BlogPost[] }) {
 
   return (
     <>
-      <div className="flex flex-wrap items-center justify-center gap-x-4 md:gap-x-6 gap-y-2 mb-24">
+      {/* Category filters */}
+      <div className="flex flex-wrap items-center gap-2 mb-10">
         <button
           onClick={() => setActive(null)}
-          className={`text-xs font-light transition-all pb-1 border-b ${
-            active === null ? "text-foreground border-foreground/20" : "text-muted/35 border-transparent hover:text-muted/60 hover:border-foreground/10"
+          className={`text-xs font-medium px-3.5 py-1.5 rounded-full transition-colors ${
+            active === null
+              ? "bg-foreground text-background"
+              : "text-muted hover:text-foreground border border-[#eaeaea] dark:border-[#333]"
           }`}
         >
-          All
+          All Posts
         </button>
         {categories.map((cat) => (
           <button
             key={cat}
             onClick={() => setActive(active === cat ? null : cat)}
-            className={`text-xs font-light transition-all pb-1 border-b ${
-              active === cat ? "text-foreground border-foreground/20" : "text-muted/35 border-transparent hover:text-muted/60 hover:border-foreground/10"
+            className={`text-xs font-medium px-3.5 py-1.5 rounded-full transition-colors ${
+              active === cat
+                ? "bg-foreground text-background"
+                : "text-muted hover:text-foreground border border-[#eaeaea] dark:border-[#333]"
             }`}
           >
             {cat}
@@ -42,39 +47,60 @@ export default function BlogList({ posts }: { posts: BlogPost[] }) {
         ))}
       </div>
 
-      <div>
-        {filtered.map((post, index) => (
-          <FadeIn key={post.slug} delay={index * 0.05}>
-            <article>
-              {index > 0 && (
-                <div className="my-14 border-t border-border-color w-full md:w-[130%] md:-ml-[15%]"></div>
-              )}
-              <Link
-                href={`/blog/${post.slug}`}
-                prefetch={false}
-                className="group block"
-              >
-                <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-4">
-                  {post.category}
+      {/* Posts grid */}
+      {/* Featured: first 3 */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-l border-[#eaeaea] dark:border-[#333]">
+        {filtered.slice(0, 3).map((post, index) => (
+          <FadeIn key={post.slug} delay={index * 0.03}>
+            <Link
+              href={`/blog/${post.slug}`}
+              prefetch={false}
+              className="group block border-b border-r border-[#eaeaea] dark:border-[#333] p-6 md:p-10 hover:bg-[#fafafa] dark:hover:bg-[#111] transition-colors h-full min-h-[380px] flex flex-col"
+            >
+              <div className="flex items-center justify-between mb-6">
+                <p className="text-[11px] text-muted font-medium">{post.category}</p>
+                <p className="text-[11px] text-muted font-light">
+                  {new Date(post.date).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
                 </p>
-                <h2 className="text-heading text-foreground font-light tracking-wide group-hover:text-foreground/60 transition-colors mb-6">
-                  {post.title}
-                </h2>
-                <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-4">
-                  {post.description}
-                </p>
-                <p className="text-label text-muted/60 font-light">
-                  {new Date(post.date).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </p>
-              </Link>
-            </article>
+              </div>
+              <h2 className="text-xl md:text-2xl font-semibold text-foreground tracking-tight mb-4 group-hover:text-foreground/70 transition-colors leading-tight">
+                {post.title}
+              </h2>
+              <p className="text-sm text-foreground-secondary/60 font-light leading-relaxed line-clamp-5 mt-auto">
+                {post.description}
+              </p>
+            </Link>
           </FadeIn>
         ))}
       </div>
+
+      {/* Rest */}
+      {filtered.length > 3 && (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-l border-[#eaeaea] dark:border-[#333]">
+          {filtered.slice(3).map((post, index) => (
+            <FadeIn key={post.slug} delay={index * 0.03}>
+              <Link
+                href={`/blog/${post.slug}`}
+                prefetch={false}
+                className="group block border-b border-r border-[#eaeaea] dark:border-[#333] p-6 md:p-10 hover:bg-[#fafafa] dark:hover:bg-[#111] transition-colors h-full min-h-[300px] flex flex-col"
+              >
+                <div className="flex items-center justify-between mb-6">
+                  <p className="text-[11px] text-muted font-medium">{post.category}</p>
+                  <p className="text-[11px] text-muted font-light">
+                    {new Date(post.date).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+                  </p>
+                </div>
+                <h2 className="text-lg md:text-xl font-semibold text-foreground tracking-tight mb-4 group-hover:text-foreground/70 transition-colors leading-tight">
+                  {post.title}
+                </h2>
+                <p className="text-[13px] text-foreground-secondary/60 font-light leading-relaxed line-clamp-4 mt-auto">
+                  {post.description}
+                </p>
+              </Link>
+            </FadeIn>
+          ))}
+        </div>
+      )}
     </>
   );
 }

@@ -64,35 +64,8 @@ export default function BlogPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogListJsonLd) }}
       />
-      <section className="py-32 md:py-48">
-        <Container>
-          <div className="max-w-[640px] mx-auto text-center">
-            <FadeIn>
-              <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-6">
-                Blog
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.05}>
-              <h1 className="text-heading text-foreground font-light tracking-wide mb-8">
-                Guides & Best Practices
-              </h1>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
-                Practical guides and honest takes on DevOps, infrastructure, and
-                platform engineering for small teams.
-              </p>
-            </FadeIn>
-          </div>
-        </Container>
-      </section>
-
-      <section className="py-32 md:py-48">
-        <Container>
-          <div className="max-w-[640px] mx-auto">
-            <BlogList posts={blogPosts} />
-          </div>
-        </Container>
+      <section className="pt-28 pb-24 md:pt-36 md:pb-32 px-6 md:px-12 lg:px-20">
+          <BlogList posts={blogPosts} />
       </section>
 
       <CTASection
