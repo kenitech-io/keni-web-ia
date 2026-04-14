@@ -20,9 +20,9 @@ export default function TechGrid() {
   return (
     <section className="py-24 md:py-40 px-6 md:px-[10%]">
       <FadeIn>
-        <div className="flex flex-col md:flex-row gap-12 md:gap-20 max-w-[960px] mx-auto">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 max-w-[960px] mx-auto">
           {/* Left: headline + bullets */}
-          <div className="md:w-[280px] flex-shrink-0">
+          <div className="lg:w-[280px] lg:flex-shrink-0">
             <h2 className="text-xl md:text-2xl font-bold text-foreground tracking-tight leading-tight mb-8">
               Automate your entire stack in days.
             </h2>
@@ -43,7 +43,7 @@ export default function TechGrid() {
 
           {/* Right: tech grid */}
           <div className="flex-1">
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-3 gap-3">
               {tools.map((tool) => (
                 <div key={tool.name} className={`rounded-md p-4 flex items-center justify-center ${tool.name === "Keni" ? "bg-[#fafafa] dark:bg-[#111] ring-1 ring-[#C65100]/20" : "bg-[#fafafa] dark:bg-[#111]"}`}>
                   <div className="w-6 h-6 relative">

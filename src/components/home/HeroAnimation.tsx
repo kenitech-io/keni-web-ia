@@ -34,7 +34,7 @@ export default function HeroAnimation({ children }: { children: ReactNode }) {
 
   return (
     <section
-      className="h-screen flex items-center justify-center md:justify-start px-6 md:px-[10%] relative overflow-hidden"
+      className="h-screen flex items-center justify-center lg:justify-start px-6 md:px-[8%] lg:px-[10%] relative overflow-hidden"
       style={{ backgroundColor: "var(--background)" }}
     >
       {/* Orange background overlay */}
@@ -83,7 +83,7 @@ export default function HeroAnimation({ children }: { children: ReactNode }) {
 
       {/* Main hero content, server-rendered children with animation wrapper */}
       <div
-        className="w-full max-w-[1200px] text-center md:text-left pb-16 md:pb-8"
+        className="w-full max-w-[1200px] text-center lg:text-left pb-16 lg:pb-8"
         style={{
           opacity: phase === "hero" ? 1 : 0,
           transform: phase === "hero" ? "translateY(0)" : "translateY(6px)",

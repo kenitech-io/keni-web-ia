@@ -4,7 +4,7 @@ import HeroAnimation from "@/components/home/HeroAnimation";
 
 function HeroContent() {
   return (
-    <div className="flex flex-col md:flex-row md:items-start md:gap-20 w-full">
+    <div className="flex flex-col lg:flex-row lg:items-start lg:gap-20 w-full">
       {/* Left: headline + CTAs */}
       <div className="flex-1 flex flex-col justify-center">
         <h1
@@ -17,12 +17,12 @@ function HeroContent() {
           <span className="block">Push code,</span>
           <span className="block font-light">we handle the rest.</span>
         </h1>
-        <p className="text-foreground-secondary text-base md:text-lg font-normal md:font-light mt-5 mb-6 md:mb-10 max-w-[520px] mx-auto md:mx-0 leading-relaxed">
+        <p className="text-foreground-secondary text-base lg:text-lg font-normal lg:font-light mt-5 mb-6 lg:mb-10 max-w-[520px] mx-auto lg:mx-0 leading-relaxed">
           DevOps expertise for your team,<br className="md:hidden" /> without the $200K hire.
         </p>
 
         {/* Mobile: offer card */}
-        <div className="md:hidden mb-6">
+        <div className="lg:hidden mb-6">
           <div className="border border-border-color dark:border-[#333] rounded-lg px-5 py-5">
             <p className="text-[0.6rem] uppercase tracking-[0.2em] text-[#C65100] font-medium mb-3">
               Limited slots
@@ -42,13 +42,13 @@ function HeroContent() {
           </div>
         </div>
 
-        <p className="text-xs md:text-[0.7rem] text-muted/50 md:text-muted/30 font-light max-w-[300px] md:max-w-[400px] mx-auto md:mx-0 text-center md:text-left leading-relaxed">
+        <p className="text-xs md:text-[0.7rem] text-muted/50 lg:text-muted/30 font-light max-w-[300px] md:max-w-[400px] mx-auto lg:mx-0 text-center lg:text-left leading-relaxed">
           We set up your CI/CD, infrastructure, monitoring, and security. Your team pushes code, everything else happens automatically. No more SSH into servers, no more broken deploys on Friday.
         </p>
       </div>
 
       {/* Right: desktop card */}
-      <div className="hidden md:block flex-shrink-0 w-[400px]">
+      <div className="hidden lg:block flex-shrink-0 w-[400px]">
         <div className="border border-foreground/40 dark:border-[#333] rounded-lg p-6">
           <p className="text-[0.6rem] uppercase tracking-[0.2em] text-[#C65100] font-medium mb-3">
             Limited slots
