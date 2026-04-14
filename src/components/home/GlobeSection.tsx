@@ -23,30 +23,15 @@ export default function GlobeSection() {
   }, []);
 
   return (
-    <section className="py-16 md:py-32 overflow-hidden">
+    <div className="overflow-hidden">
       <FadeIn>
-        <div className="text-center max-w-[700px] mx-auto px-6">
-          <p className="text-[clamp(1.1rem,3vw,1.75rem)] leading-relaxed text-foreground">
-            <strong className="font-semibold">Your deploys cost hours. Ours cost seconds.</strong>
-            <br />
-            <span className="text-foreground-secondary/70 font-light">
-              No manual steps, no human error, no firefighting. Just code that lands.
-            </span>
+        <div className="max-w-[700px] mx-auto">
+          <p className="text-[clamp(0.9rem,2.5vw,1.25rem)] leading-relaxed text-foreground font-semibold tracking-tight mb-4 md:mb-6">
+            Your deploys cost hours. Ours cost seconds.
           </p>
-          <div className="flex items-center justify-center gap-3 mt-8">
-            <Link
-              href="/devops-consulting"
-              className="inline-block bg-foreground hover:bg-foreground/85 text-background px-5 py-2 md:px-6 md:py-2.5 text-xs md:text-sm font-light tracking-wide rounded-full transition-colors"
-            >
-              More about services
-            </Link>
-            <Link
-              href="/infrastructure-audit"
-              className="inline-block border border-border-color hover:border-foreground/40 text-foreground px-5 py-2 md:px-6 md:py-2.5 text-xs md:text-sm font-light tracking-wide rounded-full transition-colors"
-            >
-              Get a free audit
-            </Link>
-          </div>
+          <p className="text-[clamp(0.75rem,2vw,0.9rem)] text-foreground-secondary/70 leading-loose font-light mb-6 md:mb-10">
+            No manual steps, no human error, no firefighting. Push code, it deploys in 60 seconds. Monitoring, alerts, and rollbacks are built in from day one.
+          </p>
         </div>
       </FadeIn>
 
@@ -90,6 +75,6 @@ export default function GlobeSection() {
           </div>
         </div>
       </FadeIn>
-    </section>
+    </div>
   );
 }

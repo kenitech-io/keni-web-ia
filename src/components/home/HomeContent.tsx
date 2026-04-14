@@ -1,13 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import dynamic from "next/dynamic";
 import HeroSection from "@/components/home/HeroSection";
-import ProblemSection from "@/components/home/ProblemSection";
 import HelpSection from "@/components/home/HelpSection";
 import HomeCTA from "@/components/home/HomeCTA";
 import MetricsSection from "@/components/home/MetricsSection";
 import GlobeSection from "@/components/home/GlobeSection";
+import TrustedBy from "@/components/home/TrustedBy";
+import TechGrid from "@/components/home/TechGrid";
 import LiveScreen from "@/components/LiveScreen";
 import FadeIn from "@/components/ui/FadeIn";
 import { BLOCKED_DOMAINS } from "@/lib/config";
@@ -61,9 +63,33 @@ export default function HomeContent() {
   return (
     <>
       <HeroSection />
-      <ProblemSection />
 
-      <MetricsSection />
+      <section className="py-24 md:py-40 px-6 md:px-[10%]">
+        <FadeIn>
+          <div className="flex flex-col md:flex-row gap-16 md:gap-24">
+            <div className="flex-1 text-center">
+              <h2 className="text-[clamp(0.9rem,2.5vw,1.25rem)] text-foreground font-semibold tracking-tight mb-4 md:mb-6">
+                An internal development platform built for your team
+              </h2>
+              <p className="text-[clamp(0.75rem,2vw,0.9rem)] text-foreground-secondary/70 leading-loose font-light mb-6 md:mb-10">
+                CI/CD pipelines, containerized environments, monitoring, and
+                automated deploys. All wired together around how your team
+                actually works. You push, it gets deployed.
+              </p>
+              <div className="flex items-center justify-center gap-3 md:gap-6">
+                <Link href="/devops-consulting" className="text-sm text-foreground font-light underline underline-offset-4 decoration-border-color hover:decoration-foreground transition-all duration-300 py-2">Consulting services</Link>
+                <span className="text-border-color">·</span>
+                <Link href="/infrastructure-audit" className="text-sm text-foreground font-light underline underline-offset-4 decoration-border-color hover:decoration-foreground transition-all duration-300 py-2">Infrastructure audit</Link>
+              </div>
+            </div>
+            <div className="flex-1 text-center">
+              <GlobeSection />
+            </div>
+          </div>
+        </FadeIn>
+      </section>
+
+      <TechGrid />
 
       {/* Pipeline + Terminals */}
       <section className="py-32 md:py-48 px-6 md:px-[10%]">
@@ -72,9 +98,11 @@ export default function HomeContent() {
           </FadeIn>
       </section>
 
-      <GlobeSection />
-
       <HelpSection />
+
+      <MetricsSection />
+
+      <TrustedBy />
 
       <HomeCTA />
       <InteractiveDiagram
