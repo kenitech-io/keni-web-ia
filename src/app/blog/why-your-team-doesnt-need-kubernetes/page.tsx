@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
 import CTASection from "@/components/CTASection";
@@ -75,7 +76,7 @@ export default function WhyYourTeamDoesntNeedKubernetes() {
                 </h1>
                 <p className="text-label text-muted/60 font-light">April 2, 2026 &middot; 10 min read</p>
                 <a href="https://www.linkedin.com/in/mikelm20/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 mt-3 group">
-                  <img src="/team/mikel.jpg" alt="Mikel Martin" className="w-6 h-6 rounded-full object-cover" />
+                  <Image src="/team/mikel.jpg" alt="Mikel Martin" width={24} height={24} className="w-6 h-6 rounded-full object-cover" />
                   <span className="text-xs text-foreground font-light group-hover:text-foreground/70 transition-colors">Mikel Martin</span>
                 </a>
               </FadeIn>
