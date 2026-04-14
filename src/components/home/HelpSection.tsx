@@ -118,7 +118,7 @@ export default function HelpSection() {
   const [visibleCards, setVisibleCards] = useState(3);
 
   useEffect(() => {
-    const update = () => setVisibleCards(window.innerWidth < 768 ? 1 : 3);
+    const update = () => setVisibleCards(window.innerWidth < 1024 ? 1 : 3);
     update();
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
@@ -263,7 +263,7 @@ export default function HelpSection() {
         className="relative mt-12 md:mt-16 group/carousel"
       >
         {/* Arrow buttons - always visible on mobile, hover on desktop */}
-        <div className="md:opacity-0 md:group-hover/carousel:opacity-100 transition-opacity duration-300">
+        <div className="lg:opacity-0 lg:group-hover/carousel:opacity-100 transition-opacity duration-300">
           <ArrowButton direction="left" onClick={prev} />
           <ArrowButton direction="right" onClick={next} />
         </div>

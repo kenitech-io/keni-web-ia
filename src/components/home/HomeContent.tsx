@@ -64,9 +64,9 @@ export default function HomeContent() {
     <>
       <HeroSection />
 
-      <section className="py-24 md:py-40 px-6 md:px-[10%]">
+      <section className="py-24 md:py-40 px-6 md:px-[8%] lg:px-[10%]">
         <FadeIn>
-          <div className="flex flex-col md:flex-row gap-16 md:gap-24">
+          <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
             <div className="flex-1 text-center">
               <h2 className="text-[clamp(0.9rem,2.5vw,1.25rem)] text-foreground font-semibold tracking-tight mb-4 md:mb-6">
                 An internal development platform built for your team
@@ -92,7 +92,7 @@ export default function HomeContent() {
       <TechGrid />
 
       {/* Pipeline + Terminals */}
-      <section className="py-32 md:py-48 px-6 md:px-[10%]">
+      <section className="py-32 md:py-48 px-6 md:px-[8%] lg:px-[10%]">
           <FadeIn>
             <LiveScreen />
           </FadeIn>

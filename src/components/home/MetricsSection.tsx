@@ -21,7 +21,7 @@ const results = [
 
 export default function MetricsSection() {
   return (
-    <section className="px-6 md:px-[10%]">
+    <section className="px-6 md:px-[8%] lg:px-[10%]">
       <div className="py-16 md:py-24 pb-32 md:pb-48">
         <FadeIn>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 max-w-[900px] mx-auto">
