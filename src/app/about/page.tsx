@@ -55,18 +55,7 @@ export default function AboutPage() {
         <Container>
           <div className="max-w-[800px] mx-auto text-center">
             <FadeIn>
-              <h1
-                className="text-foreground font-light tracking-tight"
-                style={{
-                  fontSize: "clamp(2rem, 4vw, 3rem)",
-                  lineHeight: 1.05,
-                }}
-              >
-                About
-              </h1>
-            </FadeIn>
-            <FadeIn delay={0.15}>
-              <p className="text-body text-foreground-secondary/70 font-light mt-8 max-w-[560px] mx-auto leading-relaxed">
+              <p className="text-body text-foreground-secondary/70 font-light max-w-[560px] mx-auto leading-relaxed">
                 Keni Engineering is a DevOps consultancy built by engineers, for engineers. We design and implement internal development platforms so your team can focus on what matters: shipping product.
               </p>
             </FadeIn>
