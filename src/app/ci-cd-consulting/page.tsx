@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
-import { BOOKING_URL } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "CI/CD Pipeline Consulting for Small Teams",
@@ -281,7 +280,7 @@ export default function CiCdConsultingPage() {
               We&apos;ll walk you through how CI/CD fits into your stack<br />and what the first week looks like.
             </p>
             <a
-              href={BOOKING_URL}
+              href="/book"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-black dark:bg-white text-white dark:text-black px-8 py-2.5 text-xs font-light tracking-wide rounded-full hover:bg-black/85 dark:hover:bg-white/85 transition-colors"

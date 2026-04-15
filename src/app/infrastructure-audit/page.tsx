@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
-import { BOOKING_URL } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "DevOps Infrastructure Audit in 72 Hours",
@@ -311,7 +310,7 @@ export default function InfrastructureAuditPage() {
               We&apos;ll walk you through how the audit works<br />and whether it makes sense for your team.
             </p>
             <a
-              href={BOOKING_URL}
+              href="/book"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-white text-black px-8 py-2.5 text-xs font-light tracking-wide rounded-full hover:bg-white/85 transition-colors"

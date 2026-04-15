@@ -4,7 +4,6 @@ import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import FadeIn from "@/components/ui/FadeIn";
 import MessageModal from "@/components/MessageModal";
-import { BOOKING_URL } from "@/lib/config";
 
 export default function HomeCTA() {
   const [showForm, setShowForm] = useState(false);
@@ -20,7 +19,7 @@ export default function HomeCTA() {
             We&apos;ll find what&apos;s slowing you down. For free.
           </h2>
           <a
-            href={BOOKING_URL}
+            href="/book"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-muted hover:text-foreground font-light transition-colors inline-flex items-center gap-1.5"

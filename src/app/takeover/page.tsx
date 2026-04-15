@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
 import FAQAccordion from "@/components/FAQAccordion";
-import { BOOKING_URL } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "14-Day DevOps Takeover | Keni Engineering",
@@ -104,7 +103,7 @@ export default function TakeoverPage() {
                       ))}
                     </ul>
 
-                    <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between w-full border border-[#eaeaea] dark:border-[#333] hover:border-foreground/30 text-foreground text-[13px] font-medium px-4 py-2 rounded-full transition-colors">
+                    <a href="/book/platform" className="flex items-center justify-between w-full border border-[#eaeaea] dark:border-[#333] hover:border-foreground/30 text-foreground text-[13px] font-medium px-4 py-2 rounded-full transition-colors">
                       Start Deploying <span className="text-foreground/30">&#8594;</span>
                     </a>
                   </div>
@@ -129,7 +128,7 @@ export default function TakeoverPage() {
                       ))}
                     </ul>
 
-                    <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between w-full bg-[#0070f3] hover:bg-[#0060df] text-white text-[13px] font-medium px-4 py-2 rounded-full transition-colors">
+                    <a href="/book/evolve" className="flex items-center justify-between w-full bg-[#0070f3] hover:bg-[#0060df] text-white text-[13px] font-medium px-4 py-2 rounded-full transition-colors">
                       Start a free trial <span>&#8594;</span>
                     </a>
                   </div>
@@ -155,10 +154,10 @@ export default function TakeoverPage() {
                     </ul>
 
                     <div className="flex gap-2">
-                      <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between flex-1 bg-foreground hover:bg-foreground/85 text-background text-[13px] font-medium px-4 py-2 rounded-full transition-colors">
+                      <a href="/book/independence" className="flex items-center justify-between flex-1 bg-foreground hover:bg-foreground/85 text-background text-[13px] font-medium px-4 py-2 rounded-full transition-colors">
                         Get a demo <span>&#8594;</span>
                       </a>
-                      <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center border border-[#eaeaea] dark:border-[#333] hover:border-foreground/30 text-foreground text-[13px] font-medium px-4 py-2 rounded-full transition-colors">
+                      <a href="/book/independence" className="flex items-center justify-center border border-[#eaeaea] dark:border-[#333] hover:border-foreground/30 text-foreground text-[13px] font-medium px-4 py-2 rounded-full transition-colors">
                         Request Trial
                       </a>
                     </div>
@@ -304,7 +303,7 @@ export default function TakeoverPage() {
                 Book a 15-minute call. We will tell you if your stack qualifies for the 14-day takeover.
               </p>
               <a
-                href={BOOKING_URL}
+                href="/book"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-[#0070f3] hover:bg-[#0060df] text-white text-[13px] font-medium px-5 py-2 rounded-full transition-colors"

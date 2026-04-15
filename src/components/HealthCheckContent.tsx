@@ -5,7 +5,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
-import { BLOCKED_DOMAINS, BOOKING_URL } from "@/lib/config";
 
 /* ───────────────────────────────────────────
    Questions & scoring
@@ -655,7 +654,7 @@ export default function HealthCheckContent() {
                     Or skip the email and talk to us directly.
                   </p>
                   <a
-                    href={BOOKING_URL}
+                    href="/book"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-block bg-foreground hover:bg-foreground/85 text-background px-8 py-3 text-sm font-light tracking-wide rounded-full transition-colors"

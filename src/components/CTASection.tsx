@@ -3,7 +3,6 @@
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
-import { BOOKING_URL } from "@/lib/config";
 
 interface CTASectionProps {
   headline: string;
@@ -21,8 +20,8 @@ export default function CTASection({
   buttonHref,
   external,
 }: CTASectionProps) {
-  const href = buttonHref === "/contact" ? BOOKING_URL : (buttonHref || BOOKING_URL);
-  const isExternal = external ?? (href === BOOKING_URL || !buttonHref);
+  const href = buttonHref === "/contact" ? "/book" : (buttonHref || "/book");
+  const isExternal = external ?? false;
 
   return (
     <section className="py-32 md:py-48">

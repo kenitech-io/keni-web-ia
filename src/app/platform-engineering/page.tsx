@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
-import { BOOKING_URL } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Platform Engineering for Small Teams",
@@ -322,7 +321,7 @@ export default function PlatformEngineeringPage() {
               We&apos;ll walk you through what an IDP looks like<br />for your team and how long it takes to build.
             </p>
             <a
-              href={BOOKING_URL}
+              href="/book"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-white text-black px-8 py-2.5 text-xs font-light tracking-wide rounded-full hover:bg-white/85 transition-colors"
