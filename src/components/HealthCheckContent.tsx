@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
+import { BLOCKED_DOMAINS } from "@/lib/config";
 
 /* ───────────────────────────────────────────
    Questions & scoring
