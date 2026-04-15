@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
-import { BOOKING_URL } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Managed DevOps for Small Development Teams",
@@ -333,7 +332,7 @@ export default function ManagedDevOpsPage() {
               Tell us what you&apos;re running. We&apos;ll tell you<br />what it takes to manage it properly.
             </p>
             <a
-              href={BOOKING_URL}
+              href="/book"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-white text-black px-8 py-2.5 text-xs font-light tracking-wide rounded-full hover:bg-white/85 transition-colors"

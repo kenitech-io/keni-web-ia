@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
-import { BOOKING_URL } from "@/lib/config";
 import FadeIn from "@/components/ui/FadeIn";
 import ProcessSection from "@/components/home/ProcessSection";
 import PhaseCarousel from "@/components/PhaseCarousel";
@@ -301,7 +300,7 @@ export default function DevOpsConsultingPage() {
               Just a conversation about what&apos;s slowing your team<br />down and how to fix it.
             </p>
             <a
-              href={BOOKING_URL}
+              href="/book"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-black dark:bg-white text-white dark:text-black px-8 py-2.5 text-xs font-light tracking-wide rounded-full hover:bg-black/85 dark:hover:bg-white/85 transition-colors"

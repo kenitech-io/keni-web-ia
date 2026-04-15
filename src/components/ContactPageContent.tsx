@@ -6,7 +6,6 @@ import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
-import { BOOKING_URL } from "@/lib/config";
 
 export default function ContactPageContent() {
   const searchParams = useSearchParams();
@@ -80,7 +79,7 @@ export default function ContactPageContent() {
                   </div>
                 </div>
                 <a
-                  href={BOOKING_URL}
+                  href="/book"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block bg-foreground hover:bg-foreground/85 text-background px-12 py-3.5 text-sm font-light tracking-wide rounded-full transition-colors"

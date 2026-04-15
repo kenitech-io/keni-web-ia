@@ -1,9 +1,9 @@
 // ============================================
-// BOOKING URL: Change this to your real Google Calendar Appointment Scheduling URL
-// It looks like: https://calendar.google.com/calendar/appointments/schedules/XXX
-// or: https://calendar.app.google/XXX
+// CAL.COM BOOKING URL: paste your full Cal.com event URL here
+// e.g. "https://cal.com/keniengineering/kickoff-call"
+// Used as the single booking link across the whole site.
 // ============================================
-export const BOOKING_URL = "https://calendar.app.google/ZBv4bRrojYQn9CLN8";
+export const CAL_BOOKING_URL = "https://cal.com/keniengineering/kickoff-call";
 
 export const CONTACT_EMAIL = "ugarte@kenitech.io";
 
