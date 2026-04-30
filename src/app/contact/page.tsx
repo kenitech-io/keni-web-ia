@@ -3,19 +3,19 @@ import { Metadata } from "next";
 import ContactPageContent from "@/components/ContactPageContent";
 
 export const metadata: Metadata = {
-  title: "Contact Us: DevOps Consultation",
+  title: "Contacto: hablamos sin pitch",
   description:
-    "Tell us about your infrastructure challenges. Keni Engineering helps small teams set up CI/CD, automate deploys, and build internal development platforms.",
+    "Cuéntanos sobre tu equipo y tu caso. Una llamada de 30 minutos para ver si encajamos. Si no, te decimos por qué.",
   alternates: {
-    canonical: "https://kenitech.io/contact",
+    canonical: "https://ia.kenitech.io/contact",
   },
   openGraph: {
-    title: "Contact Us: DevOps Consultation",
+    title: "Contacto: hablamos sin pitch",
     description:
-      "Tell us about your infrastructure challenges. Keni Engineering helps small teams set up CI/CD, automate deploys, and build internal development platforms.",
-    url: "https://kenitech.io/contact",
-    siteName: "Keni Engineering",
-    locale: "en_US",
+      "Cuéntanos sobre tu equipo y tu caso. Una llamada de 30 minutos para ver si encajamos.",
+    url: "https://ia.kenitech.io/contact",
+    siteName: "Keni",
+    locale: "es_MX",
     type: "website",
   },
 };
@@ -27,14 +27,14 @@ const breadcrumbJsonLd = {
     {
       "@type": "ListItem",
       position: 1,
-      name: "Home",
-      item: "https://kenitech.io",
+      name: "Inicio",
+      item: "https://ia.kenitech.io",
     },
     {
       "@type": "ListItem",
       position: 2,
-      name: "Contact",
-      item: "https://kenitech.io/contact",
+      name: "Contacto",
+      item: "https://ia.kenitech.io/contact",
     },
   ],
 };

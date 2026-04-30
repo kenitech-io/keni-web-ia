@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 import { blogPosts } from "@/data/blog-posts";
 
-const BASE_URL = "https://kenitech.io";
+const BASE_URL = "https://ia.kenitech.io";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const blogEntries = blogPosts.map((post) => ({
@@ -14,68 +14,50 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: BASE_URL,
-      lastModified: new Date("2026-03-23"),
+      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,
     },
     {
-      url: `${BASE_URL}/devops-consulting`,
-      lastModified: new Date("2026-03-23"),
+      url: `${BASE_URL}/presencial`,
+      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
-      url: `${BASE_URL}/infrastructure-audit`,
-      lastModified: new Date("2026-03-23"),
+      url: `${BASE_URL}/web`,
+      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
-      url: `${BASE_URL}/managed-devops`,
-      lastModified: new Date("2026-04-02"),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/platform-engineering`,
-      lastModified: new Date("2026-04-02"),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/ci-cd-consulting`,
-      lastModified: new Date("2026-04-02"),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/platform`,
-      lastModified: new Date("2026-03-20"),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/healthcheck`,
-      lastModified: new Date("2026-03-20"),
+      url: `${BASE_URL}/casos`,
+      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${BASE_URL}/blog`,
-      lastModified: new Date("2026-03-23"),
+      lastModified: new Date(),
       changeFrequency: "weekly",
-      priority: 0.8,
+      priority: 0.7,
     },
     ...blogEntries,
     {
       url: `${BASE_URL}/about`,
-      lastModified: new Date("2026-03-20"),
+      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.6,
     },
     {
       url: `${BASE_URL}/contact`,
-      lastModified: new Date("2026-03-20"),
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    {
+      url: `${BASE_URL}/book`,
+      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.6,
     },

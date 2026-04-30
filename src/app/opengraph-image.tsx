@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Keni Engineering: DevOps Consulting for SMBs";
+export const alt = "Keni · Tu equipo usando IA en su trabajo diario";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -27,7 +27,7 @@ export default async function Image() {
             marginBottom: 24,
           }}
         >
-          KENI ENGINEERING
+          KENI
         </div>
         <div
           style={{
@@ -38,7 +38,7 @@ export default async function Image() {
             maxWidth: 900,
           }}
         >
-          DevOps consulting for teams that ship software
+          Tu equipo usando IA en su trabajo diario.
         </div>
         <div
           style={{
@@ -49,8 +49,8 @@ export default async function Image() {
             lineHeight: 1.6,
           }}
         >
-          CI/CD, infrastructure automation, and ongoing maintenance for US
-          software teams with 2-30 developers.
+          Formación AI-native para empresas LATAM hispano y ES. Sin slides, sin
+          teoría. Con su terminal, sus tareas y sus métricas.
         </div>
         <div
           style={{
@@ -59,7 +59,7 @@ export default async function Image() {
             marginTop: "auto",
           }}
         >
-          kenitech.io
+          ia.kenitech.io
         </div>
       </div>
     ),

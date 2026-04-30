@@ -3,15 +3,15 @@ import HomeContent from "@/components/home/HomeContent";
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: "https://kenitech.io",
+    canonical: "https://ia.kenitech.io",
   },
   openGraph: {
-    title: "DevOps Consulting for SMBs | Keni Engineering",
+    title: "Keni · Tu equipo usando IA en su trabajo diario",
     description:
-      "DevOps consulting and platform engineering for US software teams with 2-30 developers. We set up CI/CD, automate deploys, and keep your infrastructure running so your team ships faster.",
-    url: "https://kenitech.io",
-    siteName: "Keni Engineering",
-    locale: "en_US",
+      "Formación AI-native para empresas LATAM hispano y ES. Llevamos a tu equipo a usar IA en su trabajo real, con métricas de antes y después.",
+    url: "https://ia.kenitech.io",
+    siteName: "Keni",
+    locale: "es_MX",
     type: "website",
   },
 };

@@ -7,17 +7,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import Container from "@/components/ui/Container";
 
 const exploreLinks = [
-  { name: "DevOps Consulting", href: "/devops-consulting" },
-  { name: "Infrastructure Audit", href: "/infrastructure-audit" },
-  { name: "CI/CD Consulting", href: "/ci-cd-consulting" },
+  { name: "Casos", href: "/casos" },
   { name: "Blog", href: "/blog" },
-  { name: "About", href: "/about" },
+  { name: "Equipo", href: "/about" },
 ];
 
 const mobileLinks = [
-  { name: "Platform", href: "/platform" },
-  { name: "Health Check", href: "/healthcheck" },
-  { name: "Pricing", href: "/takeover" },
+  { name: "Presencial", href: "/presencial" },
+  { name: "Web", href: "/web" },
   ...exploreLinks,
 ];
 
@@ -146,14 +143,11 @@ export default function Navbar() {
 
             {/* Desktop */}
             <div className="hidden md:flex items-baseline gap-8">
-              <Link href="/platform" className={`text-xs font-medium transition-colors duration-300 ${onDark ? "text-white hover:text-white/70" : "text-foreground hover:text-foreground/70"}`}>
-                Platform
+              <Link href="/presencial" className={`text-xs font-medium transition-colors duration-300 ${onDark ? "text-white hover:text-white/70" : "text-foreground hover:text-foreground/70"}`}>
+                Presencial
               </Link>
-              <Link href="/healthcheck" className={`text-xs font-medium transition-colors duration-300 ${onDark ? "text-white hover:text-white/70" : "text-foreground hover:text-foreground/70"}`}>
-                Health Check
-              </Link>
-              <Link href="/takeover" className={`text-xs font-medium transition-colors duration-300 ${onDark ? "text-white hover:text-white/70" : "text-foreground hover:text-foreground/70"}`}>
-                Pricing
+              <Link href="/web" className={`text-xs font-medium transition-colors duration-300 ${onDark ? "text-white hover:text-white/70" : "text-foreground hover:text-foreground/70"}`}>
+                Web
               </Link>
               {/* Explore dropdown */}
               <div
@@ -163,7 +157,7 @@ export default function Navbar() {
                 onMouseLeave={() => setExploreOpen(false)}
               >
                 <button className={`text-xs font-medium transition-colors duration-300 ${onDark ? "text-white hover:text-white/70" : "text-foreground hover:text-foreground/70"}`}>
-                  Explore
+                  Explorar
                 </button>
 
                 <AnimatePresence>
@@ -190,10 +184,10 @@ export default function Navbar() {
               </div>
 
               <Link
-                href="/contact"
+                href="/book"
                 className={`text-xs font-medium transition-all duration-300 px-3 py-1 rounded-full ${onDark ? "bg-white hover:bg-white/85 text-black" : "bg-foreground hover:bg-charcoal text-background"}`}
               >
-                Contact
+                Agenda una llamada
               </Link>
             </div>
 
@@ -273,12 +267,12 @@ export default function Navbar() {
                   }}
                 >
                   <Link
-                    href="/contact"
+                    href="/book"
                     className={`text-3xl font-light transition-colors duration-200 ${
-                      isActive("/contact") ? "text-foreground" : "text-muted hover:text-foreground"
+                      isActive("/book") ? "text-foreground" : "text-muted hover:text-foreground"
                     }`}
                   >
-                    Contact
+                    Agenda una llamada
                   </Link>
                 </motion.div>
               </motion.nav>

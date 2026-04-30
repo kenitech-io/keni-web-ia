@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://kenitech.io/sitemap.xml",
+    sitemap: "https://ia.kenitech.io/sitemap.xml",
   };
 }

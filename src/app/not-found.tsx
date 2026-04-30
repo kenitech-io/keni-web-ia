@@ -10,49 +10,49 @@ export default function NotFound() {
             404
           </p>
           <h1 className="text-heading text-foreground font-light tracking-wide mb-6">
-            Page not found
+            Página no encontrada
           </h1>
           <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-10">
-            The page you are looking for does not exist or has been moved.
+            La página que buscas no existe o se movió.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/"
               className="inline-block bg-foreground hover:bg-foreground/85 text-background px-8 py-3 text-sm font-light tracking-wide rounded-full transition-colors"
             >
-              Go home
+              Ir al inicio
             </Link>
             <Link
-              href="/contact"
+              href="/book"
               className="inline-block border border-foreground/[0.08] hover:border-foreground/40 text-foreground px-8 py-3 text-sm font-light tracking-wide rounded-full transition-colors"
             >
-              Contact us
+              Agenda una llamada
             </Link>
           </div>
           <div className="mt-16 flex flex-wrap justify-center gap-6">
             <Link
-              href="/devops-consulting"
+              href="/presencial"
               className="text-sm text-muted/60 font-light hover:text-foreground transition-colors"
             >
-              DevOps Consulting
+              Presencial
             </Link>
             <Link
-              href="/infrastructure-audit"
+              href="/web"
               className="text-sm text-muted/60 font-light hover:text-foreground transition-colors"
             >
-              Infrastructure Audit
+              Web
+            </Link>
+            <Link
+              href="/casos"
+              className="text-sm text-muted/60 font-light hover:text-foreground transition-colors"
+            >
+              Casos
             </Link>
             <Link
               href="/blog"
               className="text-sm text-muted/60 font-light hover:text-foreground transition-colors"
             >
               Blog
-            </Link>
-            <Link
-              href="/healthcheck"
-              className="text-sm text-muted/60 font-light hover:text-foreground transition-colors"
-            >
-              Health Check
             </Link>
           </div>
         </div>

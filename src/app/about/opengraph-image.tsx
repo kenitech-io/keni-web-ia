@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "About Keni Engineering";
+export const alt = "Equipo · Keni";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -27,7 +27,7 @@ export default async function Image() {
             marginBottom: 24,
           }}
         >
-          KENI ENGINEERING
+          KENI
         </div>
         <div
           style={{
@@ -38,7 +38,7 @@ export default async function Image() {
             maxWidth: 900,
           }}
         >
-          About Keni Engineering
+          Operamos AI-native. Vendemos lo que hacemos.
         </div>
         <div
           style={{
@@ -49,8 +49,8 @@ export default async function Image() {
             lineHeight: 1.6,
           }}
         >
-          A DevOps consultancy built by senior engineers. We help small teams
-          ship faster with reliable infrastructure.
+          Cada departamento de Keni tiene su propio agente. Llevamos a otras
+          empresas a hacer lo mismo.
         </div>
         <div
           style={{
@@ -59,7 +59,7 @@ export default async function Image() {
             marginTop: "auto",
           }}
         >
-          kenitech.io/about
+          ia.kenitech.io/about
         </div>
       </div>
     ),

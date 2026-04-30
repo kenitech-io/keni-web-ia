@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "DevOps Blog | Keni Engineering";
+export const alt = "Blog · Keni";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -27,7 +27,7 @@ export default async function Image() {
             marginBottom: 24,
           }}
         >
-          KENI ENGINEERING
+          KENI
         </div>
         <div
           style={{
@@ -38,7 +38,7 @@ export default async function Image() {
             maxWidth: 900,
           }}
         >
-          DevOps blog
+          Notas de campo sobre formación AI-native.
         </div>
         <div
           style={{
@@ -49,8 +49,7 @@ export default async function Image() {
             lineHeight: 1.6,
           }}
         >
-          Practical guides and honest takes on DevOps, infrastructure, and
-          platform engineering for small teams.
+          Patrones, anti-patrones y métricas reales de cada implantación.
         </div>
         <div
           style={{
@@ -59,7 +58,7 @@ export default async function Image() {
             marginTop: "auto",
           }}
         >
-          kenitech.io/blog
+          ia.kenitech.io/blog
         </div>
       </div>
     ),

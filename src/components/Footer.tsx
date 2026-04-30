@@ -5,32 +5,29 @@ import Container from "@/components/ui/Container";
 
 const columns = [
   {
-    title: "SERVICES",
+    title: "MODALIDADES",
     links: [
-      { name: "DevOps Consulting", href: "/devops-consulting" },
-      { name: "Infrastructure Audit", href: "/infrastructure-audit" },
-      { name: "Platform Engineering", href: "/platform-engineering" },
-      { name: "CI/CD Consulting", href: "/ci-cd-consulting" },
-      { name: "Managed DevOps", href: "/managed-devops" },
+      { name: "Presencial", href: "/presencial" },
+      { name: "Web", href: "/web" },
     ],
   },
   {
-    title: "RESOURCES",
+    title: "RECURSOS",
     links: [
+      { name: "Casos", href: "/casos" },
       { name: "Blog", href: "/blog" },
-      { name: "Health Check", href: "/healthcheck" },
-      { name: "Platform", href: "/platform" },
     ],
   },
   {
-    title: "COMPANY",
+    title: "EMPRESA",
     links: [
-      { name: "About", href: "/about" },
-      { name: "Contact", href: "/contact" },
+      { name: "Equipo", href: "/about" },
+      { name: "Contacto", href: "/contact" },
+      { name: "Agenda una llamada", href: "/book" },
     ],
   },
   {
-    title: "CONNECT",
+    title: "CONECTA",
     links: [
       { name: "LinkedIn", href: "https://www.linkedin.com/company/keniengineering/", external: true },
     ],

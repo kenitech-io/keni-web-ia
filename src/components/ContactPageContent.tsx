@@ -51,28 +51,33 @@ export default function ContactPageContent() {
           <FadeIn>
             <div className="text-center mb-16">
               <h1 className="text-heading text-foreground font-light tracking-wide mb-8">
-                Let&apos;s take this off your plate
+                Hablamos sin pitch.
               </h1>
               <p className="text-sm text-foreground-secondary leading-loose font-light max-w-[480px] mx-auto">
-                A calm conversation about what&apos;s slowing your team down.
+                Una llamada de 30 minutos para entender tu caso. Si encajamos,
+                seguimos. Si no, te decimos por qué.
               </p>
             </div>
           </FadeIn>
 
           <FadeIn delay={0.15}>
-            <div className="max-w-[520px] mx-auto mb-16">
+            <div className="max-w-[860px] mx-auto mb-16">
               <div className="text-center">
-                <div className="flex justify-center items-center gap-8 md:gap-16 mb-14">
+                <div className="flex flex-wrap justify-center items-start gap-8 md:gap-16 mb-14">
                   <div className="flex flex-col items-center">
-                    <div className="w-32 h-32 md:w-48 md:h-48 rounded overflow-hidden mb-4">
-                      <Image src="/team/ane.jpg" alt="Ane Ugarte" width={192} height={192} className="w-full h-full object-cover" />
+                    <div className="relative w-56 h-56 md:w-96 md:h-96 rounded overflow-hidden mb-4">
+                      <Image src="/team/ane.jpg" alt="Ane Ugarte" width={480} height={480} className="w-full h-full object-cover grayscale-[90%] contrast-[125%] brightness-[92%]" />
+                      <div
+                        aria-hidden
+                        className="pointer-events-none absolute inset-0 bg-[url('/noise.svg')] bg-repeat opacity-40 mix-blend-overlay"
+                      />
                     </div>
                     <a href="https://www.linkedin.com/in/aneugarte/" target="_blank" rel="noopener noreferrer" className="text-sm text-foreground font-medium mt-1">Ane Ugarte</a>
                     <span className="text-xs text-muted font-light">CEO</span>
                   </div>
                   <div className="flex flex-col items-center">
-                    <div className="w-32 h-32 md:w-48 md:h-48 rounded overflow-hidden mb-4">
-                      <Image src="/team/mikel.jpg" alt="Mikel Martin" width={192} height={192} className="w-full h-full object-cover" />
+                    <div className="w-56 h-56 md:w-96 md:h-96 rounded overflow-hidden mb-4">
+                      <Image src="/team/mikel.jpg" alt="Mikel Martin" width={480} height={480} className="w-full h-full object-cover grayscale-[95%] contrast-[110%] brightness-[97%]" />
                     </div>
                     <a href="https://www.linkedin.com/in/mikelm20/" target="_blank" rel="noopener noreferrer" className="text-sm text-foreground font-medium mt-1">Mikel Martin</a>
                     <span className="text-xs text-muted font-light">CTO</span>
@@ -84,7 +89,7 @@ export default function ContactPageContent() {
                   rel="noopener noreferrer"
                   className="inline-block bg-foreground hover:bg-foreground/85 text-background px-12 py-3.5 text-sm font-light tracking-wide rounded-full transition-colors"
                 >
-                  Schedule a Call
+                  Agenda una llamada
                 </a>
               </div>
             </div>
@@ -96,7 +101,7 @@ export default function ContactPageContent() {
                 onClick={() => setShowForm(true)}
                 className="text-sm text-muted font-light hover:text-foreground transition-colors"
               >
-                Prefer to send a message instead?
+                ¿Prefieres mandar un mensaje?
               </button>
             </div>
           </FadeIn>
@@ -172,7 +177,7 @@ function MessageModal({
         <button
           onClick={onClose}
           className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-muted hover:text-foreground transition-colors"
-          aria-label="Close"
+          aria-label="Cerrar"
         >
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
             <path d="M1 1L15 15M15 1L1 15" stroke="currentColor" strokeWidth="1.5" />
@@ -181,41 +186,41 @@ function MessageModal({
 
         {status === "sent" ? (
           <div className="text-center py-10">
-            <p className="text-heading text-foreground font-light tracking-wide mb-6">Message sent.</p>
-            <p className="text-sm text-foreground-secondary leading-loose font-light">We&apos;ll get back to you within 24 hours.</p>
+            <p className="text-heading text-foreground font-light tracking-wide mb-6">Mensaje enviado.</p>
+            <p className="text-sm text-foreground-secondary leading-loose font-light">Respondemos en menos de 24 horas.</p>
           </div>
         ) : (
           <>
-            <p className="text-body text-foreground font-light tracking-wide mb-2">Send us a message</p>
+            <p className="text-body text-foreground font-light tracking-wide mb-2">Mándanos un mensaje</p>
             <p className="text-sm text-foreground-secondary font-light mb-8">
-              We&apos;ll get back to you within 24 hours.
+              Respondemos en menos de 24 horas.
             </p>
             <form onSubmit={onSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className={labelClasses}>Name</label>
-                <input id="name" type="text" value={name} onChange={(e) => setName(e.target.value)} className={inputClasses} placeholder="Your name" required />
+                <label htmlFor="name" className={labelClasses}>Nombre</label>
+                <input id="name" type="text" value={name} onChange={(e) => setName(e.target.value)} className={inputClasses} placeholder="Tu nombre" required />
               </div>
               <div>
-                <label htmlFor="company" className={labelClasses}>Company</label>
-                <input id="company" type="text" value={company} onChange={(e) => setCompany(e.target.value)} className={inputClasses} placeholder="Your company" />
+                <label htmlFor="company" className={labelClasses}>Empresa</label>
+                <input id="company" type="text" value={company} onChange={(e) => setCompany(e.target.value)} className={inputClasses} placeholder="Tu empresa" />
               </div>
               <div>
                 <label htmlFor="email" className={labelClasses}>Email</label>
-                <input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} className={inputClasses} placeholder="you@company.com" required />
+                <input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} className={inputClasses} placeholder="tu@empresa.com" required />
               </div>
               <div>
-                <label htmlFor="message" className={labelClasses}>Message</label>
-                <textarea id="message" rows={3} value={message} onChange={(e) => setMessage(e.target.value)} className={`${inputClasses} resize-none`} placeholder="Tell us about your project..." />
+                <label htmlFor="message" className={labelClasses}>Mensaje</label>
+                <textarea id="message" rows={3} value={message} onChange={(e) => setMessage(e.target.value)} className={`${inputClasses} resize-none`} placeholder="Cuéntanos sobre tu equipo y caso..." />
               </div>
               <button
                 type="submit"
                 disabled={status === "sending"}
                 className="bg-foreground hover:bg-foreground/85 disabled:opacity-50 text-background w-full px-8 py-3 text-sm font-light tracking-wide rounded-full transition-colors"
               >
-                {status === "sending" ? "Sending..." : "Send Message"}
+                {status === "sending" ? "Enviando..." : "Enviar mensaje"}
               </button>
               {status === "error" && (
-                <p className="text-sm text-red-400 font-light">Something went wrong. Please try again.</p>
+                <p className="text-sm text-red-400 font-light">Algo salió mal. Inténtalo de nuevo.</p>
               )}
             </form>
           </>

@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Contact Keni Engineering";
+export const alt = "Contacto · Keni";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -27,7 +27,7 @@ export default async function Image() {
             marginBottom: 24,
           }}
         >
-          KENI ENGINEERING
+          KENI
         </div>
         <div
           style={{
@@ -38,7 +38,7 @@ export default async function Image() {
             maxWidth: 900,
           }}
         >
-          Contact Keni Engineering
+          Hablamos sin pitch.
         </div>
         <div
           style={{
@@ -49,8 +49,8 @@ export default async function Image() {
             lineHeight: 1.6,
           }}
         >
-          Get in touch to discuss your infrastructure needs. We respond within
-          24 hours.
+          Una llamada de 30 minutos para ver si encajamos. Respondemos en menos
+          de 24 horas.
         </div>
         <div
           style={{
@@ -59,7 +59,7 @@ export default async function Image() {
             marginTop: "auto",
           }}
         >
-          kenitech.io/contact
+          ia.kenitech.io/contact
         </div>
       </div>
     ),
