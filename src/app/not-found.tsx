@@ -31,24 +31,6 @@ export default function NotFound() {
           </div>
           <div className="mt-16 flex flex-wrap justify-center gap-6">
             <Link
-              href="/presencial"
-              className="text-sm text-muted/60 font-light hover:text-foreground transition-colors"
-            >
-              Presencial
-            </Link>
-            <Link
-              href="/web"
-              className="text-sm text-muted/60 font-light hover:text-foreground transition-colors"
-            >
-              Web
-            </Link>
-            <Link
-              href="/casos"
-              className="text-sm text-muted/60 font-light hover:text-foreground transition-colors"
-            >
-              Casos
-            </Link>
-            <Link
               href="/blog"
               className="text-sm text-muted/60 font-light hover:text-foreground transition-colors"
             >

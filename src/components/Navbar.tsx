@@ -7,26 +7,26 @@ import { motion, AnimatePresence } from "framer-motion";
 import Container from "@/components/ui/Container";
 
 const exploreLinks = [
-  { name: "Casos", href: "/casos" },
+  { name: "Plan de transformación con IA", href: "/plan-transformacion-ia" },
+  { name: "Capacitación de equipos", href: "/capacitacion-equipos" },
+  { name: "Automatización de flujos", href: "/automatizacion-flujos" },
   { name: "Blog", href: "/blog" },
-  { name: "Equipo", href: "/about" },
+  { name: "Acerca de", href: "/about" },
 ];
 
-const mobileLinks = [
-  { name: "Presencial", href: "/presencial" },
-  { name: "Web", href: "/web" },
-  ...exploreLinks,
-];
+const mobileLinks = [...exploreLinks];
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [exploreOpen, setExploreOpen] = useState(false);
   const [onDark, setOnDark] = useState(false);
+  const [inSplitHero, setInSplitHero] = useState(false);
   const pathname = usePathname();
   const exploreRef = useRef<HTMLDivElement>(null);
 
   const navRef = useRef<HTMLElement>(null);
   const darkRangesRef = useRef<{ top: number; bottom: number }[]>([]);
+  const splitHeroRangesRef = useRef<{ top: number; bottom: number }[]>([]);
   const rafRef = useRef<number>(0);
   const lastDarkChange = useRef<number>(0);
 
@@ -55,17 +55,14 @@ export default function Navbar() {
       }
     });
     darkRangesRef.current = ranges;
-  }, []);
 
-  useEffect(() => {
-    // Initial cache after a short delay to let page render
-    const timer = setTimeout(cacheDarkSections, 100);
-    window.addEventListener("resize", cacheDarkSections);
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener("resize", cacheDarkSections);
-    };
-  }, [cacheDarkSections, pathname]);
+    // Cache split-hero ranges separately (sections where left=light / right=dark)
+    const splitSections = Array.from(document.querySelectorAll("[data-split-hero]"));
+    splitHeroRangesRef.current = splitSections.map((el) => {
+      const rect = el.getBoundingClientRect();
+      return { top: rect.top + scrollY, bottom: rect.bottom + scrollY };
+    });
+  }, []);
 
   const handleScroll = useCallback(() => {
     cancelAnimationFrame(rafRef.current);
@@ -80,6 +77,16 @@ export default function Navbar() {
           break;
         }
       }
+      // Detect if navbar is over a split-hero section
+      let split = false;
+      const splitRanges = splitHeroRangesRef.current;
+      for (let i = 0; i < splitRanges.length; i++) {
+        if (splitRanges[i].top < navMid && splitRanges[i].bottom > navMid) {
+          split = true;
+          break;
+        }
+      }
+      setInSplitHero(split);
       // Debounce dark/light transitions to prevent flickering at section edges
       const now = Date.now();
       setOnDark((prev) => {
@@ -90,6 +97,23 @@ export default function Navbar() {
       });
     });
   }, []);
+
+  useEffect(() => {
+    // Initial cache after a short delay to let page render, then re-evaluate scroll state
+    const timer = setTimeout(() => {
+      cacheDarkSections();
+      handleScroll();
+    }, 100);
+    const onResize = () => {
+      cacheDarkSections();
+      handleScroll();
+    };
+    window.addEventListener("resize", onResize);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", onResize);
+    };
+  }, [cacheDarkSections, handleScroll, pathname]);
 
   useEffect(() => {
     handleScroll();
@@ -137,18 +161,18 @@ export default function Navbar() {
       >
         <Container>
           <div className="flex items-center justify-between">
-            <Link href="/" className={`text-xs font-medium tracking-tight transition-colors duration-300 ${onDark ? "text-white" : "text-foreground"}`}>
+            <Link href="/" className={`text-xs font-medium tracking-tight transition-colors duration-300 ${
+              inSplitHero
+                ? "text-foreground"
+                : onDark
+                ? "text-white"
+                : "text-foreground"
+            }`}>
               Keni
             </Link>
 
             {/* Desktop */}
             <div className="hidden md:flex items-baseline gap-8">
-              <Link href="/presencial" className={`text-xs font-medium transition-colors duration-300 ${onDark ? "text-white hover:text-white/70" : "text-foreground hover:text-foreground/70"}`}>
-                Presencial
-              </Link>
-              <Link href="/web" className={`text-xs font-medium transition-colors duration-300 ${onDark ? "text-white hover:text-white/70" : "text-foreground hover:text-foreground/70"}`}>
-                Web
-              </Link>
               {/* Explore dropdown */}
               <div
                 ref={exploreRef}
@@ -173,7 +197,7 @@ export default function Navbar() {
                         <Link
                           key={link.href}
                           href={link.href}
-                          className="block px-5 py-2 text-xs font-light transition-colors duration-200 text-foreground hover:text-muted"
+                          className="block px-5 py-2 text-xs font-light whitespace-nowrap transition-colors duration-200 text-foreground hover:text-muted"
                         >
                           {link.name}
                         </Link>

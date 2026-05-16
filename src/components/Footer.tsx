@@ -1,27 +1,20 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Container from "@/components/ui/Container";
 
 const columns = [
   {
-    title: "MODALIDADES",
-    links: [
-      { name: "Presencial", href: "/presencial" },
-      { name: "Web", href: "/web" },
-    ],
-  },
-  {
     title: "RECURSOS",
     links: [
-      { name: "Casos", href: "/casos" },
       { name: "Blog", href: "/blog" },
     ],
   },
   {
     title: "EMPRESA",
     links: [
-      { name: "Equipo", href: "/about" },
+      { name: "Acerca de nosotros", href: "/about" },
       { name: "Contacto", href: "/contact" },
       { name: "Agenda una llamada", href: "/book" },
     ],
@@ -34,15 +27,38 @@ const columns = [
   },
 ];
 
+// Rutas con fondo gris oscuro en toda la página → footer también oscuro
+const DARK_ROUTES = [
+  "/plan-transformacion-ia",
+  "/capacitacion-equipos",
+  "/automatizacion-flujos",
+];
+
 export default function Footer() {
+  const pathname = usePathname();
+  const dark = DARK_ROUTES.includes(pathname);
+
+  const titleClass = dark ? "text-white" : "text-foreground";
+  const linkClass = dark
+    ? "text-white/55 hover:text-white transition-colors duration-200"
+    : "text-muted hover:text-foreground transition-colors duration-200";
+  const copyClass = dark ? "text-white/55" : "text-muted";
+
   return (
-    <footer className="border-t border-border-color">
+    <footer
+      {...(dark ? { "data-dark-section": true } : {})}
+      className={`border-t ${
+        dark ? "bg-[#1E1E1E] border-white/10" : "border-border-color"
+      }`}
+    >
       <Container>
         <div className="py-16 md:py-24">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-8">
             {columns.map((col) => (
               <div key={col.title}>
-                <p className="text-[0.6rem] uppercase tracking-[0.2em] text-foreground mb-6">
+                <p
+                  className={`text-[0.6rem] uppercase tracking-[0.2em] mb-6 ${titleClass}`}
+                >
                   {col.title}
                 </p>
                 <ul className="space-y-3">
@@ -53,14 +69,14 @@ export default function Footer() {
                           href={link.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-xs text-muted hover:text-foreground transition-colors duration-200 visited:text-muted"
+                          className={`text-xs ${linkClass}`}
                         >
                           {link.name}
                         </a>
                       ) : (
                         <Link
                           href={link.href}
-                          className="text-xs text-muted hover:text-foreground transition-colors duration-200"
+                          className={`text-xs ${linkClass}`}
                         >
                           {link.name}
                         </Link>
@@ -73,7 +89,7 @@ export default function Footer() {
           </div>
 
           <div className="mt-24">
-            <p className="text-xs text-muted">
+            <p className={`text-xs ${copyClass}`}>
               &copy; {new Date().getFullYear()} Keni Engineering
             </p>
           </div>

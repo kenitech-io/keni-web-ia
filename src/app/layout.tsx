@@ -12,7 +12,7 @@ const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
-  weight: ["300", "400", "500"],
+  weight: ["300", "400", "500", "700"],
 });
 
 export const viewport: Viewport = {

@@ -177,3 +177,21 @@ textarea:-webkit-autofill:focus {
   -webkit-text-fill-color: var(--foreground);
   transition: background-color 5000s ease-in-out 0s;
 }
+
+/* Marquee — infinite horizontal scroll for trusted-by logos */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+  will-change: transform;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
