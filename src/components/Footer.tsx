@@ -28,11 +28,8 @@ const columns = [
 ];
 
 // Rutas con fondo gris oscuro en toda la página → footer también oscuro
-const DARK_ROUTES = [
-  "/plan-transformacion-ia",
-  "/capacitacion-equipos",
-  "/automatizacion-flujos",
-];
+// (experimento: todo blanco → sin rutas oscuras)
+const DARK_ROUTES: string[] = [];
 
 export default function Footer() {
   const pathname = usePathname();

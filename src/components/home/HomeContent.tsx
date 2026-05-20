@@ -64,14 +64,10 @@ export default function HomeContent() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
-      {/* 1. Hero — split 50/50 alto contraste, paleta Axel Vervoordt */}
-      <section
-        data-dark-section
-        data-split-hero
-        className="grid grid-cols-1 lg:grid-cols-2 h-[100svh] min-h-[600px]"
-      >
-        {/* Izquierda: blanco, solo headline */}
-        <div className="flex items-center justify-center px-6 md:px-[8%] lg:px-[10%] py-16 lg:py-0 bg-background">
+      {/* 1. Hero — split 50/50 sobre blanco */}
+      <section className="grid grid-cols-1 lg:grid-cols-2 h-[100svh] min-h-[600px] bg-background">
+        {/* Izquierda: headline */}
+        <div className="flex items-center justify-center px-6 md:px-[8%] lg:px-[10%] py-16 lg:py-0">
           <FadeIn className="w-full max-w-[560px] mx-auto text-center">
             <h1
               className="text-foreground font-medium tracking-tight"
@@ -86,28 +82,52 @@ export default function HomeContent() {
           </FadeIn>
         </div>
 
-        {/* Derecha: casi negro, subline + micro + botón */}
-        <div
-          className="flex items-center justify-center px-6 md:px-[8%] lg:px-[10%] py-16 lg:py-0"
-          style={{ backgroundColor: "#1E1E1E" }}
-        >
+        {/* Derecha: subline + botón */}
+        <div className="flex items-center justify-center px-6 md:px-[8%] lg:px-[10%] py-16 lg:py-0">
           <FadeIn className="w-full max-w-[480px] mx-auto text-center" delay={0.15}>
-            <p
-              className="text-white font-light tracking-tight mb-10 lg:mb-12"
-              style={{
-                fontSize: "clamp(1.125rem, 2vw, 1.5rem)",
-                lineHeight: 1.35,
-              }}
-            >
-              Keni convierte tu inversión en IA en transformación del equipo y ROI.
-            </p>
+            {/* F: Estrofa en piedra (Holzer / Wool) */}
+            <div className="mb-12 lg:mb-14">
+              <p
+                className="text-foreground uppercase font-light"
+                style={{
+                  fontSize: "clamp(0.95rem, 1.55vw, 1.1875rem)",
+                  lineHeight: 2,
+                  letterSpacing: "0.18em",
+                }}
+              >
+                <span className="block">Keni convierte</span>
+                <span className="block">tu inversión en IA</span>
+                <span className="block mt-[1em]">en transformación</span>
+                <span className="block">del equipo y ROI.</span>
+              </p>
+              <div
+                aria-hidden
+                className="mt-10 h-px bg-foreground/25 mx-auto"
+                style={{ width: "4rem" }}
+              />
+            </div>
 
             <Link
               href="/book"
-              className="inline-flex items-center gap-2.5 px-7 py-3 border border-white/35 hover:border-white/90 hover:bg-white/5 text-white text-sm font-light tracking-wide rounded-full transition-all duration-300"
+              className="group inline-flex items-center gap-4 py-3 text-foreground"
             >
-              Agenda una llamada
-              <span aria-hidden className="opacity-50">→</span>
+              <span
+                aria-hidden
+                className="block h-px w-8 bg-foreground/50 transition-all duration-500 group-hover:w-12 group-hover:bg-foreground"
+              />
+              <span className="text-[11px] font-light uppercase tracking-[0.22em] leading-none">
+                Agenda una llamada
+              </span>
+              <span
+                aria-hidden
+                className="text-[11px] font-light transition-transform duration-500 group-hover:translate-x-1"
+              >
+                →
+              </span>
+              <span
+                aria-hidden
+                className="block h-px w-8 bg-foreground/50 transition-all duration-500 group-hover:w-12 group-hover:bg-foreground"
+              />
             </Link>
           </FadeIn>
         </div>
@@ -170,7 +190,7 @@ export default function HomeContent() {
                   }}
                 >
                   “Nuestro objetivo es que la fluidez con IA sea el estándar, no
-                  una ventaja competitiva de unos pocos.”
+                  la ventaja competitiva de unos pocos.”
                 </p>
                 <p className="text-sm font-light text-foreground-secondary/70">
                   Mikel Martin, CTO
@@ -221,7 +241,6 @@ export default function HomeContent() {
                   Keni
                 </span>
                 <div className="flex items-center gap-2.5">
-                  <span className="w-5 h-5 rounded-full bg-gradient-to-br from-indigo-300 to-pink-300" />
                   <span className="text-[11px] font-light text-foreground hidden sm:inline">
                     Emilia Fernández
                   </span>
@@ -525,12 +544,12 @@ export default function HomeContent() {
         </Container>
       </section>
 
-      {/* 6. CTA cierre — banda oscura (gris portada) */}
-      <section data-dark-section className="bg-[#1E1E1E] py-32 md:py-52 px-6">
+      {/* 6. CTA cierre — banda blanca (experimento) */}
+      <section className="bg-background py-32 md:py-52 px-6">
         <FadeIn>
           <div className="max-w-[1000px] mx-auto text-center">
             <p
-              className="text-white font-light tracking-tight mb-12"
+              className="text-foreground font-light tracking-tight mb-12"
               style={{
                 fontSize: "clamp(2rem, 4.5vw, 3.5rem)",
                 lineHeight: 1.2,
@@ -540,7 +559,7 @@ export default function HomeContent() {
             </p>
             <Link
               href="/book"
-              className="inline-block bg-white hover:bg-white/90 text-[#1E1E1E] px-9 py-4 text-sm font-light tracking-wide rounded-full transition-colors"
+              className="inline-block bg-foreground hover:bg-foreground/85 text-background px-9 py-4 text-sm font-light tracking-wide rounded-full transition-colors"
             >
               Agenda una llamada
             </Link>
