@@ -64,8 +64,12 @@ export default function HomeContent() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
-      {/* 1. Hero — split 50/50 sobre blanco */}
-      <section className="grid grid-cols-1 lg:grid-cols-2 h-[100svh] min-h-[600px] bg-background">
+      {/* 1. Hero — split 50/50, derecha en gris oscuro */}
+      <section
+        data-dark-section
+        data-split-hero
+        className="grid grid-cols-1 lg:grid-cols-2 h-[100svh] min-h-[600px] bg-background"
+      >
         {/* Izquierda: headline */}
         <div className="flex items-center justify-center px-6 md:px-[8%] lg:px-[10%] py-16 lg:py-0">
           <FadeIn className="w-full max-w-[560px] mx-auto text-center">
@@ -82,13 +86,16 @@ export default function HomeContent() {
           </FadeIn>
         </div>
 
-        {/* Derecha: subline + botón */}
-        <div className="flex items-center justify-center px-6 md:px-[8%] lg:px-[10%] py-16 lg:py-0">
+        {/* Derecha: estrofa + CTA sobre gris oscuro */}
+        <div
+          className="flex items-center justify-center px-6 md:px-[8%] lg:px-[10%] py-16 lg:py-0"
+          style={{ backgroundColor: "#1E1E1E" }}
+        >
           <FadeIn className="w-full max-w-[480px] mx-auto text-center" delay={0.15}>
-            {/* F: Estrofa en piedra (Holzer / Wool) */}
+            {/* F: Estrofa en piedra (Holzer / Wool) — invertida sobre gris */}
             <div className="mb-12 lg:mb-14">
               <p
-                className="text-foreground uppercase font-light"
+                className="text-white uppercase font-light"
                 style={{
                   fontSize: "clamp(0.95rem, 1.55vw, 1.1875rem)",
                   lineHeight: 2,
@@ -100,21 +107,12 @@ export default function HomeContent() {
                 <span className="block mt-[1em]">en transformación</span>
                 <span className="block">del equipo y ROI.</span>
               </p>
-              <div
-                aria-hidden
-                className="mt-10 h-px bg-foreground/25 mx-auto"
-                style={{ width: "4rem" }}
-              />
             </div>
 
             <Link
               href="/book"
-              className="group inline-flex items-center gap-4 py-3 text-foreground"
+              className="group inline-flex items-center gap-2 py-3 text-white/70 hover:text-white transition-colors duration-300"
             >
-              <span
-                aria-hidden
-                className="block h-px w-8 bg-foreground/50 transition-all duration-500 group-hover:w-12 group-hover:bg-foreground"
-              />
               <span className="text-[11px] font-light uppercase tracking-[0.22em] leading-none">
                 Agenda una llamada
               </span>
@@ -124,17 +122,13 @@ export default function HomeContent() {
               >
                 →
               </span>
-              <span
-                aria-hidden
-                className="block h-px w-8 bg-foreground/50 transition-all duration-500 group-hover:w-12 group-hover:bg-foreground"
-              />
             </Link>
           </FadeIn>
         </div>
       </section>
 
       {/* 2. Trusted by — marquee infinito (placeholder, ver TODO arriba) */}
-      <section className="bg-background text-foreground py-16 md:py-20 overflow-hidden">
+      <section className="bg-background text-foreground pt-16 md:pt-20 pb-16 md:pb-20 overflow-hidden">
         <Container>
           <FadeIn>
             <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-10 text-center">

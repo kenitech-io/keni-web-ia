@@ -19,101 +19,79 @@ const mobileLinks = [...exploreLinks];
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [exploreOpen, setExploreOpen] = useState(false);
-  const [onDark, setOnDark] = useState(false);
-  const [inSplitHero, setInSplitHero] = useState(false);
+  // Color del fondo que tiene detrás cada lado del navbar (medido en vivo)
+  const [bgLeft, setBgLeft] = useState<"dark" | "light">("light");
+  const [bgRight, setBgRight] = useState<"dark" | "light">("light");
   const pathname = usePathname();
   const exploreRef = useRef<HTMLDivElement>(null);
 
   const navRef = useRef<HTMLElement>(null);
-  const darkRangesRef = useRef<{ top: number; bottom: number }[]>([]);
-  const splitHeroRangesRef = useRef<{ top: number; bottom: number }[]>([]);
   const rafRef = useRef<number>(0);
-  const lastDarkChange = useRef<number>(0);
+  const lastChangeLeft = useRef<number>(0);
+  const lastChangeRight = useRef<number>(0);
 
-  // Cache dark section positions on mount and resize
-  const cacheDarkSections = useCallback(() => {
-    const scrollY = window.scrollY;
-    // data-dark-section elements
-    const sections = Array.from(document.querySelectorAll("[data-dark-section]"));
-    const ranges = sections.map((el) => {
-      const rect = el.getBoundingClientRect();
-      return { top: rect.top + scrollY, bottom: rect.bottom + scrollY };
-    });
-    // Also detect elements with dark computed backgrounds (for homepage)
-    const candidates = Array.from(document.querySelectorAll("[class*='bg-[#0'], [class*='bg-[#1'], [class*='bg-black']"));
-    candidates.forEach((el) => {
+  // Sondea el elemento que hay bajo (x, y) en viewport, sube por padres
+  // hasta encontrar un bg no transparente y devuelve "dark" o "light".
+  const detectBgAt = useCallback((x: number, y: number): "dark" | "light" => {
+    // Silencia el propio navbar para que elementFromPoint atraviese
+    const nav = navRef.current;
+    const prevPE = nav?.style.pointerEvents;
+    if (nav) nav.style.pointerEvents = "none";
+    let el = document.elementFromPoint(x, y) as HTMLElement | null;
+    if (nav) nav.style.pointerEvents = prevPE || "";
+
+    while (el) {
       const bg = window.getComputedStyle(el).backgroundColor;
       if (bg && bg !== "transparent" && bg !== "rgba(0, 0, 0, 0)") {
-        const match = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
-        if (match) {
-          const brightness = (parseInt(match[1]) * 299 + parseInt(match[2]) * 587 + parseInt(match[3]) * 114) / 1000;
-          if (brightness < 80) {
-            const rect = el.getBoundingClientRect();
-            ranges.push({ top: rect.top + scrollY, bottom: rect.bottom + scrollY });
+        const m = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?/);
+        if (m) {
+          const alpha = m[4] !== undefined ? parseFloat(m[4]) : 1;
+          if (alpha > 0.5) {
+            const brightness =
+              (parseInt(m[1]) * 299 + parseInt(m[2]) * 587 + parseInt(m[3]) * 114) /
+              1000;
+            return brightness < 128 ? "dark" : "light";
           }
         }
       }
-    });
-    darkRangesRef.current = ranges;
-
-    // Cache split-hero ranges separately (sections where left=light / right=dark)
-    const splitSections = Array.from(document.querySelectorAll("[data-split-hero]"));
-    splitHeroRangesRef.current = splitSections.map((el) => {
-      const rect = el.getBoundingClientRect();
-      return { top: rect.top + scrollY, bottom: rect.bottom + scrollY };
-    });
+      el = el.parentElement;
+    }
+    return "light";
   }, []);
 
   const handleScroll = useCallback(() => {
     cancelAnimationFrame(rafRef.current);
     rafRef.current = requestAnimationFrame(() => {
-      const y = window.scrollY;
-      const navMid = y + 32;
-      let dark = false;
-      const ranges = darkRangesRef.current;
-      for (let i = 0; i < ranges.length; i++) {
-        if (ranges[i].top < navMid && ranges[i].bottom > navMid) {
-          dark = true;
-          break;
-        }
-      }
-      // Detect if navbar is over a split-hero section
-      let split = false;
-      const splitRanges = splitHeroRangesRef.current;
-      for (let i = 0; i < splitRanges.length; i++) {
-        if (splitRanges[i].top < navMid && splitRanges[i].bottom > navMid) {
-          split = true;
-          break;
-        }
-      }
-      setInSplitHero(split);
-      // Debounce dark/light transitions to prevent flickering at section edges
+      const w = window.innerWidth;
+      const sampleY = 32; // mitad vertical del navbar (h=64px)
+      const newLeft = detectBgAt(40, sampleY);
+      const newRight = detectBgAt(Math.max(w - 40, 0), sampleY);
       const now = Date.now();
-      setOnDark((prev) => {
-        if (dark === prev) return prev;
-        if (now - lastDarkChange.current < 150) return prev;
-        lastDarkChange.current = now;
-        return dark;
+      setBgLeft((prev) => {
+        if (newLeft === prev) return prev;
+        if (now - lastChangeLeft.current < 150) return prev;
+        lastChangeLeft.current = now;
+        return newLeft;
+      });
+      setBgRight((prev) => {
+        if (newRight === prev) return prev;
+        if (now - lastChangeRight.current < 150) return prev;
+        lastChangeRight.current = now;
+        return newRight;
       });
     });
-  }, []);
+  }, [detectBgAt]);
 
   useEffect(() => {
-    // Initial cache after a short delay to let page render, then re-evaluate scroll state
-    const timer = setTimeout(() => {
-      cacheDarkSections();
-      handleScroll();
-    }, 100);
-    const onResize = () => {
-      cacheDarkSections();
-      handleScroll();
-    };
+    // Pequeño delay inicial para dejar que la página pinte antes del primer sondeo
+    const timer = setTimeout(handleScroll, 100);
+    const onResize = () => handleScroll();
     window.addEventListener("resize", onResize);
     return () => {
       clearTimeout(timer);
       window.removeEventListener("resize", onResize);
     };
-  }, [cacheDarkSections, handleScroll, pathname]);
+  }, [handleScroll, pathname]);
 
   useEffect(() => {
     handleScroll();
@@ -161,13 +139,12 @@ export default function Navbar() {
       >
         <Container>
           <div className="flex items-center justify-between">
-            <Link href="/" className={`text-xs font-medium tracking-tight transition-colors duration-300 ${
-              inSplitHero
-                ? "text-foreground"
-                : onDark
-                ? "text-white"
-                : "text-foreground"
-            }`}>
+            <Link
+              href="/"
+              className={`text-xs font-medium tracking-tight transition-colors duration-300 ${
+                bgLeft === "dark" ? "text-white" : "text-foreground"
+              }`}
+            >
               Keni
             </Link>
 
@@ -180,7 +157,13 @@ export default function Navbar() {
                 onMouseEnter={() => setExploreOpen(true)}
                 onMouseLeave={() => setExploreOpen(false)}
               >
-                <button className={`text-xs font-medium transition-colors duration-300 ${onDark ? "text-white hover:text-white/70" : "text-foreground hover:text-foreground/70"}`}>
+                <button
+                  className={`text-xs font-medium transition-colors duration-300 ${
+                    bgRight === "dark"
+                      ? "text-white hover:text-white/70"
+                      : "text-foreground hover:text-foreground/70"
+                  }`}
+                >
                   Explorar
                 </button>
 
@@ -209,7 +192,11 @@ export default function Navbar() {
 
               <Link
                 href="/book"
-                className={`text-xs font-medium transition-all duration-300 px-3 py-1 rounded-full ${onDark ? "bg-white hover:bg-white/85 text-black" : "bg-foreground hover:bg-charcoal text-background"}`}
+                className={`text-xs font-medium transition-all duration-300 px-3 py-1 rounded-full ${
+                  bgRight === "dark"
+                    ? "bg-white hover:bg-white/85 text-black"
+                    : "bg-foreground hover:bg-charcoal text-background"
+                }`}
               >
                 Agenda una llamada
               </Link>
@@ -225,17 +212,17 @@ export default function Navbar() {
                 <motion.span
                   animate={mobileOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
                   transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className={`block h-[1px] w-full origin-center transition-colors duration-300 ${onDark ? "bg-white" : "bg-foreground"}`}
+                  className={`block h-[1px] w-full origin-center transition-colors duration-300 ${bgRight === "dark" ? "bg-white" : "bg-foreground"}`}
                 />
                 <motion.span
                   animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
                   transition={{ duration: 0.2 }}
-                  className={`block h-[1px] w-full transition-colors duration-300 ${onDark ? "bg-white" : "bg-foreground"}`}
+                  className={`block h-[1px] w-full transition-colors duration-300 ${bgRight === "dark" ? "bg-white" : "bg-foreground"}`}
                 />
                 <motion.span
                   animate={mobileOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
                   transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className={`block h-[1px] w-full origin-center transition-colors duration-300 ${onDark ? "bg-white" : "bg-foreground"}`}
+                  className={`block h-[1px] w-full origin-center transition-colors duration-300 ${bgRight === "dark" ? "bg-white" : "bg-foreground"}`}
                 />
               </div>
             </button>
