@@ -261,7 +261,7 @@ export default function HomeContent() {
 
             <h2
               className="text-foreground font-medium leading-[0.82] w-full"
-              style={{ fontSize: "clamp(4rem, 19vw, 17rem)", letterSpacing: "-0.05em", whiteSpace: "nowrap" }}
+              style={{ fontSize: "clamp(2.5rem, 13.5vw, 12.5rem)", letterSpacing: "-0.04em", whiteSpace: "nowrap" }}
             >
               AUTONOMÍA
             </h2>
