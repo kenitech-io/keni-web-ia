@@ -74,7 +74,7 @@ export default function BlogPage() {
       </section>
 
       {blogPosts.length === 0 ? (
-        <section className="py-24 md:py-40">
+        <section className="py-24 md:py-40 bg-surface">
           <Container>
             <FadeIn>
               <div className="max-w-[640px] mx-auto text-center">

@@ -49,7 +49,7 @@
     --muted: #888888;
     --border-color: #666666;
     --charcoal: #E0E0E0;
-    /* Pipeline colors — visible but refined on dark */
+    /* Pipeline colors - visible but refined on dark */
     --pipe-purple-bg: #252040;
     --pipe-purple-border: #8B7FB8;
     --pipe-purple-text: #C0B6D8;
@@ -143,7 +143,7 @@ html {
   }
 }
 
-/* Light gradient section — dark mode override */
+/* Light gradient section - dark mode override */
 .bg-light-gradient {
   background: linear-gradient(180deg, #f0f0f0 0%, #e8e8e8 100%);
 }
@@ -178,7 +178,7 @@ textarea:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-/* Marquee — infinite horizontal scroll for trusted-by logos */
+/* Marquee - infinite horizontal scroll for trusted-by logos */
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }

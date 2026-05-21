@@ -46,21 +46,18 @@ const pillars = [
   {
     n: "01",
     category: "Estrategia",
-    tagline: "Saber dónde estás para planear a dónde vas.",
     body: "Auditamos el estado real de IA de tu equipo y construimos el plan: dónde aporta valor primero, en qué orden y con qué medirlo.",
     href: "/plan-transformacion-ia",
   },
   {
     n: "02",
     category: "Capacitación",
-    tagline: "La IA se adopta trabajando, no en una presentación.",
     body: "El equipo aprende usando su propio agente en sus tareas reales, desde el primer día. Sin jerga, sin código a la vista.",
     href: "/capacitacion-equipos",
   },
   {
     n: "03",
     category: "Automatización",
-    tagline: "Donde los agentes aportan más valor.",
     body: "Identificamos los flujos con mayor retorno, los prototipamos y dejamos la capacidad instalada para que escales sin nosotros.",
     href: "/automatizacion-flujos",
   },
@@ -133,12 +130,12 @@ export default function PlanTransformacionIAPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
-      {/* Hero — mismo fondo que la tarjeta "Estrategia / Plan IA" de la home */}
+      {/* Hero - mismo fondo que la tarjeta "Estrategia / Plan IA" de la home */}
       <section
         className="pt-32 pb-20 md:pt-48 md:pb-28"
         style={{
           background:
-            "radial-gradient(at 28% 72%, #cdb088 0%, transparent 70%), radial-gradient(at 78% 22%, #e0cdad 0%, transparent 72%), radial-gradient(at 55% 45%, #bfa074 0%, transparent 78%), linear-gradient(135deg, #f0e7d6, #f6efe2)",
+            "radial-gradient(at 28% 72%, #cda26a 0%, transparent 70%), radial-gradient(at 78% 22%, #e0bd87 0%, transparent 72%), radial-gradient(at 55% 45%, #bf935a 0%, transparent 78%), linear-gradient(135deg, #f0d5a7, #f6dcb0)",
         }}
       >
         <Container>
@@ -156,18 +153,8 @@ export default function PlanTransformacionIAPage() {
               >
                 Plan de transformación con IA
               </h1>
-              <p
-                className="text-foreground font-light tracking-tight mb-6"
-                style={{
-                  fontSize: "clamp(1.125rem, 2vw, 1.5rem)",
-                  lineHeight: 1.35,
-                }}
-              >
-                Saber dónde estás para planear a dónde vas.
-              </p>
               <p className="text-body text-foreground-secondary/70 font-light leading-relaxed max-w-[620px] mx-auto">
                 Estrategia, capacitación y automatización en un mismo recorrido.
-                De tener IA a trabajar con ella.
               </p>
             </FadeIn>
           </div>
@@ -175,7 +162,7 @@ export default function PlanTransformacionIAPage() {
       </section>
 
       {/* El punto de partida */}
-      <section className="py-20 md:py-28 border-t border-border-color">
+      <section className="py-20 md:py-28">
         <Container>
           <div className="max-w-[760px] mx-auto text-center">
             <FadeIn>
@@ -193,9 +180,9 @@ export default function PlanTransformacionIAPage() {
                 hace con ella.
               </p>
               <p className="text-body text-foreground-secondary/70 font-light leading-relaxed max-w-[600px] mx-auto">
-                Las herramientas se compran en una tarde. El hábito de usarlas
-                —en las tareas reales, por todo el equipo, sin depender de
-                nadie— se construye. Ese es el trabajo que hacemos contigo.
+                Las herramientas se compran en una tarde. El hábito de usarlas,
+                en las tareas reales, por todo el equipo, sin depender de
+                nadie, se construye. Ese es el trabajo que hacemos contigo.
               </p>
             </FadeIn>
           </div>
@@ -203,7 +190,7 @@ export default function PlanTransformacionIAPage() {
       </section>
 
       {/* Las tres piezas del plan */}
-      <section className="py-20 md:py-28 border-t border-border-color">
+      <section className="py-20 md:py-28 bg-surface">
         <Container>
           <FadeIn>
             <div className="max-w-[760px] mx-auto text-center mb-16 md:mb-20">
@@ -236,9 +223,6 @@ export default function PlanTransformacionIAPage() {
                   <h3 className="text-foreground font-medium tracking-tight mb-3 text-lg">
                     {p.category}
                   </h3>
-                  <p className="text-foreground font-light leading-snug mb-4">
-                    {p.tagline}
-                  </p>
                   <p className="text-sm text-foreground-secondary/70 font-light leading-relaxed mb-6">
                     {p.body}
                   </p>
@@ -253,7 +237,7 @@ export default function PlanTransformacionIAPage() {
       </section>
 
       {/* Cómo es el recorrido */}
-      <section className="py-20 md:py-28 border-t border-border-color">
+      <section className="py-20 md:py-28">
         <Container>
           <FadeIn>
             <div className="max-w-[760px] mx-auto text-center mb-16 md:mb-20">
@@ -294,7 +278,7 @@ export default function PlanTransformacionIAPage() {
       </section>
 
       {/* Qué te llevas */}
-      <section className="py-20 md:py-28 border-t border-border-color">
+      <section className="py-20 md:py-28">
         <Container>
           <FadeIn>
             <div className="max-w-[760px] mx-auto text-center mb-16 md:mb-20">
@@ -336,7 +320,7 @@ export default function PlanTransformacionIAPage() {
       </section>
 
       {/* Cómo trabajamos */}
-      <section className="py-20 md:py-28 border-t border-border-color">
+      <section className="py-20 md:py-28 bg-surface">
         <Container>
           <FadeIn>
             <div className="max-w-[760px] mx-auto text-center mb-16 md:mb-20">
@@ -364,7 +348,7 @@ export default function PlanTransformacionIAPage() {
       </section>
 
       {/* Otros servicios */}
-      <section className="py-20 md:py-28 border-t border-border-color">
+      <section className="py-20 md:py-28">
         <Container>
           <FadeIn>
             <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-8 text-center">

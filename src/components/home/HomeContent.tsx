@@ -7,11 +7,11 @@ const capabilities = [
     badge: "Plan IA",
     category: "Estrategia",
     title: "Plan de transformación con IA",
-    tagline: "Saber dónde estás para planear a dónde vas.",
+    tagline: "Primero la verdad. Después el rumbo.",
     body: "En un sprint, auditamos tu estado de IA, construimos el plan y arrancamos contigo.",
     href: "/plan-transformacion-ia",
-    // Marrón arena — el más claro de la familia
-    bg: "radial-gradient(at 28% 72%, #cdb088 0%, transparent 70%), radial-gradient(at 78% 22%, #e0cdad 0%, transparent 72%), radial-gradient(at 55% 45%, #bfa074 0%, transparent 78%), linear-gradient(135deg, #f0e7d6, #f6efe2)",
+    // Marrón arena - el más claro de la familia
+    bg: "radial-gradient(at 28% 72%, #cda26a 0%, transparent 70%), radial-gradient(at 78% 22%, #e0bd87 0%, transparent 72%), radial-gradient(at 55% 45%, #bf935a 0%, transparent 78%), linear-gradient(135deg, #f0d5a7, #f6dcb0)",
   },
   {
     badge: "Capacitación",
@@ -20,8 +20,8 @@ const capabilities = [
     tagline: "La IA se adopta trabajando, no en una presentación.",
     body: "Workshops que activan a cada equipo para que opere con IA en su trabajo diario, sin importar el rol.",
     href: "/capacitacion-equipos",
-    // Marrón terracota / arcilla — el medio de la familia
-    bg: "radial-gradient(at 40% 65%, #bf8f6b 0%, transparent 70%), radial-gradient(at 75% 28%, #d4ad84 0%, transparent 72%), radial-gradient(at 18% 80%, #ad7850 0%, transparent 78%), linear-gradient(135deg, #ecddc9, #f2e7d6)",
+    // Marrón terracota / arcilla - el medio de la familia
+    bg: "radial-gradient(at 40% 65%, #bf8453 0%, transparent 70%), radial-gradient(at 75% 28%, #d49f67 0%, transparent 72%), radial-gradient(at 18% 80%, #ad6e3e 0%, transparent 78%), linear-gradient(135deg, #eccb9d, #f2d5a7)",
   },
   {
     badge: "Automatizar",
@@ -30,8 +30,8 @@ const capabilities = [
     tagline: "Identificar dónde los agentes aportan más valor.",
     body: "Priorizamos, prototipamos y entregamos un plan para escalar.",
     href: "/automatizacion-flujos",
-    // Marrón café / topo — el más profundo de la familia
-    bg: "radial-gradient(at 30% 70%, #9c7a5a 0%, transparent 70%), radial-gradient(at 72% 28%, #b89572 0%, transparent 72%), radial-gradient(at 55% 50%, #846448 0%, transparent 78%), linear-gradient(135deg, #e4d6c2, #ede0cd)",
+    // Marrón café / topo - el más profundo de la familia
+    bg: "radial-gradient(at 30% 70%, #9c7046 0%, transparent 70%), radial-gradient(at 72% 28%, #b88959 0%, transparent 72%), radial-gradient(at 55% 50%, #845c38 0%, transparent 78%), linear-gradient(135deg, #e4c597, #edcea0)",
   },
 ];
 
@@ -64,7 +64,7 @@ export default function HomeContent() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
-      {/* 1. Hero — split 50/50, derecha en gris oscuro */}
+      {/* 1. Hero - split 50/50, derecha en gris oscuro */}
       <section
         data-dark-section
         data-split-hero
@@ -92,7 +92,7 @@ export default function HomeContent() {
           style={{ backgroundColor: "#1E1E1E" }}
         >
           <FadeIn className="w-full max-w-[480px] mx-auto text-center" delay={0.15}>
-            {/* F: Estrofa en piedra (Holzer / Wool) — invertida sobre gris */}
+            {/* F: Estrofa en piedra (Holzer / Wool) - invertida sobre gris */}
             <div className="mb-12 lg:mb-14">
               <p
                 className="text-white uppercase font-light"
@@ -127,7 +127,7 @@ export default function HomeContent() {
         </div>
       </section>
 
-      {/* 2. Trusted by — marquee infinito (placeholder, ver TODO arriba) */}
+      {/* 2. Trusted by - marquee infinito (placeholder, ver TODO arriba) */}
       <section className="bg-background text-foreground pt-16 md:pt-20 pb-16 md:pb-20 overflow-hidden">
         <Container>
           <FadeIn>
@@ -169,7 +169,7 @@ export default function HomeContent() {
         </div>
       </section>
 
-      {/* 3. Aceleramos tu transformación — capacidades estratégicas */}
+      {/* 3. Aceleramos tu transformación - capacidades estratégicas */}
       <section id="como" className="py-24 md:py-40 bg-background">
         <Container>
           <FadeIn>
@@ -229,7 +229,7 @@ export default function HomeContent() {
         </div>
       </section>
 
-      {/* 5. Caso Keni — cita Mikel (franja centrada, fondo blanco) */}
+      {/* 5. Caso Keni - cita Mikel (franja centrada, fondo blanco) */}
       <section className="bg-background text-foreground py-28 md:py-40 px-6">
         <FadeIn>
           <div className="max-w-[900px] mx-auto text-center">
@@ -250,7 +250,7 @@ export default function HomeContent() {
         </FadeIn>
       </section>
 
-      {/* 6. CTA cierre — FLUIDEZ a sangre: la aspiración de la marca */}
+      {/* 6. CTA cierre - FLUIDEZ a sangre: la aspiración de la marca */}
       <section className="bg-background pt-32 md:pt-52 pb-24 md:pb-36 px-6 overflow-hidden">
         <div className="max-w-[1300px] mx-auto">
           <FadeIn>

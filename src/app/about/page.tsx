@@ -108,7 +108,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* Visión — dos columnas (estructura kenitech.io) */}
+      {/* Visión - dos columnas (estructura kenitech.io) */}
       <section className="py-24 md:py-40 bg-surface">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-20 items-center">
@@ -174,8 +174,8 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* Cómo trabajamos — 3 columnas (versión IA) */}
-      <section className="py-24 md:py-40 bg-surface">
+      {/* Cómo trabajamos - 3 columnas (versión IA) */}
+      <section className="py-24 md:py-40">
         <Container>
           <div className="max-w-[820px] mx-auto">
             <FadeIn>
@@ -212,7 +212,7 @@ export default function AboutPage() {
       </section>
 
       {/* Equipo (versión IA) */}
-      <section className="py-24 md:py-40 border-t border-border-color">
+      <section className="py-24 md:py-40 bg-surface">
         <Container>
           <FadeIn>
             <h2

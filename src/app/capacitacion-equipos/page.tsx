@@ -49,12 +49,12 @@ export default function CapacitacionEquiposPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
-      {/* Hero — mismo fondo que la tarjeta "Capacitación" de la home */}
+      {/* Hero - mismo fondo que la tarjeta "Capacitación" de la home */}
       <section
         className="pt-32 pb-20 md:pt-48 md:pb-32"
         style={{
           background:
-            "radial-gradient(at 40% 65%, #bf8f6b 0%, transparent 70%), radial-gradient(at 75% 28%, #d4ad84 0%, transparent 72%), radial-gradient(at 18% 80%, #ad7850 0%, transparent 78%), linear-gradient(135deg, #ecddc9, #f2e7d6)",
+            "radial-gradient(at 40% 65%, #bf8453 0%, transparent 70%), radial-gradient(at 75% 28%, #d49f67 0%, transparent 72%), radial-gradient(at 18% 80%, #ad6e3e 0%, transparent 78%), linear-gradient(135deg, #eccb9d, #f2d5a7)",
         }}
       >
         <Container>
