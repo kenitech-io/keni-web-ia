@@ -7,14 +7,14 @@ import CTASection from "@/components/CTASection";
 export const metadata: Metadata = {
   title: "Plan de transformación con IA",
   description:
-    "Saber dónde estás para planear a dónde vas. En un sprint, auditamos tu estado de IA, construimos el plan y arrancamos contigo.",
+    "Estrategia, capacitación y automatización en un mismo recorrido. De tener IA a trabajar con ella: auditamos tu estado, construimos el plan y dejamos a tu equipo operando solo.",
   alternates: {
     canonical: "https://ia.kenitech.io/plan-transformacion-ia",
   },
   openGraph: {
     title: "Plan de transformación con IA",
     description:
-      "En un sprint, auditamos tu estado de IA, construimos el plan y arrancamos contigo.",
+      "Estrategia, capacitación y automatización en un mismo recorrido. De tener IA a trabajar con ella.",
     url: "https://ia.kenitech.io/plan-transformacion-ia",
     siteName: "Keni",
     locale: "es_MX",
@@ -41,6 +41,74 @@ const breadcrumbJsonLd = {
   ],
 };
 
+// Las tres piezas del plan completo. Cada una enlaza a su página de detalle.
+const pillars = [
+  {
+    n: "01",
+    category: "Estrategia",
+    tagline: "Saber dónde estás para planear a dónde vas.",
+    body: "Auditamos el estado real de IA de tu equipo y construimos el plan: dónde aporta valor primero, en qué orden y con qué medirlo.",
+    href: "/plan-transformacion-ia",
+  },
+  {
+    n: "02",
+    category: "Capacitación",
+    tagline: "La IA se adopta trabajando, no en una presentación.",
+    body: "El equipo aprende usando su propio agente en sus tareas reales, desde el primer día. Sin jerga, sin código a la vista.",
+    href: "/capacitacion-equipos",
+  },
+  {
+    n: "03",
+    category: "Automatización",
+    tagline: "Donde los agentes aportan más valor.",
+    body: "Identificamos los flujos con mayor retorno, los prototipamos y dejamos la capacidad instalada para que escales sin nosotros.",
+    href: "/automatizacion-flujos",
+  },
+];
+
+// El recorrido, en lenguaje público (un sprint), sin exponer estructura interna.
+const journey = [
+  {
+    n: "1",
+    title: "Diagnóstico",
+    body: "Escuchamos al equipo y observamos cómo trabaja hoy.",
+  },
+  {
+    n: "2",
+    title: "Plan",
+    body: "Priorizamos dónde la IA aporta antes y lo aterrizamos en un plan a tu medida.",
+  },
+  {
+    n: "3",
+    title: "Formación en el flujo",
+    body: "Una semana guiada: el equipo trabaja con su agente en sus propias tareas, con soporte a demanda.",
+  },
+  {
+    n: "4",
+    title: "Capacidad instalada",
+    body: "El equipo sigue solo. Medimos el antes y el después.",
+  },
+];
+
+const principles = [
+  {
+    title: "Capacidad, no dependencia.",
+    body: "Te dejamos operando tu negocio con IA, no atado a nosotros.",
+  },
+  {
+    title: "Probado en casa primero.",
+    body: "Lo que enseñamos lo usamos cada día en Keni antes de llevarlo a tu equipo.",
+  },
+  {
+    title: "Tu agente, no una terminal.",
+    body: "Cero jerga. Lo que el equipo ve entiende su trabajo; no parece código.",
+  },
+  {
+    title: "El antes y el después.",
+    body: "Medimos el punto de partida y el avance real, no la asistencia a un curso.",
+  },
+];
+
 export default function PlanTransformacionIAPage() {
   return (
     <main>
@@ -50,7 +118,7 @@ export default function PlanTransformacionIAPage() {
       />
 
       {/* Hero */}
-      <section className="pt-32 pb-20 md:pt-48 md:pb-32">
+      <section className="pt-32 pb-20 md:pt-48 md:pb-28">
         <Container>
           <div className="max-w-[820px] mx-auto text-center">
             <FadeIn>
@@ -76,8 +144,202 @@ export default function PlanTransformacionIAPage() {
                 Saber dónde estás para planear a dónde vas.
               </p>
               <p className="text-body text-foreground-secondary/70 font-light leading-relaxed max-w-[620px] mx-auto">
-                En un sprint, auditamos tu estado de IA, construimos el plan y
-                arrancamos contigo.
+                Estrategia, capacitación y automatización en un mismo recorrido.
+                De tener IA a trabajar con ella.
+              </p>
+            </FadeIn>
+          </div>
+        </Container>
+      </section>
+
+      {/* El punto de partida */}
+      <section className="py-20 md:py-28 border-t border-border-color">
+        <Container>
+          <div className="max-w-[760px] mx-auto text-center">
+            <FadeIn>
+              <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-8">
+                El punto de partida
+              </p>
+              <p
+                className="text-foreground font-light tracking-tight mb-8"
+                style={{
+                  fontSize: "clamp(1.375rem, 2.6vw, 2rem)",
+                  lineHeight: 1.3,
+                }}
+              >
+                Tener IA es hoy lo fácil. La diferencia la marca lo que el
+                equipo hace con ella.
+              </p>
+              <p className="text-body text-foreground-secondary/70 font-light leading-relaxed max-w-[600px] mx-auto">
+                Las herramientas se compran en una tarde. El hábito de usarlas
+                —en las tareas reales, por todo el equipo, sin depender de
+                nadie— se construye. Ese es el trabajo que hacemos contigo.
+              </p>
+            </FadeIn>
+          </div>
+        </Container>
+      </section>
+
+      {/* Las tres piezas del plan */}
+      <section className="py-20 md:py-28 border-t border-border-color">
+        <Container>
+          <FadeIn>
+            <div className="max-w-[760px] mx-auto text-center mb-16 md:mb-20">
+              <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-8">
+                Un plan, tres piezas
+              </p>
+              <p
+                className="text-foreground font-light tracking-tight"
+                style={{
+                  fontSize: "clamp(1.25rem, 2.2vw, 1.75rem)",
+                  lineHeight: 1.35,
+                }}
+              >
+                El recorrido completo. Cada pieza se sostiene en la anterior.
+              </p>
+            </div>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-10 max-w-[1080px] mx-auto">
+            {pillars.map((p) => (
+              <FadeIn key={p.n} delay={0.05}>
+                <Link
+                  href={p.href}
+                  className="group block h-full md:px-2"
+                  aria-label={p.category}
+                >
+                  <span className="block text-sm font-light text-foreground/20 mb-5 tabular-nums">
+                    {p.n}
+                  </span>
+                  <h3 className="text-foreground font-medium tracking-tight mb-3 text-lg">
+                    {p.category}
+                  </h3>
+                  <p className="text-foreground font-light leading-snug mb-4">
+                    {p.tagline}
+                  </p>
+                  <p className="text-sm text-foreground-secondary/70 font-light leading-relaxed mb-6">
+                    {p.body}
+                  </p>
+                  <span className="inline-block text-sm font-light text-foreground/70 transition-colors group-hover:text-foreground">
+                    Saber más →
+                  </span>
+                </Link>
+              </FadeIn>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* Cómo es el recorrido */}
+      <section className="py-20 md:py-28 border-t border-border-color">
+        <Container>
+          <FadeIn>
+            <div className="max-w-[760px] mx-auto text-center mb-16 md:mb-20">
+              <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-8">
+                Cómo es el recorrido
+              </p>
+              <p
+                className="text-foreground font-light tracking-tight"
+                style={{
+                  fontSize: "clamp(1.25rem, 2.2vw, 1.75rem)",
+                  lineHeight: 1.35,
+                }}
+              >
+                Un sprint. Empezamos contigo y terminamos con tu equipo
+                operando solo.
+              </p>
+            </div>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 max-w-[1080px] mx-auto">
+            {journey.map((step) => (
+              <FadeIn key={step.n} delay={0.05}>
+                <div className="md:min-h-[140px]">
+                  <span className="block text-lg font-light text-foreground/[0.12] mb-4 tabular-nums">
+                    {step.n}
+                  </span>
+                  <h3 className="text-foreground font-medium tracking-tight mb-3">
+                    {step.title}
+                  </h3>
+                  <p className="text-sm text-foreground-secondary/70 font-light leading-relaxed">
+                    {step.body}
+                  </p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* Cómo trabajamos */}
+      <section className="py-20 md:py-28 border-t border-border-color">
+        <Container>
+          <FadeIn>
+            <div className="max-w-[760px] mx-auto text-center mb-16 md:mb-20">
+              <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-8">
+                Cómo trabajamos
+              </p>
+            </div>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-16 gap-y-12 max-w-[820px] mx-auto">
+            {principles.map((pr) => (
+              <FadeIn key={pr.title} delay={0.05}>
+                <div>
+                  <h3 className="text-foreground font-light tracking-tight mb-3 text-lg">
+                    {pr.title}
+                  </h3>
+                  <p className="text-sm text-foreground-secondary/70 font-light leading-relaxed">
+                    {pr.body}
+                  </p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* Cita Mikel */}
+      <section className="py-24 md:py-36 border-t border-border-color">
+        <Container>
+          <FadeIn>
+            <div className="max-w-[820px] mx-auto text-center">
+              <p
+                className="text-foreground font-light tracking-tight mb-8"
+                style={{
+                  fontSize: "clamp(1.375rem, 2.8vw, 2.125rem)",
+                  lineHeight: 1.3,
+                }}
+              >
+                “Nuestro objetivo es que la fluidez con IA sea el estándar, no la
+                ventaja competitiva de unos pocos.”
+              </p>
+              <p className="text-sm font-light text-foreground-secondary/70">
+                Mikel Martin, CTO
+              </p>
+            </div>
+          </FadeIn>
+        </Container>
+      </section>
+
+      {/* Para quién es */}
+      <section className="py-20 md:py-28 border-t border-border-color">
+        <Container>
+          <div className="max-w-[760px] mx-auto text-center">
+            <FadeIn>
+              <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-8">
+                Para quién es
+              </p>
+              <p
+                className="text-foreground font-light tracking-tight"
+                style={{
+                  fontSize: "clamp(1.25rem, 2.2vw, 1.625rem)",
+                  lineHeight: 1.4,
+                }}
+              >
+                Equipos no técnicos en empresas medianas y grandes, con un ciclo
+                de trabajo diario y un responsable que quiere que la IA se note
+                en el trabajo, no en una diapositiva.
               </p>
             </FadeIn>
           </div>
@@ -85,7 +347,7 @@ export default function PlanTransformacionIAPage() {
       </section>
 
       {/* Otros servicios */}
-      <section className="py-20 md:py-28 bg-surface border-t border-border-color">
+      <section className="py-20 md:py-28 border-t border-border-color">
         <Container>
           <FadeIn>
             <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-8 text-center">
