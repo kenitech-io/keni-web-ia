@@ -251,27 +251,31 @@ export default function HomeContent() {
         </FadeIn>
       </section>
 
-      {/* 6. CTA cierre — banda blanca (experimento) */}
-      <section className="bg-background py-32 md:py-52 px-6">
-        <FadeIn>
-          <div className="max-w-[1000px] mx-auto text-center">
-            <p
-              className="text-foreground font-light tracking-tight mb-12"
-              style={{
-                fontSize: "clamp(2rem, 4.5vw, 3.5rem)",
-                lineHeight: 1.2,
-              }}
-            >
-              ¿Tu empresa escalará la IA o volverá a estancarse?
+      {/* 6. CTA cierre — FLUIDEZ a sangre: la aspiración de la marca */}
+      <section className="bg-background pt-32 md:pt-52 pb-24 md:pb-36 px-6 overflow-hidden">
+        <div className="max-w-[1300px] mx-auto">
+          <FadeIn>
+            <p className="text-muted font-light tracking-[0.25em] uppercase text-xs mb-6 md:mb-8 pl-1">
+              Capacidad, no dependencia
             </p>
-            <Link
-              href="/book"
-              className="inline-block bg-foreground hover:bg-foreground/85 text-background px-9 py-4 text-sm font-light tracking-wide rounded-full transition-colors"
+
+            <h2
+              className="text-foreground font-medium leading-[0.82] w-full"
+              style={{ fontSize: "clamp(4rem, 19vw, 17rem)", letterSpacing: "-0.05em", whiteSpace: "nowrap" }}
             >
-              Agenda una llamada
-            </Link>
-          </div>
-        </FadeIn>
+              AUTONOMÍA
+            </h2>
+
+            <div className="mt-12 md:mt-16 pl-1">
+              <Link
+                href="/book"
+                className="inline-block text-xs font-medium px-3 py-1 rounded-full bg-foreground hover:bg-charcoal text-background transition-all duration-300"
+              >
+                Agenda una llamada
+              </Link>
+            </div>
+          </FadeIn>
+        </div>
       </section>
 
     </main>
