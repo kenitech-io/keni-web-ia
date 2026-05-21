@@ -198,8 +198,7 @@ export default function HomeContent() {
 
         {/* Filas a sangre: panel de color con esquinas vivas + texto, como la foto de Mikel */}
         <div>
-          {capabilities.map((cap, i) => {
-            const reverse = i % 2 === 1;
+          {capabilities.map((cap) => {
             return (
               <FadeIn key={cap.title} delay={0.05}>
                 <Link
