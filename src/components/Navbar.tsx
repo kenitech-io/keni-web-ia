@@ -10,7 +10,6 @@ const exploreLinks = [
   { name: "Plan de transformación con IA", href: "/plan-transformacion-ia" },
   { name: "Capacitación de equipos", href: "/capacitacion-equipos" },
   { name: "Automatización de flujos", href: "/automatizacion-flujos" },
-  { name: "Blog", href: "/blog" },
   { name: "Acerca de", href: "/about" },
 ];
 

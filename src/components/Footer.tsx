@@ -6,12 +6,6 @@ import Container from "@/components/ui/Container";
 
 const columns = [
   {
-    title: "RECURSOS",
-    links: [
-      { name: "Blog", href: "/blog" },
-    ],
-  },
-  {
     title: "EMPRESA",
     links: [
       { name: "Acerca de nosotros", href: "/about" },
@@ -23,6 +17,14 @@ const columns = [
     title: "CONECTA",
     links: [
       { name: "LinkedIn", href: "https://www.linkedin.com/company/keniengineering/", external: true },
+    ],
+  },
+  {
+    title: "LEGAL",
+    links: [
+      { name: "Política de privacidad", href: "/privacidad" },
+      { name: "Aviso legal", href: "/aviso-legal" },
+      { name: "Términos y condiciones", href: "/terminos" },
     ],
   },
 ];
@@ -50,7 +52,7 @@ export default function Footer() {
     >
       <Container>
         <div className="py-16 md:py-24">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-12 md:gap-16 w-fit mx-auto">
             {columns.map((col) => (
               <div key={col.title}>
                 <p
@@ -85,7 +87,7 @@ export default function Footer() {
             ))}
           </div>
 
-          <div className="mt-24">
+          <div className="mt-24 text-center">
             <p className={`text-xs ${copyClass}`}>
               &copy; {new Date().getFullYear()} Keni Engineering
             </p>

@@ -41,6 +41,85 @@ const breadcrumbJsonLd = {
   ],
 };
 
+// Dónde aportan los agentes.
+const aportan = [
+  {
+    title: "Tareas repetitivas",
+    body: "Lo que se hace igual cada vez es donde un agente sostiene el ritmo sin cansarse.",
+  },
+  {
+    title: "Alto volumen",
+    body: "Cuando el mismo paso se repite muchas veces al día, el agente absorbe la carga.",
+  },
+  {
+    title: "Dentro del flujo diario",
+    body: "El valor aparece en el trabajo real del equipo, no en una demostración aparte.",
+  },
+  {
+    title: "Reglas claras, criterio acotado",
+    body: "Donde la decisión se puede describir, el agente la ejecuta con consistencia.",
+  },
+];
+
+// Cómo lo hacemos, paso a paso.
+const proceso = [
+  {
+    n: "1",
+    title: "Identificar y priorizar",
+    body: "Mapeamos el flujo del equipo y ordenamos las oportunidades por el valor que aportan.",
+  },
+  {
+    n: "2",
+    title: "Prototipar",
+    body: "Construimos lo prioritario primero, en pequeño, para ver cómo se comporta.",
+  },
+  {
+    n: "3",
+    title: "Validar en el trabajo real",
+    body: "El prototipo se prueba donde sucede el trabajo, con las personas que lo hacen.",
+  },
+  {
+    n: "4",
+    title: "Entregar un plan para escalar",
+    body: "Dejamos un camino claro y la capacidad para recorrerlo sin nosotros.",
+  },
+];
+
+// Entregables.
+const llevas = [
+  {
+    title: "Flujos prioritarios prototipados",
+    body: "Las oportunidades de más valor, ya construidas y probadas en tu contexto.",
+  },
+  {
+    title: "Un plan para escalar",
+    body: "El siguiente paso documentado, listo para que el equipo lo continúe.",
+  },
+  {
+    title: "Capacidad instalada",
+    body: "Personas de tu equipo que entienden lo construido y pueden extenderlo.",
+  },
+  {
+    title: "El antes y el después",
+    body: "La medición del trabajo como era y como queda, para que el avance se vea.",
+  },
+];
+
+const principles = [
+  {
+    title: "Capacidad, no dependencia.",
+    body: "Construimos para que el equipo opere y escale por su cuenta.",
+  },
+  {
+    title: "Herramientas reales, no maquetas.",
+    body: "Lo que entregamos funciona en el trabajo, no solo en una presentación.",
+  },
+  {
+    title: "El antes y el después.",
+    body: "Medimos cómo era el flujo y cómo queda, sin adornar el resultado.",
+  },
+];
+
 export default function AutomatizacionFlujosPage() {
   return (
     <main>
@@ -72,15 +151,6 @@ export default function AutomatizacionFlujosPage() {
               >
                 Automatización de flujos
               </h1>
-              <p
-                className="text-foreground font-light tracking-tight mb-6"
-                style={{
-                  fontSize: "clamp(1.125rem, 2vw, 1.5rem)",
-                  lineHeight: 1.35,
-                }}
-              >
-                Identificar dónde los agentes aportan más valor.
-              </p>
               <p className="text-body text-foreground-secondary/70 font-light leading-relaxed max-w-[620px] mx-auto">
                 Priorizamos, prototipamos y entregamos un plan para escalar.
               </p>
@@ -89,8 +159,184 @@ export default function AutomatizacionFlujosPage() {
         </Container>
       </section>
 
+      {/* El punto de partida */}
+      <section className="py-20 md:py-28">
+        <Container>
+          <div className="max-w-[760px] mx-auto text-center">
+            <FadeIn>
+              <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-8">
+                El punto de partida
+              </p>
+              <p
+                className="text-foreground font-light tracking-tight mb-8"
+                style={{
+                  fontSize: "clamp(1.375rem, 2.6vw, 2rem)",
+                  lineHeight: 1.3,
+                }}
+              >
+                Tu equipo tiene mejores cosas que hacer que el trabajo
+                repetitivo.
+              </p>
+              <p className="text-body text-foreground-secondary/70 font-light leading-relaxed max-w-[600px] mx-auto">
+                La pregunta no es cuánto puede hacer un agente, sino dónde aporta
+                más. En el trabajo de un equipo hay tareas que un agente resuelve
+                mejor, y otras que conviene dejar como están. Empezamos por
+                encontrar las primeras.
+              </p>
+            </FadeIn>
+          </div>
+        </Container>
+      </section>
+
+      {/* Dónde aportan los agentes */}
+      <section className="py-20 md:py-28 bg-surface">
+        <Container>
+          <FadeIn>
+            <div className="max-w-[760px] mx-auto text-center mb-16 md:mb-20">
+              <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-8">
+                Dónde aportan
+              </p>
+              <p
+                className="text-foreground font-light tracking-tight"
+                style={{
+                  fontSize: "clamp(1.25rem, 2.2vw, 1.75rem)",
+                  lineHeight: 1.35,
+                }}
+              >
+                Un agente rinde donde el trabajo se repite.
+              </p>
+            </div>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 max-w-[1080px] mx-auto">
+            {aportan.map((it) => (
+              <FadeIn key={it.title} delay={0.05}>
+                <div>
+                  <h3 className="text-foreground font-medium tracking-tight mb-3 text-lg">
+                    {it.title}
+                  </h3>
+                  <p className="text-sm text-foreground-secondary/70 font-light leading-relaxed">
+                    {it.body}
+                  </p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* Cómo lo hacemos */}
+      <section className="py-20 md:py-28 bg-surface">
+        <Container>
+          <FadeIn>
+            <div className="max-w-[760px] mx-auto text-center mb-16 md:mb-20">
+              <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-8">
+                Cómo lo hacemos
+              </p>
+              <p
+                className="text-foreground font-light tracking-tight"
+                style={{
+                  fontSize: "clamp(1.25rem, 2.2vw, 1.75rem)",
+                  lineHeight: 1.35,
+                }}
+              >
+                Primero entender el trabajo, después automatizarlo.
+              </p>
+            </div>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 max-w-[1080px] mx-auto">
+            {proceso.map((step) => (
+              <FadeIn key={step.n} delay={0.05}>
+                <div className="md:min-h-[160px]">
+                  <span className="block text-lg font-light text-foreground/[0.12] mb-4 tabular-nums">
+                    {step.n}
+                  </span>
+                  <h3 className="text-foreground font-medium tracking-tight mb-3">
+                    {step.title}
+                  </h3>
+                  <p className="text-sm text-foreground-secondary/70 font-light leading-relaxed">
+                    {step.body}
+                  </p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* Qué te llevas */}
+      <section className="py-20 md:py-28">
+        <Container>
+          <FadeIn>
+            <div className="max-w-[760px] mx-auto text-center mb-16 md:mb-20">
+              <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-8">
+                Qué te llevas
+              </p>
+              <p
+                className="text-foreground font-light tracking-tight"
+                style={{
+                  fontSize: "clamp(1.25rem, 2.2vw, 1.75rem)",
+                  lineHeight: 1.35,
+                }}
+              >
+                Flujos que funcionan y un equipo que sabe seguir.
+              </p>
+            </div>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-16 gap-y-12 max-w-[860px] mx-auto">
+            {llevas.map((d, idx) => (
+              <FadeIn key={d.title} delay={0.05}>
+                <div className="flex gap-5">
+                  <span className="text-sm font-light text-foreground/20 tabular-nums pt-1">
+                    {String(idx + 1).padStart(2, "0")}
+                  </span>
+                  <div>
+                    <h3 className="text-foreground font-medium tracking-tight mb-2 text-lg">
+                      {d.title}
+                    </h3>
+                    <p className="text-sm text-foreground-secondary/70 font-light leading-relaxed">
+                      {d.body}
+                    </p>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* Cómo trabajamos */}
+      <section className="py-20 md:py-28">
+        <Container>
+          <FadeIn>
+            <div className="max-w-[760px] mx-auto text-center mb-16 md:mb-20">
+              <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-8">
+                Cómo trabajamos
+              </p>
+            </div>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-12 gap-y-12 max-w-[920px] mx-auto">
+            {principles.map((pr) => (
+              <FadeIn key={pr.title} delay={0.05}>
+                <div>
+                  <h3 className="text-foreground font-light tracking-tight mb-3 text-lg">
+                    {pr.title}
+                  </h3>
+                  <p className="text-sm text-foreground-secondary/70 font-light leading-relaxed">
+                    {pr.body}
+                  </p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </Container>
+      </section>
+
       {/* Otros servicios */}
-      <section className="py-20 md:py-28 bg-surface border-t border-border-color">
+      <section className="py-20 md:py-28 bg-surface">
         <Container>
           <FadeIn>
             <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-8 text-center">

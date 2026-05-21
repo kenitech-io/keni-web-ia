@@ -62,7 +62,7 @@ export default function BlogPage() {
                   lineHeight: 1.1,
                 }}
               >
-                Notas de campo sobre formación AI-native.
+                Notas de campo.
               </h1>
               <p className="text-body text-foreground-secondary/70 font-light leading-relaxed">
                 Patrones, anti-patrones y métricas reales de implantación.

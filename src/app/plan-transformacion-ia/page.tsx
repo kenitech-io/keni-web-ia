@@ -237,7 +237,7 @@ export default function PlanTransformacionIAPage() {
       </section>
 
       {/* Cómo es el recorrido */}
-      <section className="py-20 md:py-28">
+      <section className="py-20 md:py-28 bg-surface">
         <Container>
           <FadeIn>
             <div className="max-w-[760px] mx-auto text-center mb-16 md:mb-20">
@@ -320,7 +320,7 @@ export default function PlanTransformacionIAPage() {
       </section>
 
       {/* Cómo trabajamos */}
-      <section className="py-20 md:py-28 bg-surface">
+      <section className="py-20 md:py-28">
         <Container>
           <FadeIn>
             <div className="max-w-[760px] mx-auto text-center mb-16 md:mb-20">
@@ -348,7 +348,7 @@ export default function PlanTransformacionIAPage() {
       </section>
 
       {/* Otros servicios */}
-      <section className="py-20 md:py-28">
+      <section className="py-20 md:py-28 bg-surface">
         <Container>
           <FadeIn>
             <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-8 text-center">
