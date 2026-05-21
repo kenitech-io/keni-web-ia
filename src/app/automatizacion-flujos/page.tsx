@@ -49,8 +49,14 @@ export default function AutomatizacionFlujosPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
-      {/* Hero */}
-      <section className="pt-32 pb-20 md:pt-48 md:pb-32">
+      {/* Hero — mismo fondo que la tarjeta "Ejecución / Automatización" de la home */}
+      <section
+        className="pt-32 pb-20 md:pt-48 md:pb-32"
+        style={{
+          background:
+            "radial-gradient(at 30% 70%, #9c7a5a 0%, transparent 70%), radial-gradient(at 72% 28%, #b89572 0%, transparent 72%), radial-gradient(at 55% 50%, #846448 0%, transparent 78%), linear-gradient(135deg, #e4d6c2, #ede0cd)",
+        }}
+      >
         <Container>
           <div className="max-w-[820px] mx-auto text-center">
             <FadeIn>
