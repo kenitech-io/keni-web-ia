@@ -176,13 +176,12 @@ export default function PlanTransformacionIAPage() {
                   lineHeight: 1.3,
                 }}
               >
-                Tener IA es lo fácil. La diferencia la marca lo que tu equipo
-                hace con ella.
+                Tener IA es lo fácil. Lo que cuenta es lo que tu equipo hace
+                con ella.
               </p>
               <p className="text-body text-foreground-secondary/70 font-light leading-relaxed max-w-[600px] mx-auto">
-                Las herramientas se compran en una tarde. El hábito de usarlas,
-                en las tareas reales, por todo el equipo, sin depender de
-                nadie, se construye. Ese es el trabajo que hacemos contigo.
+                Las herramientas se compran en una tarde. El hábito de usarlas
+                se construye. Ese es el trabajo que hacemos contigo.
               </p>
             </FadeIn>
           </div>
