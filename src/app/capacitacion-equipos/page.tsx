@@ -216,7 +216,7 @@ export default function CapacitacionEquiposPage() {
                   <h3 className="text-foreground font-medium tracking-tight mb-3 text-lg">
                     {it.title}
                   </h3>
-                  <p className="text-sm text-foreground-secondary/70 font-light leading-relaxed">
+                  <p className="hidden sm:block text-sm text-foreground-secondary/70 font-light leading-relaxed">
                     {it.body}
                   </p>
                 </div>
@@ -257,7 +257,7 @@ export default function CapacitacionEquiposPage() {
                   <h3 className="text-foreground font-medium tracking-tight mb-3">
                     {step.title}
                   </h3>
-                  <p className="text-sm text-foreground-secondary/70 font-light leading-relaxed">
+                  <p className="hidden sm:block text-sm text-foreground-secondary/70 font-light leading-relaxed">
                     {step.body}
                   </p>
                 </div>
@@ -299,7 +299,7 @@ export default function CapacitacionEquiposPage() {
                     <h3 className="text-foreground font-medium tracking-tight mb-2 text-lg">
                       {d.title}
                     </h3>
-                    <p className="text-sm text-foreground-secondary/70 font-light leading-relaxed">
+                    <p className="hidden sm:block text-sm text-foreground-secondary/70 font-light leading-relaxed">
                       {d.body}
                     </p>
                   </div>
@@ -328,7 +328,7 @@ export default function CapacitacionEquiposPage() {
                   <h3 className="text-foreground font-light tracking-tight mb-3 text-lg">
                     {pr.title}
                   </h3>
-                  <p className="text-sm text-foreground-secondary/70 font-light leading-relaxed">
+                  <p className="hidden sm:block text-sm text-foreground-secondary/70 font-light leading-relaxed">
                     {pr.body}
                   </p>
                 </div>
