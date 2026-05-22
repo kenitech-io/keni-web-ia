@@ -72,7 +72,7 @@ export default function HomeContent() {
       >
         {/* Izquierda: headline */}
         <div className="flex items-center justify-center px-6 md:px-[8%] lg:px-[10%] py-16 lg:py-0">
-          <FadeIn className="w-full max-w-[560px] mx-auto text-center">
+          <FadeIn className="w-full max-w-[560px] mx-auto text-center" animateOnMount>
             <h1
               className="text-foreground font-medium tracking-tight"
               style={{
@@ -91,7 +91,7 @@ export default function HomeContent() {
           className="flex items-center justify-center px-6 md:px-[8%] lg:px-[10%] py-16 lg:py-0"
           style={{ backgroundColor: "#1E1E1E" }}
         >
-          <FadeIn className="w-full max-w-[480px] mx-auto text-center" delay={0.15}>
+          <FadeIn className="w-full max-w-[480px] mx-auto text-center" delay={0.15} animateOnMount>
             {/* F: Estrofa en piedra (Holzer / Wool) - invertida sobre gris */}
             <div className="mb-12 lg:mb-14">
               <p
@@ -102,10 +102,10 @@ export default function HomeContent() {
                   letterSpacing: "0.18em",
                 }}
               >
-                <span className="block">Keni convierte</span>
+                <span className="block">Con Keni,</span>
                 <span className="block">tu inversión en IA</span>
-                <span className="block mt-[1em]">en un antes</span>
-                <span className="block">y después.</span>
+                <span className="block mt-[1em]">marca un antes</span>
+                <span className="block">y un después.</span>
               </p>
             </div>
 

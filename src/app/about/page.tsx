@@ -58,21 +58,6 @@ const team = [
   },
 ];
 
-const principios = [
-  {
-    title: "Dogfooding",
-    body: "Usamos Claude Code en marketing, finanzas y legal antes de enseñárselo a otros. El producto refleja cómo trabajamos.",
-  },
-  {
-    title: "Seniority arriba",
-    body: "La primera entrega de cada cliente nuevo va con socios fundadores. La presencial no se delega.",
-  },
-  {
-    title: "Métrica antes que tesis",
-    body: "Validamos con números reales en cada cliente antes de escalar. Encuestas no, telemetría sí.",
-  },
-];
-
 export default function AboutPage() {
   return (
     <main>
@@ -98,11 +83,6 @@ export default function AboutPage() {
               >
                 Acerca de Nosotros
               </h1>
-              <p className="text-body text-foreground-secondary/70 font-light leading-relaxed max-w-[620px] mx-auto">
-                Operamos AI-native y vendemos lo que hacemos. Llevamos a los
-                equipos a usar IA en su trabajo real, con métricas de antes y
-                después.
-              </p>
             </FadeIn>
           </div>
         </Container>
@@ -124,22 +104,21 @@ export default function AboutPage() {
                     lineHeight: 1.15,
                   }}
                 >
-                  Tener IA no es usarla.
+                  Tu empresa ya tiene IA. Apenas la usa.
                 </h2>
               </FadeIn>
               <FadeIn delay={0.1}>
                 <p className="text-sm text-foreground-secondary/70 leading-loose font-light mb-6">
-                  Empresas que pagan licencias de IA y las usan para resumir
-                  correos. Equipos capacitados con webinars que no cambiaron
-                  cómo trabajan. Lo vimos a cada escala.
+                  La IA va a redefinir cómo trabaja cada empresa. No es una
+                  herramienta más: es la forma en que se hará el trabajo.
                 </p>
               </FadeIn>
               <FadeIn delay={0.15}>
                 <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
-                  El problema no es la herramienta. Es que nadie la opera en el
-                  trabajo real. Cuando empezamos a contar cómo trabajábamos por
-                  dentro, varios clientes nos pidieron lo mismo para sus
-                  equipos. Convertimos ese ángulo en producto.
+                  Nuestro objetivo es que la fluidez con IA sea el estándar, no
+                  la ventaja competitiva de unos pocos. Que cualquier equipo
+                  pueda operar con ella, sin importar su tamaño. Esa transición
+                  ya empezó. Existimos para ayudar a que llegue a todos.
                 </p>
               </FadeIn>
             </div>
@@ -171,43 +150,6 @@ export default function AboutPage() {
               autonomía, no tu dependencia de nosotros.
             </p>
           </FadeIn>
-        </Container>
-      </section>
-
-      {/* Cómo trabajamos - 3 columnas (versión IA) */}
-      <section className="py-24 md:py-40 bg-surface">
-        <Container>
-          <div className="max-w-[820px] mx-auto">
-            <FadeIn>
-              <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-8">
-                Cómo trabajamos
-              </p>
-              <p
-                className="text-foreground font-light tracking-tight mb-12"
-                style={{
-                  fontSize: "clamp(1.4rem, 2.5vw, 2rem)",
-                  lineHeight: 1.3,
-                }}
-              >
-                Si lo que vendemos no se opera todos los días dentro de Keni, no
-                se vende.
-              </p>
-            </FadeIn>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-10">
-              {principios.map((p, i) => (
-                <FadeIn key={p.title} delay={0.05 + i * 0.05}>
-                  <div>
-                    <p className="text-label uppercase tracking-[0.25em] text-muted/60 font-light mb-4">
-                      {p.title}
-                    </p>
-                    <p className="text-sm text-foreground-secondary/70 leading-loose font-light">
-                      {p.body}
-                    </p>
-                  </div>
-                </FadeIn>
-              ))}
-            </div>
-          </div>
         </Container>
       </section>
 
