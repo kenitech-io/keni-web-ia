@@ -147,7 +147,11 @@ export default function Navbar() {
         ref={navRef}
         className="fixed top-0 left-0 right-0 z-50 h-[64px] flex items-center bg-transparent"
       >
-        <Container>
+        {/* Ancho completo (sin el tope de Container) para que la barra acompañe
+            al hero a sangre: en pantallas grandes Keni y los botones siguen
+            pegados a los bordes, como en un portátil, en vez de encogerse al
+            centro. */}
+        <div className="w-full px-6 md:px-8">
           <div className="flex items-center justify-between">
             <Link
               href="/"
@@ -237,7 +241,7 @@ export default function Navbar() {
               </div>
             </button>
           </div>
-        </Container>
+        </div>
       </nav>
 
       {/* Mobile Full-Screen Overlay */}
