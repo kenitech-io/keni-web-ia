@@ -104,8 +104,8 @@ export default function HomeContent() {
               >
                 <span className="block">Keni convierte</span>
                 <span className="block">tu inversión en IA</span>
-                <span className="block mt-[1em]">en transformación</span>
-                <span className="block">del equipo y ROI.</span>
+                <span className="block mt-[1em]">en un antes</span>
+                <span className="block">y después.</span>
               </p>
             </div>
 
