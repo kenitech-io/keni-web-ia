@@ -41,23 +41,23 @@ const breadcrumbJsonLd = {
   ],
 };
 
-// Dónde aportan los agentes.
+// Dónde aporta más valor la automatización.
 const aportan = [
   {
-    title: "Tareas repetitivas",
-    body: "Lo que se hace igual cada vez es donde un agente sostiene el ritmo sin cansarse.",
+    title: "Trabajo con lenguaje",
+    body: "Leer, escribir, resumir o responder: buena parte del día pasa por las palabras.",
   },
   {
-    title: "Alto volumen",
-    body: "Cuando el mismo paso se repite muchas veces al día, el agente absorbe la carga.",
+    title: "Casos que varían",
+    body: "Cuando cada caso es distinto y una sola regla no alcanza para todos.",
   },
   {
     title: "Dentro del flujo diario",
-    body: "El valor aparece en el trabajo real del equipo, no en una demostración aparte.",
+    body: "En el trabajo de cada día del equipo, no en una herramienta aparte.",
   },
   {
-    title: "Reglas claras, criterio acotado",
-    body: "Donde la decisión se puede describir, el agente la ejecuta con consistencia.",
+    title: "Decisiones con criterio",
+    body: "Cuando hay una lógica clara detrás, aunque no quepa en una sola regla.",
   },
 ];
 
@@ -174,14 +174,13 @@ export default function AutomatizacionFlujosPage() {
                   lineHeight: 1.3,
                 }}
               >
-                Tu equipo tiene mejores cosas que hacer que el trabajo
-                repetitivo.
+                Tu equipo vale para más que el trabajo repetitivo.
               </p>
               <p className="text-body text-foreground-secondary/70 font-light leading-relaxed max-w-[600px] mx-auto">
-                La pregunta no es cuánto puede hacer un agente, sino dónde aporta
-                más. En el trabajo de un equipo hay tareas que un agente resuelve
-                mejor, y otras que conviene dejar como están. Empezamos por
-                encontrar las primeras.
+                En cada equipo hay tareas operativas que se repiten y aportan
+                poco. Un agente puede encargarse de ellas, y tu equipo recupera
+                ese tiempo para el trabajo que de verdad importa. Empezamos por
+                encontrar cuáles.
               </p>
             </FadeIn>
           </div>
@@ -203,7 +202,7 @@ export default function AutomatizacionFlujosPage() {
                   lineHeight: 1.35,
                 }}
               >
-                Un agente rinde donde el trabajo se repite.
+                Lo repetitivo ya está resuelto. Lo demás es lo interesante.
               </p>
             </div>
           </FadeIn>

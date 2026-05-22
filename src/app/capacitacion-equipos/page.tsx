@@ -175,14 +175,14 @@ export default function CapacitacionEquiposPage() {
                   lineHeight: 1.3,
                 }}
               >
-                La IA no se entiende en una presentación. Se entiende el día en
-                que resuelve algo tuyo.
+                La IA no transforma una empresa. La transforma un equipo que
+                sabe usarla.
               </p>
               <p className="text-body text-foreground-secondary/70 font-light leading-relaxed max-w-[600px] mx-auto">
-                Un equipo puede salir de un curso sabiendo qué es un modelo y
-                volver el lunes sin tocarlo. La diferencia no está en lo que se
-                explica, sino en lo que se usa. Por eso la formación ocurre
-                dentro del trabajo real de cada persona, no en un aula aparte.
+                Esa diferencia no la pone la tecnología, la pone cada persona
+                del equipo. Por eso no nos quedamos en explicar qué es la IA:
+                llevamos a cada quien a usarla en su trabajo real, hasta que se
+                vuelve parte de cómo trabaja.
               </p>
             </FadeIn>
           </div>

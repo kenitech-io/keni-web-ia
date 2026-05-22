@@ -176,12 +176,13 @@ export default function PlanTransformacionIAPage() {
                   lineHeight: 1.3,
                 }}
               >
-                Tener IA es lo fácil. Lo que cuenta es lo que tu equipo hace
-                con ella.
+                Tener IA es lo fácil. Aprovechar su potencial es otra cosa.
               </p>
               <p className="text-body text-foreground-secondary/70 font-light leading-relaxed max-w-[600px] mx-auto">
-                Las herramientas se compran en una tarde. El hábito de usarlas
-                se construye. Ese es el trabajo que hacemos contigo.
+                Es como tener todo internet y usarlo solo para consultar
+                Wikipedia: el acceso es el mismo, lo que le sacas cambia todo.
+                Llevar ese potencial a tu trabajo real es lo que hacemos
+                contigo.
               </p>
             </FadeIn>
           </div>
