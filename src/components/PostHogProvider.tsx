@@ -1,15 +1,12 @@
 "use client";
 
-import { PostHogProvider as PHProvider } from "posthog-js/react";
-import { useEffect, useRef, useState } from "react";
-import type { PostHog } from "posthog-js";
+import { useEffect, useRef } from "react";
 
 export default function PostHogProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [client, setClient] = useState<PostHog | null>(null);
   const initStarted = useRef(false);
 
   useEffect(() => {
@@ -23,7 +20,6 @@ export default function PostHogProvider({
         capture_pageview: true,
         capture_pageleave: true,
       });
-      setClient(posthog);
     };
 
     // Defer loading until the browser is idle, or after 2s as a fallback.
@@ -35,9 +31,12 @@ export default function PostHogProvider({
     }
   }, []);
 
-  if (!client) {
-    return <>{children}</>;
-  }
-
-  return <PHProvider client={client}>{children}</PHProvider>;
+  // Renderizamos children SIEMPRE con la misma estructura. A propósito no los
+  // envolvemos en el PHProvider de posthog-js/react: nada en la app consume el
+  // contexto de PostHog (la auto-captura corre sobre el singleton tras init).
+  // Antes esto envolvía condicionalmente (Fragment -> PHProvider en cuanto
+  // cargaba el cliente), lo que re-parentaba todo el árbol y lo remontaba,
+  // repitiendo la animación de entrada del hero. Se notaba sobre todo en iOS
+  // Safari, que no tiene requestIdleCallback y cae al timeout de 2s.
+  return <>{children}</>;
 }
