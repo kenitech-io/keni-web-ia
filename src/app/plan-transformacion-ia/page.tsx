@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import FadeIn from "@/components/ui/FadeIn";
@@ -20,6 +20,12 @@ export const metadata: Metadata = {
     locale: "es_MX",
     type: "website",
   },
+};
+
+// Color de la barra del navegador (status/address bar en móvil) igual al tono
+// alto del hero, para que la parte de arriba no salga en blanco sobre el degradado.
+export const viewport: Viewport = {
+  themeColor: "#f0d5a7",
 };
 
 const breadcrumbJsonLd = {
