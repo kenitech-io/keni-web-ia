@@ -15,6 +15,10 @@ const exploreLinks = [
 
 const mobileLinks = [...exploreLinks];
 
+// La detección de fondo del navbar fuerza reflow; la muestreamos como máximo
+// cada SAMPLE_THROTTLE_MS en vez de en cada frame para no atascar el scroll.
+const SAMPLE_THROTTLE_MS = 140;
+
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [exploreOpen, setExploreOpen] = useState(false);
@@ -26,8 +30,8 @@ export default function Navbar() {
 
   const navRef = useRef<HTMLElement>(null);
   const rafRef = useRef<number>(0);
-  const lastChangeLeft = useRef<number>(0);
-  const lastChangeRight = useRef<number>(0);
+  const lastSampleRef = useRef<number>(0);
+  const trailingRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Sondea el elemento que hay bajo (x, y) en viewport, sube por padres
   // hasta encontrar un bg no transparente y devuelve "dark" o "light".
@@ -58,28 +62,34 @@ export default function Navbar() {
     return "light";
   }, []);
 
-  const handleScroll = useCallback(() => {
+  // Un muestreo: corre la detección dentro de un rAF y actualiza el color.
+  const sample = useCallback(() => {
+    lastSampleRef.current = Date.now();
     cancelAnimationFrame(rafRef.current);
     rafRef.current = requestAnimationFrame(() => {
       const w = window.innerWidth;
       const sampleY = 32; // mitad vertical del navbar (h=64px)
       const newLeft = detectBgAt(40, sampleY);
       const newRight = detectBgAt(Math.max(w - 40, 0), sampleY);
-      const now = Date.now();
-      setBgLeft((prev) => {
-        if (newLeft === prev) return prev;
-        if (now - lastChangeLeft.current < 150) return prev;
-        lastChangeLeft.current = now;
-        return newLeft;
-      });
-      setBgRight((prev) => {
-        if (newRight === prev) return prev;
-        if (now - lastChangeRight.current < 150) return prev;
-        lastChangeRight.current = now;
-        return newRight;
-      });
+      setBgLeft((prev) => (newLeft === prev ? prev : newLeft));
+      setBgRight((prev) => (newRight === prev ? prev : newRight));
     });
   }, [detectBgAt]);
+
+  // Throttle por tiempo: en cada scroll solo comparamos timestamps (barato).
+  // La detección cara corre como mucho cada SAMPLE_THROTTLE_MS, con una llamada
+  // de cierre para que el navbar acabe en el color correcto al parar el scroll.
+  const handleScroll = useCallback(() => {
+    const elapsed = Date.now() - lastSampleRef.current;
+    if (elapsed >= SAMPLE_THROTTLE_MS) {
+      sample();
+    } else if (trailingRef.current === null) {
+      trailingRef.current = setTimeout(() => {
+        trailingRef.current = null;
+        sample();
+      }, SAMPLE_THROTTLE_MS - elapsed);
+    }
+  }, [sample]);
 
   useEffect(() => {
     // Pequeño delay inicial para dejar que la página pinte antes del primer sondeo
@@ -98,6 +108,7 @@ export default function Navbar() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
       cancelAnimationFrame(rafRef.current);
+      if (trailingRef.current !== null) clearTimeout(trailingRef.current);
     };
   }, [handleScroll]);
 
