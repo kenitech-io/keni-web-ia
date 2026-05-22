@@ -70,8 +70,8 @@ export default function HomeContent() {
         data-split-hero
         className="grid grid-cols-1 lg:grid-cols-2 grid-rows-[2fr_3fr] lg:grid-rows-none h-[100svh] min-h-[600px] bg-background"
       >
-        {/* Izquierda: headline */}
-        <div className="flex items-start lg:items-center justify-center px-6 md:px-[8%] lg:px-[10%] pt-24 pb-12 lg:py-0">
+        {/* Izquierda: headline (siempre centrado verticalmente en su panel) */}
+        <div className="flex items-center justify-center px-6 md:px-[8%] lg:px-[10%] py-16 lg:py-0">
           <FadeIn className="w-full max-w-[560px] mx-auto text-center" animateOnMount>
             <h1
               className="text-foreground font-medium tracking-tight"
